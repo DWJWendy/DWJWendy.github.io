@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-02-23T14:05:00.585Z</updated>
+  <updated>2019-02-24T13:00:55.446Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,127 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>test4</title>
+    <link href="http://yoursite.com/2019/02/24/test4/"/>
+    <id>http://yoursite.com/2019/02/24/test4/</id>
+    <published>2019-02-24T13:00:47.000Z</published>
+    <updated>2019-02-24T13:00:55.446Z</updated>
+    
+    <content type="html"><![CDATA[<p>模块展示$$a = b + c$$</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;模块展示$$a = b + c$$&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>test3</title>
+    <link href="http://yoursite.com/2019/02/24/test3/"/>
+    <id>http://yoursite.com/2019/02/24/test3/</id>
+    <published>2019-02-24T12:59:26.000Z</published>
+    <updated>2019-02-24T13:00:23.879Z</updated>
+    
+    <content type="html"><![CDATA[<p>模块展示$$a = b + c$$</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;模块展示$$a = b + c$$&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>test2</title>
+    <link href="http://yoursite.com/2019/02/24/test2/"/>
+    <id>http://yoursite.com/2019/02/24/test2/</id>
+    <published>2019-02-24T12:43:33.000Z</published>
+    <updated>2019-02-24T12:58:50.199Z</updated>
+    
+    <content type="html"><![CDATA[<p>\def\specialFrac#1#2{\frac{x + #1}{y + #2}}<br>\specialFrac{7}{z+3}</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;\def\specialFrac#1#2{\frac{x + #1}{y + #2}}&lt;br&gt;
+\specialFrac{7}{z+3}&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>math test</title>
+    <link href="http://yoursite.com/2019/02/24/math-test/"/>
+    <id>http://yoursite.com/2019/02/24/math-test/</id>
+    <published>2019-02-24T12:16:23.000Z</published>
+    <updated>2019-02-24T12:34:53.731Z</updated>
+    
+    <content type="html"><![CDATA[<p><br>\</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;br&gt;
+\&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>test</title>
+    <link href="http://yoursite.com/2019/02/24/test/"/>
+    <id>http://yoursite.com/2019/02/24/test/</id>
+    <published>2019-02-24T10:17:14.000Z</published>
+    <updated>2019-02-24T10:26:37.990Z</updated>
+    
+    <content type="html"><![CDATA[<hr><table><thead><tr><th style="text-align:left">Class</th><th style="text-align:left">Content</th></tr></thead><tbody><tr><td style="text-align:left">layout</td><td style="text-align:left">post</td></tr><tr><td style="text-align:left">title</td><td style="text-align:left">机器学习中的性能度量指标汇总</td></tr><tr><td style="text-align:left">categories</td><td style="text-align:left">Blog</td></tr><tr><td style="text-align:left">description</td><td style="text-align:left">对机器学习中常用的度量模型的指标进行汇总，并对其附上代码便于以后使用</td></tr><tr><td style="text-align:left">keywords</td><td style="text-align:left">错误率和精度、查准率、查全率、F值、ROC和AUC</td></tr></tbody></table><hr><h4 id="前言"><a class="header-anchor" href="#前言"></a>前言</h4><p>在机器学习中要考察选择模型的优劣，需要对模型的泛化能力进行评估，这就是性能度量。本篇文章主要介绍分类、回归以及聚类中的性能度量以及编写代码以便于以后使用。</p><h4 id="分类任务常用的性能度量"><a class="header-anchor" href="#分类任务常用的性能度量"></a>分类任务常用的性能度量</h4><ul><li><p><strong>1. 错误率和精度</strong><br>顾名思义，错误率是指分类错误的样本占总样本的比例，精度则是分类正确的样本占样本总数的比例<br>错误率表示为：$$error(f;D)=\frac{1}{N}\sum_{i=0}^{N}I(f(x_i)\neq y_i)$$精度表示为：$$acc(f;D)=\frac{1}{N}\sum_{i=0}^{N}I(f(x_i)=y_i)$$其中$I$为指示函数，满足要求则为1，不满足为0，且$error=1-acc$<br>更一般的,对于数据分布$D$和概率密度$p(.)$<br>错误率表示为：$$error(f;D)=\int_{x \in D}I(f(x)\neq y)p(x)dx$$精度表示为：$$acc(f;D)=\int_{x \in D}I(f(x)=y)p(x)dx$$<br><strong>实现代码:</strong></p></li><li><p><strong>2. 召回率Recall、准确率Precision、F值</strong><br>单纯靠错误率和精度衡量模型的是远远不够的，在分类中常用Recall、Precision以及F值去度量模型，如下图二分类混淆矩阵，将召回率和准确率以及F值定义如下：<br><img src="https://upload-images.jianshu.io/upload_images/5274272-95cfdeff712442df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图1. 二分类混淆矩阵"><br>Precision表示为：$$P=\frac{TP}{TP+FP}$$<br>Recall表示为：$$R=\frac{TP}{TP+FN}$$<br>F值是召回率和准确率的调和平均值，表示为：$$\frac{2}{F}=\frac{1}{P}+\frac{1}{R}$$即F值表示为：$$F=\frac{2TP}{2TP+FP+FN}=\frac{2<em>P</em>R}{P+R}$$</p></li></ul><p>未完待续</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;hr&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;Class&lt;/th&gt;
+&lt;th style=&quot;text-align:left&quot;&gt;Content&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td st
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
