@@ -1,0 +1,1780 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-sunflower.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-sunflower.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="python,cnn,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="毛毛虫_Wendy" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="layout: posttitle: IJCAI 2018 阿里妈妈广告预测算法categories: Casedescription: 利用CNN预测转化率keywords: CNN、购买率、转化率  IJCAI 2018 阿里妈妈广告预测算法 背景本项目是天池的一个比赛，由阿里妈妈和天池大数据众智平台举办广告预测算法大赛，本次参赛人数多达5200多，而我们只取得了731的成绩，最遗憾的是当我">
+<meta name="keywords" content="python,cnn">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IJCAI 2018 阿里妈妈广告预测算法大赛">
+<meta property="og:url" content="http://yoursite.com/2019/02/25/IJCAI-2018-阿里妈妈广告预测算法大赛/index.html">
+<meta property="og:site_name" content="毛毛虫_Wendy">
+<meta property="og:description" content="layout: posttitle: IJCAI 2018 阿里妈妈广告预测算法categories: Casedescription: 利用CNN预测转化率keywords: CNN、购买率、转化率  IJCAI 2018 阿里妈妈广告预测算法 背景本项目是天池的一个比赛，由阿里妈妈和天池大数据众智平台举办广告预测算法大赛，本次参赛人数多达5200多，而我们只取得了731的成绩，最遗憾的是当我">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5274272-126f6ced03f87190.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5274272-c467e22c64b0c0bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5274272-0c0a9b67b23c8ac2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5274272-ebd131b8e02cced0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5274272-791b0f021b095122.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5274272-629f4f0cf77c4452.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5274272-6f3c32f540d9a5ee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5274272-5f1784960206943b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5274272-c36d38d7eb21b420.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5274272-2ea9155e96d8d9fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5274272-90201af539935504.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5274272-a2dcd08a04ef3118.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5274272-b13a88a46fa9d291.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-02-25T08:50:52.054Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="IJCAI 2018 阿里妈妈广告预测算法大赛">
+<meta name="twitter:description" content="layout: posttitle: IJCAI 2018 阿里妈妈广告预测算法categories: Casedescription: 利用CNN预测转化率keywords: CNN、购买率、转化率  IJCAI 2018 阿里妈妈广告预测算法 背景本项目是天池的一个比赛，由阿里妈妈和天池大数据众智平台举办广告预测算法大赛，本次参赛人数多达5200多，而我们只取得了731的成绩，最遗憾的是当我">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5274272-126f6ced03f87190.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/02/25/IJCAI-2018-阿里妈妈广告预测算法大赛/">
+
+
+
+
+
+  <title>IJCAI 2018 阿里妈妈广告预测算法大赛 | 毛毛虫_Wendy</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/DWJWendy" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">毛毛虫_Wendy</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">毛毛虫小屋</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/25/IJCAI-2018-阿里妈妈广告预测算法大赛/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wenjun D(Wendy)">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="毛毛虫_Wendy">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">IJCAI 2018 阿里妈妈广告预测算法大赛</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-25T16:44:00+08:00">
+                2019-02-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法大赛/" itemprop="url" rel="index">
+                    <span itemprop="name">算法大赛</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/25/IJCAI-2018-阿里妈妈广告预测算法大赛/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/25/IJCAI-2018-阿里妈妈广告预测算法大赛/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/02/25/IJCAI-2018-阿里妈妈广告预测算法大赛/" class="leancloud_visitors" data-flag-title="IJCAI 2018 阿里妈妈广告预测算法大赛">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  6.9k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  32 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<p>layout: post<br>title: IJCAI 2018 阿里妈妈广告预测算法<br>categories: Case<br>description: 利用CNN预测转化率<br>keywords: CNN、购买率、转化率</p>
+<hr>
+<p>IJCAI 2018 阿里妈妈广告预测算法</p>
+<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>本项目是天池的一个比赛，由阿里妈妈和天池大数据众智平台举办广告预测算法大赛，本次参赛人数多达5200多，而我们只取得了731的成绩，最遗憾的是当我们写好CNN预测结果准备上传，因为一些意外情况，发现队伍被强制解散，很无奈，又非常不甘心，但是这就是规则，我们只有遵循的权利，难过伤心之后还是需要把整个项目进行整理总结。</p>
+<hr>
+<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p>本次比赛以阿里电商广告为研究对象，提供了淘宝平台的海量真实交易数据，参赛选手通过人工智能技术构建预测模型预估用户的购买意向，即给定广告点击相关的用户（user）、广告商品（ad）、检索词（query）、上下文内容（context）、商店（shop）等信息的条件下预测广告产生购买行为的概率（pCVR），形式化定义为：pCVR=P(conversion=1/query, user, ad, context, shop)。</p>
+<p>结合淘宝平台的业务场景和不同的流量特点，我们定义了以下两类挑战：</p>
+<ul>
+<li>（1）日常的转化率预估</li>
+<li>（2）特殊日期的转化率预估</li>
+</ul>
+<p>评估指标， 公式如下：</p>
+<p>$$L(w,x)=-\frac{1}{N}\sum_{i=1}^N \lbrace y^{(i)}logp(y^{(i)}=1|w,x^{(i)})+(1-y^{(i)})logp(y^{(i)}=0|w,x^{(i)})\rbrace<br>$$</p>
+<p>通过logarithmic loss（记为logloss）评估模型效果（越小越好）<br>其中N表示测试集样本数量，yi表示测试集中第i个样本的真实标签，pi表示第i个样本的预估转化率。</p>
+<hr>
+<h3 id="数据说明"><a href="#数据说明" class="headerlink" title="数据说明"></a>数据说明</h3><p>本次比赛为参赛选手提供了5类数据（基础数据、广告商品信息、用户信息、上下文信息和店铺信息）。基础数据表提供了搜索广告最基本的信息，以及“是否交易”的标记。广告商品信息、用户信息、上下文信息和店铺信息等4类数据，提供了对转化率预估可能有帮助的辅助信息。</p>
+<p><strong>1 . 基础数据</strong></p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th style="text-align:left">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>instance_id</td>
+<td style="text-align:left">样本编号，Long</td>
+</tr>
+<tr>
+<td>is_trade</td>
+<td style="text-align:left">是否交易的标记位，Int类型；取值是0或者1，其中1 表示这条样本最终产生交易，0 表示没有交易</td>
+</tr>
+<tr>
+<td>item_id</td>
+<td style="text-align:left">广告商品编号，Long类型</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td style="text-align:left">用户的编号，Long类型</td>
+</tr>
+<tr>
+<td>context_id</td>
+<td style="text-align:left">上下文信息的编号，Long类型</td>
+</tr>
+<tr>
+<td>shop_id</td>
+<td style="text-align:left">店铺的编号，Long类型</td>
+</tr>
+</tbody>
+</table>
+<p><strong>2. 广告商品信息</strong></p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th style="text-align:left">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>item_id</td>
+<td style="text-align:left">广告商品编号，Long类型</td>
+</tr>
+<tr>
+<td>item_category_list</td>
+<td style="text-align:left">广告商品的的类目列表，String类型；从根类目（最粗略的一级类目）向叶子类目（最精细的类目）依次排列，数据拼接格式为 “category_0;category_1;category_2”，其中 category_1 是 category_0 的子类目，category_2 是 category_1 的子类目</td>
+</tr>
+<tr>
+<td>item_property_list</td>
+<td style="text-align:left">广告商品的属性列表，String类型；数据拼接格式为 “property_0;property_1;property_2”，各个属性没有从属关系</td>
+</tr>
+<tr>
+<td>item_brand_id</td>
+<td style="text-align:left">广告商品的品牌编号，Long类型</td>
+</tr>
+<tr>
+<td>item_city_id</td>
+<td style="text-align:left">广告商品的城市编号，Long类型</td>
+</tr>
+<tr>
+<td>item_price_level</td>
+<td style="text-align:left">广告商品的价格等级，Int类型；取值从0开始，数值越大表示价格越高</td>
+</tr>
+<tr>
+<td>item_sales_level</td>
+<td style="text-align:left">广告商品的销量等级，Int类型；取值从0开始，数值越大表示销量越大</td>
+</tr>
+<tr>
+<td>item_collected_level</td>
+<td style="text-align:left">广告商品被收藏次数的等级，Int类型；取值从0开始，数值越大表示被收藏次数越大</td>
+</tr>
+<tr>
+<td>item_pv_level</td>
+<td style="text-align:left">广告商品被展示次数的等级，Int类型；取值从0开始，数值越大表示被展示次数越大</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3. 用户信息</strong></p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th style="text-align:left">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_id</td>
+<td style="text-align:left">用户的编号，Long类型</td>
+</tr>
+<tr>
+<td>user_gender_id</td>
+<td style="text-align:left">用户的预测性别编号，Int类型；0表示女性用户，1表示男性用户，2表示家庭用户</td>
+</tr>
+<tr>
+<td>user_age_level</td>
+<td style="text-align:left">用户的预测年龄等级，Int类型；数值越大表示年龄越大</td>
+</tr>
+<tr>
+<td>user_occupation_id</td>
+<td style="text-align:left">用户的预测职业编号，Int类型</td>
+</tr>
+<tr>
+<td>user_star_level</td>
+<td style="text-align:left">用户的星级编号，Int类型；数值越大表示用户的星级越高</td>
+</tr>
+</tbody>
+</table>
+<p><strong>4. 上下文信息</strong></p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th style="text-align:left">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>context_id</td>
+<td style="text-align:left">上下文信息的编号，Long类型</td>
+</tr>
+<tr>
+<td>context_timestamp</td>
+<td style="text-align:left">广告商品的展示时间，Long类型；取值是以秒为单位的Unix时间戳，以1天为单位对时间戳进行了偏移</td>
+</tr>
+<tr>
+<td>context_page_id</td>
+<td style="text-align:left">广告商品的展示页面编号，Int类型；取值从1开始，依次增加；在一次搜索的展示结果中第一屏的编号为1，第二屏的编号为2</td>
+</tr>
+<tr>
+<td>predict_category_property</td>
+<td style="text-align:left">根据查询词预测的类目属性列表，String类型；数据拼接格式为 “category_A:property_A_1,property_A_2,property_A_3;category_B:-1;category_C:property_C_1,property_C_2” ，其中 category_A、category_B、category_C 是预测的三个类目；property_B 取值为-1，表示预测的第二个类目 category_B 没有对应的预测属性</td>
+</tr>
+</tbody>
+</table>
+<p><strong>5. 店铺信息</strong></p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th style="text-align:left">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shop_id</td>
+<td style="text-align:left">店铺的编号，Long类型</td>
+</tr>
+<tr>
+<td>shop_review_num_level</td>
+<td style="text-align:left">店铺的评价数量等级，Int类型；取值从0开始，数值越大表示评价数量越多</td>
+</tr>
+<tr>
+<td>shop_review_positive_rate</td>
+<td style="text-align:left">店铺的好评率，Double类型；取值在0到1之间，数值越大表示好评率越高</td>
+</tr>
+<tr>
+<td>shop_star_level</td>
+<td style="text-align:left">店铺的星级编号，Int类型；取值从0开始，数值越大表示店铺的星级越高</td>
+</tr>
+<tr>
+<td>shop_score_service</td>
+<td style="text-align:left">店铺的服务态度评分，Double类型；取值在0到1之间，数值越大表示评分越高</td>
+</tr>
+<tr>
+<td>shop_score_delivery</td>
+<td style="text-align:left">店铺的物流服务评分，Double类型；取值在0到1之间，数值越大表示评分越高</td>
+</tr>
+<tr>
+<td>shop_score_description</td>
+<td style="text-align:left">店铺的描述相符评分，Double类型；取值在0到1之间，数值越大表示评分越高</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>我们的实验思路如下：</p>
+<p><strong>统计分析 -&gt; 数据预处理 -&gt; 特征抽取 -&gt; 特征表示 -&gt; 模型拟合和预测 -&gt; 模型选择</strong></p>
+<p>其实从实验思路我们可以明显看出特征工程在这次比赛尤为重要，只有刻画好特征，才能利用模型得到好的预测结果，接下来我将按照实验思路进行总结。</p>
+<hr>
+<h3 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h3><h4 id="1-统计分析"><a href="#1-统计分析" class="headerlink" title="1. 统计分析"></a>1. 统计分析</h4><p><strong>目的： 看清数据分布，了解广告、商品、店铺、用户与购买概率的关系</strong></p>
+<p>基础数据的统计分析（饼图、柱状图和折线图结合) ，将数据按照is_trade属性分为两张子表，分别进行对比统计分析</p>
+<ul>
+<li><p>购买的用户分析：<br>单变量：性别分布、年龄分布、职业分布、星级分布<br>交叉变量：（重点）性别-年龄、性别-星级、年龄-星级、职业-星级,（参考）年龄-职业，性别-职业</p>
+</li>
+<li><p>购买的商品分布对比<br>（重点）标签分布、属性分布、品牌分布、价格分布、销量分布，展示次数（后四项需考虑粒度的粗细）<br>（参考）城市分布、收藏次数分布</p>
+</li>
+<li><p>上下文信息对比<br>（重点）时间戳分布<br>（参考）页面分布（看能否精确到类别）、预测类目的准确度（？）</p>
+</li>
+<li><p>购买的店铺分布对比<br>（重点）评论数分布，好评率分布、星级分布<br>（参考）服务评分、物流评分、描述评分</p>
+</li>
+</ul>
+<p><strong>实施：利用R对数据分布进行了统计，代码在analysis目录下，图片在pic和pic2中</strong></p>
+<p><strong>结果如下</strong></p>
+<p>以在不同属性上is_trade=0/1为例, 简要分析</p>
+<hr>
+<ul>
+<li>1.转化分布</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/5274272-126f6ced03f87190.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>从上图可以明显看出在给定情景下转化率很低，也就是说，<strong>我们的训练数据存在了极度平衡的现象，甚至是可以把购买理解成异常值，我们的算法要能够极好的检测出异常实例。</strong></p>
+<hr>
+<ul>
+<li>2.年龄,性别,星级 分布</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/5274272-c467e22c64b0c0bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5274272-0c0a9b67b23c8ac2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>从图1可以明显看出，<strong>年龄越大，转化率先增加后减少</strong>（-1表示未知年龄），这个结果与我们常识一致，中间年龄段更具有消费能力， 性别转化分布没有贴出来，结果跟我们常识也是一致的，<strong>女性转化率高于男性</strong>。从图2中可以看出，星级越高购买率相对要更高一些，但是差距不太明显。</p>
+<hr>
+<ul>
+<li>3.价格,收藏,展示 分布</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/5274272-ebd131b8e02cced0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5274272-791b0f021b095122.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5274272-629f4f0cf77c4452.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>图1，可以看出<strong>价格越高转化率先增加后降低，这与我们对电商平台的认知有关</strong>，价格太低必然会让人觉得物品质量不佳，但是随着价格增加，购买会带来更高的风险，转化率自然会降低。图2收藏次数越高，购买的可能性越大，<strong>收藏在电商市场的本质，就是商品入选了用户的购买集</strong>，对相关商品综合排序后，收藏的商品更有可能转化。图3，总体趋势是<strong>展示次数（广告效应）越多，购买率越高</strong>。</p>
+<hr>
+<ul>
+<li>4.商店星级,评论数量  分布</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/5274272-6f3c32f540d9a5ee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5274272-5f1784960206943b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>图1.商店星级差异不明显。图2.<strong>评论数量居中的购买率更高</strong></p>
+<ul>
+<li>5 城市 | 商品标签 分布</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/5274272-c36d38d7eb21b420.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br><img src="https://upload-images.jianshu.io/upload_images/5274272-2ea9155e96d8d9fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>这两幅图是仅仅选择了高频的城市和商标分布，<strong>可以看出城市和商品图，都有集中表现类，而商品更为明显</strong>。</p>
+<hr>
+<p><strong>总结： 数据统计分析的目的是分析变量之间的关系，观察具体特征对转化率的影响，从而用于模型中初始化权重</strong></p>
+<hr>
+<h4 id="2-数据预处理"><a href="#2-数据预处理" class="headerlink" title="2. 数据预处理"></a>2. 数据预处理</h4><ol>
+<li><p>处理缺失值<br>主要处理缺失值，以及属性值为-1的值，因为后期特征表示时，我们调用的sklearn借口进行one-hot表征，而借口要求输入数据不包括负数</p>
+</li>
+<li><p>特征映射<br>由于城市和商品的值字段太长，在表征时会出现错误，因此将他们分别映射，并更新原始数据，代码如下：</p>
+</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">def map_field(train_data, test_data, path):</span><br><span class="line">    train_data = <span class="keyword">set</span>(train_data.unique())</span><br><span class="line">    test_data = <span class="keyword">set</span>(test_data.unique())</span><br><span class="line">    all_property = <span class="keyword">list</span>(train_data.union(test_data))</span><br><span class="line">    print(<span class="keyword">len</span>(all_property))</span><br><span class="line">    map_data = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="keyword">len</span>(all_property)):</span><br><span class="line">        map_data[<span class="keyword">str</span>(all_property[i])] = i</span><br><span class="line">    <span class="keyword">with</span> <span class="keyword">open</span>(<span class="keyword">path</span>, <span class="string">"w"</span>, <span class="keyword">encoding</span>=<span class="string">"utf-8"</span>) <span class="keyword">as</span> dump:</span><br><span class="line">        json.dump(map_data, dump)</span><br><span class="line">    <span class="keyword">return</span> map_data</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> update_data(raw_data, field_1, field_2, path_1, path_2):</span><br><span class="line">    <span class="keyword">with</span> <span class="keyword">open</span>(path_1, <span class="string">"r"</span>, <span class="keyword">encoding</span>=<span class="string">"utf-8"</span>) <span class="keyword">as</span> dump:</span><br><span class="line">        update_field_1 = json.load(dump)</span><br><span class="line">    <span class="keyword">with</span> <span class="keyword">open</span>(path_2, <span class="string">"r"</span>, <span class="keyword">encoding</span>=<span class="string">"utf-8"</span>) <span class="keyword">as</span> dump:</span><br><span class="line">        update_field_2 = json.load(dump)</span><br><span class="line">    raw_data[field_1] = raw_data[field_1].apply(lambda x: update_field_1[<span class="keyword">str</span>(x)])</span><br><span class="line">    raw_data[field_2] = raw_data[field_2].apply(lambda x: update_field_2[<span class="keyword">str</span>(x)])</span><br><span class="line">    <span class="keyword">return</span> raw_data</span><br></pre></td></tr></table></figure>
+<h4 id="3-特征抽取"><a href="#3-特征抽取" class="headerlink" title="3. 特征抽取"></a>3. 特征抽取</h4><p>本小节主要涉及对特征的转化和抽取，比如在上下文中的时间轴数据，<strong>考虑到节假日流量问题（比赛提出的挑战解决方法）</strong>，我节假日和周末前后时间戳进行映射， 代码见下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">convert_interval_time</span><span class="params">(hour, size=<span class="number">3</span>)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    方法：把一天24小时按照力粒度为size大小进行分割</span></span><br><span class="line"><span class="string">    :param hour:</span></span><br><span class="line"><span class="string">    :param size:</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    interval_time = [list(range(i, i + size)) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">24</span>, size)]</span><br><span class="line">    interval_time_factor = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(interval_time)):</span><br><span class="line">        interval_time_factor[i] = interval_time[i]</span><br><span class="line">    <span class="keyword">for</span> factor, h <span class="keyword">in</span> interval_time_factor.items():</span><br><span class="line">        <span class="keyword">if</span> hour <span class="keyword">in</span> h:</span><br><span class="line">            <span class="keyword">return</span> factor</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">time_to_factor</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    方法：将时间戳转为区间因子</span></span><br><span class="line"><span class="string">    tips: add two features, is_weekend and is_holiday</span></span><br><span class="line"><span class="string">    :param data: 输入带时间戳的数据,</span></span><br><span class="line"><span class="string">    :param size:将原始时间戳转化为粒度为size个小时一个因子,默认为size=3</span></span><br><span class="line"><span class="string">    :return: 对于时间戳转为化为区间因子</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    data_time = self.raw_data[self.modify_features[<span class="string">"time"</span>]]</span><br><span class="line">    data_time[<span class="string">"format_time"</span>] = data_time[<span class="string">"context_timestamp"</span>].apply(<span class="keyword">lambda</span> x: time.localtime(x))</span><br><span class="line">    convert_data_time = pd.DataFrame(columns=[<span class="string">"interval_time"</span>, <span class="string">"is_weekends"</span>, <span class="string">"is_holidays"</span>])</span><br><span class="line">    convert_data_time[<span class="string">"is_weekends"</span>] = \</span><br><span class="line">        data_time[<span class="string">"format_time"</span>].apply(<span class="keyword">lambda</span> x: <span class="number">1</span> <span class="keyword">if</span> x[<span class="number">6</span>] <span class="keyword">in</span> self.weekends <span class="keyword">else</span> <span class="number">0</span>)</span><br><span class="line">    convert_data_time[<span class="string">"is_holidays"</span>] = \</span><br><span class="line">        data_time[<span class="string">"format_time"</span>].apply(<span class="keyword">lambda</span> x: <span class="number">1</span> <span class="keyword">if</span> str(x[<span class="number">1</span>]) + <span class="string">"."</span> + str(x[<span class="number">2</span>]) <span class="keyword">in</span> self.holidays <span class="keyword">else</span> <span class="number">0</span>)</span><br><span class="line">    convert_data_time[<span class="string">"interval_time"</span>] = \</span><br><span class="line">        data_time[<span class="string">"format_time"</span>].apply(<span class="keyword">lambda</span> x: self.convert_interval_time(hour=x[<span class="number">3</span>]))</span><br><span class="line">    <span class="keyword">return</span> convert_data_time</span><br></pre></td></tr></table></figure>
+<p>属性值除了离散的，还包括的连续属性值，比如店铺的好评率、服务态度评分等等，连续属性离散化的代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">continuous_var_to_factor</span><span class="params">(self, size=<span class="number">0.01</span>)</span>:</span></span><br><span class="line">   <span class="string">"""</span></span><br><span class="line"><span class="string">   方法：将连续数据按照粒度为size进行转化</span></span><br><span class="line"><span class="string">   :param data_continuous: 输入带有连续变量的数据</span></span><br><span class="line"><span class="string">   :param properity: 指定属性</span></span><br><span class="line"><span class="string">   :param size： 粒度默认为0.01</span></span><br><span class="line"><span class="string">   :return:</span></span><br><span class="line"><span class="string">   """</span></span><br><span class="line">   data_continuous = self.raw_data[self.modify_features[<span class="string">'continuous'</span>]]</span><br><span class="line">   data_continuous = (data_continuous / size).round()</span><br><span class="line">   data_continuous = data_continuous.astype(<span class="string">'int64'</span>)</span><br><span class="line">   <span class="keyword">return</span> data_continuous</span><br></pre></td></tr></table></figure>
+<h4 id="4-特征表示"><a href="#4-特征表示" class="headerlink" title="4. 特征表示"></a>4. 特征表示</h4><p>在这一部分，我们主要是是通过One-hot对所有数据特征进行表征，然后用One-hot的最大问题，尤其是在电商环境下特征表征，我们可以想象，这个数据维度非常巨大，所以，在处理这个高维数据时，我们先将其分为五个大的领域进行表征，再对其使用SVD进行降维处理。<br>One-hot表征代码如下：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">def one_hot_represent(self, new_data, data_type=<span class="string">'value'</span>):</span><br><span class="line">    <span class="string">""</span><span class="comment">"</span></span><br><span class="line">    :param new_dat<span class="variable">a:</span> pd.DataFrame. The data used <span class="keyword">to</span> transform <span class="keyword">to</span> the one-hot form.</span><br><span class="line">    :param data_type: str, default <span class="string">'value'</span>, alternative <span class="string">'lst'</span>. Aimed at different forms, we can use this parameter <span class="keyword">to</span></span><br><span class="line">    specify the method of handling.</span><br><span class="line">    :<span class="keyword">return</span>:</span><br><span class="line">    <span class="string">""</span><span class="comment">"</span></span><br><span class="line">    <span class="keyword">if</span> data_type == <span class="string">'value'</span>:</span><br><span class="line">        df_one_hot = pd.DataFrame()</span><br><span class="line">        <span class="keyword">for</span> <span class="keyword">col</span> in new_data.column<span class="variable">s:</span></span><br><span class="line">            # <span class="keyword">print</span>(<span class="keyword">col</span>)</span><br><span class="line">            one_hot_matrix = self.one_hot_model.fit_transform(new_data[[<span class="keyword">col</span>]])</span><br><span class="line">            feature_names = [<span class="keyword">col</span> + str(attr) <span class="keyword">for</span> attr in self.one_hot_model.active_features_]</span><br><span class="line">            one_hot_matrix = pd.DataFrame(one_hot_matrix.toarray(), columns=feature_names)</span><br><span class="line">            df_one_hot = pd.concat([df_one_hot, one_hot_matrix], axis=<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> df_one_hot</span><br><span class="line">        # <span class="keyword">return</span> pd.DataFrame(df_one_hot.toarray(), columns=feature_names)</span><br><span class="line">    elif data_type == <span class="string">'lst'</span>:</span><br><span class="line">        cols = new_data.columns</span><br><span class="line">        df_one_hot = pd.DataFrame()</span><br><span class="line">        <span class="keyword">for</span> <span class="keyword">col</span> in <span class="keyword">col</span><span class="variable">s:</span></span><br><span class="line">            # <span class="keyword">print</span>(<span class="keyword">col</span>)</span><br><span class="line">            data = new_data[<span class="keyword">col</span>]</span><br><span class="line">            all_values = <span class="keyword">list</span>(reduce(lambda <span class="keyword">x</span>, <span class="keyword">y</span>: <span class="keyword">x</span> | <span class="keyword">y</span>, data, <span class="keyword">set</span>()))</span><br><span class="line">            one_hot_dim = <span class="built_in">len</span>(all_values)</span><br><span class="line">            one_hot_matrix = []</span><br><span class="line">            <span class="keyword">for</span> <span class="built_in">line</span> in dat<span class="variable">a:</span></span><br><span class="line">                one_hot_vec = np.zeros(one_hot_dim)</span><br><span class="line">                <span class="keyword">for</span> value in <span class="built_in">line</span>:</span><br><span class="line">                    one_hot_vec[all_values.<span class="built_in">index</span>(value)] = <span class="number">1</span></span><br><span class="line">                one_hot_matrix.<span class="keyword">append</span>(one_hot_vec)</span><br><span class="line">            one_hot_matrix = pd.DataFrame(one_hot_matrix, columns=all_values)</span><br><span class="line">            df_one_hot = pd.concat([df_one_hot, one_hot_matrix], axis=<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> df_one_hot</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        raise ValueError(<span class="string">'Can\'</span>t recognize the <span class="built_in">type</span>, please enter \<span class="string">'value\'</span> <span class="built_in">or</span> \<span class="string">'lst\'</span><span class="string">')</span></span><br></pre></td></tr></table></figure>
+<p>SVD降维代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SVDReduce</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    The class is used to reduce the dimension of the data outputed from the class DataPreprocess with SVD method.</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, data, dimension=<span class="number">500</span>)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Initialize the class with the parameters.</span></span><br><span class="line"><span class="string">        :param data: pd.DataFrame, the output data from the class DataPreprocess.</span></span><br><span class="line"><span class="string">        :param dimension: int, default 500. To specify the output dimension.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.data = data</span><br><span class="line">        self.target_dim = dimension</span><br><span class="line">        self.format_data_path = <span class="string">'../../data/format_2/'</span></span><br><span class="line">        self.field = [<span class="string">'user'</span>, <span class="string">'product'</span>, <span class="string">'context'</span>, <span class="string">'shop'</span>]</span><br><span class="line">        <span class="comment"># self.field = ['product']</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">judge</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Abandon</span></span><br><span class="line"><span class="string">        方法：判读大领域的维度</span></span><br><span class="line"><span class="string">        标准维度,判断：不足补零,大于转为svd()</span></span><br><span class="line"><span class="string">        :return:</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        logger.info(<span class="string">"judge the dimension..."</span>)</span><br><span class="line">        field_matrix_shape = data.shape</span><br><span class="line">        dimension = field_matrix_shape[<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">if</span> dimension &gt; self.target_dim:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">svd</span><span class="params">(self, field_matrix)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        方法：对大的领域数据进行降维</span></span><br><span class="line"><span class="string">        :param field_matrix: list(2d) or np.array, 每一行(list)表示一条record</span></span><br><span class="line"><span class="string">        :return: 返回领域的降维矩阵</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        logger.info(<span class="string">"use svd to reduce the dimension"</span>)</span><br><span class="line">        indices = field_matrix.index</span><br><span class="line">        fm = field_matrix</span><br><span class="line">        field_matrix = np.array(field_matrix)</span><br><span class="line">        field_matrix_dim = field_matrix.shape</span><br><span class="line">        print(field_matrix_dim)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 对维度进行判断是否需要降维</span></span><br><span class="line">        <span class="keyword">if</span> field_matrix_dim[<span class="number">1</span>] &lt;= self.target_dim:</span><br><span class="line">            logger.info(<span class="string">'Filed_matrix_dim if smaller than the target, no need to perform reduction, thus we'</span></span><br><span class="line">                        <span class="string">'only add extra zero element to make up the dimension.'</span>)</span><br><span class="line">            dim_make_up = self.target_dim - field_matrix_dim[<span class="number">1</span>]</span><br><span class="line">            matrix_make_up = np.zeros([field_matrix_dim[<span class="number">0</span>], dim_make_up])</span><br><span class="line">            matrix_make_up = pd.DataFrame(matrix_make_up, index=indices)</span><br><span class="line">            <span class="keyword">return</span> pd.concat([fm, matrix_make_up], axis=<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            svd = TruncatedSVD(n_components=self.target_dim)</span><br><span class="line">            <span class="keyword">return</span> pd.DataFrame(svd.fit_transform(field_matrix), index=indices)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        1. Extract the one-hot-form data from the self.new_data_one_hot according to the field-instruction.</span></span><br><span class="line"><span class="string">        2. Based on the given self.target_dimension, judge the field matrix whether satisfy the dimension requirement.</span></span><br><span class="line"><span class="string">        3. If so, do the svd method, else add extra zero element to achieve the self.target_dimension.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        output_matrix = []</span><br><span class="line">        <span class="keyword">for</span> i, field_data <span class="keyword">in</span> enumerate(self.data):</span><br><span class="line">            <span class="comment"># field_data = self.split_field(field=item)</span></span><br><span class="line">            svd_matrix = self.svd(field_matrix=field_data)</span><br><span class="line">            svd_matrix.to_csv(self.format_data_path + <span class="string">'svd_'</span> + self.field[i] + <span class="string">'.csv'</span>)</span><br><span class="line">            output_matrix.append(svd_matrix)</span><br><span class="line">        <span class="keyword">return</span> output_matrix</span><br></pre></td></tr></table></figure>
+<p>除了通过分领域和SVD降维以外，商品的属性上高达10多万类，所以我们还对<strong>商品属性计算了信息增益</strong>从而筛选了部分重要的商品属性。</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">def feature_selection_with_info_gain(self, data, num_feature=<span class="number">500</span>, feature=<span class="string">'item_property_list'</span>):</span><br><span class="line">    <span class="keyword">print</span>(os.path.<span class="built_in">exists</span>(<span class="string">'../../data/format_2/infomation_gain.txt'</span>))</span><br><span class="line">    <span class="keyword">if</span> os.path.<span class="built_in">exists</span>(<span class="string">'../../data/format_2/infomation_gain.txt'</span>):</span><br><span class="line">        with <span class="keyword">open</span>(<span class="string">'../../data/format_2/infomation_gain.txt'</span>, <span class="string">'r'</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> r:</span><br><span class="line">            selected_feature = []</span><br><span class="line">            <span class="keyword">for</span> i in <span class="built_in">range</span>(num_feature):</span><br><span class="line">                <span class="built_in">line</span> = r.readline().replace(<span class="string">'\ufeff'</span>, <span class="string">''</span>).strip().<span class="keyword">split</span>(<span class="string">','</span>)</span><br><span class="line">                selected_feature.<span class="keyword">append</span>(<span class="built_in">line</span>[<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        fea_s = <span class="keyword">list</span>(data.columns)</span><br><span class="line">        fea_s.<span class="built_in">remove</span>(feature)</span><br><span class="line"></span><br><span class="line">        property = []</span><br><span class="line">        <span class="keyword">for</span> lst in data[feature]:</span><br><span class="line">            <span class="keyword">for</span> <span class="keyword">pro</span> in <span class="keyword">ls</span><span class="variable">t:</span></span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">pro</span> not in property:</span><br><span class="line">                    property.<span class="keyword">append</span>(<span class="keyword">pro</span>)</span><br><span class="line"></span><br><span class="line">        info_gain = pd.Series()</span><br><span class="line">        <span class="keyword">for</span> <span class="keyword">pro</span> in property:</span><br><span class="line">            series = pd.Series([<span class="number">1</span> <span class="keyword">if</span> <span class="keyword">pro</span> in lst <span class="keyword">else</span> <span class="number">0</span> <span class="keyword">for</span> lst in data[feature]], <span class="built_in">index</span>=data.<span class="built_in">index</span>, name=<span class="keyword">pro</span>)</span><br><span class="line">            concat_data = pd.concat([series, self.raw_data[<span class="string">'is_trade'</span>]], axis=<span class="number">1</span>)</span><br><span class="line">            info_gain[<span class="keyword">pro</span>] = self.cal_info_gain(data=concat_data, independent_variable=<span class="keyword">pro</span>,</span><br><span class="line">                                                dependent_variable=<span class="string">'is_trade'</span>)</span><br><span class="line"></span><br><span class="line">        info_gain = info_gain.sort_values(ascending=False)</span><br><span class="line">        info_gain.to_csv(<span class="string">'../../data/format_2/infomation_gain.txt'</span>, encoding=<span class="string">'utf-8'</span>)</span><br><span class="line">        selected_feature = <span class="keyword">list</span>(info_gain.<span class="built_in">index</span>[: num_feature])</span><br><span class="line"></span><br><span class="line">    new_feature = []</span><br><span class="line">    <span class="keyword">for</span> lst in data[feature]:</span><br><span class="line">        new_fea = []</span><br><span class="line">        <span class="keyword">for</span> <span class="keyword">pro</span> in <span class="keyword">ls</span><span class="variable">t:</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">pro</span> in selected_feature:</span><br><span class="line">                new_fea.<span class="keyword">append</span>(<span class="keyword">pro</span>)</span><br><span class="line">        new_feature.<span class="keyword">append</span>(<span class="keyword">set</span>(new_fea))</span><br><span class="line">    data[feature] = new_feature</span><br><span class="line">    <span class="keyword">return</span> data</span><br></pre></td></tr></table></figure>
+<hr>
+<p><strong>总结：这几小节主要是对特征的映射、筛选、表征，遇到的最大困难就是数据维度太高以致于服务器多次出现memory error，所以我们对原始表征数据时按照它给定的基础数据、广告商品信息、用户信息、上下文信息和店铺信息5大块分别onehot，并通过信息增益和SVD进行降维处理，所有代码均在data_helper.py中</strong></p>
+<hr>
+<h4 id="5-模型拟合和预测"><a href="#5-模型拟合和预测" class="headerlink" title="5.模型拟合和预测"></a>5.模型拟合和预测</h4><p>在模型过程中，我们考虑了很多个模型，首先是在广告预测领域用得最多且效果还可以的逻辑回归、Field-aware Factorization Machines、卷积神经网络，以及非常常用的分类方法：随机森林、提升数、简单的感知器等等，最终表现效果最好的是卷积神经网络。</p>
+<p><strong>实验框架如下：</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5274272-90201af539935504.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>一定是我写累了，因为喜欢花花绿绿，图上颜色就觉得特别开心幸福，O(∩_∩)O哈哈哈~</p>
+<p><strong>实验过程：</strong></p>
+<p>我们首先将原始训练数据和测试集，将比赛提供的loss评估指标作为我们的损失函数，通过卷积神经网络进行训练，事实上因为CNN就自带降维效果，所以，输入CNN的数据是没有用SVD进行降维的。</p>
+<p>NN方法代码如下：</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">class CNN1(object):</span><br><span class="line"></span><br><span class="line">    def __init__(<span class="keyword">self</span>, n_input, n_output, x_shape, batch_size, load=<span class="number">0</span>):</span><br><span class="line">        <span class="keyword">if</span> load == <span class="number">1</span>:</span><br><span class="line">            saver = tf.train.import_meta_graph(<span class="string">"../../data/model/cnn_model.ckpt.meta"</span>)</span><br><span class="line">            <span class="keyword">self</span>.sess = tf.Session()</span><br><span class="line">            saver.restore(<span class="keyword">self</span>.sess, <span class="string">"../../data/model/cnn_model.ckpt"</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            logger.info(<span class="symbol">'building</span> the graph...')</span><br><span class="line"></span><br><span class="line">            <span class="keyword">self</span>.kb = <span class="number">0.8</span></span><br><span class="line">            <span class="keyword">self</span>.batch_size = batch_size</span><br><span class="line"></span><br><span class="line">            <span class="keyword">self</span>.x = tf.placeholder(tf.float32, [<span class="literal">None</span>, n_input], name=<span class="symbol">'input</span>')</span><br><span class="line">            <span class="keyword">self</span>.y = tf.placeholder(tf.float32, [<span class="literal">None</span>, n_output], name=<span class="symbol">'true_label</span>')</span><br><span class="line">            <span class="keyword">self</span>.x_ = tf.reshape(<span class="keyword">self</span>.x, shape=x_shape)</span><br><span class="line"></span><br><span class="line">            # define the first convolution layer</span><br><span class="line">            <span class="keyword">self</span>.W_conv1 = <span class="keyword">self</span>.weight_variable([<span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">16</span>])</span><br><span class="line">            <span class="keyword">self</span>.b_conv1 = <span class="keyword">self</span>.bias_variable([<span class="number">16</span>])</span><br><span class="line">            <span class="keyword">self</span>.h_conv1 = tf.nn.relu(<span class="keyword">self</span>.conv2d(<span class="keyword">self</span>.x_, <span class="keyword">self</span>.W_conv1) + <span class="keyword">self</span>.b_conv1)</span><br><span class="line">            <span class="keyword">self</span>.h_pool1 = <span class="keyword">self</span>.max_pool_2x2(<span class="keyword">self</span>.h_conv1)</span><br><span class="line"></span><br><span class="line">            # define the second convolution layer</span><br><span class="line">            <span class="keyword">self</span>.W_conv2 = <span class="keyword">self</span>.weight_variable([<span class="number">2</span>, <span class="number">2</span>, <span class="number">16</span>, <span class="number">32</span>])</span><br><span class="line">            <span class="keyword">self</span>.b_conv2 = <span class="keyword">self</span>.bias_variable([<span class="number">32</span>])</span><br><span class="line">            <span class="keyword">self</span>.h_conv2 = tf.nn.relu(<span class="keyword">self</span>.conv2d(<span class="keyword">self</span>.h_pool1, <span class="keyword">self</span>.W_conv2) + <span class="keyword">self</span>.b_conv2)</span><br><span class="line">            <span class="keyword">self</span>.h_pool2 = <span class="keyword">self</span>.max_pool_2x2(<span class="keyword">self</span>.h_conv2)</span><br><span class="line"></span><br><span class="line">            # transform the result of h_pool2 into <span class="number">1</span>D-form</span><br><span class="line">            <span class="keyword">self</span>.h_pool2_ = tf.reshape(<span class="keyword">self</span>.h_pool2, [-<span class="number">1</span>, (x_shape[<span class="number">1</span>] <span class="comment">// 4) * (x_shape[2] // 4) *32])</span></span><br><span class="line">            h_pool2_shape = <span class="keyword">self</span>.h_pool2_.get_shape()</span><br><span class="line">            <span class="keyword">self</span>.W_fc1 = <span class="keyword">self</span>.weight_variable([h_pool2_shape[<span class="number">1</span>].value, <span class="number">500</span>])</span><br><span class="line">            <span class="keyword">self</span>.b_fc1 = <span class="keyword">self</span>.bias_variable([<span class="number">500</span>])</span><br><span class="line">            <span class="keyword">self</span>.h_fc1 = tf.nn.relu(tf.matmul(<span class="keyword">self</span>.h_pool2_, <span class="keyword">self</span>.W_fc1) + <span class="keyword">self</span>.b_fc1)</span><br><span class="line"></span><br><span class="line">            # add a dropout layer</span><br><span class="line">            <span class="keyword">self</span>.keep_prob = tf.placeholder(tf.float32, name=<span class="symbol">'keep</span>')</span><br><span class="line">            <span class="keyword">self</span>.h_fc1_drop = tf.nn.dropout(<span class="keyword">self</span>.h_fc1, <span class="keyword">self</span>.keep_prob)</span><br><span class="line"></span><br><span class="line">            # add a softmax layer, and get the final probability</span><br><span class="line">            <span class="keyword">self</span>.W_fc2 = <span class="keyword">self</span>.weight_variable([<span class="number">500</span>, n_output])</span><br><span class="line">            <span class="keyword">self</span>.b_fc2 = <span class="keyword">self</span>.bias_variable([n_output])</span><br><span class="line">            <span class="keyword">self</span>.pred = tf.nn.softmax(tf.matmul(<span class="keyword">self</span>.h_fc1_drop, <span class="keyword">self</span>.W_fc2) + <span class="keyword">self</span>.b_fc2, name=<span class="symbol">'pred</span>')</span><br><span class="line"></span><br><span class="line">            # <span class="keyword">self</span>.loss_func = tf.reduce_mean(- <span class="keyword">self</span>.y * tf.log(<span class="keyword">self</span>.pred), name=<span class="symbol">'loss_func</span>')</span><br><span class="line">            <span class="keyword">self</span>.loss_func = tf.reduce_mean(- <span class="keyword">self</span>.y * tf.log(<span class="keyword">self</span>.pred), name=<span class="symbol">'loss_func</span>') + \</span><br><span class="line">                             <span class="number">0.001</span> * tf.nn.l2_loss(<span class="keyword">self</span>.W_conv1) + \</span><br><span class="line">                             <span class="number">0.001</span> * tf.nn.l2_loss(<span class="keyword">self</span>.W_conv2) + \</span><br><span class="line">                             <span class="number">0.001</span> * tf.nn.l2_loss(<span class="keyword">self</span>.W_fc1) + \</span><br><span class="line">                             <span class="number">0.001</span> * tf.nn.l2_loss(<span class="keyword">self</span>.W_fc2)</span><br><span class="line">            <span class="keyword">self</span>.optm = tf.train.AdadeltaOptimizer(<span class="number">0.005</span>).minimize(<span class="keyword">self</span>.loss_func)</span><br><span class="line">            <span class="keyword">self</span>.init_op = tf.global_variables_initializer()</span><br><span class="line"></span><br><span class="line">            <span class="keyword">self</span>.sess = tf.Session()</span><br><span class="line">            <span class="keyword">self</span>.sess.run(<span class="keyword">self</span>.init_op)</span><br><span class="line"></span><br><span class="line">    @staticmethod</span><br><span class="line">    def weight_variable(shape):</span><br><span class="line">        <span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string">        the method used to define the weight variables of the convolution layers</span></span><br><span class="line"><span class="string">        :param shape:tuple or list, 该权重的形状</span></span><br><span class="line"><span class="string">        :return:</span></span><br><span class="line"><span class="string">        "</span><span class="string">""</span></span><br><span class="line">        initial = tf.truncated_normal(shape, stddev=<span class="number">0.1</span>)</span><br><span class="line">        <span class="keyword">return</span> tf.Variable(initial)</span><br><span class="line"></span><br><span class="line">    @staticmethod</span><br><span class="line">    def bias_variable(shape):</span><br><span class="line">        <span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string">        the method used to define the weight variables of the bias of each convolution layer</span></span><br><span class="line"><span class="string">        :param shape:</span></span><br><span class="line"><span class="string">        :return:</span></span><br><span class="line"><span class="string">        "</span><span class="string">""</span></span><br><span class="line">        initial = tf.constant(<span class="number">0.1</span>, shape=shape)</span><br><span class="line">        <span class="keyword">return</span> tf.Variable(initial)</span><br><span class="line"></span><br><span class="line">    @staticmethod</span><br><span class="line">    def conv2d(x, W):</span><br><span class="line">        <span class="keyword">return</span> tf.nn.conv2d(x, W, strides=[<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>], padding=<span class="symbol">'SAME</span>')</span><br><span class="line"></span><br><span class="line">    @staticmethod</span><br><span class="line">    def max_pool_2x2(x):</span><br><span class="line">        <span class="keyword">return</span> tf.nn.max_pool(x, ksize=[<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>], strides=[<span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>], padding=<span class="symbol">'SAME</span>')</span><br><span class="line"></span><br><span class="line">    @staticmethod</span><br><span class="line">    def get_batch_data(batch_size, train_data, label_data):</span><br><span class="line">        total = len(train_data)</span><br><span class="line">        <span class="keyword">if</span> batch_size &gt; <span class="number">1</span>:</span><br><span class="line">            chose_samples = random.sample(range(total), batch_size)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            chose_samples = random.randint(<span class="number">0</span>, total)</span><br><span class="line">        <span class="keyword">return</span> train_data[chose_samples], label_data[chose_samples]</span><br><span class="line"></span><br><span class="line">    def train(<span class="keyword">self</span>, train_data, label_data, epoches):</span><br><span class="line">        train_data = np.array(train_data)</span><br><span class="line">        label_data = np.array(label_data)</span><br><span class="line">        # <span class="keyword">for</span> i <span class="keyword">in</span> range(epoches):</span><br><span class="line">        #     logger.info(<span class="symbol">'running</span> the &#123;&#125;-th round of training process...'.format(i))</span><br><span class="line">        #     attr_data, labe_data = <span class="keyword">self</span>.get_batch_data(<span class="keyword">self</span>.batch_size, train_data, label_data)</span><br><span class="line">        #     _, loss = <span class="keyword">self</span>.sess.run([<span class="keyword">self</span>.optm, <span class="keyword">self</span>.loss_func],</span><br><span class="line">        #                             feed_dict=&#123;<span class="keyword">self</span>.x: attr_data, <span class="keyword">self</span>.y:labe_data, <span class="keyword">self</span>.keep_prob: <span class="keyword">self</span>.kb&#125;)</span><br><span class="line">        #     <span class="keyword">if</span> i + <span class="number">1</span> == epoches:</span><br><span class="line">        #         logger.info(<span class="symbol">'finish</span> training process and the loss is &#123;&#125;'.format(loss))</span><br><span class="line">        #     elif (i + <span class="number">10</span>) % <span class="number">10</span> == <span class="number">0</span>:</span><br><span class="line">        #         logger.info(<span class="symbol">'running</span> the &#123;&#125;-th epoch and the loss is &#123;&#125;.'.format(i, loss))</span><br><span class="line">        with tf.device(<span class="string">"/gpu:0"</span>):</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(epoches):</span><br><span class="line">                logger.info(<span class="symbol">'running</span> the &#123;&#125;-th round of training process...'.format(i))</span><br><span class="line">                attr_data, labe_data = <span class="keyword">self</span>.get_batch_data(<span class="keyword">self</span>.batch_size, train_data, label_data)</span><br><span class="line">                _, loss = <span class="keyword">self</span>.sess.run([<span class="keyword">self</span>.optm, <span class="keyword">self</span>.loss_func],</span><br><span class="line">                                        feed_dict=&#123;<span class="keyword">self</span>.x: attr_data, <span class="keyword">self</span>.y:labe_data, <span class="keyword">self</span>.keep_prob: <span class="keyword">self</span>.kb&#125;)</span><br><span class="line">                <span class="keyword">if</span> i + <span class="number">1</span> == epoches:</span><br><span class="line">                    logger.info(<span class="symbol">'finish</span> training process and the loss is '.format(loss))</span><br><span class="line">                elif (i + <span class="number">100</span>) % <span class="number">100</span> == <span class="number">0</span>:</span><br><span class="line">                    logger.info(<span class="symbol">'running</span> the &#123;&#125;-th epoch and the loss is &#123;&#125;.'.format(i, loss))</span><br><span class="line"></span><br><span class="line">    def predict(<span class="keyword">self</span>, test_data, test_label, mode=<span class="symbol">'test</span>'):</span><br><span class="line">        logger.info(<span class="symbol">'predicting</span> the result...')</span><br><span class="line">        <span class="keyword">if</span> mode == <span class="symbol">'test</span>':</span><br><span class="line">            pred, loss = <span class="keyword">self</span>.sess.run([<span class="keyword">self</span>.pred, <span class="keyword">self</span>.loss_func], feed_dict=&#123;<span class="keyword">self</span>.x: test_data, <span class="keyword">self</span>.y: test_label, <span class="keyword">self</span>.keep_prob: <span class="keyword">self</span>.kb&#125;)</span><br><span class="line">            <span class="keyword">return</span> pred, loss</span><br><span class="line">        elif mode == <span class="symbol">'predict</span>':</span><br><span class="line">            result = <span class="keyword">self</span>.sess.run(<span class="keyword">self</span>.pred, feed_dict=&#123;<span class="keyword">self</span>.x: test_data, <span class="keyword">self</span>.keep_prob: <span class="keyword">self</span>.kb&#125;)</span><br><span class="line">            <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line">    def load_model_predict(<span class="keyword">self</span>, test_data, test_label, mode=<span class="symbol">'test</span>'):</span><br><span class="line">        <span class="keyword">if</span> mode == <span class="symbol">'test</span>':</span><br><span class="line">            result = <span class="keyword">self</span>.sess.run([<span class="symbol">'pred</span>: <span class="number">0</span>', <span class="symbol">'loss_func</span>: <span class="number">0</span>'],  feed_dict=&#123;<span class="symbol">'input</span>: <span class="number">0</span>': test_data, <span class="symbol">'true_label</span>: <span class="number">0</span>': test_label, <span class="symbol">'keep</span>: <span class="number">0</span>': <span class="number">0.8</span>&#125;)</span><br><span class="line">            <span class="keyword">return</span>  result</span><br><span class="line">        elif mode == <span class="symbol">'predict</span>':</span><br><span class="line">            result = <span class="keyword">self</span>.sess.run(<span class="symbol">'pred</span>: <span class="number">0</span>', feed_dict=&#123;<span class="symbol">'input</span>: <span class="number">0</span>': test_data, <span class="symbol">'keep</span>: <span class="number">0</span>': <span class="number">0.8</span>&#125;)</span><br><span class="line">            <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line">    def save_cnn_model(<span class="keyword">self</span>, path):</span><br><span class="line">        saver = tf.train.Saver()</span><br><span class="line">        saver.save(<span class="keyword">self</span>.sess, path)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def data_matrix(all_field_path, user_file, product_file, context_file, shop_file, mode=<span class="number">0</span>):</span><br><span class="line">    user_field = list(pd.read_csv(user_file, sep=<span class="string">','</span>, nrows=<span class="number">3</span>).columns)</span><br><span class="line">    product_field = list(pd.read_csv(product_file, sep=<span class="string">','</span>, nrows=<span class="number">3</span>).columns)</span><br><span class="line">    context_field = list(pd.read_csv(context_file, sep=<span class="string">','</span>, nrows=<span class="number">3</span>).columns)</span><br><span class="line">    shop_field = list(pd.read_csv(shop_file, sep=<span class="string">','</span>, nrows=<span class="number">3</span>).columns)</span><br><span class="line">    all_field_data = pd.read_csv(all_field_path, sep=<span class="string">','</span>)</span><br><span class="line"></span><br><span class="line">    all_field_attrs = list(all_field_data.columns)</span><br><span class="line">    # exclude_attrs = [<span class="symbol">'user_id</span>', <span class="symbol">'item_id</span>', <span class="symbol">'context_id</span>', <span class="symbol">'shop_id</span>']</span><br><span class="line">    attrs = [user_field, product_field, context_field, shop_field]</span><br><span class="line">    <span class="keyword">for</span> field <span class="keyword">in</span> attrs:</span><br><span class="line">        <span class="keyword">for</span> attr <span class="keyword">in</span> field:</span><br><span class="line">            <span class="keyword">if</span> attr not <span class="keyword">in</span> all_field_attrs:</span><br><span class="line">                field.remove(attr)</span><br><span class="line"></span><br><span class="line">    max_length = max([len(attr) <span class="keyword">for</span> attr <span class="keyword">in</span> attrs]) + <span class="number">1</span></span><br><span class="line">    label = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> field <span class="keyword">in</span> attrs:</span><br><span class="line">        diff = max_length - len(field)</span><br><span class="line">        <span class="keyword">if</span> diff &gt; <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(label, label + diff):</span><br><span class="line">                field.append(<span class="string">'x'</span> + <span class="built_in">str</span>(i))</span><br><span class="line">                all_field_data[<span class="string">'x'</span> + <span class="built_in">str</span>(i)] = <span class="number">0</span></span><br><span class="line">            label += diff</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            pass</span><br><span class="line"></span><br><span class="line">    attrs_orders = reduce(lambda x, y: x + y, attrs, [])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> mode == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> all_field_data[attrs_orders], max_length</span><br><span class="line">    elif mode == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> all_field_data[attrs_orders], all_field_data.index</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def split_train_test(data, label_data, ratio):</span><br><span class="line">    data, label_data = np.array(data), np.array(label_data)</span><br><span class="line">    total = len(data)</span><br><span class="line">    train_chosen_samples = random.sample(range(total), int(ratio * total))</span><br><span class="line">    test_chosen_samples = []</span><br><span class="line">    <span class="keyword">for</span> ind <span class="keyword">in</span> range(total):</span><br><span class="line">        <span class="keyword">if</span> ind not <span class="keyword">in</span> train_chosen_samples:</span><br><span class="line">            test_chosen_samples.append(ind)</span><br><span class="line">    train_set_attrs, train_set_target = data[train_chosen_samples], label_data[train_chosen_samples]</span><br><span class="line">    test_set_attrs, test_set_target = data[test_chosen_samples], label_data[test_chosen_samples]</span><br><span class="line">    <span class="keyword">return</span> train_set_attrs, train_set_target, test_set_attrs, test_set_target</span><br></pre></td></tr></table></figure>
+<p>除了上述的神经网络的方法，我也通过Sklean调取相关API计算了LR、贝叶斯分类器、随机森林、提升树、感知器与上诉方法进行对比</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Data_Preprocess</span>(<span class="title">object</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(<span class="keyword">self</span>, train_path, test_path, raw_train_path, raw_test_path)</span></span><span class="symbol">:</span></span><br><span class="line">        <span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string">        Read the data including the train_data/test_data of one hot, raw_train_data/test_data, and the label of</span></span><br><span class="line"><span class="string">        raw_train_data.</span></span><br><span class="line"><span class="string">        :param train_path:</span></span><br><span class="line"><span class="string">        :param test_path:</span></span><br><span class="line"><span class="string">        :param raw_train_path:</span></span><br><span class="line"><span class="string">        :param raw_test_path:</span></span><br><span class="line"><span class="string">        "</span><span class="string">""</span></span><br><span class="line">        <span class="keyword">self</span>.raw_train_data = <span class="keyword">self</span>.read_data(raw_train_path, data_type=<span class="string">"raw"</span>)  <span class="comment"># 获取is_trade</span></span><br><span class="line">        <span class="comment"># 需要把她它分为测试集和训练集</span></span><br><span class="line">        <span class="keyword">self</span>.X_data = <span class="keyword">self</span>.read_data(train_path, data_type=<span class="string">"one-hot"</span>).drop(<span class="string">"instance_id"</span>, axis=<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">self</span>.Y_label = <span class="keyword">self</span>.raw_train_data[<span class="string">"is_trade"</span>]</span><br><span class="line">        <span class="keyword">self</span>.predict_data = <span class="keyword">self</span>.read_data(test_path, data_type=<span class="string">"one-hot"</span>)</span><br><span class="line">        <span class="keyword">self</span>.predict_x = <span class="keyword">self</span>.alignment_data()</span><br><span class="line">        <span class="keyword">self</span>.predict_index = <span class="keyword">self</span>.read_data(raw_test_path, data_type=<span class="string">"raw"</span>)[<span class="string">"instance_id"</span>]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 交叉验证数据集</span></span><br><span class="line">        <span class="keyword">self</span>.X_train, <span class="keyword">self</span>.X_test, <span class="keyword">self</span>.Y_train, <span class="keyword">self</span>.Y_test = <span class="keyword">self</span>.cross_data()</span><br><span class="line"></span><br><span class="line">    @staticmethod</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">read_data</span><span class="params">(path, data_type)</span></span><span class="symbol">:</span></span><br><span class="line">        <span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string">        Read data according to the path of data</span></span><br><span class="line"><span class="string">        :param data_type:</span></span><br><span class="line"><span class="string">        :param path:</span></span><br><span class="line"><span class="string">        :return:</span></span><br><span class="line"><span class="string">        "</span><span class="string">""</span></span><br><span class="line">        <span class="keyword">if</span> data_type == <span class="string">"raw"</span><span class="symbol">:</span></span><br><span class="line">            <span class="keyword">return</span> pd.read_csv(path, sep=<span class="string">" "</span>)</span><br><span class="line">        elif data_type == <span class="string">"one-hot"</span><span class="symbol">:</span></span><br><span class="line">            <span class="keyword">return</span> pd.read_csv(path, sep=<span class="string">","</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">alignment_data</span><span class="params">(<span class="keyword">self</span>)</span></span><span class="symbol">:</span></span><br><span class="line">        logger.info(<span class="string">"数据对齐..."</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">self</span>.predict_data.reindex(columns=<span class="keyword">self</span>.X_data.columns, fill_value=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    @staticmethod</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">save_model</span><span class="params">(obj, path)</span></span><span class="symbol">:</span></span><br><span class="line">        pickle.dump(obj, open(path, <span class="string">"wb"</span>))</span><br><span class="line">        logger.info(<span class="string">'The model has been saved to '</span> + path + <span class="string">'...'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">cross_data</span><span class="params">(<span class="keyword">self</span>)</span></span><span class="symbol">:</span></span><br><span class="line">        X_train, X_test, Y_train, Y_test = train_test_split(<span class="keyword">self</span>.X_data, <span class="keyword">self</span>.Y_label, test_size=<span class="number">0</span>.<span class="number">1</span>, random_state=<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> X_train, X_test, Y_train, Y_test</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LR_Model</span>(<span class="title">object</span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(<span class="keyword">self</span>)</span></span><span class="symbol">:</span></span><br><span class="line">        <span class="keyword">self</span>.train_x, <span class="keyword">self</span>.train_y, <span class="keyword">self</span>.test_x, <span class="keyword">self</span>.test_y = X_train, Y_train, X_test, Y_test</span><br><span class="line">        <span class="keyword">self</span>.predict_x = predict_x</span><br><span class="line">        <span class="keyword">self</span>.predict_index = predict_index</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lr_model</span><span class="params">(<span class="keyword">self</span>)</span></span><span class="symbol">:</span></span><br><span class="line">        <span class="string">""</span><span class="string">"</span></span><br><span class="line"><span class="string">        Method: logisticRegression</span></span><br><span class="line"><span class="string">        :return: return the probability of test data with list format</span></span><br><span class="line"><span class="string">        "</span><span class="string">""</span></span><br><span class="line">        logger.info(<span class="string">'LR_model beginning ...'</span>)</span><br><span class="line">        classifier = LogisticRegression(solver=<span class="string">"sag"</span>, class_weight=<span class="string">"balanced"</span>)</span><br><span class="line">        classifier.fit(<span class="keyword">self</span>.train_x, <span class="keyword">self</span>.train_y)</span><br><span class="line">        index = list(classifier.classes<span class="number">_</span>).index(<span class="number">1</span>)</span><br><span class="line">        test_y_predict = pd.DataFrame(classifier.predict_proba(<span class="keyword">self</span>.test_x), columns=list(classifier.classes<span class="number">_</span>))</span><br><span class="line">        test_y_predict[index] = test_y_predict[index].apply(lambda <span class="symbol">x:</span> <span class="number">0</span> <span class="keyword">if</span> x &lt;= <span class="number">0</span>.<span class="number">01</span> <span class="keyword">else</span> x)</span><br><span class="line">        predict_y = list(map(lambda <span class="symbol">x:</span> x[index], classifier.predict_proba(<span class="keyword">self</span>.predict_x)))</span><br><span class="line">        data_results.save_model(obj=classifier, path=<span class="string">"../../data/results_2/lr_model.pk"</span>)</span><br><span class="line">        <span class="keyword">return</span> test_y_predict, predict_y</span><br><span class="line"></span><br><span class="line">    @staticmethod</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">evaluate</span><span class="params">(y_true, y_pred)</span></span><span class="symbol">:</span></span><br><span class="line">        logger.info(<span class="string">"LR_model evaluating..."</span>)</span><br><span class="line">        logloss = log_loss(y_true, np.array(y_pred))</span><br><span class="line">        logger.info(<span class="string">"The value of logloss:"</span> + str(logloss))</span><br><span class="line">        <span class="keyword">return</span> logloss</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">write_result</span><span class="params">(<span class="keyword">self</span>, predict_pro, path=<span class="string">"../../data/results_2/lr_results.txt"</span>)</span></span><span class="symbol">:</span></span><br><span class="line">        logger.info(<span class="string">'Write_result finishing ...'</span>)</span><br><span class="line">        with open(path, <span class="string">"w"</span>, encoding=<span class="string">"utf-8"</span>) as <span class="symbol">f:</span></span><br><span class="line">            f.write(<span class="string">"instance_id"</span> + <span class="string">" "</span> + <span class="string">"predicted_score"</span> + <span class="string">"\r"</span>)</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(len(predict_pro))<span class="symbol">:</span></span><br><span class="line">                <span class="keyword">if</span> predict_pro[i] &gt; <span class="number">0</span>.<span class="number">01</span><span class="symbol">:</span></span><br><span class="line">                    f.write(str(<span class="keyword">self</span>.predict_index[i]) + <span class="string">" "</span> + str(predict_pro[i]) + <span class="string">"\r"</span>)</span><br><span class="line">                <span class="symbol">else:</span></span><br><span class="line">                    f.write(str(<span class="keyword">self</span>.predict_index[i]) + <span class="string">" "</span> + str(<span class="number">0</span>.<span class="number">0</span>) + <span class="string">"\r"</span>)</span><br><span class="line">        logger.info(<span class="string">'Write_result finished ...'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(<span class="keyword">self</span>)</span></span><span class="symbol">:</span></span><br><span class="line">        test_y_predict, predict_y = <span class="keyword">self</span>.lr_model()</span><br><span class="line">        <span class="keyword">self</span>.evaluate(<span class="keyword">self</span>.test_y, test_y_predict)</span><br><span class="line">        <span class="keyword">self</span>.write_result(predict_pro=predict_y)</span><br><span class="line">        logger.info(<span class="string">'lr_model finished ...'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bayes_Model</span>(<span class="title">object</span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(<span class="keyword">self</span>)</span></span><span class="symbol">:</span></span><br><span class="line">        <span class="keyword">self</span>.train_x, <span class="keyword">self</span>.train_y, <span class="keyword">self</span>.test_x, <span class="keyword">self</span>.test_y = X_train, Y_train, X_test, Y_test</span><br><span class="line">        <span class="keyword">self</span>.predict_x = predict_x</span><br><span class="line">        <span class="keyword">self</span>.predict_index = predict_index</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bayes_model</span><span class="params">(<span class="keyword">self</span>)</span></span><span class="symbol">:</span></span><br><span class="line">        logger.info(<span class="string">'Bayes_model beginning ...'</span>)</span><br><span class="line">        classifier = BernoulliNB()</span><br><span class="line">        classifier.fit(<span class="keyword">self</span>.train_x, <span class="keyword">self</span>.train_y)</span><br><span class="line">        index = list(classifier.classes<span class="number">_</span>).index(<span class="number">1</span>)</span><br><span class="line">        test_y_predict = pd.DataFrame(classifier.predict_proba(<span class="keyword">self</span>.test_x), columns=list(classifier.classes<span class="number">_</span>))</span><br><span class="line">        test_y_predict[index] = test_y_predict[index].apply(lambda <span class="symbol">x:</span> <span class="number">0</span> <span class="keyword">if</span> x &lt;= <span class="number">0</span>.<span class="number">01</span> <span class="keyword">else</span> x)</span><br><span class="line">        predict_y = list(map(lambda <span class="symbol">x:</span> x[index], classifier.predict_proba(<span class="keyword">self</span>.predict_x)))</span><br><span class="line">        data_results.save_model(obj=classifier, path=<span class="string">"../../data/results_2/bayes_model.pk"</span>)</span><br><span class="line">        <span class="keyword">return</span> test_y_predict, predict_y</span><br><span class="line"></span><br><span class="line">    @staticmethod</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">evaluate</span><span class="params">(y_true, y_pred)</span></span><span class="symbol">:</span></span><br><span class="line">        logger.info(<span class="string">"Bayes_model evaluating..."</span>)</span><br><span class="line">        logloss = log_loss(y_true, np.array(y_pred))</span><br><span class="line">        logger.info(<span class="string">"The value of logloss:"</span> + str(logloss))</span><br><span class="line">        <span class="keyword">return</span> logloss</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">write_result</span><span class="params">(<span class="keyword">self</span>, predict_pro, path=<span class="string">"../../data/results_2/bayes_results.txt"</span>)</span></span><span class="symbol">:</span></span><br><span class="line">        logger.info(<span class="string">'Write_result finishing ...'</span>)</span><br><span class="line">        with open(path, <span class="string">"w"</span>, encoding=<span class="string">"utf-8"</span>) as <span class="symbol">f:</span></span><br><span class="line">            f.write(<span class="string">"instance_id"</span> + <span class="string">" "</span> + <span class="string">"predicted_score"</span> + <span class="string">"\r"</span>)</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(len(predict_pro))<span class="symbol">:</span></span><br><span class="line">                <span class="keyword">if</span> predict_pro[i] &gt; <span class="number">0</span>.<span class="number">01</span><span class="symbol">:</span></span><br><span class="line">                    f.write(str(<span class="keyword">self</span>.predict_index[i]) + <span class="string">" "</span> + str(predict_pro[i]) + <span class="string">"\r"</span>)</span><br><span class="line">                <span class="symbol">else:</span></span><br><span class="line">                    f.write(str(<span class="keyword">self</span>.predict_index[i]) + <span class="string">" "</span> + str(<span class="number">0</span>.<span class="number">0</span>) + <span class="string">"\r"</span>)</span><br><span class="line">        logger.info(<span class="string">'Write_result finished ...'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(<span class="keyword">self</span>)</span></span><span class="symbol">:</span></span><br><span class="line">        test_y_predict, predict_y = <span class="keyword">self</span>.bayes_model()</span><br><span class="line">        <span class="keyword">self</span>.evaluate(<span class="keyword">self</span>.test_y, test_y_predict)</span><br><span class="line">        <span class="keyword">self</span>.write_result(predict_pro=predict_y)</span><br><span class="line">        logger.info(<span class="string">'bayes_model finished ...'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RandomTree</span>(<span class="title">object</span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(<span class="keyword">self</span>)</span></span><span class="symbol">:</span></span><br><span class="line">        <span class="keyword">self</span>.train_x, <span class="keyword">self</span>.train_y, <span class="keyword">self</span>.test_x, <span class="keyword">self</span>.test_y = X_train, Y_train, X_test, Y_test</span><br><span class="line">        <span class="keyword">self</span>.predict_x = predict_x</span><br><span class="line">        <span class="keyword">self</span>.predict_index = predict_index</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">randomtree_model</span><span class="params">(<span class="keyword">self</span>)</span></span><span class="symbol">:</span></span><br><span class="line">        logger.info(<span class="string">'RandomTree_model beginning ...'</span>)</span><br><span class="line">        classifier = RandomForestClassifier(class_weight=<span class="string">"balanced"</span>)</span><br><span class="line">        classifier.fit(<span class="keyword">self</span>.train_x, <span class="keyword">self</span>.train_y)</span><br><span class="line">        index = list(classifier.classes<span class="number">_</span>).index(<span class="number">1</span>)</span><br><span class="line">        test_y_predict = pd.DataFrame(classifier.predict_proba(<span class="keyword">self</span>.test_x), columns=list(classifier.classes<span class="number">_</span>))</span><br><span class="line">        test_y_predict[index] = test_y_predict[index].apply(lambda <span class="symbol">x:</span> <span class="number">0</span> <span class="keyword">if</span> x &lt;= <span class="number">0</span>.<span class="number">01</span> <span class="keyword">else</span> x)</span><br><span class="line">        predict_y = list(map(lambda <span class="symbol">x:</span> x[index], classifier.predict_proba(<span class="keyword">self</span>.predict_x)))</span><br><span class="line">        data_results.save_model(obj=classifier, path=<span class="string">"../../data/results_2/random_tree_model.pk"</span>)</span><br><span class="line">        <span class="keyword">return</span> test_y_predict, predict_y</span><br><span class="line"></span><br><span class="line">    @staticmethod</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">evaluate</span><span class="params">(y_true, y_pred)</span></span><span class="symbol">:</span></span><br><span class="line">        logger.info(<span class="string">"Random_tree_model evaluating..."</span>)</span><br><span class="line">        logloss = log_loss(y_true,np.array(y_pred))</span><br><span class="line">        logger.info(<span class="string">"The value of logloss:"</span> + str(logloss))</span><br><span class="line">        <span class="keyword">return</span> logloss</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">write_result</span><span class="params">(<span class="keyword">self</span>, predict_pro, path=<span class="string">"../../data/results_2/random_tree_results.txt"</span>)</span></span><span class="symbol">:</span></span><br><span class="line">        logger.info(<span class="string">'Write_result finishing ...'</span>)</span><br><span class="line">        with open(path, <span class="string">"w"</span>, encoding=<span class="string">"utf-8"</span>) as <span class="symbol">f:</span></span><br><span class="line">            f.write(<span class="string">"instance_id"</span> + <span class="string">" "</span> + <span class="string">"predicted_score"</span> + <span class="string">"\r"</span>)</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(len(predict_pro))<span class="symbol">:</span></span><br><span class="line">                <span class="keyword">if</span> predict_pro[i] &gt; <span class="number">0</span>.<span class="number">01</span><span class="symbol">:</span></span><br><span class="line">                    f.write(str(<span class="keyword">self</span>.predict_index[i]) + <span class="string">" "</span> + str(predict_pro[i]) + <span class="string">"\r"</span>)</span><br><span class="line">                <span class="symbol">else:</span></span><br><span class="line">                    f.write(str(<span class="keyword">self</span>.predict_index[i]) + <span class="string">" "</span> + str(<span class="number">0</span>.<span class="number">0</span>) + <span class="string">"\r"</span>)</span><br><span class="line">        logger.info(<span class="string">'Write_result finished ...'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(<span class="keyword">self</span>)</span></span><span class="symbol">:</span></span><br><span class="line">        test_y_predict, predict_y = <span class="keyword">self</span>.randomtree_model()</span><br><span class="line">        <span class="keyword">self</span>.evaluate(<span class="keyword">self</span>.test_y, test_y_predict)</span><br><span class="line">        <span class="keyword">self</span>.write_result(predict_pro=predict_y)</span><br><span class="line">        logger.info(<span class="string">'random_tree_model finished ...'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GTB</span>(<span class="title">object</span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(<span class="keyword">self</span>)</span></span><span class="symbol">:</span></span><br><span class="line">        <span class="keyword">self</span>.train_x, <span class="keyword">self</span>.train_y, <span class="keyword">self</span>.test_x, <span class="keyword">self</span>.test_y = X_train, Y_train, X_test, Y_test</span><br><span class="line">        <span class="keyword">self</span>.predict_x = predict_x</span><br><span class="line">        <span class="keyword">self</span>.predict_index = predict_index</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">gtb_model</span><span class="params">(<span class="keyword">self</span>)</span></span><span class="symbol">:</span></span><br><span class="line">        logger.info(<span class="string">'GTB_model beginning ...'</span>)</span><br><span class="line">        classifier = GradientBoostingClassifier()</span><br><span class="line">        classifier.fit(<span class="keyword">self</span>.train_x, <span class="keyword">self</span>.train_y)</span><br><span class="line">        index = list(classifier.classes<span class="number">_</span>).index(<span class="number">1</span>)</span><br><span class="line">        test_y_predict = pd.DataFrame(classifier.predict_proba(<span class="keyword">self</span>.test_x), columns=list(classifier.classes<span class="number">_</span>))</span><br><span class="line">        test_y_predict[index] = test_y_predict[index].apply(lambda <span class="symbol">x:</span> <span class="number">0</span> <span class="keyword">if</span> x &lt;= <span class="number">0</span>.<span class="number">01</span> <span class="keyword">else</span> x)</span><br><span class="line">        predict_y = list(map(lambda <span class="symbol">x:</span> x[index], classifier.predict_proba(<span class="keyword">self</span>.predict_x)))</span><br><span class="line">        data_results.save_model(obj=classifier, path=<span class="string">"../../data/results_2/gtb_model.pk"</span>)</span><br><span class="line">        <span class="keyword">return</span> test_y_predict, predict_y</span><br><span class="line"></span><br><span class="line">    @staticmethod</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">evaluate</span><span class="params">(y_true, y_pred)</span></span><span class="symbol">:</span></span><br><span class="line">        logger.info(<span class="string">"GTB_model evaluating..."</span>)</span><br><span class="line">        logloss = log_loss(y_true, np.array(y_pred))</span><br><span class="line">        logger.info(<span class="string">"The value of logloss:"</span> + str(logloss))</span><br><span class="line">        <span class="keyword">return</span> logloss</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">write_result</span><span class="params">(<span class="keyword">self</span>, predict_pro, path=<span class="string">"../../data/results_2/gtb_results.txt"</span>)</span></span><span class="symbol">:</span></span><br><span class="line">        logger.info(<span class="string">'Write_result finishing ...'</span>)</span><br><span class="line">        with open(path, <span class="string">"w"</span>, encoding=<span class="string">"utf-8"</span>) as <span class="symbol">f:</span></span><br><span class="line">            f.write(<span class="string">"instance_id"</span> + <span class="string">" "</span> + <span class="string">"predicted_score"</span> + <span class="string">"\r"</span>)</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(len(predict_pro))<span class="symbol">:</span></span><br><span class="line">                <span class="keyword">if</span> predict_pro[i] &gt; <span class="number">0</span>.<span class="number">01</span><span class="symbol">:</span></span><br><span class="line">                    f.write(str(<span class="keyword">self</span>.predict_index[i]) + <span class="string">" "</span> + str(predict_pro[i]) + <span class="string">"\r"</span>)</span><br><span class="line">                <span class="symbol">else:</span></span><br><span class="line">                    f.write(str(<span class="keyword">self</span>.predict_index[i]) + <span class="string">" "</span> + str(<span class="number">0</span>.<span class="number">0</span>) + <span class="string">"\r"</span>)</span><br><span class="line">        logger.info(<span class="string">'Write_result finished ...'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(<span class="keyword">self</span>)</span></span><span class="symbol">:</span></span><br><span class="line">        test_y_predict, predict_y = <span class="keyword">self</span>.gtb_model()</span><br><span class="line">        <span class="keyword">self</span>.evaluate(<span class="keyword">self</span>.test_y, test_y_predict)</span><br><span class="line">        <span class="keyword">self</span>.write_result(predict_pro=predict_y)</span><br><span class="line">        logger.info(<span class="string">'GTB_model finished ...'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NeuralNetwork</span>(<span class="title">object</span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(<span class="keyword">self</span>)</span></span><span class="symbol">:</span></span><br><span class="line">        <span class="keyword">self</span>.train_x, <span class="keyword">self</span>.train_y, <span class="keyword">self</span>.test_x, <span class="keyword">self</span>.test_y = X_train, Y_train, X_test, Y_test</span><br><span class="line">        <span class="keyword">self</span>.predict_x = predict_x</span><br><span class="line">        <span class="keyword">self</span>.predict_index = predict_index</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">nn_model</span><span class="params">(<span class="keyword">self</span>)</span></span><span class="symbol">:</span></span><br><span class="line">        logger.info(<span class="string">'NN_model beginning ...'</span>)</span><br><span class="line">        classifier = MLPClassifier(solver=<span class="string">"sgd"</span>, hidden_layer_sizes=(<span class="number">500</span>, <span class="number">3</span>))</span><br><span class="line">        classifier.fit(<span class="keyword">self</span>.train_x, <span class="keyword">self</span>.train_y)</span><br><span class="line">        index = list(classifier.classes<span class="number">_</span>).index(<span class="number">1</span>)</span><br><span class="line">        test_y_predict = pd.DataFrame(classifier.predict_proba(<span class="keyword">self</span>.test_x), columns=list(classifier.classes<span class="number">_</span>))</span><br><span class="line">        test_y_predict[index] = test_y_predict[index].apply(lambda <span class="symbol">x:</span> <span class="number">0</span> <span class="keyword">if</span> x &lt;= <span class="number">0</span>.<span class="number">01</span> <span class="keyword">else</span> x)</span><br><span class="line">        predict_y = list(map(lambda <span class="symbol">x:</span> x[index], classifier.predict_proba(<span class="keyword">self</span>.predict_x)))</span><br><span class="line">        data_results.save_model(obj=classifier, path=<span class="string">"../../data/results_2/nn_model.pk"</span>)</span><br><span class="line">        <span class="keyword">return</span> test_y_predict, predict_y</span><br><span class="line"></span><br><span class="line">    @staticmethod</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">evaluate</span><span class="params">(y_true, y_pred)</span></span><span class="symbol">:</span></span><br><span class="line">        logger.info(<span class="string">"NN_model evaluating..."</span>)</span><br><span class="line">        logloss = log_loss(y_true, np.array(y_pred))</span><br><span class="line">        logger.info(<span class="string">"The value of logloss:"</span> + str(logloss))</span><br><span class="line">        <span class="keyword">return</span> logloss</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">write_result</span><span class="params">(<span class="keyword">self</span>, predict_pro, path=<span class="string">"../../data/results_2/nn_results.txt"</span>)</span></span><span class="symbol">:</span></span><br><span class="line">        logger.info(<span class="string">'Write_result beginning ...'</span>)</span><br><span class="line">        with open(path, <span class="string">"w"</span>, encoding=<span class="string">"utf-8"</span>) as <span class="symbol">f:</span></span><br><span class="line">            f.write(<span class="string">"instance_id"</span> + <span class="string">" "</span> + <span class="string">"predicted_score"</span> + <span class="string">"\r"</span>)</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(len(predict_pro))<span class="symbol">:</span></span><br><span class="line">                <span class="keyword">if</span> predict_pro[i] &gt; <span class="number">0</span>.<span class="number">01</span><span class="symbol">:</span></span><br><span class="line">                    f.write(str(<span class="keyword">self</span>.predict_index[i]) + <span class="string">" "</span> + str(predict_pro[i]) + <span class="string">"\r"</span>)</span><br><span class="line">                <span class="symbol">else:</span></span><br><span class="line">                    f.write(str(<span class="keyword">self</span>.predict_index[i]) + <span class="string">" "</span> + str(<span class="number">0</span>.<span class="number">0</span>) + <span class="string">"\r"</span>)</span><br><span class="line">        logger.info(<span class="string">'Write_result finished ...'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(<span class="keyword">self</span>)</span></span><span class="symbol">:</span></span><br><span class="line">        test_y_predict, predict_y = <span class="keyword">self</span>.nn_model()</span><br><span class="line">        <span class="keyword">self</span>.evaluate(<span class="keyword">self</span>.test_y, test_y_predict)</span><br><span class="line">        <span class="keyword">self</span>.write_result(predict_pro=predict_y)</span><br><span class="line">        logger.info(<span class="string">'NN_model finished ...'</span>)</span><br></pre></td></tr></table></figure>
+<p>对于不同的模型，我们使用自己分的测试集对其进行预测，并计算相关的损失函数，损失函数的结果如下：</p>
+<p><strong>【注意：结果值越小越好】</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Mehod</th>
+<th style="text-align:center">LR</th>
+<th style="text-align:center">Bayes</th>
+<th style="text-align:center">Random_T</th>
+<th style="text-align:center">GTB</th>
+<th style="text-align:center">NN</th>
+<th style="text-align:center">CNN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Loss</td>
+<td style="text-align:center">4.10158</td>
+<td style="text-align:center">1.015423</td>
+<td style="text-align:center">0.539459</td>
+<td style="text-align:center">0.09011</td>
+<td style="text-align:center">0.089561</td>
+<td style="text-align:center">0.046641</td>
+</tr>
+</tbody>
+</table>
+<p><img src="https://upload-images.jianshu.io/upload_images/5274272-a2dcd08a04ef3118.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2018-05-02-2.png"></p>
+<p><strong>从上表可以看到逻辑回归、贝叶斯分类器、随机森林、简单感知器、CNN的结果，而我们提出的CNN算法在测试集上的效果为0.046641明显优于其他方法，然后我们却没能够得到最终的验证，哭死哭死。</strong></p>
+<hr>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>虽然这次比赛比较遗憾和难过，但是不得不说，真的学习了很多很多，不论是在对数据处理上、方法上还是码代码上，虽然遇到很多问题，但是都通过努力，跟小伙伴一起解决了，在此非常感谢小伙伴阿文，许埕秸同学。</p>
+<p>其实，对于很多事，除了【努力】、【机遇】、【幸运】，还是要注意细节，一直都喜欢对自己说，把每件小事做好了，那么结果一定不会太差，那么，未来，请继续努力吧！ </p>
+<p>毕竟海贼王的女人是不会认输的，O(∩_∩)O哈哈哈~，下面奉上今日新作《海贼王 路飞》</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5274272-b13a88a46fa9d291.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="海贼王 路飞"></p>
+<p><strong>【注意更多更完整的代码详见github】</strong></p>
+<pre><code>用户名：DWJWendy
+链接：https://github.com/DWJWendy/IJCAI_2018_CTR.git
+</code></pre>
+      
+    </div>
+    
+    
+    
+      
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+</div>
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.jpg" alt="Wenjun D(Wendy) wechat" style="width: 200px; max-width: 100%;">
+    <div>长得好看的都关注了哟</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.png" alt="Wenjun D(Wendy) 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Wenjun D(Wendy) 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Wenjun D(Wendy)
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2019/02/25/IJCAI-2018-阿里妈妈广告预测算法大赛/" title="IJCAI 2018 阿里妈妈广告预测算法大赛">http://yoursite.com/2019/02/25/IJCAI-2018-阿里妈妈广告预测算法大赛/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+    <div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"><i class="fa fa-tag"></i> python</a>
+          
+            <a href="/tags/cnn/" rel="tag"><i class="fa fa-tag"></i> cnn</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/25/数据/" rel="next" title="数据类型与数据质量介绍">
+                <i class="fa fa-chevron-left"></i> 数据类型与数据质量介绍
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/25/3个linux-系统检测工具/" rel="prev" title="3个linux 系统检测工具">
+                3个linux 系统检测工具 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Wenjun D(Wendy)">
+            
+              <p class="site-author-name" itemprop="name">Wenjun D(Wendy)</p>
+              <p class="site-description motion-element" itemprop="description">Love life, love coding, love freedom</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/DWJWendy" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/35d51c1243f7" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-heartbeat"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/5246140311/" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:dengwenjun818@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接👭
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://scikit-learn.org/stable/ ||" title="Sklearn" target="_blank">Sklearn</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.tensorflow.org/?hl=zh-cn ||" title="Tensorflow" target="_blank">Tensorflow</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.nowcoder.com/4512295 ||" title="牛客网" target="_blank">牛客网</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目标"><span class="nav-number">2.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据说明"><span class="nav-number">3.</span> <span class="nav-text">数据说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">4.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实验"><span class="nav-number">5.</span> <span class="nav-text">实验</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-统计分析"><span class="nav-number">5.1.</span> <span class="nav-text">1. 统计分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-数据预处理"><span class="nav-number">5.2.</span> <span class="nav-text">2. 数据预处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-特征抽取"><span class="nav-number">5.3.</span> <span class="nav-text">3. 特征抽取</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-特征表示"><span class="nav-number">5.4.</span> <span class="nav-text">4. 特征表示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-模型拟合和预测"><span class="nav-number">5.5.</span> <span class="nav-text">5.模型拟合和预测</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wenjun D(Wendy)</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'UOMqRrfV2biHpQ22qY1RCMqQ-gzGzoHsz',
+        appKey: 'FydSJY189qlIwaLxcaji2sUG',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("UOMqRrfV2biHpQ22qY1RCMqQ-gzGzoHsz", "FydSJY189qlIwaLxcaji2sUG");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+  </script>
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":80,"height":300,"hOffset":20,"vOffset":-200},"mobile":{"show":true}});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src>
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end --></body>
+</html>
