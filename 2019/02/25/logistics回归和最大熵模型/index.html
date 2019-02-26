@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Git,github,">
+  <meta name="keywords" content="python,ML,logistic 回归,最大熵模型,">
 
 
 
@@ -88,23 +88,20 @@
 
 
 
-<meta name="description" content="layout: posttitle: git 的基本使用汇总categories: Gitdescription: git的使用方法汇总keywords: git、 github平台和coding平台  参考：廖雪峰git教程  背景版本控制这个概念不知道大家有没有听说过，不管你是软件开发还是平时写文章或者毕业设计的论文都要有版本管理这个意识，因为我自己在这个上面吃过不少亏。 git命令的学习可">
-<meta name="keywords" content="Git,github">
+<meta name="description" content="逻辑回归逻辑分布在介绍逻辑回归之前，我先简单介绍一些logistic分布，在此之前，我只当其为一个简单的函数。 logistic分布定义： 假设$X$为连续随机变量，$X$服从logistic分布，则$X$的分布函数和密度函数分别如下：$$F(x)=P(X \leq x)=\frac{1}{1+e^{-(x-\mu)/\gamma}}$$ $$f(x)=F’(x)=\frac{e^{-(x-\mu">
+<meta name="keywords" content="python,ML,logistic 回归,最大熵模型">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git 的基本使用汇总">
-<meta property="og:url" content="http://yoursite.com/2019/02/25/git 的基本使用汇总/index.html">
+<meta property="og:title" content="逻辑回归和最大熵模型">
+<meta property="og:url" content="http://yoursite.com/2019/02/25/logistics回归和最大熵模型/index.html">
 <meta property="og:site_name" content="毛毛虫_Wendy">
-<meta property="og:description" content="layout: posttitle: git 的基本使用汇总categories: Gitdescription: git的使用方法汇总keywords: git、 github平台和coding平台  参考：廖雪峰git教程  背景版本控制这个概念不知道大家有没有听说过，不管你是软件开发还是平时写文章或者毕业设计的论文都要有版本管理这个意识，因为我自己在这个上面吃过不少亏。 git命令的学习可">
+<meta property="og:description" content="逻辑回归逻辑分布在介绍逻辑回归之前，我先简单介绍一些logistic分布，在此之前，我只当其为一个简单的函数。 logistic分布定义： 假设$X$为连续随机变量，$X$服从logistic分布，则$X$的分布函数和密度函数分别如下：$$F(x)=P(X \leq x)=\frac{1}{1+e^{-(x-\mu)/\gamma}}$$ $$f(x)=F’(x)=\frac{e^{-(x-\mu">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5274272-b39f2a952d1c4b19.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5274272-9ba604fb4c25c481.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5274272-2bda6d0dc4c9d7b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5274272-4cc51f942b42a7b9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-02-25T02:43:26.388Z">
+<meta property="og:image" content="http://yoursite.com/images/pasted-0.png">
+<meta property="og:updated_time" content="2019-02-26T10:24:19.084Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git 的基本使用汇总">
-<meta name="twitter:description" content="layout: posttitle: git 的基本使用汇总categories: Gitdescription: git的使用方法汇总keywords: git、 github平台和coding平台  参考：廖雪峰git教程  背景版本控制这个概念不知道大家有没有听说过，不管你是软件开发还是平时写文章或者毕业设计的论文都要有版本管理这个意识，因为我自己在这个上面吃过不少亏。 git命令的学习可">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5274272-b39f2a952d1c4b19.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="逻辑回归和最大熵模型">
+<meta name="twitter:description" content="逻辑回归逻辑分布在介绍逻辑回归之前，我先简单介绍一些logistic分布，在此之前，我只当其为一个简单的函数。 logistic分布定义： 假设$X$为连续随机变量，$X$服从logistic分布，则$X$的分布函数和密度函数分别如下：$$F(x)=P(X \leq x)=\frac{1}{1+e^{-(x-\mu)/\gamma}}$$ $$f(x)=F’(x)=\frac{e^{-(x-\mu">
+<meta name="twitter:image" content="http://yoursite.com/images/pasted-0.png">
 
 
 
@@ -134,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/25/git 的基本使用汇总/">
+  <link rel="canonical" href="http://yoursite.com/2019/02/25/logistics回归和最大熵模型/">
 
 
 
 
 
-  <title>git 的基本使用汇总 | 毛毛虫_Wendy</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>逻辑回归和最大熵模型 | 毛毛虫_Wendy</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -299,7 +296,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/25/git 的基本使用汇总/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/25/logistics回归和最大熵模型/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wenjun D(Wendy)">
@@ -316,7 +313,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">git 的基本使用汇总</h1>
+          <h1 class="post-title" itemprop="name headline">逻辑回归和最大熵模型</h1>
         
 
         <div class="post-meta">
@@ -328,7 +325,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-25T10:10:00+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-25T17:09:00+08:00">
                 2019-02-25
               </time>
             
@@ -351,8 +348,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/tool/" itemprop="url" rel="index">
-                    <span itemprop="name">tool</span>
+                  <a href="/categories/learning/" itemprop="url" rel="index">
+                    <span itemprop="name">learning</span>
                   </a>
                 </span>
 
@@ -369,8 +366,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/02/25/git 的基本使用汇总/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/25/git 的基本使用汇总/" itemprop="commentCount"></span>
+                <a href="/2019/02/25/logistics回归和最大熵模型/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/25/logistics回归和最大熵模型/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -378,7 +375,7 @@
 
           
           
-             <span id="/2019/02/25/git 的基本使用汇总/" class="leancloud_visitors" data-flag-title="git 的基本使用汇总">
+             <span id="/2019/02/25/logistics回归和最大熵模型/" class="leancloud_visitors" data-flag-title="逻辑回归和最大熵模型">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -404,7 +401,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3.3k 字
+                  1.8k 字
                 </span>
               
 
@@ -420,7 +417,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  12 分钟
+                  7 分钟
                 </span>
               
             </div>
@@ -441,238 +438,46 @@
       
 
       
-        <hr>
-<p>layout: post<br>title: git 的基本使用汇总<br>categories: Git<br>description: git的使用方法汇总<br>keywords: git、 github平台和coding平台</p>
+        <h3 id="逻辑回归"><a href="#逻辑回归" class="headerlink" title="逻辑回归"></a>逻辑回归</h3><h4 id="逻辑分布"><a href="#逻辑分布" class="headerlink" title="逻辑分布"></a>逻辑分布</h4><p>在介绍逻辑回归之前，我先简单介绍一些logistic分布，在此之前，我只当其为一个简单的函数。</p>
+<p><strong>logistic分布</strong><br>定义： 假设$X$为连续随机变量，$X$服从logistic分布，则$X$的分布函数和密度函数分别如下：<br>$$F(x)=P(X \leq x)=\frac{1}{1+e^{-(x-\mu)/\gamma}}$$</p>
+<p>$$f(x)=F’(x)=\frac{e^{-(x-\mu)/\gamma}}{\gamma(1+e^{(x-\mu)/\gamma})}$$<br>其中$\mu$为位置参数，$\gamma&gt;0$为形状参数，$\gamma$值越小，曲线在中心附近增长越快</p>
+<p>对应的密度函数和分布函数的图如下：<br><img src="/images/pasted-0.png" alt="upload successful"></p>
+<p>分布函数又叫logistic函数，由上图可以看到，它是呈现S型，该曲线以点$(\mu,\frac{1}{2})$为中心对称，满足<br>$$F(-x+\mu)-\frac{1}{2}=-F(x+\mu)+\frac{1}{2}$$<br>而标准的logistic函数，即当$\mu=0$，$\gamma=1$时就是我们常用的sigmoid函数，也是常用于神经网络中激活函数<br>且sigmoid函数的有一个非常好的特点，如下👌<br>$$f(x)=\frac{1}{1+e^{(-x)}}$$<br>$$f’(x) = f(x)(1-f(x))$$</p>
 <hr>
-<p>参考：<a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">廖雪峰git教程</a> </p>
-<h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><p>版本控制这个概念不知道大家有没有听说过，不管你是软件开发还是平时写文章或者毕业设计的论文都要有版本管理这个意识，因为我自己在这个上面吃过不少亏。</p>
-<p>git命令的学习可以使自己能够更好完成自己的工作以及版本的管理，这也是我自己最想总结git这个命令的原因。</p>
+<h4 id="二项逻辑回归-logistic-regression"><a href="#二项逻辑回归-logistic-regression" class="headerlink" title="二项逻辑回归(logistic regression)"></a>二项逻辑回归(logistic regression)</h4><p>逻辑回归是在线性模型的基础上增加了sigmoid函数，而Sigmoid函数引入了非线性因素，使得逻辑回归可以轻松处理0/1分类问题。<br>对于二项逻辑回归模型有如下的条件概率：<br>$$ P(y^{(i)}=1|x^{(i)})= \frac{1}{1+e^{-w^Tx^{(i)}}}=\frac{e^{w^Tx^{(i)}}}{1+e^{w^Tx^{(i)}}}$$<br>$$ P(y^{(i)}=0|x^{(i)})= 1- P(y^{(i)}=1|x^{(i)})=\frac{1}{1+e^{w^Tx^{(i)}}} $$<br>二项逻辑回归用于0/1分类问题是使用的损失函数为对数损失函数，即<br>$$L(y_i,f(x_i))=-log p(y_i|x_i)$$<br>那么最终的代价函数如下：<br>$$L(w,x)=-\frac{1}{N}\sum_{i=1}^N \lbrace y^{(i)}logp(y^{(i)}=1|w,x^{(i)})+(1-y^{(i)})logp(y^{(i)}=0|w,x^{(i)})\rbrace<br>$$</p>
+<p>在<a href="&quot;http://mmcwendy.info/2019/02/25/详述机器学习中的损失函数/&quot;">《详述机器学习中的损失函数》</a>有详细举例介绍逻辑回归的推导过程。</p>
+<p>NOTE:<br><strong>二项逻辑回归假设因变量$Y$为伯努力分布，而线性模型假设因变量服从高斯分布</strong></p>
 <hr>
-<h4 id="git的简介"><a href="#git的简介" class="headerlink" title="git的简介"></a>git的简介</h4><p>Git是目前世界上最先进的分布式版本控制系统（没有之一），在Git迅速成为最流行的分布式版本控制系统，尤其是2008年，GitHub网站上线了，它为开源项目免费提供Git存储，无数开源项目开始迁移至<strong>GitHub</strong>(国外的平台)，国内也有这样的平台(<strong>Coding</strong>)。<br><br>注：可以了解一下<a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001374027586935cf69c53637d8458c9aec27dd546a6cd6000" target="_blank" rel="noopener">了解分布式和集中式的区别</a><br></p>那怎么形容<strong>git的好处</strong>呢？比如你在写论文的时候会一直不停的更迭版本，如果手工操作，就会出现下面的情况：<br><br><img src="https://upload-images.jianshu.io/upload_images/5274272-b39f2a952d1c4b19.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="figure -2 手动版本管理"><br><br>甚至你必须使用一个文件来记录每个版本的变化，非常的不方便，对于涉及到几个人对一个项目的操作时，合并就更加麻烦，而git能够很好的解决和处理这些问题。<p></p>
-
+<h4 id="模型参数估计"><a href="#模型参数估计" class="headerlink" title="模型参数估计"></a>模型参数估计</h4><p><strong>用极大似然估计模型参数👀</strong><br>对于二项逻辑回归模型，假定概率分布服从伯努利分布【0-1分布】，其概率质量函数PMF为:$f(x)=p^x(1-p)^{(1-x)}$，其中$x$只能取0或者1，那么二项逻辑回归的似然函数可以表示:为$$L(w)=\prod_{i=1}^Np(y^{(i)}=1|w,x^{(i)})^{y^{(i)}}p(y^{(i)}=0|w,x^{(i)})^{1-y^{(i)}}$$</p>
+<p>那么对上式取对数，得到对数似然函数为:<br>$$logL(w)=\sum_{i=1}^Ny^{(i)}logp(y^{(i)}=1|w,x^{(i)})+（1-y^{(i)})logp(y^{(i)}=0|w,x^{(i)})$$</p>
+<p>则全体样本的代价函数为:<br>$$logL(w)=-\sum_{i=1}^N\lbrace y^{(i)}logp(y^{(i)}=1|w,x^{(i)})+（1-y^{(i)})logp(y^{(i)}=0|w,x^{(i)})\rbrace$$</p>
+<p>因此，也可以从因变量$Y$为伯努力分布去理解二项逻辑回归的代价函数。那么对$w$的参数估计就变成了对代价函数求极小值，得到$w$的估计值，<strong>通常采用牛顿法和梯度下降法求解$w$</strong></p>
 <hr>
-<h4 id="git的安装"><a href="#git的安装" class="headerlink" title="git的安装"></a>git的安装</h4><figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dwj@ec:~$ git</span><br><span class="line">The program <span class="string">'git'</span> <span class="keyword">is</span> currently <span class="keyword">not</span> installed. You can install <span class="literal">it</span> <span class="keyword">by</span> typing:</span><br><span class="line">sudo apt-get install git</span><br></pre></td></tr></table></figure>
-<p>查看是否安装：直接在Linux终端输入git，如果没安装就继续输入：<strong>sudo apt-get install git</strong></p>
-<p>安装完成后，还需要最后一步设置，在命令行输入：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dwj@ec:~$ git<span class="built_in"> config </span>--global user.name <span class="string">"Your Name"</span></span><br><span class="line">dwj@ec:~$ git<span class="built_in"> config </span>--global user.email <span class="string">"email@example.com"</span></span><br></pre></td></tr></table></figure></p>
-<p>注意git config命令的–global参数，用了这个参数，表示你这台机器上所有的Git仓库都会使用这个配置，当然也可以对某个仓库指定不同的用户名和Email地址</p>
+<h4 id="多项逻辑回归"><a href="#多项逻辑回归" class="headerlink" title="多项逻辑回归"></a>多项逻辑回归</h4><p>二项逻辑回归用于二分类，当然可以对其进行推广，用于多分类，对应的模型叫做多项逻辑回归模型(multi-nominal logistic regression model)</p>
+<p>假设变量$Y$取值为${1,2,…,K}$,那么多项逻辑回归模型如下：<br>$$P(Y=k|x)=\frac{e^{w^Tx}}{1+\sum_{k=1}^{K-1}e^{w^Tx}},k=1,2,…,K-1$$<br>$$P(Y=K|x)=\frac{1}{1+\sum_{k=1}^{K-1}e^{w^Tx}}$$</p>
+<p>而二项逻辑回归的方法也可以用于多项式逻辑回归</p>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><hr>
 <hr>
-<h4 id="git-仓库创建"><a href="#git-仓库创建" class="headerlink" title="git 仓库创建"></a>git 仓库创建</h4><p>仓库又叫版本库(repository)，你可以简单理解成一个目录，这个目录里面的所有文件都可以被Git管理起来，包括：每个文件的修改、删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”<br>创建过程如下：<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 首先选择一个合适的地方创建一个空目录：</span></span><br><span class="line">dwj<span class="variable">@ec</span><span class="symbol">:</span><span class="variable">$ </span>mkdir learngit</span><br><span class="line">dwj<span class="variable">@ec</span><span class="symbol">:</span><span class="variable">$ </span>cd learngit</span><br><span class="line"><span class="comment">## 查看目录路径</span></span><br><span class="line">dwj<span class="variable">@ec</span><span class="symbol">:</span><span class="variable">$ </span>pwd</span><br><span class="line">/dwj/home/learngit</span><br><span class="line"><span class="comment">##  初始化仓库</span></span><br><span class="line">dwj<span class="variable">@ec</span><span class="symbol">:</span><span class="variable">$ </span>git init</span><br><span class="line">Initialized empty Git repository <span class="keyword">in</span> /dwj/home/learngit/.git/</span><br></pre></td></tr></table></figure></p>
-<p><strong>注：</strong></p>
-<ol>
-<li>mkdir +仓库名：mkdir可以简记make+dir，pwd是查看当前路径</li>
-<li>建立了一个空仓库后，当前目录下多了一个.git的目录，这个目录是Git来跟踪管理版本库的，千万不要手动修改这个目录里面的文件，不然很容易将其破坏；如果该目录是隐藏的，用<strong>ls -ah</strong>命令就可以看见。</li>
-</ol>
-<hr>
-<p><strong> 区别工作区与版本库：</strong></p>
-<p>工作区(working directory):就是你在电脑里能看到的目录<br>版本库（Repository）:工作区有一个隐藏目录.git，这个不算工作区，而是Git的版本库。Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD.</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/5274272-9ba604fb4c25c481.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="figure -3 : 工作间与版本库的关系"></p>
-<hr>
-<h4 id="基本git命令"><a href="#基本git命令" class="headerlink" title="基本git命令"></a>基本git命令</h4><p>基本操作：<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 将文件放到learngit目录下，添加文件,将文件加入缓存区（如上图）</span></span><br><span class="line">dwj<span class="variable">@ec</span><span class="symbol">:</span><span class="variable">$ </span>git add &lt;file&gt;</span><br><span class="line"><span class="comment">## 用命令git commit告诉Git，把暂存区的所有内容提交到当前分支，-m后面输入的是本次提交的说明，可以输入任意内容，当然最好是有意义的，以便能从历史记录里方便地找到改动记录（）</span></span><br><span class="line">dwj<span class="variable">@ec</span><span class="symbol">:</span><span class="variable">$ </span>git commit -m <span class="string">"message"</span></span><br></pre></td></tr></table></figure></p>
-<p>注: 每次修改，如果不add到暂存区，那就不会加入到commit中</p>
-<hr>
-<p><strong>其他命令：</strong></p>
-<p><strong>1. git status</strong> 时刻掌握仓库当前的状态</p>
-<p><strong>2. git diff</strong> 查看difference</p>
-<p><strong>3. git log</strong> 查看历史记录，显示从最近到最远的提交日志，如果嫌输出信息太多，看得眼花缭乱的，可以试试加上–pretty=oneline参数，例如：<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span> <span class="comment">--pretty=oneline</span></span><br><span class="line"><span class="number">3628164</span>fb26d48395383f8f31179f24e0882e1e0 append GPL</span><br><span class="line">ea34578d5496d7dd233c827ed32a8cd576c5ee85 <span class="built_in">add</span> distributed</span><br><span class="line">cb926e7ea50ad11b8f9e909c05226233bf755030 wrote <span class="keyword">a</span> readme <span class="built_in">file</span></span><br></pre></td></tr></table></figure></p>
-<p>注：类似3628164…882e1e0的是commit id（版本号）</p>
-<p><strong>4.git reset –hard HEAD^</strong> 表示回到上一个版本<br>注：在Git中，用HEAD表示当前版本，用HEAD^表示上一个版本，HEAD^^是上上一个版本，更多版本eg：HEAD~100表示 上100个版本。且可以使用git reset –hard commit id(版本号)到指定版本，且版本号没必要写全，前几位就可以了，Git会自动去找。当然也不能只写前一两位。</p>
-<p><strong>5. git reflog</strong> 查看命令历史，重返未来，以便确定要回到未来的哪个版本</p>
-<p><strong>6.git checkout – file</strong> 想直接丢弃工作区的修改，必须加–，没有–，就变成了“切换到另一个分支”的命令</p>
-<p><strong>7.git reset HEAD file</strong> 改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令<strong>git reset HEAD file</strong>，就回到工作区，用6的方法修改。</p>
-<p><strong>8.git rm <file></file></strong> 现在你有两个选择，一是确实要从版本库中删除该文件，那就用命令git rm删掉，并且git commit：另一种情况是删错了，因为版本库里还有呢，所以可以很轻松地把误删的文件恢复到最新版本<strong>git checkout –</strong>,其实是用版本库里的版本替换工作区的版本：</p>
-<h4 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h4><p>省略注册【github】以及github的设置等等。</p>
-<ol>
-<li>增加远程仓库：</li>
-</ol>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git remote <span class="keyword">add</span><span class="bash"> origin 远程仓库名 </span></span><br><span class="line"><span class="comment">## eg 远程仓库名：git@github.com:DWJWendy/Weibo_Spider.git</span></span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>推送到远程仓库：</li>
-</ol>
-<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">push</span> -u <span class="built_in">origin</span> master</span><br></pre></td></tr></table></figure>
-<p>注：用git push命令，实际上是把当前分支master推送到远程。由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git之后会把本地的master分支和远程的master分支关联起来，所以之后可以不用-u这个参数，直接 <strong>git push origin master</strong>。</p>
-<ol start="3">
-<li>克隆远程仓库的内容:<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="keyword">clone</span> <span class="title">远程仓库名</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<hr>
-<h4 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h4><p>分支管理是我最想整理的一部分，因为现在需要用上，但是自己还不熟/(ㄒoㄒ)/~~</p>
-<table>
-<thead>
-<tr>
-<th>操作</th>
-<th style="text-align:left">代码</th>
-<th style="text-align:center">备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>查看分支</td>
-<td style="text-align:left">git branch</td>
-<td style="text-align:center">当前分支会在前标*</td>
-</tr>
-<tr>
-<td>创建分支</td>
-<td style="text-align:left">git branch <name></name></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td>切换分支</td>
-<td style="text-align:left">git checkout <name></name></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td>创建+切换分支</td>
-<td style="text-align:left">git checkout -b <name></name></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td>合并某分支到当前分支</td>
-<td style="text-align:left">git merge <name></name></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td>删除分支</td>
-<td style="text-align:left">git branch -d <name></name></td>
-<td style="text-align:center">合并后删除</td>
-</tr>
-<tr>
-<td>如果要丢弃一个没有被合并过的分支</td>
-<td style="text-align:left">git branch -D <name></name></td>
-<td style="text-align:center">强行删除</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>下图是一个分支关系图，每次提交，Git都把它们串成一条时间线，在Git里，master是主分支，在下图中，当我们<strong>创建了一个新的分支dev</strong>时，Git就新建了一个指针叫dev，指向master相同的提交，再把HEAD指向dev，就表示当前分支在dev上，我们在dev上的工作完成了，就可以把<strong>dev合并到master上</strong>。Git怎么合并呢？就是直接把master指向dev的当前提交，就完成了合并。合并完分支后，甚至<strong>可以删除dev分支</strong>。删除dev分支就是把dev指针给删掉，删掉后，我们就剩下了一条master分支：</p>
-<h2 id><a href="#" class="headerlink" title></a><img src="https://upload-images.jianshu.io/upload_images/5274272-2bda6d0dc4c9d7b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="figure-4: 分支关系"></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 1. 创建分支并切换到分支</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git checkout -b dev</span></span><br><span class="line">Switched to a new branch 'dev'</span><br><span class="line">或者</span><br><span class="line"><span class="meta">$</span><span class="bash"> git branch dev</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git checkout dev</span></span><br><span class="line">Switched to branch 'dev'</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 2.查看分支</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git branch</span></span><br><span class="line">* dev</span><br><span class="line">  master</span><br><span class="line">  </span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 3.提交</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git add readme.txt </span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git commit -m <span class="string">"branch test"</span></span></span><br><span class="line">[dev fec145a] branch test</span><br><span class="line"> 1 file changed, 1 insertion(+)</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 4.切换会master</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git checkout master</span></span><br><span class="line">Switched to branch 'master‘</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 5.合并</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git merge dev</span></span><br><span class="line">Updating d17efd8..fec145a</span><br><span class="line">Fast-forward</span><br><span class="line"> readme.txt |    1 +</span><br><span class="line"> 1 file changed, 1 insertion(+)</span><br><span class="line"> </span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 6. 删除分支</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git branch -d dev</span></span><br><span class="line">Deleted branch dev (was fec145a)</span><br></pre></td></tr></table></figure>
-<p>Git会用Fast forward模式，但这种模式下，删除分支后，会丢掉分支信息。强制禁用Fast forward模式，Git需在merge时生成一个新的commit，这样，从分支历史上就可以看出分支信息。<br>下面就是–no-ff方式的git merge：</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git</span> merge --<span class="literal">no</span>-ff -m <span class="string">"merge with no-ff"</span> dev</span><br></pre></td></tr></table></figure>
-<p><strong>冲突解决</strong>：git告诉我们，文件存在冲突，<strong>必须手动解决冲突后再提交</strong>。<strong>git status</strong>也可以告诉我们冲突的文件。Git会用&lt;&lt;&lt;&lt;&lt;&lt;&lt;，=======，&gt;&gt;&gt;&gt;&gt;&gt;&gt;标记出不同分支的内容，我们修改后保存，再提交，用带参数的<strong>git log</strong>也可以看到分支的合并情况</p>
-<hr>
-<p><strong>bug分支</strong>：每个bug都可以通过一个新的临时分支来修复，修复后，合并分支，然后将临时分支删除。Git还提供了一个stash功能，可以把当前工作现场“储藏”起来 <strong>git stash</strong>，此时用git status查看工作区，就是干净的，因此可以放心地创建分支来修复bug。</p>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##1. 确定要在哪个分支上修复bug，就在其分支上修复，eg 修复master上的bug，就从master创建临时分支</span></span><br><span class="line">$ git checkout master</span><br><span class="line">Switched <span class="built_in">to</span> branch <span class="string">'master'</span></span><br><span class="line">Your branch is ahead <span class="keyword">of</span> <span class="string">'origin/master'</span> <span class="keyword">by</span> <span class="number">6</span> commits.</span><br><span class="line">$ git checkout -b issue<span class="number">-101</span></span><br><span class="line">Switched <span class="built_in">to</span> <span class="keyword">a</span> <span class="built_in">new</span> branch <span class="string">'issue-101'</span></span><br><span class="line"><span class="comment">## 2. 修复bug后，提交</span></span><br><span class="line"><span class="comment">## 3. 修复完成后，切换到master分支，并完成合并，最后删除issue-101分支</span></span><br></pre></td></tr></table></figure>
-<p>注:<strong>git stash list</strong>可以查看刚才的修复，Git把stash内容存在某个地方了，如需恢复有两个办法：一是用<strong>git stash apply</strong>恢复，但是恢复后，stash内容并不删除，你需要用<strong>git stash drop</strong>来删除；另一种方式是用<strong>git stash pop</strong>，恢复的同时把stash内容也删了：再用git stash list查看，就看不到任何stash内容了，另外你可以多次先用git stash list查看，然后恢复指定的stash，用命令：<strong>git stash apply stash@{0}</strong></p>
-<hr>
-<p><strong>分支策略</strong><br>按照几个基本原则进行分支管理：</p>
-<ol>
-<li><p>master分支应该是非常稳定的，也就是仅用来发布新版本，平时不能在上面干活；</p>
-</li>
-<li><p>干活都在dev分支上，也就是说，dev分支是不稳定的，到某个时候，比如1.0版本发布时，再把dev分支合并到master上，在master分支发布1.0版本；</p>
-</li>
-<li><p>团队每个人都在dev分支上干活，每个人都有自己的分支，时不时地往dev分支上合并就可以了</p>
-</li>
-</ol>
-<hr>
-<p><strong>多人协作</strong></p>
-<table>
-<thead>
-<tr>
-<th>操作</th>
-<th style="text-align:left">代码</th>
-<th style="text-align:center">备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>查看远程库</td>
-<td style="text-align:left">git remote</td>
-<td style="text-align:center">git remote -v显示详细信息</td>
-</tr>
-<tr>
-<td>推送主分支</td>
-<td style="text-align:left">git push origin master</td>
-<td style="text-align:center">主分支要时刻与远程同步</td>
-</tr>
-<tr>
-<td>推送分支</td>
-<td style="text-align:left">git push origin <dev></dev></td>
-<td style="text-align:center">成员都在dev上工作，因此要与远程同步</td>
-</tr>
-<tr>
-<td>推送Future分支</td>
-<td style="text-align:left">类似</td>
-<td style="text-align:center">每添加一个新功能，最好新建一个feature分支，开发-&gt;合并-&gt;删除</td>
-</tr>
-<tr>
-<td>bug分支</td>
-<td style="text-align:left">类似</td>
-<td style="text-align:center">用于在本地修复bug，就没必要推到远程</td>
-</tr>
-<tr>
-<td>创建远程分支到本地</td>
-<td style="text-align:left">git checkout -b dev origin/dev</td>
-<td style="text-align:center">要在dev分支上开发，就必须创建远程origin的dev分支到本地，用这个命令创建本地dev分支</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p>我之前在推送代码的时候经常会遇到这样的问题，如下图</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/5274272-4cc51f942b42a7b9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="figure -5 : 推送冲突"></p>
-<p>解决策略:解决办法也很简单，Git已经提示我们，先用git pull把最新的提交从origin/dev抓下来，然后，在本地合并，解决冲突，再推送</p>
-<hr>
-<p><strong>小结：</strong></p>
-<p>1、查看远程库信息，使用git remote -v；</p>
-<p>2、本地新建的分支如果不推送到远程，对其他人就是不可见的；</p>
-<p>3、从本地推送分支，使用git push origin branch-name，如果推送失败，先用git pull抓取远程的新提交；</p>
-<p>4、在本地创建和远程分支对应的分支，使用git checkout -b branch-name origin/branch-name，本地和远程分支的名称最好一致；</p>
-<p>5、建立本地分支和远程分支的关联，使用git branch –set-upstream branch-name origin/branch-name；</p>
-<p>6、从远程抓取分支，使用git pull，如果有冲突，要先处理冲突。</p>
-<h4 id="标签管理"><a href="#标签管理" class="headerlink" title="标签管理"></a>标签管理</h4><p>发布一个版本时，通常先在版本库中打一个标签（tag），这样，就唯一确定了打标签时刻的版本。将来无论什么时候，取某个标签的版本，就是把那个打标签的时刻的历史版本取出来。</p>
-<table>
-<thead>
-<tr>
-<th>操作</th>
-<th style="text-align:left">代码</th>
-<th style="text-align:center">备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>打一个新标签</td>
-<td style="text-align:left">git tag <name></name></td>
-<td style="text-align:center">默认为HEAD</td>
-</tr>
-<tr>
-<td>查看标签</td>
-<td style="text-align:left">git tag</td>
-</tr>
-<tr>
-<td>对应的commit id打标签</td>
-<td style="text-align:left">git tag v0.9 6224937</td>
-<td style="text-align:center">数字是commit id</td>
-</tr>
-<tr>
-<td>查看标签信息</td>
-<td style="text-align:left">git show <tagname></tagname></td>
-</tr>
-<tr>
-<td>用PGP签名标签</td>
-<td style="text-align:left">git tag -s <tagname> -m “blablabla…”</tagname></td>
-</tr>
-<tr>
-<td>指定标签信息</td>
-<td style="text-align:left">git tag -a <tagname> -m “blablabla…”</tagname></td>
-</tr>
-<tr>
-<td>删除标签</td>
-<td style="text-align:left">git tag -d v0.1</td>
-</tr>
-<tr>
-<td>推送本地标签</td>
-<td style="text-align:left">git push origin <tagname></tagname></td>
-</tr>
-<tr>
-<td>推送全部本地标签</td>
-<td style="text-align:left">git push origin –tag</td>
-<td style="text-align:center">可以推送全部未推送过的本地标签</td>
-</tr>
-<tr>
-<td>删除远程标签</td>
-<td style="text-align:left">git push origin :refs/tags/<tagname></tagname></td>
-</tr>
-</tbody>
-</table>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>git使用是必须必须会的，每次遇到就是临时的找命令或者只记住了基础的命令，所以想把它总结下来，之后查的时候也方便，最后给需要的你，O(∩_∩)O哈哈~</p>
+<h3 id="最大熵模型"><a href="#最大熵模型" class="headerlink" title="最大熵模型"></a>最大熵模型</h3><h4 id="最大熵原理"><a href="#最大熵原理" class="headerlink" title="最大熵原理"></a>最大熵原理</h4><p>最大熵模型是概率模型学习的一个准则，学习概率模型时，在所有可能的概率模型(分布)中，熵最大的模型是最好的模型，通常用约束条件来确定概率模型的集合，所以，<strong>最大熵原理可以表述为在满足约束条件的模型集合中选择熵最大的模型</strong></p>
+<p>熵是由信息论男神克劳德·艾尔伍德·香农（Claude Elwood Shannon ）在1948年提出的“信息熵“，用来描述信息的不确定程度，<strong>熵越大，不确定程度越大，而系统的混乱程度越低</strong>，熵的单位通常为比特。</p>
+<p>假设离散随机变量$X$的概率分布是 $P(X)$,其熵是<br>$$H(P)=-\sum_xP(x)logP(x)$$</p>
+<p>且熵满足不等式$0\leq H(P)\leq log|X|$,$|X|$是$X$的取值个数，当且仅当$X$为均匀分布时，右边等号成立，即$X$服从均匀分布时，熵最大。当我们需要对一个事件的概率分布进行预测时，最大熵原理告诉我们所有的预测应当满足全部已知的条件，<strong>而对未知的情况不要做任何主观假设</strong>（不做主观假设这点很重要）。也就是让概率分布最均匀，预测的风险最小</p>
+<h4 id="最大熵模型定义"><a href="#最大熵模型定义" class="headerlink" title="最大熵模型定义"></a>最大熵模型定义</h4><p>假设分类模型是一个条件概率分布$P(Y|X)$，$X$表示输入，$Y$表示输出，这个分类模型表示，给定一个输入$X$，以条件概率$P(Y|X)$输出$Y$。<br>给定训练集$T={(x_1,y_1),(x_2,y_2),…,(x_N,y_N)}$<br>对于给定的训练集可以确定联合分布$P(X,Y)$以及边缘分布$P(X)$的经验分布，确定方法都是通过频数(v)/样本总数(N)，即</p>
+<p>$$\tilde{P}(X=x,Y=y)=\frac{v(X=x,Y=y)}{N}$$</p>
+<p>$$\tilde{P}(X=x)=\frac{v(X=x)}{N}$$</p>
+<p>特征函数$f(x,y)$表示输入与输出之间的关系<br>$$<br>f(x,y) =<br>\begin{cases}<br>1,  &amp; \text{x与y满足某种关系} \\<br>0, &amp; \text{else}<br>\end{cases} $$</p>
+<p>那么特征函数$f(x,y)$关于训练集联合分布的期望值，用$E_\tilde{P}(f)$表示为：</p>
+<p>$$E_\tilde{P}(f)=\sum_{x,y}\tilde{P}(x,y)f(x,y)$$</p>
+<p>而特征函数$f(x,y)$关于模型$P(Y|X)$与经验分布$\tilde{P}(X)$的期望表示为：</p>
+<p>$$E_P(f)=\sum_{x,y}\tilde{P}(x)P(y|x)f(x,y)$$</p>
+<p>如果模型能够获取到训练集中到信息，那么就假设这两个期望值相等，即</p>
+<p>$$\sum_{x,y}\tilde{P}(x,y)f(x,y)=\sum_{x,y}\tilde{P}(x)P(y|x)f(x,y)$$</p>
+<p><strong>最大熵模型</strong></p>
+<p>假设满足所有约束条件的模型集合为<br>$$C={P\in\rho|E_P(f_i)=E_\tilde{P}(f_i),i=1,2,…,n}$$</p>
+<p>定义在条件概率分布$P(Y|X)$的条件熵为：<br>$$H(Y|X)=-\sum_{x,y}\tilde{P}(x)P(y|x)logP(y|x)$$<br>则模型$C$中条件熵$H(Y|X)$最大的模型称为最大熵模型</p>
+<p>NOTE<br><strong>⛽️条件熵推导：</strong></p>
+<p>$$<br>\begin {align}<br>H(Y|X)&amp;= \sum_{x\in X}\tilde{P}(x)H(Y|x) \\<br>&amp; = -\sum_{x\in X}\tilde{P}(x)\sum_{y\in Y}P(y|x)logP(y|x) \\<br>&amp; = -\sum_{x\in X,y\in Y}\tilde{P}(x)P(y|x)logP(y|x)<br>\end{align}<br>$$</p>
+<h4 id="最大熵模型的学习"><a href="#最大熵模型的学习" class="headerlink" title="最大熵模型的学习"></a>最大熵模型的学习</h4><p>logistic回归和最大熵模型都是对数线性模型</p>
 
       
     </div>
@@ -737,7 +542,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yoursite.com/2019/02/25/git 的基本使用汇总/" title="git 的基本使用汇总">http://yoursite.com/2019/02/25/git 的基本使用汇总/</a>
+    <a href="http://yoursite.com/2019/02/25/logistics回归和最大熵模型/" title="逻辑回归和最大熵模型">http://yoursite.com/2019/02/25/logistics回归和最大熵模型/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -753,9 +558,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Git/" rel="tag"><i class="fa fa-tag"></i> Git</a>
+            <a href="/tags/python/" rel="tag"><i class="fa fa-tag"></i> python</a>
           
-            <a href="/tags/github/" rel="tag"><i class="fa fa-tag"></i> github</a>
+            <a href="/tags/ML/" rel="tag"><i class="fa fa-tag"></i> ML</a>
+          
+            <a href="/tags/logistic-回归/" rel="tag"><i class="fa fa-tag"></i> logistic 回归</a>
+          
+            <a href="/tags/最大熵模型/" rel="tag"><i class="fa fa-tag"></i> 最大熵模型</a>
           
         </div>
       
@@ -768,14 +577,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/02/25/3个linux-系统检测工具/" rel="next" title="3个linux 系统检测工具">
+                <i class="fa fa-chevron-left"></i> 3个linux 系统检测工具
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/02/25/基于Kmean聚类分析航空公司客户价值/" rel="prev" title="基于Kmean聚类分析航空公司客户价值">
-                基于Kmean聚类分析航空公司客户价值 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/02/25/剑指offer编程题/" rel="prev" title="剑指offer编程题">
+                剑指offer编程题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -970,7 +783,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git的简介"><span class="nav-number">2.</span> <span class="nav-text">git的简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git的安装"><span class="nav-number">3.</span> <span class="nav-text">git的安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#git-仓库创建"><span class="nav-number">4.</span> <span class="nav-text">git 仓库创建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本git命令"><span class="nav-number">5.</span> <span class="nav-text">基本git命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#远程仓库"><span class="nav-number">6.</span> <span class="nav-text">远程仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分支管理"><span class="nav-number">7.</span> <span class="nav-text">分支管理</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number"></span> <span class="nav-text"></span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#标签管理"><span class="nav-number">1.</span> <span class="nav-text">标签管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑回归"><span class="nav-number">1.</span> <span class="nav-text">逻辑回归</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑分布"><span class="nav-number">1.1.</span> <span class="nav-text">逻辑分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二项逻辑回归-logistic-regression"><span class="nav-number">1.2.</span> <span class="nav-text">二项逻辑回归(logistic regression)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模型参数估计"><span class="nav-number">1.3.</span> <span class="nav-text">模型参数估计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多项逻辑回归"><span class="nav-number">1.4.</span> <span class="nav-text">多项逻辑回归</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现"><span class="nav-number">1.5.</span> <span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最大熵模型"><span class="nav-number">2.</span> <span class="nav-text">最大熵模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#最大熵原理"><span class="nav-number">2.1.</span> <span class="nav-text">最大熵原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最大熵模型定义"><span class="nav-number">2.2.</span> <span class="nav-text">最大熵模型定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最大熵模型的学习"><span class="nav-number">2.3.</span> <span class="nav-text">最大熵模型的学习</span></a></li></ol></li></ol></div>
             
 
           </div>
