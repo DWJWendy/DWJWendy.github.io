@@ -97,7 +97,8 @@
 <meta property="og:description" content="逻辑回归逻辑分布在介绍逻辑回归之前，我先简单介绍一些logistic分布，在此之前，我只当其为一个简单的函数。 logistic分布定义： 假设$X$为连续随机变量，$X$服从logistic分布，则$X$的分布函数和密度函数分别如下：$$F(x)=P(X \leq x)=\frac{1}{1+e^{-(x-\mu)/\gamma}}$$ $$f(x)=F’(x)=\frac{e^{-(x-\mu">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/pasted-0.png">
-<meta property="og:updated_time" content="2019-02-26T10:24:19.084Z">
+<meta property="og:image" content="http://yoursite.com/images/pasted-2.png">
+<meta property="og:updated_time" content="2019-02-27T07:12:10.854Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="逻辑回归和最大熵模型">
 <meta name="twitter:description" content="逻辑回归逻辑分布在介绍逻辑回归之前，我先简单介绍一些logistic分布，在此之前，我只当其为一个简单的函数。 logistic分布定义： 假设$X$为连续随机变量，$X$服从logistic分布，则$X$的分布函数和密度函数分别如下：$$F(x)=P(X \leq x)=\frac{1}{1+e^{-(x-\mu)/\gamma}}$$ $$f(x)=F’(x)=\frac{e^{-(x-\mu">
@@ -401,7 +402,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.8k 字
+                  2.2k 字
                 </span>
               
 
@@ -417,7 +418,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  7 分钟
+                  9 分钟
                 </span>
               
             </div>
@@ -448,7 +449,7 @@
 <p>在<a href="&quot;http://mmcwendy.info/2019/02/25/详述机器学习中的损失函数/&quot;">《详述机器学习中的损失函数》</a>有详细举例介绍逻辑回归的推导过程。</p>
 <p>NOTE:<br><strong>二项逻辑回归假设因变量$Y$为伯努力分布，而线性模型假设因变量服从高斯分布</strong></p>
 <hr>
-<h4 id="模型参数估计"><a href="#模型参数估计" class="headerlink" title="模型参数估计"></a>模型参数估计</h4><p><strong>用极大似然估计模型参数👀</strong><br>对于二项逻辑回归模型，假定概率分布服从伯努利分布【0-1分布】，其概率质量函数PMF为:$f(x)=p^x(1-p)^{(1-x)}$，其中$x$只能取0或者1，那么二项逻辑回归的似然函数可以表示:为$$L(w)=\prod_{i=1}^Np(y^{(i)}=1|w,x^{(i)})^{y^{(i)}}p(y^{(i)}=0|w,x^{(i)})^{1-y^{(i)}}$$</p>
+<h4 id="模型参数估计"><a href="#模型参数估计" class="headerlink" title="模型参数估计"></a>模型参数估计</h4><p><strong>用极大似然估计模型参数👀</strong><br>对于二项逻辑回归模型，假定概率分布服从伯努利分布【0-1分布】，其概率质量函数PMF为:$f(x)=p^x(1-p)^{(1-x)}$，其中$x$只能取0或者1，那么二项逻辑回归的似然函数可以表示:为$$L(w)=\prod_{i=1}^Np(y^{(i)}）=1|w,x^{(i)})^{y^{(i)}}p(y^{(i)}=0|w,x^{(i)})^{1-y^{(i)}}$$</p>
 <p>那么对上式取对数，得到对数似然函数为:<br>$$logL(w)=\sum_{i=1}^Ny^{(i)}logp(y^{(i)}=1|w,x^{(i)})+（1-y^{(i)})logp(y^{(i)}=0|w,x^{(i)})$$</p>
 <p>则全体样本的代价函数为:<br>$$logL(w)=-\sum_{i=1}^N\lbrace y^{(i)}logp(y^{(i)}=1|w,x^{(i)})+（1-y^{(i)})logp(y^{(i)}=0|w,x^{(i)})\rbrace$$</p>
 <p>因此，也可以从因变量$Y$为伯努力分布去理解二项逻辑回归的代价函数。那么对$w$的参数估计就变成了对代价函数求极小值，得到$w$的估计值，<strong>通常采用牛顿法和梯度下降法求解$w$</strong></p>
@@ -457,6 +458,7 @@
 <p>假设变量$Y$取值为${1,2,…,K}$,那么多项逻辑回归模型如下：<br>$$P(Y=k|x)=\frac{e^{w^Tx}}{1+\sum_{k=1}^{K-1}e^{w^Tx}},k=1,2,…,K-1$$<br>$$P(Y=K|x)=\frac{1}{1+\sum_{k=1}^{K-1}e^{w^Tx}}$$</p>
 <p>而二项逻辑回归的方法也可以用于多项式逻辑回归</p>
 <h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><hr>
+<p>整理后再写入</p>
 <hr>
 <h3 id="最大熵模型"><a href="#最大熵模型" class="headerlink" title="最大熵模型"></a>最大熵模型</h3><h4 id="最大熵原理"><a href="#最大熵原理" class="headerlink" title="最大熵原理"></a>最大熵原理</h4><p>最大熵模型是概率模型学习的一个准则，学习概率模型时，在所有可能的概率模型(分布)中，熵最大的模型是最好的模型，通常用约束条件来确定概率模型的集合，所以，<strong>最大熵原理可以表述为在满足约束条件的模型集合中选择熵最大的模型</strong></p>
 <p>熵是由信息论男神克劳德·艾尔伍德·香农（Claude Elwood Shannon ）在1948年提出的“信息熵“，用来描述信息的不确定程度，<strong>熵越大，不确定程度越大，而系统的混乱程度越低</strong>，熵的单位通常为比特。</p>
@@ -473,11 +475,22 @@
 <p>如果模型能够获取到训练集中到信息，那么就假设这两个期望值相等，即</p>
 <p>$$\sum_{x,y}\tilde{P}(x,y)f(x,y)=\sum_{x,y}\tilde{P}(x)P(y|x)f(x,y)$$</p>
 <p><strong>最大熵模型</strong></p>
-<p>假设满足所有约束条件的模型集合为<br>$$C={P\in\rho|E_P(f_i)=E_\tilde{P}(f_i),i=1,2,…,n}$$</p>
+<p>假设满足所有约束条件的模型集合为</p>
+<p>$$C=\lbrace P\in\rho|E_P(f_i)=E_\tilde{P}(f_i),i=1,2,…,n\rbrace$$</p>
 <p>定义在条件概率分布$P(Y|X)$的条件熵为：<br>$$H(Y|X)=-\sum_{x,y}\tilde{P}(x)P(y|x)logP(y|x)$$<br>则模型$C$中条件熵$H(Y|X)$最大的模型称为最大熵模型</p>
-<p>NOTE<br><strong>⛽️条件熵推导：</strong></p>
-<p>$$<br>\begin {align}<br>H(Y|X)&amp;= \sum_{x\in X}\tilde{P}(x)H(Y|x) \\<br>&amp; = -\sum_{x\in X}\tilde{P}(x)\sum_{y\in Y}P(y|x)logP(y|x) \\<br>&amp; = -\sum_{x\in X,y\in Y}\tilde{P}(x)P(y|x)logP(y|x)<br>\end{align}<br>$$</p>
-<h4 id="最大熵模型的学习"><a href="#最大熵模型的学习" class="headerlink" title="最大熵模型的学习"></a>最大熵模型的学习</h4><p>logistic回归和最大熵模型都是对数线性模型</p>
+<p>NOTE<br><strong>⛽️条件熵推导：</strong><br>$$<br>\begin {align}<br>H(Y|X)&amp;= \sum_{x\in X}\tilde{P}(x)H(Y|x) \\<br>&amp; = -\sum_{x\in X}\tilde{P}(x)\sum_{y\in Y}P(y|x)logP(y|x) \\<br>&amp; = -\sum_{x\in X,y\in Y}\tilde{P}(x)P(y|x)logP(y|x)<br>\end{align}<br>$$</p>
+<h4 id="最大熵模型的学习"><a href="#最大熵模型的学习" class="headerlink" title="最大熵模型的学习"></a>最大熵模型的学习</h4><p>给定训练集以及特征函数$T={(x_1,y_1),(x_2,y_2),…,(x_N,y_N)}$以及特征函数$f_i(x,y),i=1,2,…,n$，最大熵模型等价于约束最优化问题<br>$$\begin{equation}<br>    \mathop{\arg\max}\quad H(Y|X)=-\sum_{x,y}\tilde{P}(x)P(y|x)logP(y|x) \\<br>   \begin{cases}<br>     s.t.&amp;\quad E_P(f_i)=E_\tilde{P}(f_i),i=1,2,…,n \\<br>                &amp;\quad\sum_{y}P(y|x)=1<br>        \end{cases}<br>\end{equation}$$</p>
+<p><strong>求解过程</strong></p>
+<p>1.把最大值问题等价为求最小值问题</p>
+<p>2.引入拉格朗日将有约束的问题转化为无约束的问题$L(P,w)$</p>
+<p>3.基于构造的拉格朗日等式$L(P,w)$对$P(y|x)$求偏导</p>
+<p>4.求出$P(y|x)$再带入$L(P,w)$对拉格朗日乘子$w$求偏导</p>
+<p>打公式太麻烦，为就直接手写放照片来❤️<br>最大熵公式推导过程<br><img src="/images/pasted-2.png" alt="最大熵公式推导过程"><br>最终得到最大熵模型如下：<br>$$P_w(y|x)=\frac{1}{Z_w(x)}exp(\sum_i^nw_if_i(x,y))$$<br>其中<br>$$Z_w(x)=\sum_{y}exp(\sum_i^nw_if_i(x,y))$$</p>
+<h4 id="极大似然估计"><a href="#极大似然估计" class="headerlink" title="极大似然估计"></a>极大似然估计</h4><p>极大似然是参数估计的一种方式，原理是利用已知样本去推导出最大概率出现该样本的参数。</p>
+<hr>
+<p>理解之后再写入</p>
+<hr>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>logistic回归和最大熵模型都是对数线性模型 它们的学习一般采用极大似然估计或者正则化极大似然估计，逻辑回归和最大熵模型学习可以转化为无约束最优化问题，求解该类最优化算法有改进的迭代尺度法、梯度下降法、拟牛顿法（具体最优化方法再单独介绍）。</p>
 
       
     </div>
@@ -682,7 +695,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -693,7 +706,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -783,7 +796,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑回归"><span class="nav-number">1.</span> <span class="nav-text">逻辑回归</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑分布"><span class="nav-number">1.1.</span> <span class="nav-text">逻辑分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二项逻辑回归-logistic-regression"><span class="nav-number">1.2.</span> <span class="nav-text">二项逻辑回归(logistic regression)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模型参数估计"><span class="nav-number">1.3.</span> <span class="nav-text">模型参数估计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多项逻辑回归"><span class="nav-number">1.4.</span> <span class="nav-text">多项逻辑回归</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现"><span class="nav-number">1.5.</span> <span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最大熵模型"><span class="nav-number">2.</span> <span class="nav-text">最大熵模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#最大熵原理"><span class="nav-number">2.1.</span> <span class="nav-text">最大熵原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最大熵模型定义"><span class="nav-number">2.2.</span> <span class="nav-text">最大熵模型定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最大熵模型的学习"><span class="nav-number">2.3.</span> <span class="nav-text">最大熵模型的学习</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑回归"><span class="nav-number">1.</span> <span class="nav-text">逻辑回归</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑分布"><span class="nav-number">1.1.</span> <span class="nav-text">逻辑分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二项逻辑回归-logistic-regression"><span class="nav-number">1.2.</span> <span class="nav-text">二项逻辑回归(logistic regression)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模型参数估计"><span class="nav-number">1.3.</span> <span class="nav-text">模型参数估计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多项逻辑回归"><span class="nav-number">1.4.</span> <span class="nav-text">多项逻辑回归</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现"><span class="nav-number">1.5.</span> <span class="nav-text">代码实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最大熵模型"><span class="nav-number">2.</span> <span class="nav-text">最大熵模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#最大熵原理"><span class="nav-number">2.1.</span> <span class="nav-text">最大熵原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最大熵模型定义"><span class="nav-number">2.2.</span> <span class="nav-text">最大熵模型定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最大熵模型的学习"><span class="nav-number">2.3.</span> <span class="nav-text">最大熵模型的学习</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#极大似然估计"><span class="nav-number">2.4.</span> <span class="nav-text">极大似然估计</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
