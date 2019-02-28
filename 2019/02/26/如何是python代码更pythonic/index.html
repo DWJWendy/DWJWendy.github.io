@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="毛毛虫_Wendy‘s Blogs">
+  <meta name="keywords" content="python,">
 
 
 
@@ -88,17 +88,18 @@
 
 
 
-<meta name="description" content="Love life, love coding, love freedom">
-<meta name="keywords" content="毛毛虫_Wendy‘blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="毛毛虫_Wendy">
-<meta property="og:url" content="http://yoursite.com/categories/校招/index.html">
+<meta name="description" content="理解python与c语言的不同变量替换 在python中两个变量不需要引入中间替换量，利用python的packing/unpacking机制，替换只需：1a,b= b,a 安全关闭文件描述符需要安全关闭文件，使用with语句： 12with open(path,&apos;r&apos;,mode=&apos;utf-8&apos;) as f:	do_sth_with(f) list倒序排列 12a = [1,2,3]print l">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何是python代码更pythonic">
+<meta property="og:url" content="http://yoursite.com/2019/02/26/如何是python代码更pythonic/index.html">
 <meta property="og:site_name" content="毛毛虫_Wendy">
-<meta property="og:description" content="Love life, love coding, love freedom">
+<meta property="og:description" content="理解python与c语言的不同变量替换 在python中两个变量不需要引入中间替换量，利用python的packing/unpacking机制，替换只需：1a,b= b,a 安全关闭文件描述符需要安全关闭文件，使用with语句： 12with open(path,&apos;r&apos;,mode=&apos;utf-8&apos;) as f:	do_sth_with(f) list倒序排列 12a = [1,2,3]print l">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-02-27T13:31:21.013Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="毛毛虫_Wendy">
-<meta name="twitter:description" content="Love life, love coding, love freedom">
+<meta name="twitter:title" content="如何是python代码更pythonic">
+<meta name="twitter:description" content="理解python与c语言的不同变量替换 在python中两个变量不需要引入中间替换量，利用python的packing/unpacking机制，替换只需：1a,b= b,a 安全关闭文件描述符需要安全关闭文件，使用with语句： 12with open(path,&apos;r&apos;,mode=&apos;utf-8&apos;) as f:	do_sth_with(f) list倒序排列 12a = [1,2,3]print l">
 
 
 
@@ -128,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/校招/">
+  <link rel="canonical" href="http://yoursite.com/2019/02/26/如何是python代码更pythonic/">
 
 
 
 
 
-  <title>分类: 校招 | 毛毛虫_Wendy</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>如何是python代码更pythonic | 毛毛虫_Wendy</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -153,7 +154,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
     <a href="https://github.com/DWJWendy" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -279,53 +280,308 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>校招<small>分类</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/26/如何是python代码更pythonic/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wenjun D(Wendy)">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="毛毛虫_Wendy">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/02/25/剑指offer编程题/" itemprop="url">
-              
-                <span itemprop="name">剑指offer编程题</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">如何是python代码更pythonic</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-25T19:38:00+08:00" content="2019-02-25">
-          02-25
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-26T20:44:00+08:00">
+                2019-02-26
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/book/" itemprop="url" rel="index">
+                    <span itemprop="name">book</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/26/如何是python代码更pythonic/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/26/如何是python代码更pythonic/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/02/26/如何是python代码更pythonic/" class="leancloud_visitors" data-flag-title="如何是python代码更pythonic">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  407 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="理解python与c语言的不同"><a href="#理解python与c语言的不同" class="headerlink" title="理解python与c语言的不同"></a>理解python与c语言的不同</h4><p><strong>变量替换</strong></p>
+<p>在python中两个变量不需要引入中间替换量，利用python的packing/unpacking机制，替换只需：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">a</span>,b= <span class="selector-tag">b</span>,a</span><br></pre></td></tr></table></figure></p>
+<p><strong>安全关闭文件描述符</strong><br>需要安全关闭文件，使用with语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="keyword">open</span>(<span class="keyword">path</span>,<span class="string">'r'</span>,<span class="keyword">mode</span>=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">	do_sth_with(f)</span><br></pre></td></tr></table></figure>
+<p><strong>list倒序排列</strong></p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">print <span class="type">list</span>(reversed(a))</span><br></pre></td></tr></table></figure>
+<p><strong>字符串格式化法</strong><br>使用str.format()</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span> <span class="string">'&#123;great&#125; from &#123;language&#125;'</span>.<span class="built_in">format</span>&#123;great=<span class="string">'hello world'</span>,language=<span class="string">'python'</span>&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>flask框架的学习</strong></p>
+<p><strong>检查程序PEP8的使用</strong></p>
+<figure class="highlight nsis"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#安装</span></span><br><span class="line"><span class="variable">$pip</span> install -U pep8</span><br><span class="line"><span class="comment">#检查代码</span></span><br><span class="line"><span class="variable">$pep8</span> --文件名.py</span><br><span class="line"><span class="comment">#使用--show-source参数让PEP8显示每个错误和警告对应的代码</span></span><br><span class="line"><span class="variable">$pep8</span> --<span class="literal">show</span>-source --<span class="literal">show</span>-pep8 name.py</span><br><span class="line"><span class="comment">#甚至可以检查一个项目的质量，并生成报表</span></span><br></pre></td></tr></table></figure>
+<p><strong>缩进、{}、单引号和双引号</strong></p>
+<p>与c/c++/java使用{}来分割代码不同，python中使用严格的代码缩进方式分割代码块。python 中单引号和双引号没有明显区别，而使用上有小区别。<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">string_1</span> = <span class="string">"He said, \"hello\""</span></span><br><span class="line"><span class="attr">string_2</span> = <span class="string">'He said, "hello"'</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>三元操作符</strong></p>
+<p>python2.5之前不支持三元操作符<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#三元操作符写法</span></span><br><span class="line">X <span class="keyword">if</span> C <span class="keyword">else</span> Y</span><br><span class="line"><span class="builtin-name">print</span> x <span class="keyword">if</span> x&lt;y <span class="keyword">else</span> y</span><br></pre></td></tr></table></figure></p>
+<p><strong>没有swith…case</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> **：</span><br><span class="line"><span class="keyword">elif</span> **：</span><br><span class="line"><span class="keyword">elif</span> **：</span><br><span class="line"><span class="keyword">else</span>：</span><br></pre></td></tr></table></figure>
+<p><strong>将常量集中到一个文件</strong><br>提倡把常量放在一个文件里，这样有利于维护，一旦需要修改常量值可以直接修改</p>
+<p><strong>利用assert语句来发现问题</strong></p>
+<p><strong>充分利用lazy evaluation的特性</strong><br>常被翻译为延迟计算或者懒性计算，指仅仅在真正需要执行的时候才计算的表达式</p>
 
       
     </div>
+    
+    
+    
+      
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+  
+</div>
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.jpg" alt="Wenjun D(Wendy) wechat" style="width: 200px; max-width: 100%;">
+    <div>长得好看的都关注了哟</div>
+</div>
 
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.png" alt="Wenjun D(Wendy) 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Wenjun D(Wendy) 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Wenjun D(Wendy)
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2019/02/26/如何是python代码更pythonic/" title="如何是python代码更pythonic">http://yoursite.com/2019/02/26/如何是python代码更pythonic/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+    <div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"><i class="fa fa-tag"></i> python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/25/logistics回归和最大熵模型/" rel="next" title="逻辑回归和最大熵模型">
+                <i class="fa fa-chevron-left"></i> 逻辑回归和最大熵模型
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/28/决策树的理解/" rel="prev" title="决策树的理解与应用">
+                决策树的理解与应用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -333,6 +589,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -353,8 +616,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -371,7 +643,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -393,7 +665,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -473,6 +745,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#理解python与c语言的不同"><span class="nav-number">1.</span> <span class="nav-text">理解python与c语言的不同</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -610,6 +898,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
