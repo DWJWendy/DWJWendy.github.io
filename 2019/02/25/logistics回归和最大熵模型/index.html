@@ -88,20 +88,20 @@
 
 
 
-<meta name="description" content="逻辑回归 逻辑分布 在介绍逻辑回归之前，我先简单介绍一些logistic分布，在此之前，我只当其为一个简单的函数。 logistic分布 定义： 假设$X$为连续随机变量，$X$服从logistic分布，则$X$的分布函数和密度函数分别如下： $$F(x)=P(X \leq x)=\frac{1}{1+e^{-(x-\mu)/\gamma}}$$ $$f(x)=F’(x)=\frac{e{-(x-">
+<meta name="description" content="逻辑回归逻辑分布在介绍逻辑回归之前，我先简单介绍一些logistic分布，在此之前，我只当其为一个简单的函数。 logistic分布定义： 假设$X$为连续随机变量，$X$服从logistic分布，则$X$的分布函数和密度函数分别如下：$$F(x)=P(X \leq x)=\frac{1}{1+e^{-(x-\mu)/\gamma}}$$ $$f(x)=F’(x)=\frac{e^{-(x-\mu">
 <meta name="keywords" content="python,ML,logistic 回归,最大熵模型">
 <meta property="og:type" content="article">
 <meta property="og:title" content="逻辑回归和最大熵模型">
 <meta property="og:url" content="http://yoursite.com/2019/02/25/logistics回归和最大熵模型/index.html">
 <meta property="og:site_name" content="毛毛虫_Wendy">
-<meta property="og:description" content="逻辑回归 逻辑分布 在介绍逻辑回归之前，我先简单介绍一些logistic分布，在此之前，我只当其为一个简单的函数。 logistic分布 定义： 假设$X$为连续随机变量，$X$服从logistic分布，则$X$的分布函数和密度函数分别如下： $$F(x)=P(X \leq x)=\frac{1}{1+e^{-(x-\mu)/\gamma}}$$ $$f(x)=F’(x)=\frac{e{-(x-">
+<meta property="og:description" content="逻辑回归逻辑分布在介绍逻辑回归之前，我先简单介绍一些logistic分布，在此之前，我只当其为一个简单的函数。 logistic分布定义： 假设$X$为连续随机变量，$X$服从logistic分布，则$X$的分布函数和密度函数分别如下：$$F(x)=P(X \leq x)=\frac{1}{1+e^{-(x-\mu)/\gamma}}$$ $$f(x)=F’(x)=\frac{e^{-(x-\mu">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/pasted-0.png">
 <meta property="og:image" content="http://yoursite.com/images/pasted-2.png">
 <meta property="og:updated_time" content="2019-02-27T07:12:10.854Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="逻辑回归和最大熵模型">
-<meta name="twitter:description" content="逻辑回归 逻辑分布 在介绍逻辑回归之前，我先简单介绍一些logistic分布，在此之前，我只当其为一个简单的函数。 logistic分布 定义： 假设$X$为连续随机变量，$X$服从logistic分布，则$X$的分布函数和密度函数分别如下： $$F(x)=P(X \leq x)=\frac{1}{1+e^{-(x-\mu)/\gamma}}$$ $$f(x)=F’(x)=\frac{e{-(x-">
+<meta name="twitter:description" content="逻辑回归逻辑分布在介绍逻辑回归之前，我先简单介绍一些logistic分布，在此之前，我只当其为一个简单的函数。 logistic分布定义： 假设$X$为连续随机变量，$X$服从logistic分布，则$X$的分布函数和密度函数分别如下：$$F(x)=P(X \leq x)=\frac{1}{1+e^{-(x-\mu)/\gamma}}$$ $$f(x)=F’(x)=\frac{e^{-(x-\mu">
 <meta name="twitter:image" content="http://yoursite.com/images/pasted-0.png">
 
 
@@ -439,76 +439,35 @@
       
 
       
-        <h3 id="逻辑回归"><a class="header-anchor" href="#逻辑回归"></a>逻辑回归</h3>
-<h4 id="逻辑分布"><a class="header-anchor" href="#逻辑分布"></a>逻辑分布</h4>
-<p>在介绍逻辑回归之前，我先简单介绍一些logistic分布，在此之前，我只当其为一个简单的函数。</p>
-<p><strong>logistic分布</strong><br>
-定义： 假设$X$为连续随机变量，$X$服从logistic分布，则$X$的分布函数和密度函数分别如下：<br>
-$$F(x)=P(X \leq x)=\frac{1}{1+e^{-(x-\mu)/\gamma}}$$</p>
-<p>$$f(x)=F’(x)=\frac{e<sup>{-(x-\mu)/\gamma}}{\gamma(1+e</sup>{(x-\mu)/\gamma})}$$<br>
-其中$\mu$为位置参数，$\gamma&gt;0$为形状参数，$\gamma$值越小，曲线在中心附近增长越快</p>
-<p>对应的密度函数和分布函数的图如下：<br>
-<img src="/images/pasted-0.png" alt="upload successful"></p>
-<p>分布函数又叫logistic函数，由上图可以看到，它是呈现S型，该曲线以点$(\mu,\frac{1}{2})$为中心对称，满足<br>
-$$F(-x+\mu)-\frac{1}{2}=-F(x+\mu)+\frac{1}{2}$$<br>
-而标准的logistic函数，即当$\mu=0$，$\gamma=1$时就是我们常用的sigmoid函数，也是常用于神经网络中激活函数<br>
-且sigmoid函数的有一个非常好的特点，如下👌<br>
-$$f(x)=\frac{1}{1+e^{(-x)}}$$<br>
-$$f’(x) = f(x)(1-f(x))$$</p>
+        <h3 id="逻辑回归"><a href="#逻辑回归" class="headerlink" title="逻辑回归"></a>逻辑回归</h3><h4 id="逻辑分布"><a href="#逻辑分布" class="headerlink" title="逻辑分布"></a>逻辑分布</h4><p>在介绍逻辑回归之前，我先简单介绍一些logistic分布，在此之前，我只当其为一个简单的函数。</p>
+<p><strong>logistic分布</strong><br>定义： 假设$X$为连续随机变量，$X$服从logistic分布，则$X$的分布函数和密度函数分别如下：<br>$$F(x)=P(X \leq x)=\frac{1}{1+e^{-(x-\mu)/\gamma}}$$</p>
+<p>$$f(x)=F’(x)=\frac{e^{-(x-\mu)/\gamma}}{\gamma(1+e^{(x-\mu)/\gamma})}$$<br>其中$\mu$为位置参数，$\gamma&gt;0$为形状参数，$\gamma$值越小，曲线在中心附近增长越快</p>
+<p>对应的密度函数和分布函数的图如下：<br><img src="/images/pasted-0.png" alt="upload successful"></p>
+<p>分布函数又叫logistic函数，由上图可以看到，它是呈现S型，该曲线以点$(\mu,\frac{1}{2})$为中心对称，满足<br>$$F(-x+\mu)-\frac{1}{2}=-F(x+\mu)+\frac{1}{2}$$<br>而标准的logistic函数，即当$\mu=0$，$\gamma=1$时就是我们常用的sigmoid函数，也是常用于神经网络中激活函数<br>且sigmoid函数的有一个非常好的特点，如下👌<br>$$f(x)=\frac{1}{1+e^{(-x)}}$$<br>$$f’(x) = f(x)(1-f(x))$$</p>
 <hr>
-<h4 id="二项逻辑回归-logistic-regression"><a class="header-anchor" href="#二项逻辑回归-logistic-regression"></a>二项逻辑回归(logistic regression)</h4>
-<p>逻辑回归是在线性模型的基础上增加了sigmoid函数，而Sigmoid函数引入了非线性因素，使得逻辑回归可以轻松处理0/1分类问题。<br>
-对于二项逻辑回归模型有如下的条件概率：<br>
-$$ P(y<sup>{(i)}=1|x</sup>{(i)})= \frac{1}{1+e<sup>{-w</sup>Tx<sup>{(i)}}}=\frac{e</sup>{w<sup>Tx</sup>{(i)}}}{1+e<sup>{w</sup>Tx^{(i)}}}$$<br>
-$$ P(y<sup>{(i)}=0|x</sup>{(i)})= 1- P(y<sup>{(i)}=1|x</sup>{(i)})=\frac{1}{1+e<sup>{w</sup>Tx^{(i)}}} $$<br>
-二项逻辑回归用于0/1分类问题是使用的损失函数为对数损失函数，即<br>
-$$L(y_i,f(x_i))=-log p(y_i|x_i)$$<br>
-那么最终的代价函数如下：<br>
-$$L(w,x)=-\frac{1}{N}\sum_{i=1}^N \lbrace y<sup>{(i)}logp(y</sup>{(i)}=1|w,x<sup>{(i)})+(1-y</sup>{(i)})logp(y<sup>{(i)}=0|w,x</sup>{(i)})\rbrace<br>
-$$</p>
-<p>在<a href="%22http://mmcwendy.info/2019/02/25/%E8%AF%A6%E8%BF%B0%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9A%84%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/%22">《详述机器学习中的损失函数》</a>有详细举例介绍逻辑回归的推导过程。</p>
-<p>NOTE:<br>
-<strong>二项逻辑回归假设因变量$Y$为伯努力分布，而线性模型假设因变量服从高斯分布</strong></p>
+<h4 id="二项逻辑回归-logistic-regression"><a href="#二项逻辑回归-logistic-regression" class="headerlink" title="二项逻辑回归(logistic regression)"></a>二项逻辑回归(logistic regression)</h4><p>逻辑回归是在线性模型的基础上增加了sigmoid函数，而Sigmoid函数引入了非线性因素，使得逻辑回归可以轻松处理0/1分类问题。<br>对于二项逻辑回归模型有如下的条件概率：<br>$$ P(y^{(i)}=1|x^{(i)})= \frac{1}{1+e^{-w^Tx^{(i)}}}=\frac{e^{w^Tx^{(i)}}}{1+e^{w^Tx^{(i)}}}$$<br>$$ P(y^{(i)}=0|x^{(i)})= 1- P(y^{(i)}=1|x^{(i)})=\frac{1}{1+e^{w^Tx^{(i)}}} $$<br>二项逻辑回归用于0/1分类问题是使用的损失函数为对数损失函数，即<br>$$L(y_i,f(x_i))=-log p(y_i|x_i)$$<br>那么最终的代价函数如下：<br>$$L(w,x)=-\frac{1}{N}\sum_{i=1}^N \lbrace y^{(i)}logp(y^{(i)}=1|w,x^{(i)})+(1-y^{(i)})logp(y^{(i)}=0|w,x^{(i)})\rbrace<br>$$</p>
+<p>在<a href="&quot;http://mmcwendy.info/2019/02/25/详述机器学习中的损失函数/&quot;">《详述机器学习中的损失函数》</a>有详细举例介绍逻辑回归的推导过程。</p>
+<p>NOTE:<br><strong>二项逻辑回归假设因变量$Y$为伯努力分布，而线性模型假设因变量服从高斯分布</strong></p>
 <hr>
-<h4 id="模型参数估计"><a class="header-anchor" href="#模型参数估计"></a>模型参数估计</h4>
-<p><strong>用极大似然估计模型参数👀</strong><br>
-对于二项逻辑回归模型，假定概率分布服从伯努利分布【0-1分布】，其概率质量函数PMF为:$f(x)=p<sup>x(1-p)</sup>{(1-x)}$，其中$x$只能取0或者1，那么二项逻辑回归的似然函数可以表示:为$$L(w)=\prod_{i=1}<sup>Np(y</sup>{(i)}）=1|w,x<sup>{(i)})</sup>{y<sup>{(i)}}p(y</sup>{(i)}=0|w,x<sup>{(i)})</sup>{1-y^{(i)}}$$</p>
-<p>那么对上式取对数，得到对数似然函数为:<br>
-$$logL(w)=\sum_{i=1}<sup>Ny</sup>{(i)}logp(y<sup>{(i)}=1|w,x</sup>{(i)})+（1-y<sup>{(i)})logp(y</sup>{(i)}=0|w,x^{(i)})$$</p>
-<p>则全体样本的代价函数为:<br>
-$$logL(w)=-\sum_{i=1}^N\lbrace y<sup>{(i)}logp(y</sup>{(i)}=1|w,x<sup>{(i)})+（1-y</sup>{(i)})logp(y<sup>{(i)}=0|w,x</sup>{(i)})\rbrace$$</p>
+<h4 id="模型参数估计"><a href="#模型参数估计" class="headerlink" title="模型参数估计"></a>模型参数估计</h4><p><strong>用极大似然估计模型参数👀</strong><br>对于二项逻辑回归模型，假定概率分布服从伯努利分布【0-1分布】，其概率质量函数PMF为:$f(x)=p^x(1-p)^{(1-x)}$，其中$x$只能取0或者1，那么二项逻辑回归的似然函数可以表示:为$$L(w)=\prod_{i=1}^Np(y^{(i)}）=1|w,x^{(i)})^{y^{(i)}}p(y^{(i)}=0|w,x^{(i)})^{1-y^{(i)}}$$</p>
+<p>那么对上式取对数，得到对数似然函数为:<br>$$logL(w)=\sum_{i=1}^Ny^{(i)}logp(y^{(i)}=1|w,x^{(i)})+（1-y^{(i)})logp(y^{(i)}=0|w,x^{(i)})$$</p>
+<p>则全体样本的代价函数为:<br>$$logL(w)=-\sum_{i=1}^N\lbrace y^{(i)}logp(y^{(i)}=1|w,x^{(i)})+（1-y^{(i)})logp(y^{(i)}=0|w,x^{(i)})\rbrace$$</p>
 <p>因此，也可以从因变量$Y$为伯努力分布去理解二项逻辑回归的代价函数。那么对$w$的参数估计就变成了对代价函数求极小值，得到$w$的估计值，<strong>通常采用牛顿法和梯度下降法求解$w$</strong></p>
 <hr>
-<h4 id="多项逻辑回归"><a class="header-anchor" href="#多项逻辑回归"></a>多项逻辑回归</h4>
-<p>二项逻辑回归用于二分类，当然可以对其进行推广，用于多分类，对应的模型叫做多项逻辑回归模型(multi-nominal logistic regression model)</p>
-<p>假设变量$Y$取值为${1,2,…,K}$,那么多项逻辑回归模型如下：<br>
-$$P(Y=k|x)=\frac{e<sup>{w</sup>Tx}}{1+\sum_{k=1}<sup>{K-1}e</sup>{w^Tx}},k=1,2,…,K-1$$<br>
-$$P(Y=K|x)=\frac{1}{1+\sum_{k=1}<sup>{K-1}e</sup>{w^Tx}}$$</p>
+<h4 id="多项逻辑回归"><a href="#多项逻辑回归" class="headerlink" title="多项逻辑回归"></a>多项逻辑回归</h4><p>二项逻辑回归用于二分类，当然可以对其进行推广，用于多分类，对应的模型叫做多项逻辑回归模型(multi-nominal logistic regression model)</p>
+<p>假设变量$Y$取值为${1,2,…,K}$,那么多项逻辑回归模型如下：<br>$$P(Y=k|x)=\frac{e^{w^Tx}}{1+\sum_{k=1}^{K-1}e^{w^Tx}},k=1,2,…,K-1$$<br>$$P(Y=K|x)=\frac{1}{1+\sum_{k=1}^{K-1}e^{w^Tx}}$$</p>
 <p>而二项逻辑回归的方法也可以用于多项式逻辑回归</p>
-<h4 id="代码实现"><a class="header-anchor" href="#代码实现"></a>代码实现</h4>
-<hr>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><hr>
 <p>整理后再写入</p>
 <hr>
-<h3 id="最大熵模型"><a class="header-anchor" href="#最大熵模型"></a>最大熵模型</h3>
-<h4 id="最大熵原理"><a class="header-anchor" href="#最大熵原理"></a>最大熵原理</h4>
-<p>最大熵模型是概率模型学习的一个准则，学习概率模型时，在所有可能的概率模型(分布)中，熵最大的模型是最好的模型，通常用约束条件来确定概率模型的集合，所以，<strong>最大熵原理可以表述为在满足约束条件的模型集合中选择熵最大的模型</strong></p>
+<h3 id="最大熵模型"><a href="#最大熵模型" class="headerlink" title="最大熵模型"></a>最大熵模型</h3><h4 id="最大熵原理"><a href="#最大熵原理" class="headerlink" title="最大熵原理"></a>最大熵原理</h4><p>最大熵模型是概率模型学习的一个准则，学习概率模型时，在所有可能的概率模型(分布)中，熵最大的模型是最好的模型，通常用约束条件来确定概率模型的集合，所以，<strong>最大熵原理可以表述为在满足约束条件的模型集合中选择熵最大的模型</strong></p>
 <p>熵是由信息论男神克劳德·艾尔伍德·香农（Claude Elwood Shannon ）在1948年提出的“信息熵“，用来描述信息的不确定程度，<strong>熵越大，不确定程度越大，而系统的混乱程度越低</strong>，熵的单位通常为比特。</p>
-<p>假设离散随机变量$X$的概率分布是 $P(X)$,其熵是<br>
-$$H§=-\sum_xP(x)logP(x)$$</p>
-<p>且熵满足不等式$0\leq H§\leq log|X|$,$|X|$是$X$的取值个数，当且仅当$X$为均匀分布时，右边等号成立，即$X$服从均匀分布时，熵最大。当我们需要对一个事件的概率分布进行预测时，最大熵原理告诉我们所有的预测应当满足全部已知的条件，<strong>而对未知的情况不要做任何主观假设</strong>（不做主观假设这点很重要）。也就是让概率分布最均匀，预测的风险最小</p>
-<h4 id="最大熵模型定义"><a class="header-anchor" href="#最大熵模型定义"></a>最大熵模型定义</h4>
-<p>假设分类模型是一个条件概率分布$P(Y|X)$，$X$表示输入，$Y$表示输出，这个分类模型表示，给定一个输入$X$，以条件概率$P(Y|X)$输出$Y$。<br>
-给定训练集$T={(x_1,y_1),(x_2,y_2),…,(x_N,y_N)}$<br>
-对于给定的训练集可以确定联合分布$P(X,Y)$以及边缘分布$P(X)$的经验分布，确定方法都是通过频数(v)/样本总数(N)，即</p>
+<p>假设离散随机变量$X$的概率分布是 $P(X)$,其熵是<br>$$H(P)=-\sum_xP(x)logP(x)$$</p>
+<p>且熵满足不等式$0\leq H(P)\leq log|X|$,$|X|$是$X$的取值个数，当且仅当$X$为均匀分布时，右边等号成立，即$X$服从均匀分布时，熵最大。当我们需要对一个事件的概率分布进行预测时，最大熵原理告诉我们所有的预测应当满足全部已知的条件，<strong>而对未知的情况不要做任何主观假设</strong>（不做主观假设这点很重要）。也就是让概率分布最均匀，预测的风险最小</p>
+<h4 id="最大熵模型定义"><a href="#最大熵模型定义" class="headerlink" title="最大熵模型定义"></a>最大熵模型定义</h4><p>假设分类模型是一个条件概率分布$P(Y|X)$，$X$表示输入，$Y$表示输出，这个分类模型表示，给定一个输入$X$，以条件概率$P(Y|X)$输出$Y$。<br>给定训练集$T={(x_1,y_1),(x_2,y_2),…,(x_N,y_N)}$<br>对于给定的训练集可以确定联合分布$P(X,Y)$以及边缘分布$P(X)$的经验分布，确定方法都是通过频数(v)/样本总数(N)，即</p>
 <p>$$\tilde{P}(X=x,Y=y)=\frac{v(X=x,Y=y)}{N}$$</p>
 <p>$$\tilde{P}(X=x)=\frac{v(X=x)}{N}$$</p>
-<p>特征函数$f(x,y)$表示输入与输出之间的关系<br>
-$$<br>
-f(x,y) =<br>
-\begin{cases}<br>
-1,  &amp; \text{x与y满足某种关系} \<br>
-0, &amp; \text{else}<br>
-\end{cases} $$</p>
+<p>特征函数$f(x,y)$表示输入与输出之间的关系<br>$$<br>f(x,y) =<br>\begin{cases}<br>1,  &amp; \text{x与y满足某种关系} \\<br>0, &amp; \text{else}<br>\end{cases} $$</p>
 <p>那么特征函数$f(x,y)$关于训练集联合分布的期望值，用$E_\tilde{P}(f)$表示为：</p>
 <p>$$E_\tilde{P}(f)=\sum_{x,y}\tilde{P}(x,y)f(x,y)$$</p>
 <p>而特征函数$f(x,y)$关于模型$P(Y|X)$与经验分布$\tilde{P}(X)$的期望表示为：</p>
@@ -518,46 +477,20 @@ f(x,y) =<br>
 <p><strong>最大熵模型</strong></p>
 <p>假设满足所有约束条件的模型集合为</p>
 <p>$$C=\lbrace P\in\rho|E_P(f_i)=E_\tilde{P}(f_i),i=1,2,…,n\rbrace$$</p>
-<p>定义在条件概率分布$P(Y|X)$的条件熵为：<br>
-$$H(Y|X)=-\sum_{x,y}\tilde{P}(x)P(y|x)logP(y|x)$$<br>
-则模型$C$中条件熵$H(Y|X)$最大的模型称为最大熵模型</p>
-<p>NOTE<br>
-<strong>⛽️条件熵推导：</strong><br>
-$$<br>
-\begin {align}<br>
-H(Y|X)&amp;= \sum_{x\in X}\tilde{P}(x)H(Y|x) \<br>
-&amp; = -\sum_{x\in X}\tilde{P}(x)\sum_{y\in Y}P(y|x)logP(y|x) \<br>
-&amp; = -\sum_{x\in X,y\in Y}\tilde{P}(x)P(y|x)logP(y|x)<br>
-\end{align}<br>
-$$</p>
-<h4 id="最大熵模型的学习"><a class="header-anchor" href="#最大熵模型的学习"></a>最大熵模型的学习</h4>
-<p>给定训练集以及特征函数$T={(x_1,y_1),(x_2,y_2),…,(x_N,y_N)}$以及特征函数$f_i(x,y),i=1,2,…,n$，最大熵模型等价于约束最优化问题<br>
-$$\begin{equation}<br>
-	\mathop{\arg\max}\quad H(Y|X)=-\sum_{x,y}\tilde{P}(x)P(y|x)logP(y|x) \<br>
-\begin{cases}<br>
-s.t.&amp;\quad E_P(f_i)=E_\tilde{P}(f_i),i=1,2,…,n \<br>
-&amp;\quad\sum_{y}P(y|x)=1<br>
-\end{cases}<br>
-\end{equation}$$</p>
+<p>定义在条件概率分布$P(Y|X)$的条件熵为：<br>$$H(Y|X)=-\sum_{x,y}\tilde{P}(x)P(y|x)logP(y|x)$$<br>则模型$C$中条件熵$H(Y|X)$最大的模型称为最大熵模型</p>
+<p>NOTE<br><strong>⛽️条件熵推导：</strong><br>$$<br>\begin {align}<br>H(Y|X)&amp;= \sum_{x\in X}\tilde{P}(x)H(Y|x) \\<br>&amp; = -\sum_{x\in X}\tilde{P}(x)\sum_{y\in Y}P(y|x)logP(y|x) \\<br>&amp; = -\sum_{x\in X,y\in Y}\tilde{P}(x)P(y|x)logP(y|x)<br>\end{align}<br>$$</p>
+<h4 id="最大熵模型的学习"><a href="#最大熵模型的学习" class="headerlink" title="最大熵模型的学习"></a>最大熵模型的学习</h4><p>给定训练集以及特征函数$T={(x_1,y_1),(x_2,y_2),…,(x_N,y_N)}$以及特征函数$f_i(x,y),i=1,2,…,n$，最大熵模型等价于约束最优化问题<br>$$\begin{equation}<br>    \mathop{\arg\max}\quad H(Y|X)=-\sum_{x,y}\tilde{P}(x)P(y|x)logP(y|x) \\<br>   \begin{cases}<br>     s.t.&amp;\quad E_P(f_i)=E_\tilde{P}(f_i),i=1,2,…,n \\<br>                &amp;\quad\sum_{y}P(y|x)=1<br>        \end{cases}<br>\end{equation}$$</p>
 <p><strong>求解过程</strong></p>
 <p>1.把最大值问题等价为求最小值问题</p>
 <p>2.引入拉格朗日将有约束的问题转化为无约束的问题$L(P,w)$</p>
 <p>3.基于构造的拉格朗日等式$L(P,w)$对$P(y|x)$求偏导</p>
 <p>4.求出$P(y|x)$再带入$L(P,w)$对拉格朗日乘子$w$求偏导</p>
-<p>打公式太麻烦，为就直接手写放照片来❤️<br>
-最大熵公式推导过程<br>
-<img src="/images/pasted-2.png" alt="最大熵公式推导过程"><br>
-最终得到最大熵模型如下：<br>
-$$P_w(y|x)=\frac{1}{Z_w(x)}exp(\sum_i^nw_if_i(x,y))$$<br>
-其中<br>
-$$Z_w(x)=\sum_{y}exp(\sum_i^nw_if_i(x,y))$$</p>
-<h4 id="极大似然估计"><a class="header-anchor" href="#极大似然估计"></a>极大似然估计</h4>
-<p>极大似然是参数估计的一种方式，原理是利用已知样本去推导出最大概率出现该样本的参数。</p>
+<p>打公式太麻烦，为就直接手写放照片来❤️<br>最大熵公式推导过程<br><img src="/images/pasted-2.png" alt="最大熵公式推导过程"><br>最终得到最大熵模型如下：<br>$$P_w(y|x)=\frac{1}{Z_w(x)}exp(\sum_i^nw_if_i(x,y))$$<br>其中<br>$$Z_w(x)=\sum_{y}exp(\sum_i^nw_if_i(x,y))$$</p>
+<h4 id="极大似然估计"><a href="#极大似然估计" class="headerlink" title="极大似然估计"></a>极大似然估计</h4><p>极大似然是参数估计的一种方式，原理是利用已知样本去推导出最大概率出现该样本的参数。</p>
 <hr>
 <p>理解之后再写入</p>
 <hr>
-<h3 id="总结"><a class="header-anchor" href="#总结"></a>总结</h3>
-<p>logistic回归和最大熵模型都是对数线性模型 它们的学习一般采用极大似然估计或者正则化极大似然估计，逻辑回归和最大熵模型学习可以转化为无约束最优化问题，求解该类最优化算法有改进的迭代尺度法、梯度下降法、拟牛顿法（具体最优化方法再单独介绍）。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>logistic回归和最大熵模型都是对数线性模型 它们的学习一般采用极大似然估计或者正则化极大似然估计，逻辑回归和最大熵模型学习可以转化为无约束最优化问题，求解该类最优化算法有改进的迭代尺度法、梯度下降法、拟牛顿法（具体最优化方法再单独介绍）。</p>
 
       
     </div>
