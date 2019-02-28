@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="毛毛虫_Wendy">
 <meta property="og:description" content="背景 决策树🌲是一种基本的分类和回归的方法【以前总是下意识以为决策树只能用于分类，事实上还可以用于回归】。在分类问题中，决策树基于特征对实例进行分类，这个分类过程可以认为是if-then的规则集合，也可以认为是特征空间与类空间上的条件概率分布。 NOTE: if—then规则集合具有一个重要的特征：互斥且完备，即每个实例都被一条路径或者一条规则所覆盖，而且只能被一条路径或一条规则所覆盖 优点：简">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-28T08:42:11.228Z">
+<meta property="og:updated_time" content="2019-02-28T08:49:16.960Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="决策树的理解与应用">
 <meta name="twitter:description" content="背景 决策树🌲是一种基本的分类和回归的方法【以前总是下意识以为决策树只能用于分类，事实上还可以用于回归】。在分类问题中，决策树基于特征对实例进行分类，这个分类过程可以认为是if-then的规则集合，也可以认为是特征空间与类空间上的条件概率分布。 NOTE: if—then规则集合具有一个重要的特征：互斥且完备，即每个实例都被一条路径或者一条规则所覆盖，而且只能被一条路径或一条规则所覆盖 优点：简">
@@ -479,7 +479,7 @@ INPUT:训练数据集$D$和特征$A$<br>
 OUTPUT:特征$A$对训练数据$D$的信息增益$g(D,A)$<br>
 #计算数据集$D$的经验熵<br>
 $$H(D)=-\sum_{k=1}^{K}\frac{|C_k|}{|D|}log_2\frac{|C_k|}{|D|}$$<br>
-#计算特征$A$对训练数据$D$的经验条件熵$H(D|A)$<br>
+#计算特征$A$对训练数据$D$的经验条件熵$H(D|A)$：<br>
 $$H(D|A)=\sum_{i=1}<sup>{n}\frac{|D_i|}{|D|}H(D_i)=-\sum_{i=1}</sup>{n}\frac{|D_i|}{|D|}\sum_{k=1}^{K}\frac{|D_{ik}|}{|D_i|}log_2\frac{|D_{ik}|}{|D_i|}$$<br>
 #计算信息增益<br>
 $$g(D,A)=H(D)-H(D|A)$$</p>
