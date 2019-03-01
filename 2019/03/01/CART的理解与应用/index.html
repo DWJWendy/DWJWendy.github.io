@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="毛毛虫_Wendy‘s Blogs">
+  <meta name="keywords" content="ML,决策树,CART,基尼指数,平方和误差,">
 
 
 
@@ -88,19 +88,19 @@
 
 
 
-<meta name="description" content="本博客接上一篇博客《决策树的理解与运用》。 背景分类与回归树(Classification AND Regression tree,CART)同样是由特征选择、树的生成和剪枝三部分组成，它的特点是既可以用于分类又可以用于回归。 CART是在给定输入随机变量为$X$条件下输出随机变量Y的条件概率分布的学习方法，假设决策树为二叉树，内部结点取值为“是”or“否”【左是右否】。决策树等价于递归地二分每">
-<meta name="keywords" content="毛毛虫_Wendy‘blog">
+<meta name="description" content="本博客接上一篇博客《决策树的理解与运用》。 背景分类与回归树(Classification AND Regression tree,CART)同样是由特征选择、树的生成和剪枝三部分组成，它的特点是既可以用于分类又可以用于回归。 CART是在给定输入随机变量为$X$条件下输出随机变量Y的条件概率分布的学习方法，假设决策树为二叉树，内部结点取值为“是”or“否”【左是右否】。决策树等价于递归地二分每个">
+<meta name="keywords" content="ML,决策树,CART,基尼指数,平方和误差">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CART的理解与应用">
 <meta property="og:url" content="http://yoursite.com/2019/03/01/CART的理解与应用/index.html">
 <meta property="og:site_name" content="毛毛虫_Wendy">
-<meta property="og:description" content="本博客接上一篇博客《决策树的理解与运用》。 背景分类与回归树(Classification AND Regression tree,CART)同样是由特征选择、树的生成和剪枝三部分组成，它的特点是既可以用于分类又可以用于回归。 CART是在给定输入随机变量为$X$条件下输出随机变量Y的条件概率分布的学习方法，假设决策树为二叉树，内部结点取值为“是”or“否”【左是右否】。决策树等价于递归地二分每">
+<meta property="og:description" content="本博客接上一篇博客《决策树的理解与运用》。 背景分类与回归树(Classification AND Regression tree,CART)同样是由特征选择、树的生成和剪枝三部分组成，它的特点是既可以用于分类又可以用于回归。 CART是在给定输入随机变量为$X$条件下输出随机变量Y的条件概率分布的学习方法，假设决策树为二叉树，内部结点取值为“是”or“否”【左是右否】。决策树等价于递归地二分每个">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/pasted-8.png">
-<meta property="og:updated_time" content="2019-03-01T08:54:08.392Z">
+<meta property="og:updated_time" content="2019-03-01T12:37:58.784Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CART的理解与应用">
-<meta name="twitter:description" content="本博客接上一篇博客《决策树的理解与运用》。 背景分类与回归树(Classification AND Regression tree,CART)同样是由特征选择、树的生成和剪枝三部分组成，它的特点是既可以用于分类又可以用于回归。 CART是在给定输入随机变量为$X$条件下输出随机变量Y的条件概率分布的学习方法，假设决策树为二叉树，内部结点取值为“是”or“否”【左是右否】。决策树等价于递归地二分每">
+<meta name="twitter:description" content="本博客接上一篇博客《决策树的理解与运用》。 背景分类与回归树(Classification AND Regression tree,CART)同样是由特征选择、树的生成和剪枝三部分组成，它的特点是既可以用于分类又可以用于回归。 CART是在给定输入随机变量为$X$条件下输出随机变量Y的条件概率分布的学习方法，假设决策树为二叉树，内部结点取值为“是”or“否”【左是右否】。决策树等价于递归地二分每个">
 <meta name="twitter:image" content="http://yoursite.com/images/pasted-8.png">
 
 
@@ -325,7 +325,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-01T16:27:24+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-01T16:27:00+08:00">
                 2019-03-01
               </time>
             
@@ -335,6 +335,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/统计机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">统计机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -379,7 +401,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1k 字
+                  2.3k 字
                 </span>
               
 
@@ -395,7 +417,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4 分钟
+                  9 分钟
                 </span>
               
             </div>
@@ -416,7 +438,7 @@
       
 
       
-        <p> 本博客接上一篇博客《决策树的理解与运用》。</p>
+        <p>本博客接上一篇博客《决策树的理解与运用》。</p>
 <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><p>分类与回归树(Classification AND Regression tree,CART)同样是由特征选择、树的生成和剪枝三部分组成，<strong>它的特点是既可以用于分类又可以用于回归。</strong></p>
 <p>CART是在给定输入随机变量为$X$条件下输出随机变量Y的条件概率分布的学习方法，假设决策树为二叉树，内部结点取值为“是”or“否”【左是右否】。决策树等价于递归地二分每个特征，将输入空间划分为有限个单元，并在这些单元上预测概率分布，也就是给定条件下输出的条件概率分布。<br>类似表示如下<br><img src="/images/pasted-8.png" alt="决策树"><br>CART算法组成：<br>1.决策树生成🌲：基于训练集生成决策树，生产的决策树尽力大【生成过程等价于递归地构建二叉树的过程】<br>2.决策树剪枝✂️：用验证数据集对已生成的树进行剪枝，选择最优子树，用损失函数最下作为剪枝的标准。</p>
 <hr>
@@ -434,6 +456,34 @@
 <li>继续对两个子域调用步骤1，2，直到满足停止条件<br>将输入空间(特征空间)划分为$M$个单元$R_1,R_2,…,R_M$并且每一个单元有一个固定的输出值c_m,于是回归树表示成<br>$$f(x)=\sum_{m=1}^Mc_mI(x \in R_m)$$</li>
 </ol>
 <hr>
+<h5 id="分类树的生成"><a href="#分类树的生成" class="headerlink" title="分类树的生成"></a>分类树的生成</h5><p>分类树用<strong>基尼指数</strong>来选择最优特征，同时决定该特征的最优二值切分。</p>
+<p>定义：分类问题中，假设有$K$个类，样本中属于第$k$类的概率为$p_k$,则概率分布的基尼指数定义为：<br>$$Gini(p)=\sum_{k=1}^{K}p_k(1-p_k)=1-\sum_{k=1}^{K}{p_k}^2$$<br>二分类中样本点属于第一类概率为$p$，概率分布的基尼系数为：<br>$$Gini(p)=2p(1-p)$$<br>对于样本集合$D$,其基尼系数为：<br>$$Gini(D)=1-\sum_{k=1}^{K}{\lbrace\frac{|C_k|}{|D|}}\rbrace^2$$<br>其中，$C_k$是$D$中属于第$k$类的样本子集，$K$是类的个数<br>基尼指数$Gini(D)$表示集合$D$的不确定性，基尼指数越大，不确定性也就越大，这与熵相似。<br><strong>分割：</strong><br>如果样本集合$D$根据特征$A$是否取某一值$\alpha$被分割为$D_1$和$D_2$，表示为：<br>$$D_1=\lbrace (x,y) \in D|A(x)=\alpha\rbrace,D_2=D-D_1$$<br>在特征$A$的条件下,$Gini(D,A)$表示经过$A=\alpha$分割后集合$D$的不确定性，基尼指数表示为：<br>$$Gini(D,A)=\frac{|D_1|}{|D|}Gini(D_1)+\frac{|D_2|}{|D|}Gini(D_2)$$<br><strong>算法生成</strong><br><strong>输入</strong>：训练集$D$，停止条件【eg 结点中的样本个数小于阈值，基尼指数小于阈值，或者没有更多的特征等】 <strong>输出</strong>：CART树<br>根据训练集，从根结点开始，递归地对每个结点进行以下操作，构建二叉树决策树。</p>
+<ol>
+<li>设结点的数据集为$D$，计算现有特征对该数据集的基尼指数，对每个特征，每个其可能取的每个值$\alpha$,计算基尼指数。</li>
+<li>选择最优特征以及其对应的最优切分点，从而生成两个子结点</li>
+<li>对子结点递归的调用1.2步骤，直至满足停止条件</li>
+<li>生成CART树</li>
+</ol>
+<p>CART生成方式与ID3完成一致</p>
+<hr>
+<h4 id="CART剪枝✂️"><a href="#CART剪枝✂️" class="headerlink" title="CART剪枝✂️"></a>CART剪枝✂️</h4><p>CART是一个“完全二叉树”<br>剪枝算法如下：<br>从生成算法产生的决策树$T_0$底部开始剪枝，直到$T_0$的根结点，形成子树序列为$\lbrace T_0,T_1,T_2,…,T_n \rbrace$，然后再用交叉验证法在独立的验证集熵对序列进行测试，从中选择最优子树。</p>
+<ol>
+<li><strong>剪枝，形成子树序列</strong><br>子树的损失函数表示如下：<br>$$C_a(T)=C(T)+\alpha|T|$$<br>其中，$T$是任意子树，$C(T)$是训练集的预测误差（eg基尼指数），$|T|$是子树的叶子结点，$\alpha$是正则化参数，权衡训练集拟合程度与模型复杂度。<br>利用递归地方法进行剪枝✂️：<br>$\alpha$从小到大产生一系列区间$\alpha_0&lt;\alpha_1&lt;\cdots&lt;\alpha_n&lt;$，产生一系列的区间$[\alpha_i,\alpha_{i+1}],i=0,1,\cdots,n$；剪枝对应的子树序列对应着区间$\alpha \in[\alpha_i,\alpha_{i+1}],i=0,1,\cdots,n$的最优子树序列$\lbrace T_0,T_1,T_2,…,T_n \rbrace$，序列中的子树是嵌套的。<br>具体：<br>从整体树$T_0$开始剪枝，对$T_0$的任意内部结点$t$，以单结点树的损失函数是：$$C_a(t)=C(t)+\alpha$$<br>以$t$为根结点的子树$T_t$的损失函数是：$$C_a(T_t)=C(T_t)+\alpha|T_t|$$<br>当$\alpha=0$以及充分小时，有不等式$C_a(T_t)\leq C_a(t)$<br>当$\alpha$增大时，在某一$\alpha$有：$C_a(T_t)=C_a(t)$<br>当$\alpha$再增大时，不等式反向，只要$\alpha=\frac{C(t)-C(T_t)}{|T_t|-1}$，$T_t$与$t$有相同的损失值，而$t$的结点少，因此$t$比$T_t$更可取，因此对$t$进行修剪。<br>为此，对$T_0$中每一内部结点$t$，计算<br>$$g(t)=\frac{C(t)-C(T_t)}{|T_t|-1}$$<br>它表示剪枝后整体损失函数减少的程度，在$T_0$中剪去$g(t)$最小的$T_t$，得到的子树作为$T_1$，同时将最小的$g(t)$设置为$\alpha_1$,$T_1$为$[\alpha_1,\alpha_{2}]$的最优子树<br>如此剪枝，直到跟根结点，这一过程，不断增大$\alpha$,产生新的区间。</li>
+<li>在剪枝得到的子树序列$\lbrace T_0,T_1,T_2,…,T_n \rbrace$中通过交叉验证选取最优子树$T_a$<br>利用独立的验证集测试子树序列中各个子树的平方误差或者基尼指数。</li>
+</ol>
+<p>算法：<br>输入：CART算法生成的决策树$T_0$<br>输出：最优决策树$T_\alpha$</p>
+<ol>
+<li>设$k=0,T=T_0,\alpha=+\infty$</li>
+<li>自底而上地对内部结点$t$计算$C(T_t),|T_t|$以及$g(t)=\frac{C(t)-C(T_t)}{|T_t|-1},\alpha=min(\alpha,g(t))$</li>
+<li>对$g(t)=\alpha$的内部结点进行剪枝，并对叶结点$t$以多数表决法决定其类得到树$T$</li>
+<li>设$k=k+1,T_k=T,\alpha_k=\alpha$</li>
+<li>如果$T_k$不是由根结点及两个叶子结点构成的树，则回到步骤2.否则另$T_k=T_n$</li>
+<li>采用交叉验证法在子树序列$\lbrace T_0,T_1,T_2,…,T_n \rbrace$中选取最优子树$T_\alpha$</li>
+</ol>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><hr>
+<p>整理后加入</p>
+<hr>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>CART大部分内容与决策树的一致，主要不同点是分类树和决策树的生成过程使用的标准以及剪枝过程，在简单决策树的基础上理解CART会更容易，所以推荐先阅读《决策树的理解与应用》</p>
 
       
     </div>
@@ -511,6 +561,20 @@
     <div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ML/" rel="tag"><i class="fa fa-tag"></i> ML</a>
+          
+            <a href="/tags/决策树/" rel="tag"><i class="fa fa-tag"></i> 决策树</a>
+          
+            <a href="/tags/CART/" rel="tag"><i class="fa fa-tag"></i> CART</a>
+          
+            <a href="/tags/基尼指数/" rel="tag"><i class="fa fa-tag"></i> 基尼指数</a>
+          
+            <a href="/tags/平方和误差/" rel="tag"><i class="fa fa-tag"></i> 平方和误差</a>
+          
+        </div>
       
 
       
@@ -622,7 +686,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -633,7 +697,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -723,7 +787,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CART生成"><span class="nav-number">2.</span> <span class="nav-text">CART生成</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#回归树"><span class="nav-number">2.1.</span> <span class="nav-text">回归树</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CART生成"><span class="nav-number">2.</span> <span class="nav-text">CART生成</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#回归树"><span class="nav-number">2.1.</span> <span class="nav-text">回归树</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分类树的生成"><span class="nav-number">2.2.</span> <span class="nav-text">分类树的生成</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CART剪枝✂️"><span class="nav-number">3.</span> <span class="nav-text">CART剪枝✂️</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码"><span class="nav-number">4.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -1405,15 +1469,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-  
-
-
-  
-
-  
-
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":80,"height":300,"hOffset":20,"vOffset":-200},"mobile":{"show":true}});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>
@@ -1430,5 +1486,13 @@
 <script type="text/javascript" src>
 </script>
 <!-- End: Injected MathJax -->
-<!-- hexo-inject:end --></body>
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":80,"height":300,"hOffset":20,"vOffset":-200},"mobile":{"show":true}});</script></body>
 </html>
