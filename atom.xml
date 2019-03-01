@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-02-28T08:49:16.960Z</updated>
+  <updated>2019-03-01T08:54:08.392Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CART的理解与应用</title>
+    <link href="http://yoursite.com/2019/03/01/CART%E7%9A%84%E7%90%86%E8%A7%A3%E4%B8%8E%E5%BA%94%E7%94%A8/"/>
+    <id>http://yoursite.com/2019/03/01/CART的理解与应用/</id>
+    <published>2019-03-01T08:27:24.000Z</published>
+    <updated>2019-03-01T08:54:08.392Z</updated>
+    
+    <content type="html"><![CDATA[<p> 本博客接上一篇博客《决策树的理解与运用》。</p><h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><p>分类与回归树(Classification AND Regression tree,CART)同样是由特征选择、树的生成和剪枝三部分组成，<strong>它的特点是既可以用于分类又可以用于回归。</strong></p><p>CART是在给定输入随机变量为$X$条件下输出随机变量Y的条件概率分布的学习方法，假设决策树为二叉树，内部结点取值为“是”or“否”【左是右否】。决策树等价于递归地二分每个特征，将输入空间划分为有限个单元，并在这些单元上预测概率分布，也就是给定条件下输出的条件概率分布。<br>类似表示如下<br><img src="/images/pasted-8.png" alt="决策树"><br>CART算法组成：<br>1.决策树生成🌲：基于训练集生成决策树，生产的决策树尽力大【生成过程等价于递归地构建二叉树的过程】<br>2.决策树剪枝✂️：用验证数据集对已生成的树进行剪枝，选择最优子树，用损失函数最下作为剪枝的标准。</p><hr><h4 id="CART生成"><a href="#CART生成" class="headerlink" title="CART生成"></a>CART生成</h4><h5 id="回归树"><a href="#回归树" class="headerlink" title="回归树"></a>回归树</h5><p><strong>回归树的生成用平方误差最小化准则</strong><br>假设$X$和$Y$分别是输入和输出，并且Y是连续变量，训练集表示为$D=(x_1,y_1),(x_2,y_2),…,(x_N,y_N)$<br>假设回归树将输入空间(特征空间)划分为$M$个单元$R_1,R_2,…,R_M$并且每一个单元有一个固定的输出值$c_m$,于是回归树表示成:<br>$$f(x)=\sum_{m=1}^Mc_mI(x \in R_m)$$</p><p>当输入空间的划分确定时，可以用平方误差$\sum_{x_i \in R_m}{(y_i-f(x_i))}^2$表示回归树的训练集的预测误差，平方误差最小的准则求解每个单元上的最优输出值，易知，单元$R_m$的最优输出值是$R_m$上的所有输入实例$x_i$对应的输出$y_i$的均值，即：<br>$$\hat{c_m}=ave(y_i|x_i\in R_m)$$</p><p><strong>问题是如何划分？？</strong><br>【采用启发式的方法】<br>选择第$j$个变量$x^{(j)}$和它的取值$s$，作为切分变量和切分点定义两个区域：<br>$$R_1(j,s)=\lbrace x|x^{(j)}\leq s\rbrace和R_2(j,s)=\lbrace x|x^{(j)}&gt; s\rbrace$$<br>然后求最优切分变量j和最优切分点s，求解：</p><p>$$\min \limits_{(j,s)} \left(\min \limits_{c_1} \sum \limits_{x_i \in R_1(j,s)}(y_i−c_1)^2+\min \limits_{c_2} \sum \limits_{x_i \in R_2(j,s)}(y_i−c_2)^2 \right)$$</p><p>给定输入变量j可以找到最优切分点s.<br>$$\hat{c_1}=ave(y_i|x_i\in R_1(j,s)) ,\hat{c_2}=ave(y_i|x_i \in R_2(j,s))$$<br>遍历所有输入变量，找到最优的切分变量$j$，构成一个对$(j,s)$,这样将空间划分为2个区域，然后每个区域重复上面的划分过程，这样就生成了一颗回归树，<strong>称为最小二乘回归树</strong></p><hr><p><strong>最小二乘回归树生成算法</strong><br>输入训练集$D$<br>输出：回归树$f(x)$<br>在训练集所在的特征空间，递归地将每个区域划分为两个子区域并决定每个子区域的输出值，构建二叉树：</p><ol><li>选择最优切分变量j和最优切分点s，求解：<br>$$\min \limits_{(j,s)} \left(\min \limits_{c_1} \sum \limits_{x_i \in R_1(j,s)}(y_i−c_1)^2+\min \limits_{c_2} \sum \limits_{x_i \in R_2(j,s)}(y_i−c_2)^2 \right)$$</li><li>遍历变量$j$，对固定的切分变量$j$扫描切分点$s$，使得上公式达到最小值的对$(j,s)$</li><li>用选定的对(j,s)划分区域并决定相应的输出值：<br>$$R_1(j,s)=\lbrace x|x^{(j)}\leq s\rbrace和R_2(j,s)=\lbrace x|x^{(j)}&gt; s\rbrace$$<br>$$\hat{c_m}=\frac{1}{N_m}\sum \limits_{x_i \in {R_m(j,s)}}y_i,x \in R_m,m=1,2$$</li><li>继续对两个子域调用步骤1，2，直到满足停止条件<br>将输入空间(特征空间)划分为$M$个单元$R_1,R_2,…,R_M$并且每一个单元有一个固定的输出值c_m,于是回归树表示成<br>$$f(x)=\sum_{m=1}^Mc_mI(x \in R_m)$$</li></ol><hr>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt; 本博客接上一篇博客《决策树的理解与运用》。&lt;/p&gt;
+&lt;h4 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h4&gt;&lt;p&gt;分类与回归树(Classification AND Regression tre
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>决策树的理解与应用</title>
@@ -54,11 +76,11 @@
   </entry>
   
   <entry>
-    <title>如何是python代码更pythonic</title>
+    <title>如何使python代码更pythonic</title>
     <link href="http://yoursite.com/2019/02/26/%E5%A6%82%E4%BD%95%E6%98%AFpython%E4%BB%A3%E7%A0%81%E6%9B%B4pythonic/"/>
     <id>http://yoursite.com/2019/02/26/如何是python代码更pythonic/</id>
     <published>2019-02-26T12:44:00.000Z</published>
-    <updated>2019-02-27T13:31:21.013Z</updated>
+    <updated>2019-02-28T09:26:20.050Z</updated>
     
     <content type="html"><![CDATA[<h4 id="理解python与c语言的不同"><a href="#理解python与c语言的不同" class="headerlink" title="理解python与c语言的不同"></a>理解python与c语言的不同</h4><p><strong>变量替换</strong></p><p>在python中两个变量不需要引入中间替换量，利用python的packing/unpacking机制，替换只需：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">a</span>,b= <span class="selector-tag">b</span>,a</span><br></pre></td></tr></table></figure></p><p><strong>安全关闭文件描述符</strong><br>需要安全关闭文件，使用with语句：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="keyword">open</span>(<span class="keyword">path</span>,<span class="string">'r'</span>,<span class="keyword">mode</span>=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">do_sth_with(f)</span><br></pre></td></tr></table></figure><p><strong>list倒序排列</strong></p><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">print <span class="type">list</span>(reversed(a))</span><br></pre></td></tr></table></figure><p><strong>字符串格式化法</strong><br>使用str.format()</p><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span> <span class="string">'&#123;great&#125; from &#123;language&#125;'</span>.<span class="built_in">format</span>&#123;great=<span class="string">'hello world'</span>,language=<span class="string">'python'</span>&#125;</span><br></pre></td></tr></table></figure><p><strong>flask框架的学习</strong></p><p><strong>检查程序PEP8的使用</strong></p><figure class="highlight nsis"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#安装</span></span><br><span class="line"><span class="variable">$pip</span> install -U pep8</span><br><span class="line"><span class="comment">#检查代码</span></span><br><span class="line"><span class="variable">$pep8</span> --文件名.py</span><br><span class="line"><span class="comment">#使用--show-source参数让PEP8显示每个错误和警告对应的代码</span></span><br><span class="line"><span class="variable">$pep8</span> --<span class="literal">show</span>-source --<span class="literal">show</span>-pep8 name.py</span><br><span class="line"><span class="comment">#甚至可以检查一个项目的质量，并生成报表</span></span><br></pre></td></tr></table></figure><p><strong>缩进、{}、单引号和双引号</strong></p><p>与c/c++/java使用{}来分割代码不同，python中使用严格的代码缩进方式分割代码块。python 中单引号和双引号没有明显区别，而使用上有小区别。<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">string_1</span> = <span class="string">"He said, \"hello\""</span></span><br><span class="line"><span class="attr">string_2</span> = <span class="string">'He said, "hello"'</span></span><br></pre></td></tr></table></figure></p><p><strong>三元操作符</strong></p><p>python2.5之前不支持三元操作符<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#三元操作符写法</span></span><br><span class="line">X <span class="keyword">if</span> C <span class="keyword">else</span> Y</span><br><span class="line"><span class="builtin-name">print</span> x <span class="keyword">if</span> x&lt;y <span class="keyword">else</span> y</span><br></pre></td></tr></table></figure></p><p><strong>没有swith…case</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> **：</span><br><span class="line"><span class="keyword">elif</span> **：</span><br><span class="line"><span class="keyword">elif</span> **：</span><br><span class="line"><span class="keyword">else</span>：</span><br></pre></td></tr></table></figure><p><strong>将常量集中到一个文件</strong><br>提倡把常量放在一个文件里，这样有利于维护，一旦需要修改常量值可以直接修改</p><p><strong>利用assert语句来发现问题</strong></p><p><strong>充分利用lazy evaluation的特性</strong><br>常被翻译为延迟计算或者懒性计算，指仅仅在真正需要执行的时候才计算的表达式</p>]]></content>
     
