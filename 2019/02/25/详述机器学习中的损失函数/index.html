@@ -98,7 +98,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5274272-1cf03d36a2499644.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5274272-cd3776e65ca5cbc4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-03-18T07:04:07.421Z">
+<meta property="og:updated_time" content="2019-03-19T03:05:54.258Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="详述机器学习中的损失函数">
 <meta name="twitter:description" content="Class Content     layout post   title 详解机器学习中的损失函数   categories Blog   description 机器学习中常见的损失函数以及它们的特点和适用场景   keywords 机器学习 损失函数 风险函数     1. 前言我们知道机器学习的三要素是:方法= 模型+策略+算法, 如何从假设空间中选择最优模型,这涉及到我们需要用什">
@@ -509,7 +509,7 @@
 </ul>
 <p>那么最终的代价函数可以表示为<br>$$L(w,x)=-\frac{1}{N}\sum_{i=1}^N \lbrace y^{(i)}logp(y^{(i)}=1|w,x^{(i)})+(1-y^{(i)})logp(y^{(i)}=0|w,x^{(i)})\rbrace<br>$$<br>接下来就从另外一个角度说明，已知逻辑回归模型表示为：$$p(1|w,x^{(i)})=h(f(x^{(i)}))=\frac{1}{1+e^{-f(x^{(i)})}}=\frac{1}{1+e^{-w^Tx^{(i)}}}$$<br>在模型的数学形式确定后，剩下的就是如何去求解模型中的参数$w$，而在已知模型和一定样本的情况下，估计模型的参数，在统计学中常用的是极大似然估计方法。即找到一组参数$w$，使得在这组参数下，样本数据的似然度（概率）最大.<br>对于逻辑回归模型，假定概率分布服从伯努利分布【0-1分布】，其概率质量函数PMF为:$f(x)=p^x(1-p)^{(1-x)}$，其中$x$只能取0或者1，那么似然函数可以表示:为$$L(w)=\prod_{i=1}^Np(y^{(i)}=1|w,x^{(i)})^{y^{(i)}}p(y^{(i)}=0|w,x^{(i)})^{1-y^{(i)}}$$<br>那么对上式取对数，得到对数似然函数为:<br>$$logL(w)=\sum_{i=1}^Ny^{(i)}logp(y^{(i)}=1|w,x^{(i)})+（1-y^{(i)})logp(y^{(i)}=0|w,x^{(i)})$$<br>则全体样本的代价函数为:<br>$$logL(w)=-\sum_{i=1}^N\lbrace y^{(i)}logp(y^{(i)}=1|w,x^{(i)})+（1-y^{(i)})logp(y^{(i)}=0|w,x^{(i)})\rbrace$$<br>由此可以看出<strong>对数损失函数与极大似然估计的对数似然函数本质上是等价的</strong>.</p>
 <ul>
-<li><strong>(5) 绞链损失函数(Hinge Loss)</strong><br>$$L(m_i)=max(0,1-m_i(w))$$<br>铰链损失函数<strong>常用于支持向量机(SVM)中</strong>,它名字来源于它的损失函数图像为一个折线图像，如果模型分类正确，损失为0，否则损失为$1-m_i(w)$，在SVM损失函数表示为：$$L(y^{(i)},x^{(i)})=max(0,1-y^{(i)}f(x^{(i)}))$$,<br><strong>举例说明：</strong>在SVM中，最终的支持向量机的分类模型是能最大化分类间隔，又减少错误分类的样本数目，意味着一个好的支持向量机的模型，需要满足以上两个条件：<strong>1、最大化分类间隔，2、错误分类的样本数目</strong>。如图说明，$f(x^{(i)})$是预测值，且预测值在-1到1之间，$y^{(i)}$为目标值取值为-1或者1，如果分类正确，$L(y^{(i)},x^{(i)})=0$，如果分类错误，$L(y^{(i)},x^{(i)})=1-y^{(i)}f(x^{(i)})$，$\xi$是引入的松弛变量，错误分类的样本数目，就回到了损失函数的范畴。<br><img src="https://upload-images.jianshu.io/upload_images/5274272-cd3776e65ca5cbc4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="SVM分类">综上所述推导SVM的代价函数，最初的SVM优化函数如下： </li>
+<li><strong>(5) 合页损失函数(Hinge Loss)</strong><br>$$L(m_i)=max(0,1-m_i(w))$$<br>铰链损失函数<strong>常用于支持向量机(SVM)中</strong>,它名字来源于它的损失函数图像为一个折线图像，如果模型分类正确，损失为0，否则损失为$1-m_i(w)$，在SVM损失函数表示为：$$L(y^{(i)},x^{(i)})=max(0,1-y^{(i)}f(x^{(i)}))$$,<br><strong>举例说明：</strong>在SVM中，最终的支持向量机的分类模型是能最大化分类间隔，又减少错误分类的样本数目，意味着一个好的支持向量机的模型，需要满足以上两个条件：<strong>1、最大化分类间隔，2、错误分类的样本数目</strong>。如图说明，$f(x^{(i)})$是预测值，且预测值在-1到1之间，$y^{(i)}$为目标值取值为-1或者1，如果分类正确，$L(y^{(i)},x^{(i)})=0$，如果分类错误，$L(y^{(i)},x^{(i)})=1-y^{(i)}f(x^{(i)})$，$\xi$是引入的松弛变量，错误分类的样本数目，就回到了损失函数的范畴。<br><img src="https://upload-images.jianshu.io/upload_images/5274272-cd3776e65ca5cbc4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="SVM分类">综上所述推导SVM的代价函数，最初的SVM优化函数如下： </li>
 </ul>
 <p>$$\begin{equation}<br>    \mathop{\arg\min}_{(w,\xi_i)}   | \frac{1}{2} \Vert w \Vert^2+C\sum_i\xi_i \\<br>   \begin{cases}<br>    &amp; s.t.\quad \forall y^{(i)}f(x^{(i)}) \geq 0 \\<br>                &amp; \quad\quad\quad \xi_i \geq 0<br>        \end{cases}<br>\end{equation}$$</p>
 <p>将约束条件变形为$$\xi_i&gt;1-y^{(i)}f(x^{(i)})$$<br>最终SVM的代价函数可以表示为：$$L(w,x^{(i)})=C  \sum_{i=0}^{N}max(0,1-y^{(i)}f(x^{(i)}))+\frac{1}{2} \Vert w \Vert^2$$</p>
@@ -707,7 +707,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -729,7 +729,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1501,7 +1501,15 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":80,"height":300,"hOffset":20,"vOffset":-200},"mobile":{"show":true}});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>
@@ -1518,13 +1526,5 @@
 <script type="text/javascript" src>
 </script>
 <!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
-  
-
-
-  
-
-  
-
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":80,"height":300,"hOffset":20,"vOffset":-200},"mobile":{"show":true}});</script></body>
+<!-- hexo-inject:end --></body>
 </html>
