@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="理解python与c语言的不同 变量替换 在python中两个变量不需要引入中间替换量，利用python的packing/unpacking机制，替换只需： 1a,b= b,a 安全关闭文件描述符 需要安全关闭文件，使用with语句： 12with open(path,&apos;r&apos;,mode=&apos;utf-8&apos;) as f:	do_sth_with(f) list倒序排列 12a = [1,2,3]prin">
+<meta name="description" content="理解python与c语言的不同变量替换 在python中两个变量不需要引入中间替换量，利用python的packing/unpacking机制，替换只需：1a,b= b,a 安全关闭文件描述符需要安全关闭文件，使用with语句： 12with open(path,&apos;r&apos;,mode=&apos;utf-8&apos;) as f:	do_sth_with(f) list倒序排列 12a = [1,2,3]print l">
 <meta name="keywords" content="python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何使python代码更pythonic">
 <meta property="og:url" content="http://yoursite.com/2019/02/26/如何是python代码更pythonic/index.html">
 <meta property="og:site_name" content="毛毛虫_Wendy">
-<meta property="og:description" content="理解python与c语言的不同 变量替换 在python中两个变量不需要引入中间替换量，利用python的packing/unpacking机制，替换只需： 1a,b= b,a 安全关闭文件描述符 需要安全关闭文件，使用with语句： 12with open(path,&apos;r&apos;,mode=&apos;utf-8&apos;) as f:	do_sth_with(f) list倒序排列 12a = [1,2,3]prin">
+<meta property="og:description" content="理解python与c语言的不同变量替换 在python中两个变量不需要引入中间替换量，利用python的packing/unpacking机制，替换只需：1a,b= b,a 安全关闭文件描述符需要安全关闭文件，使用with语句： 12with open(path,&apos;r&apos;,mode=&apos;utf-8&apos;) as f:	do_sth_with(f) list倒序排列 12a = [1,2,3]print l">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-02-28T09:26:20.050Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何使python代码更pythonic">
-<meta name="twitter:description" content="理解python与c语言的不同 变量替换 在python中两个变量不需要引入中间替换量，利用python的packing/unpacking机制，替换只需： 1a,b= b,a 安全关闭文件描述符 需要安全关闭文件，使用with语句： 12with open(path,&apos;r&apos;,mode=&apos;utf-8&apos;) as f:	do_sth_with(f) list倒序排列 12a = [1,2,3]prin">
+<meta name="twitter:description" content="理解python与c语言的不同变量替换 在python中两个变量不需要引入中间替换量，利用python的packing/unpacking机制，替换只需：1a,b= b,a 安全关闭文件描述符需要安全关闭文件，使用with语句： 12with open(path,&apos;r&apos;,mode=&apos;utf-8&apos;) as f:	do_sth_with(f) list倒序排列 12a = [1,2,3]print l">
 
 
 
@@ -399,7 +399,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  408 字
+                  407 字
                 </span>
               
 
@@ -436,34 +436,26 @@
       
 
       
-        <h4 id="理解python与c语言的不同"><a class="header-anchor" href="#理解python与c语言的不同"></a>理解python与c语言的不同</h4>
-<p><strong>变量替换</strong></p>
-<p>在python中两个变量不需要引入中间替换量，利用python的packing/unpacking机制，替换只需：</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">a</span>,b= <span class="selector-tag">b</span>,a</span><br></pre></td></tr></table></figure>
-<p><strong>安全关闭文件描述符</strong><br>
-需要安全关闭文件，使用with语句：</p>
+        <h4 id="理解python与c语言的不同"><a href="#理解python与c语言的不同" class="headerlink" title="理解python与c语言的不同"></a>理解python与c语言的不同</h4><p><strong>变量替换</strong></p>
+<p>在python中两个变量不需要引入中间替换量，利用python的packing/unpacking机制，替换只需：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">a</span>,b= <span class="selector-tag">b</span>,a</span><br></pre></td></tr></table></figure></p>
+<p><strong>安全关闭文件描述符</strong><br>需要安全关闭文件，使用with语句：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="keyword">open</span>(<span class="keyword">path</span>,<span class="string">'r'</span>,<span class="keyword">mode</span>=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">	do_sth_with(f)</span><br></pre></td></tr></table></figure>
 <p><strong>list倒序排列</strong></p>
 <figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">print <span class="type">list</span>(reversed(a))</span><br></pre></td></tr></table></figure>
-<p><strong>字符串格式化法</strong><br>
-使用str.format()</p>
+<p><strong>字符串格式化法</strong><br>使用str.format()</p>
 <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span> <span class="string">'&#123;great&#125; from &#123;language&#125;'</span>.<span class="built_in">format</span>&#123;great=<span class="string">'hello world'</span>,language=<span class="string">'python'</span>&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>flask框架的学习</strong></p>
 <p><strong>检查程序PEP8的使用</strong></p>
 <figure class="highlight nsis"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#安装</span></span><br><span class="line"><span class="variable">$pip</span> install -U pep8</span><br><span class="line"><span class="comment">#检查代码</span></span><br><span class="line"><span class="variable">$pep8</span> --文件名.py</span><br><span class="line"><span class="comment">#使用--show-source参数让PEP8显示每个错误和警告对应的代码</span></span><br><span class="line"><span class="variable">$pep8</span> --<span class="literal">show</span>-source --<span class="literal">show</span>-pep8 name.py</span><br><span class="line"><span class="comment">#甚至可以检查一个项目的质量，并生成报表</span></span><br></pre></td></tr></table></figure>
 <p><strong>缩进、{}、单引号和双引号</strong></p>
-<p>与c/c++/java使用{}来分割代码不同，python中使用严格的代码缩进方式分割代码块。python 中单引号和双引号没有明显区别，而使用上有小区别。</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">string_1</span> = <span class="string">"He said, \"hello\""</span></span><br><span class="line"><span class="attr">string_2</span> = <span class="string">'He said, "hello"'</span></span><br></pre></td></tr></table></figure>
+<p>与c/c++/java使用{}来分割代码不同，python中使用严格的代码缩进方式分割代码块。python 中单引号和双引号没有明显区别，而使用上有小区别。<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">string_1</span> = <span class="string">"He said, \"hello\""</span></span><br><span class="line"><span class="attr">string_2</span> = <span class="string">'He said, "hello"'</span></span><br></pre></td></tr></table></figure></p>
 <p><strong>三元操作符</strong></p>
-<p>python2.5之前不支持三元操作符</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#三元操作符写法</span></span><br><span class="line">X <span class="keyword">if</span> C <span class="keyword">else</span> Y</span><br><span class="line"><span class="builtin-name">print</span> x <span class="keyword">if</span> x&lt;y <span class="keyword">else</span> y</span><br></pre></td></tr></table></figure>
+<p>python2.5之前不支持三元操作符<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#三元操作符写法</span></span><br><span class="line">X <span class="keyword">if</span> C <span class="keyword">else</span> Y</span><br><span class="line"><span class="builtin-name">print</span> x <span class="keyword">if</span> x&lt;y <span class="keyword">else</span> y</span><br></pre></td></tr></table></figure></p>
 <p><strong>没有swith…case</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> **：</span><br><span class="line"><span class="keyword">elif</span> **：</span><br><span class="line"><span class="keyword">elif</span> **：</span><br><span class="line"><span class="keyword">else</span>：</span><br></pre></td></tr></table></figure>
-<p><strong>将常量集中到一个文件</strong><br>
-提倡把常量放在一个文件里，这样有利于维护，一旦需要修改常量值可以直接修改</p>
+<p><strong>将常量集中到一个文件</strong><br>提倡把常量放在一个文件里，这样有利于维护，一旦需要修改常量值可以直接修改</p>
 <p><strong>利用assert语句来发现问题</strong></p>
-<p><strong>充分利用lazy evaluation的特性</strong><br>
-常被翻译为延迟计算或者懒性计算，指仅仅在真正需要执行的时候才计算的表达式</p>
+<p><strong>充分利用lazy evaluation的特性</strong><br>常被翻译为延迟计算或者懒性计算，指仅仅在真正需要执行的时候才计算的表达式</p>
 
       
     </div>
@@ -673,7 +665,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

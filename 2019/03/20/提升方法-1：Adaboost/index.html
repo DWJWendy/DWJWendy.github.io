@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="前言 集成学习是将已有的弱的分类器或者回归模型通过一定的方法组合起来形成强的分类器或者回归模型的一种学习方法，它的思想就是“三个臭皮匠顶个诸葛亮”，综合得到的结论比单独的判断好，以袋套法(bagging)和提升法(boosting)为代表。 袋套法(bagging) vs 提升法(boosting)： Boosting，各分类器之间有依赖关系，必须串行，比如Adaboost、GBDT、Xgboos">
+<meta name="description" content="前言集成学习是将已有的弱的分类器或者回归模型通过一定的方法组合起来形成强的分类器或者回归模型的一种学习方法，它的思想就是“三个臭皮匠顶个诸葛亮”，综合得到的结论比单独的判断好，以袋套法(bagging)和提升法(boosting)为代表。 袋套法(bagging) vs 提升法(boosting)：Boosting，各分类器之间有依赖关系，必须串行，比如Adaboost、GBDT、XgboostB">
 <meta name="keywords" content="boosting,adaboost,提升树,梯度提升">
 <meta property="og:type" content="article">
 <meta property="og:title" content="提升方法-1：Adaboost">
 <meta property="og:url" content="http://yoursite.com/2019/03/20/提升方法-1：Adaboost/index.html">
 <meta property="og:site_name" content="毛毛虫_Wendy">
-<meta property="og:description" content="前言 集成学习是将已有的弱的分类器或者回归模型通过一定的方法组合起来形成强的分类器或者回归模型的一种学习方法，它的思想就是“三个臭皮匠顶个诸葛亮”，综合得到的结论比单独的判断好，以袋套法(bagging)和提升法(boosting)为代表。 袋套法(bagging) vs 提升法(boosting)： Boosting，各分类器之间有依赖关系，必须串行，比如Adaboost、GBDT、Xgboos">
+<meta property="og:description" content="前言集成学习是将已有的弱的分类器或者回归模型通过一定的方法组合起来形成强的分类器或者回归模型的一种学习方法，它的思想就是“三个臭皮匠顶个诸葛亮”，综合得到的结论比单独的判断好，以袋套法(bagging)和提升法(boosting)为代表。 袋套法(bagging) vs 提升法(boosting)：Boosting，各分类器之间有依赖关系，必须串行，比如Adaboost、GBDT、XgboostB">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-25T05:04:44.442Z">
+<meta property="og:updated_time" content="2019-03-25T10:20:39.394Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="提升方法-1：Adaboost">
-<meta name="twitter:description" content="前言 集成学习是将已有的弱的分类器或者回归模型通过一定的方法组合起来形成强的分类器或者回归模型的一种学习方法，它的思想就是“三个臭皮匠顶个诸葛亮”，综合得到的结论比单独的判断好，以袋套法(bagging)和提升法(boosting)为代表。 袋套法(bagging) vs 提升法(boosting)： Boosting，各分类器之间有依赖关系，必须串行，比如Adaboost、GBDT、Xgboos">
+<meta name="twitter:description" content="前言集成学习是将已有的弱的分类器或者回归模型通过一定的方法组合起来形成强的分类器或者回归模型的一种学习方法，它的思想就是“三个臭皮匠顶个诸葛亮”，综合得到的结论比单独的判断好，以袋套法(bagging)和提升法(boosting)为代表。 袋套法(bagging) vs 提升法(boosting)：Boosting，各分类器之间有依赖关系，必须串行，比如Adaboost、GBDT、XgboostB">
 
 
 
@@ -399,7 +399,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  818 字
+                  2.3k 字
                 </span>
               
 
@@ -415,7 +415,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3 分钟
+                  9 分钟
                 </span>
               
             </div>
@@ -436,55 +436,47 @@
       
 
       
-        <h4 id="前言"><a class="header-anchor" href="#前言"></a>前言</h4>
-<p>集成学习是将已有的弱的分类器或者回归模型通过一定的方法组合起来形成强的分类器或者回归模型的一种学习方法，它的思想就是“三个臭皮匠顶个诸葛亮”，综合得到的结论比单独的判断好，以袋套法(bagging)和提升法(boosting)为代表。</p>
-<p><strong>袋套法(bagging) vs 提升法(boosting)：</strong><br>
-Boosting，各分类器之间有依赖关系，必须串行，比如Adaboost、GBDT、Xgboost<br>
-Bagging，各分类器之间没有依赖关系，可各自并行，比如随机森林（RF）</p>
-<h4 id="adaboost算法"><a class="header-anchor" href="#adaboost算法"></a>Adaboost算法</h4>
-<ul>
-<li><strong>问题1：每一轮是如何改变样本的权重？</strong><br>
-提升哪些在前一轮弱分类器错误分类的样本权重，降低那些被正确分类样本的权重，使得误分类的样本得到更大的关注。于是分类问题被一系列弱分类器“分而治之”。</li>
-<li><strong>问题2. 如何将弱分类器组合成强分类器？</strong><br>
-加权多数表决法，加大分类误差率小的弱分类器的权重，减少分类误差率大的弱分类器的权重，使得分类误差率小的弱分类器在表决中起更大的作用。</li>
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>集成学习是将已有的弱的分类器或者回归模型通过一定的方法组合起来形成强的分类器或者回归模型的一种学习方法，它的思想就是“三个臭皮匠顶个诸葛亮”，综合得到的结论比单独的判断好，以袋套法(bagging)和提升法(boosting)为代表。</p>
+<p><strong>袋套法(bagging) vs 提升法(boosting)：</strong><br>Boosting，各分类器之间有依赖关系，必须串行，比如Adaboost、GBDT、Xgboost<br>Bagging，各分类器之间没有依赖关系，可各自并行，比如随机森林（RF）</p>
+<h4 id="Adaboost算法"><a href="#Adaboost算法" class="headerlink" title="Adaboost算法"></a>Adaboost算法</h4><ul>
+<li><strong>问题1：每一轮是如何改变样本的权重？</strong><br>提升哪些在前一轮弱分类器错误分类的样本权重，降低那些被正确分类样本的权重，使得误分类的样本得到更大的关注。于是分类问题被一系列弱分类器“分而治之”。</li>
+<li><strong>问题2. 如何将弱分类器组合成强分类器？</strong><br>加权多数表决法，加大分类误差率小的弱分类器的权重，减少分类误差率大的弱分类器的权重，使得分类误差率小的弱分类器在表决中起更大的作用。</li>
 </ul>
-<p><strong>算法</strong><br>
-输入：训练集$T=\lbrace(x_1,y_1),(x_2,y_2),…,(x_N,y_N)\rbrace,y_i=\lbrace -1,+1 \rbrace$;弱学习算法<br>
-输出：最终分类器$G(x)$</p>
+<p><strong>算法</strong><br>输入：训练集$T=\lbrace(x_1,y_1),(x_2,y_2),…,(x_N,y_N)\rbrace,y_i=\lbrace -1,+1 \rbrace$;弱学习算法<br>输出：最终分类器$G(x)$</p>
 <ol>
-<li>初始化训练样本的权值分布，<br>
-$$D_1=(w_{1,1},…,w_{1,i},…,w_{l,N}),w_{1,i}=\frac{1}{N}$$</li>
-<li>反复学习基本分类器，对$m=1,2,…,M$<br>
-(a)使用具有权值分布$D_m$的训练集学习，得到基本分类器<br>
-$$G_m(x):X \rightarrow \lbrace -1,+1 \rbrace$$<br>
-(b)计算$G_m(x)$在训练集上的分类误差率<br>
-$$e_m=P(G_m(x_i)\neq y_i)=\sum\limits_{i=1}^{N}w_{m,i}I(G_m(x_i)\neq y_i)$$<br>
-©计算$G_m(x)$的系数<br>
-$$\alpha_m=\frac{1}{2}log\frac{1-e_m}{e_m}$$<br>
-当$e_m\leq\frac{1}{2},\alpha_m\geq0$，并且$\alpha$随着$e_m$的减少而增大，所以分类误差率越小的基本分类器在最终的分类器中作用越大。<br>
-(d)更新训练集的权值分布<br>
-$$D_{m+1}=(w_{m+1,1},…,w_{m+1,i},…,w_{m+l,N})$$<br>
-$$w_{m+1,i}=\frac{w_{m,i}}{Z_m}exp(-\alpha_my_iG_m(x_i)),i=1,2,…,N$$<br>
-$$Z_m=\sum\limits_{i=1}^{N}w_{m,i}exp(-\alpha_my_iG_m(x_i))$$<br>
-$Z_m$是规范化因子，使得$D_{m+1}$成为一个概率分布。</li>
-<li>构建最终的分类器<br>
-$$G(x)=sign(\sum\limits_{m=1}^{M}\alpha_mG_m(x))$$</li>
+<li>初始化训练样本的权值分布，<br>$$D_1=(w_{1,1},…,w_{1,i},…,w_{l,N}),w_{1,i}=\frac{1}{N}$$</li>
+<li>反复学习基本分类器，对$m=1,2,…,M$<br>(a)使用具有权值分布$D_m$的训练集学习，得到基本分类器<br>$$G_m(x):X \rightarrow \lbrace -1,+1 \rbrace$$<br>(b)计算$G_m(x)$在训练集上的分类误差率<br>$$e_m=P(G_m(x_i)\neq y_i)=\sum\limits_{i=1}^{N}w_{m,i}I(G_m(x_i)\neq y_i)$$<br>(c)计算$G_m(x)$的系数<br>$$\alpha_m=\frac{1}{2}log\frac{1-e_m}{e_m}$$<br>当$e_m\leq\frac{1}{2},\alpha_m\geq0$，并且$\alpha$随着$e_m$的减少而增大，所以分类误差率越小的基本分类器在最终的分类器中作用越大。<br>(d)更新训练集的权值分布<br>$$D_{m+1}=(w_{m+1,1},…,w_{m+1,i},…,w_{m+l,N})$$<br>$$w_{m+1,i}=\frac{w_{m,i}}{Z_m}exp(-\alpha_my_iG_m(x_i)),i=1,2,…,N$$<br>$$Z_m=\sum\limits_{i=1}^{N}w_{m,i}exp(-\alpha_my_iG_m(x_i))$$<br>$Z_m$是规范化因子，使得$D_{m+1}$成为一个概率分布。</li>
+<li>构建最终的分类器<br>$$G(x)=sign(\sum\limits_{m=1}^{M}\alpha_mG_m(x))$$</li>
 </ol>
-<h4 id="adaboost算法的训练误差分析"><a class="header-anchor" href="#adaboost算法的训练误差分析"></a>adaboost算法的训练误差分析</h4>
-<p>adaboost在学习过程中不断减少训练误差，即训练数据上的分类误差。<br>
-有如下定理：<br>
-adaboost算法的最终分类器的训练误差界为：<br>
-$$\frac{1}{N}\sum\limits_{i=1}^{N}I(G(x_i)\neq y_i) \leq \frac{1}{N}\sum_{i}exp(-y_if(x_i))=\prod_mZ_m$$ (更加详细的推导见统计学习方法p142)</p>
-<h4 id="adaboost算法解释"><a class="header-anchor" href="#adaboost算法解释"></a>Adaboost算法解释</h4>
-<p>adaboost另外一种解释，即认为<strong>adaboost算法是加法模型，损失函数为指数函数，学习算法为前向分步算法</strong></p>
+<h4 id="adaboost算法的训练误差分析"><a href="#adaboost算法的训练误差分析" class="headerlink" title="adaboost算法的训练误差分析"></a>adaboost算法的训练误差分析</h4><p>adaboost在学习过程中不断减少训练误差，即训练数据上的分类误差。<br>有如下定理：<br>adaboost算法的最终分类器的训练误差界为：<br>$$\frac{1}{N}\sum\limits_{i=1}^{N}I(G(x_i)\neq y_i) \leq \frac{1}{N}\sum_{i}exp(-y_if(x_i))=\prod_mZ_m$$ (更加详细的推导见统计学习方法p142)</p>
+<h4 id="Adaboost算法解释"><a href="#Adaboost算法解释" class="headerlink" title="Adaboost算法解释"></a>Adaboost算法解释</h4><p>adaboost另外一种解释，即认为<strong>adaboost算法是加法模型，损失函数为指数函数，学习算法为前向分步算法</strong></p>
 <ol>
-<li>加法模型<br>
-$$f(x)=\sum\limits_{m=1}^{M}\beta_mb(x;\gamma_m)$$<br>
-$b(x;\gamma_m)$是基函数，$\gamma_m$基函数的参数，$\beta_m$是基函数的系数。</li>
-<li>损失函数</li>
+<li>加法模型<br>$$f(x)=\sum\limits_{m=1}^{M}\beta_mb(x;\gamma_m)$$<br>$b(x;\gamma_m)$是基函数，$\gamma_m$基函数的参数，$\beta_m$是基函数的系数。</li>
+<li>损失函数<br>$$\min_{\beta_m,\gamma_m} \quad\sum\limits_{i=1}^{N}L(y_i,\sum\limits_{m=1}^{M}\beta_mb(x_i;\gamma_m))$$<br>由于上述是一个复杂的优化问题，使用前向分布算法来求解这类问题。<br><strong>前向分布算法思想</strong>：由于学习的模型是加法模型，如果能够从前往后，每一步只学习一个基函数及其系数，逐步逼近优化函数目标式，那么就可以简化优化的复杂度，具体地，每步优化如下损失函数：<br>$$\min_{\beta,\gamma} \quad \sum\limits_{i=1}^{N}L(y_i,\beta b(x_i;\gamma))$$</li>
 </ol>
-<p>$$\min_{\beta_m,\gamma_m} \quad\sum\limits_{i=1}<sup>{N}L(y_i,\sum\limits_{m=1}</sup>{M}\beta_mb(x;\gamma_m))$$<br>
-前向分布算法：</p>
+<p><strong>前向分布算法：</strong><br>输入：训练集$T$，损失函数为$L(y,f(x))$，基函数集$\lbrace b(x;\gamma)\rbrace$<br>输出：加法模型$f(x)$</p>
+<ul>
+<li>初始化$f_0(x)=0$</li>
+<li>对$m=1,2,…,M$<br>(a)极小化损失函数<br>$$(\beta_m,\gamma_m)=arg\min_{\beta,\gamma}\quad\sum\limits_{i=1}^{N}L(y_i,f_{m-1}(x_i)+\beta b(x_i;\gamma))$$<br>(b)更新<br>$$f_m(x)=f_{m-1}(x)+\beta_mb(x;\gamma_m)$$</li>
+<li>得到加法模型<br>$$f(x)=f_M(x)=\sum\limits_{m=1}^{M}\beta_mb(x;\gamma_m)$$<br>这样，前向分步算法将同时求解从$m=1$到$M$所有参数$\beta_m,\gamma_m$的优化问题简化为逐次求解各个$\beta_m,\gamma_m$的优化问题。</li>
+</ul>
+<h5 id="前向分步算法与Adaboost"><a href="#前向分步算法与Adaboost" class="headerlink" title="前向分步算法与Adaboost"></a>前向分步算法与Adaboost</h5><p>最终分类器模型为：<br>$$f(x)=\sum\limits_{m=1}^{M}\alpha_mG_m(x)$$<br>损失函数为：【指数损失函数】<br>$$L(y,f(x))=exp(-yf(x))$$<br>在第$m$轮迭代得到$\alpha_m,G_m(x),f_m(x)$<br>$$f_m(x)=f_{m-1}(x)+\alpha_mG_m(x)$$<br>目标是使前向分步算法得到的$\alpha_m,G_m(x)$使$f_m(x)$在训练集$T$上的指数损失最小，即<br>$$(\alpha_m,G_m(x))=arg \min_{\alpha,G}\sum\limits_{i=1}^{N}exp[-y_i(f_{m-1}(x_i)+\alpha G(x_i))]$$<br>上式可以表示为：<br>$$(\alpha_m,G_m(x))=arg \min_{\alpha,G}\sum\limits_{i=1}^{N}\hat{w}_{m,i}exp[-y_i\alpha G(x_i)]$$<br>其中，$\hat{w}_{m,i}=exp[-y_if_{m-1}(x_i)]$，其中$\hat{w}_{m,i}$既不依赖$\alpha$也不依赖$G$,所以与最小化无关，但$\hat{w}_{m,i}$依赖于$f_{m-1}(x)$，随每次迭代发生变化<br>使得上式达到最小的$\alpha_m^{\ast}$和$G_m^{\ast}(x)$，就是adaboost算法所得到的$\alpha_m,G_m(x)$</p>
+<h4 id="提升树🌲"><a href="#提升树🌲" class="headerlink" title="提升树🌲"></a>提升树🌲</h4><p>提升方法：采用加法模型(基函数的线性组合)与前向分步算法。<br>提升树：以决策树为基函数的提升方法。对分类问题决策树是二叉分类树，对回归问题决策树是二叉回归树，即是CART作为基函数。<br>提升树的模型可以表示为决策树的加法模型：$$f_M(x)=\sum\limits_{m=1}^{M}T(x;\theta_m)$$<br>其中$T(x;\theta_m)$为决策树，$\theta_m$为决策树参数，$M$为树的个数<br><strong>提升树算法</strong><br>初始提升树为$f_0(x)=0$<br>第$m$步的模型是：$f_m(x)=f_{m-1}(x)+T(x;\theta_m)$<br>当$f_{m-1}(x)$为当前模型，通过经验风险极小化确定下一颗决策树的参数$\theta_m$<br>$$\hat{\theta}_{m}=arg \min_{\theta_m}\sum\limits_{i=1}^{N}L(y_i,f_{m-1}(x_i)+T(x;\theta_m))$$<br><strong>针对不同问题的提升树学习方法主要区别在于损失函数的不同</strong>🤓<br>回归问题用平方误差损失函数；分类问题用指数损失函数。</p>
+<p>下面以回归问题的提升树为例：<br>采用平方误差损失函数：<br>$$L(y,f_{m-1}(x)+T(x;\theta_m))=[y-f_{m-1}(x)-T(x;\theta_m)]^2$$其中$r=y-f_{m-1}(x)$是当前数据模型拟合数据的残差，所以对于回归问题的提升树算法来说，只需要简单地拟合当前模型的残差。</p>
+<p><strong>具体算法如下:</strong><br>输入：训练集$T=\lbrace(x_1,y_1),(x_2,y_2),…,(x_N,y_N)\rbrace,y_i=\lbrace -1,+1 \rbrace$;<br>输出：提升树$f_M(x)$</p>
+<ol>
+<li>初始化$f_0(x)=0$</li>
+<li>对$m=1,2,…,M$<br>计算残差：$r_{m,i}=y_i-f_{m-1}(x_i),i=1,2,…,N$<br>拟合残差：$r_{m,i}$学习一个回归树，得到$T(x;\theta_m)$<br>更新：$f_m(x)=f_{m-1}(x)+T(x;\theta_m)$</li>
+<li>得到回归问题的提升树<br>$$f_M(x)=\sum\limits_{m=1}^{M}T(x;\theta_m)$$</li>
+</ol>
+<h5 id="梯度提升"><a href="#梯度提升" class="headerlink" title="梯度提升"></a>梯度提升</h5><p>提升树利用加法模型和前向分布算法实现学习的优化过程，当损失函数为平方损失和指数损失函数时，优化比较简单，但对于一般损失函数而言，每一步优化并不容易。<br>对于这个问题，利用<strong>梯度提升算法</strong>【利用最速下降法的近似，其关键是利用损失函数的负方向在当前模型的值】,表示如下：<br>$$\left(\frac{dL(y,f(x_i))}{df(x_i)}\right)_{f(x)=f_{m-1}(x)}$$<br>这个值作为回归问题提升树算法中的残差的近似值，拟合一个回归树。</p>
+<p><strong>梯度提升算法：</strong><br>输入：训练集<br>输出：回归树$\hat{f}(x)$</p>
+<ol>
+<li>初始化$f_0(x)=arg \min\limits_{c}\sum\limits_{i=1}^{N}L(y_i,c)$</li>
+<li>对$m=1,2,…,M$<br>(a)计算残差：$r_{m,i}=\left(\frac{dL(y,f(x_i))}{df(x_i)}\right)_{f(x)=f_{m-1}(x)}$<br>(b)对$r_{m,i}$拟合一个回归树，得到第$m$课树的叶子结点区域$R_{mj},j=1,2,…,J$<br>(c)对$j=1,2,…,J$计算$c_{m,j}=arg \min\limits_{c}\sum\limits_{x_i\in R_{mj}}L(y_i,f_{m-1}(x_i)+c)$<br>(d)更新$f_m(x)=f_{m-1}(x)+\sum\limits_{j=1}^{J}c_{mj}I(x\in R_{mj})$</li>
+<li>得到回归树<br>$$\hat{f}(x)=f_M(x)=\sum\limits_{m=1}^{M}\sum\limits_{j=1}^{J}c_{mj}I(x\in R_{mj})$$<br>解释如下：<br>1：估计是损失函数极小化的常数值，它是只有一个根结点的树。<br>2(a)：计算当前模型在损失函数的负梯度的值，将它作为残差的估计，对平方损失函数它就是残差，对一般损失函数，它是残差的近似<br>2(b)：估计回归树叶子结点区域，以拟合残差的近似值<br>2(c)：利用线性搜索估计叶子结点区域的值，使得损失函数极小化<br>2(d)：更新回归树<br>3：输出最终的模型</li>
+</ol>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>除了上述分析到的adaboost、提升树、梯度提升树外，下一博文将介绍工业上常用的两个模型GBDT和xgboost。</p>
 
       
     </div>
@@ -696,7 +688,7 @@ $b(x;\gamma_m)$是基函数，$\gamma_m$基函数的参数，$\beta_m$是基函�
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -786,7 +778,7 @@ $b(x;\gamma_m)$是基函数，$\gamma_m$基函数的参数，$\beta_m$是基函�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#adaboost算法"><span class="nav-number">2.</span> <span class="nav-text">Adaboost算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#adaboost算法的训练误差分析"><span class="nav-number">3.</span> <span class="nav-text">adaboost算法的训练误差分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#adaboost算法解释"><span class="nav-number">4.</span> <span class="nav-text">Adaboost算法解释</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Adaboost算法"><span class="nav-number">2.</span> <span class="nav-text">Adaboost算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#adaboost算法的训练误差分析"><span class="nav-number">3.</span> <span class="nav-text">adaboost算法的训练误差分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Adaboost算法解释"><span class="nav-number">4.</span> <span class="nav-text">Adaboost算法解释</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#前向分步算法与Adaboost"><span class="nav-number">4.1.</span> <span class="nav-text">前向分步算法与Adaboost</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提升树🌲"><span class="nav-number">5.</span> <span class="nav-text">提升树🌲</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#梯度提升"><span class="nav-number">5.1.</span> <span class="nav-text">梯度提升</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>

@@ -88,13 +88,13 @@
 
 
 
-<meta name="description" content="前言 SVM是一种二分类模型，是定义在特征空间上的间隔最大的线性分类器，间隔最大使它有别于感知机，SVM还包括核技巧，使它成为非线性分类器，而间隔最大的策略使得形式化为一个求解凸二次规划，等价于正则化的合页损失函数的最小化问题。 SVM学习方法包含构建由简到繁的模型：线性可分支持向量机【训练集线性可分，对应硬间隔最大化，又称硬间隔支持向量机】、线性支持向量机【训练集近似线性可分，对应软间隔支持向量">
+<meta name="description" content="前言SVM是一种二分类模型，是定义在特征空间上的间隔最大的线性分类器，间隔最大使它有别于感知机，SVM还包括核技巧，使它成为非线性分类器，而间隔最大的策略使得形式化为一个求解凸二次规划，等价于正则化的合页损失函数的最小化问题。 SVM学习方法包含构建由简到繁的模型：线性可分支持向量机【训练集线性可分，对应硬间隔最大化，又称硬间隔支持向量机】、线性支持向量机【训练集近似线性可分，对应软间隔支持向量机">
 <meta name="keywords" content="SVM,间隔最大化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="支持向量机(SVM)-1：线性支持向量机">
 <meta property="og:url" content="http://yoursite.com/2019/03/08/一文读懂支持向量机-SVM/index.html">
 <meta property="og:site_name" content="毛毛虫_Wendy">
-<meta property="og:description" content="前言 SVM是一种二分类模型，是定义在特征空间上的间隔最大的线性分类器，间隔最大使它有别于感知机，SVM还包括核技巧，使它成为非线性分类器，而间隔最大的策略使得形式化为一个求解凸二次规划，等价于正则化的合页损失函数的最小化问题。 SVM学习方法包含构建由简到繁的模型：线性可分支持向量机【训练集线性可分，对应硬间隔最大化，又称硬间隔支持向量机】、线性支持向量机【训练集近似线性可分，对应软间隔支持向量">
+<meta property="og:description" content="前言SVM是一种二分类模型，是定义在特征空间上的间隔最大的线性分类器，间隔最大使它有别于感知机，SVM还包括核技巧，使它成为非线性分类器，而间隔最大的策略使得形式化为一个求解凸二次规划，等价于正则化的合页损失函数的最小化问题。 SVM学习方法包含构建由简到繁的模型：线性可分支持向量机【训练集线性可分，对应硬间隔最大化，又称硬间隔支持向量机】、线性支持向量机【训练集近似线性可分，对应软间隔支持向量机">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/pasted-11.png">
 <meta property="og:image" content="http://yoursite.com/images/pasted-9.png">
@@ -102,7 +102,7 @@
 <meta property="og:updated_time" content="2019-03-19T08:53:41.905Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="支持向量机(SVM)-1：线性支持向量机">
-<meta name="twitter:description" content="前言 SVM是一种二分类模型，是定义在特征空间上的间隔最大的线性分类器，间隔最大使它有别于感知机，SVM还包括核技巧，使它成为非线性分类器，而间隔最大的策略使得形式化为一个求解凸二次规划，等价于正则化的合页损失函数的最小化问题。 SVM学习方法包含构建由简到繁的模型：线性可分支持向量机【训练集线性可分，对应硬间隔最大化，又称硬间隔支持向量机】、线性支持向量机【训练集近似线性可分，对应软间隔支持向量">
+<meta name="twitter:description" content="前言SVM是一种二分类模型，是定义在特征空间上的间隔最大的线性分类器，间隔最大使它有别于感知机，SVM还包括核技巧，使它成为非线性分类器，而间隔最大的策略使得形式化为一个求解凸二次规划，等价于正则化的合页损失函数的最小化问题。 SVM学习方法包含构建由简到繁的模型：线性可分支持向量机【训练集线性可分，对应硬间隔最大化，又称硬间隔支持向量机】、线性支持向量机【训练集近似线性可分，对应软间隔支持向量机">
 <meta name="twitter:image" content="http://yoursite.com/images/pasted-11.png">
 
 
@@ -440,138 +440,46 @@
       
 
       
-        <h4 id="前言"><a class="header-anchor" href="#前言"></a>前言</h4>
-<p>SVM是一种二分类模型，是定义在特征空间上的间隔最大的线性分类器，间隔最大使它有别于感知机，SVM还包括核技巧，使它成为非线性分类器，而间隔最大的策略使得形式化为一个求解<strong>凸二次规划，等价于正则化的合页损失函数的最小化问题</strong>。</p>
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>SVM是一种二分类模型，是定义在特征空间上的间隔最大的线性分类器，间隔最大使它有别于感知机，SVM还包括核技巧，使它成为非线性分类器，而间隔最大的策略使得形式化为一个求解<strong>凸二次规划，等价于正则化的合页损失函数的最小化问题</strong>。</p>
 <p>SVM学习方法包含构建由简到繁的模型：线性可分支持向量机【训练集线性可分，对应硬间隔最大化，又称硬间隔支持向量机】、线性支持向量机【训练集近似线性可分，对应软间隔支持向量机】、非线性支持向量机【当线性不可分，通过核技巧以及软间隔最大化学习】</p>
-<p><strong>核函数：</strong> 当输入空间为欧式空间或者离散集合、特征空间为希尔伯特空间(完备的内积空间)时，核函数表示将输入从输入空间映射到特征空间得到的特征向量之间的内积。<strong>通过使用核函数可以学习非线性支持向量机，等价于隐式地在高维的特征空间中学习线性支持向量机。</strong><br>
-<img src="/images/pasted-11.png" alt="框架图"></p>
-<h4 id="线性可分svm与硬间隔最大化"><a class="header-anchor" href="#线性可分svm与硬间隔最大化"></a>线性可分SVM与硬间隔最大化</h4>
-<h5 id="线性可分支持向量机"><a class="header-anchor" href="#线性可分支持向量机"></a>线性可分支持向量机</h5>
-<p>概念：输入空间&amp;特征空间<br>
-假设输入空间为欧式空间或者离散集合，特征空间为欧式空间或希尔伯特空间。线性/线性可分支持向量值假设这两个空间元素一一对应，而非线性支持向量机利用核函数将输入从输入空间映射到特征空间形成特征向量，因此svm的学习是在特征空间进行的。</p>
-<p><strong>假设特征空间上的训练集：</strong><br>
-$$T=\lbrace(x_1,y_1),(x_2,y_2),…,(x_N,y_N)\rbrace$$<br>
-其中$y_i=\lbrace-1,+1\rbrace$</p>
-<p>学习的目标是在特征空间找到一个分离超平面($w\cdot x+b$)能将实例分为不同的类别，一般地当数据集线性可分时，存在无数个分离超平面可以将这个两类数据正确分开，感知机利用误分类最小的策略，求得超平面，不过解有无穷多个，而线性可分支持向量机是利用间隔最大求最优的分离超平面，这个解释唯一。<br>
-假设学习到的分离超平面为$w^{\ast}\cdot x+b^{\ast}$<br>
-那么线性可分支持向量机的决策函数为$f(x)=sign(w^{\ast}\cdot x+b^{\ast})$</p>
-<h5 id="函数间隔-几何间隔"><a class="header-anchor" href="#函数间隔-几何间隔"></a>函数间隔&amp;几何间隔</h5>
-<ol>
-<li>
-<p>函数间隔<br>
-一般，一个点到分离超平面的远近可以表示为分类预测的确信程度，在超平面$w\cdot x+b$确定的情况下，$|w\cdot x+b|$表示点$x$到超平面的远近，而$w\cdot x+b$与类标记$y$是否一致表示分类是否正确，所以用$y(w\cdot x+b)$来表示分类的正确性以及确信度，这就是函数间隔。<br>
-定义：<br>
-超平面关于训练集$T$的函数间隔为超平面关于$T$中所有样本点的函数间隔之最小值，表示为：$$\hat{\gamma}=\min\limits_{i=1,2,…,N}\quad y_i\left(w\cdot x_i+b\right)$$</p>
+<p><strong>核函数：</strong> 当输入空间为欧式空间或者离散集合、特征空间为希尔伯特空间(完备的内积空间)时，核函数表示将输入从输入空间映射到特征空间得到的特征向量之间的内积。<strong>通过使用核函数可以学习非线性支持向量机，等价于隐式地在高维的特征空间中学习线性支持向量机。</strong><br><img src="/images/pasted-11.png" alt="框架图"></p>
+<h4 id="线性可分SVM与硬间隔最大化"><a href="#线性可分SVM与硬间隔最大化" class="headerlink" title="线性可分SVM与硬间隔最大化"></a>线性可分SVM与硬间隔最大化</h4><h5 id="线性可分支持向量机"><a href="#线性可分支持向量机" class="headerlink" title="线性可分支持向量机"></a>线性可分支持向量机</h5><p>概念：输入空间&amp;特征空间<br>假设输入空间为欧式空间或者离散集合，特征空间为欧式空间或希尔伯特空间。线性/线性可分支持向量值假设这两个空间元素一一对应，而非线性支持向量机利用核函数将输入从输入空间映射到特征空间形成特征向量，因此svm的学习是在特征空间进行的。</p>
+<p><strong>假设特征空间上的训练集：</strong><br>$$T=\lbrace(x_1,y_1),(x_2,y_2),…,(x_N,y_N)\rbrace$$<br>其中$y_i=\lbrace-1,+1\rbrace$</p>
+<p>学习的目标是在特征空间找到一个分离超平面($w\cdot x+b$)能将实例分为不同的类别，一般地当数据集线性可分时，存在无数个分离超平面可以将这个两类数据正确分开，感知机利用误分类最小的策略，求得超平面，不过解有无穷多个，而线性可分支持向量机是利用间隔最大求最优的分离超平面，这个解释唯一。<br>假设学习到的分离超平面为$w^{\ast}\cdot x+b^{\ast}$<br>那么线性可分支持向量机的决策函数为$f(x)=sign(w^{\ast}\cdot x+b^{\ast})$</p>
+<h5 id="函数间隔-amp-几何间隔"><a href="#函数间隔-amp-几何间隔" class="headerlink" title="函数间隔&amp;几何间隔"></a>函数间隔&amp;几何间隔</h5><ol>
+<li><p>函数间隔<br>一般，一个点到分离超平面的远近可以表示为分类预测的确信程度，在超平面$w\cdot x+b$确定的情况下，$|w\cdot x+b|$表示点$x$到超平面的远近，而$w\cdot x+b$与类标记$y$是否一致表示分类是否正确，所以用$y(w\cdot x+b)$来表示分类的正确性以及确信度，这就是函数间隔。<br>定义：<br>超平面关于训练集$T$的函数间隔为超平面关于$T$中所有样本点的函数间隔之最小值，表示为：$$\hat{\gamma}=\min\limits_{i=1,2,…,N}\quad y_i\left(w\cdot x_i+b\right)$$</p>
 </li>
-<li>
-<p>几何间隔<br>
-但是选择超平面时，光有函数间隔是不够的，因为只要成比例的改变$w$和$b$，超平面没有变，但是函数间隔变成了原来的比例倍，因此需要对法向量$w$加约束，eg规范化$||w||$，使间隔确定，这时就是几何间隔。<br>
-定义：<br>
-超平面关于训练集$T$的几何间隔为超平面关于$T$中所有样本点的几何间隔之最小值，表示为<br>
-$$\gamma=\min\limits_{i=1,2,…,N}\quad y_i\left(\frac{w}{||w||}\cdot x_i+\frac{b}{||w||}\right)$$</p>
+<li><p>几何间隔<br>但是选择超平面时，光有函数间隔是不够的，因为只要成比例的改变$w$和$b$，超平面没有变，但是函数间隔变成了原来的比例倍，因此需要对法向量$w$加约束，eg规范化$||w||$，使间隔确定，这时就是几何间隔。<br>定义：<br>超平面关于训练集$T$的几何间隔为超平面关于$T$中所有样本点的几何间隔之最小值，表示为<br>$$\gamma=\min\limits_{i=1,2,…,N}\quad y_i\left(\frac{w}{||w||}\cdot x_i+\frac{b}{||w||}\right)$$</p>
 </li>
-<li>
-<p>函数间隔与几何间隔关系<br>
-$$\gamma = \frac{\hat{\gamma}}{||w||}$$<br>
-如果$||w||=1$那么几何间隔=函数间隔，如果超平面参数$w,b$成比例的改变(超平面不变)，函数间隔按该比例改变，而几何间隔不变。</p>
-</li>
+<li>函数间隔与几何间隔关系<br>$$\gamma = \frac{\hat{\gamma}}{||w||}$$<br>如果$||w||=1$那么几何间隔=函数间隔，如果超平面参数$w,b$成比例的改变(超平面不变)，函数间隔按该比例改变，而几何间隔不变。</li>
 </ol>
-<h5 id="间隔最大化"><a class="header-anchor" href="#间隔最大化"></a>间隔最大化</h5>
-<p><strong>支持向量机学习的基本思想求解能够正确划分训练数据集并且几何间隔最大的超平面，几何间隔最大的分离超平面是唯一的。</strong><br>
-直观解释：对训练集找到几何间隔最大的超平面意味着以充分大的确信度对训练数据进行分类，这样的超平面对未知的新实例有很好的泛化能力。</p>
-<p>最大化间隔分离超平面转化为如下约束最优化问题：<br>
-$$\begin{equation}<br>
-	\mathop{\max}_{(w,b)} \ \ \ \quad\gamma \<br>
-\begin{cases}<br>
-&amp; s.t.\quad y_i\left(\frac{w}{||w||}\cdot x_i+\frac{b}{||w||}\right)\geq \gamma,i=1,2,…,N<br>
-\end{cases}<br>
-\end{equation}$$</p>
-<p>即最大化超平面关于训练集的几何间隔$\gamma$，约束条件表示超平面关于每个训练样本的几何间隔至少为$\gamma$。<br>
-用函数间隔表示为：<br>
-$$\begin{equation}<br>
-	\mathop{\max}_{(w,b)} \ \ \ \quad\frac{\hat{\gamma}}{||w||} \<br>
-\begin{cases}<br>
-&amp; s.t.\quad y_i\left(w\cdot x_i+b\right)\geq \hat{\gamma},i=1,2,…,N<br>
-\end{cases}<br>
-\end{equation}$$</p>
-<p>函数间隔$\hat{\gamma}$的取值不影响最优化问题的解，这样就可以取$\hat{\gamma}=1$，代入上式，将$\frac{1}{||w||}$的最大化转化为$\frac{1}{2}||w||^2$最小化，它们是等价的，即线性可分支持向量机学习的最优化问题转化为：<br>
-$$\begin{equation}<br>
-	\mathop{\min}_{(w,b)} \ \ \ \quad\frac{1}{2}||w||^2 \<br>
-\begin{cases}<br>
-&amp; s.t.\quad y_i(w\cdot x_i+b)-1\geq 0,i=1,2,…,N<br>
-\end{cases}<br>
-\end{equation}$$<br>
-此为一个凸二次规划问题求解最优值。</p>
-<p><strong>NOTE：</strong><br>
-概念：支持向量&amp;间隔边界<br>
-<img src="/images/pasted-9.png" alt="支持向量机"><br>
-$H1:w\cdot x+b=1，H2:w\cdot x+b=-1$。在H1\H2上的点就是支持向量，H1\H2就是间隔边界，H1\H2之间的距离为$\frac{2}{||w||}$为间隔</p>
-<h5 id="学习对偶算法"><a class="header-anchor" href="#学习对偶算法"></a>学习对偶算法</h5>
-<p>原因：对偶问题比原始问题更好求解，方便引入核函数。<br>
-<img src="/images/pasted-10.png" alt="对偶算法转化过程"><br>
-具体算法：<br>
-输入：线性数据集$T=\lbrace(x_1,y_1),(x_2,y_2),…,(x_N,y_N)\rbrace$,<br>
-输出：分离超平面和决策函数</p>
+<h5 id="间隔最大化"><a href="#间隔最大化" class="headerlink" title="间隔最大化"></a>间隔最大化</h5><p><strong>支持向量机学习的基本思想求解能够正确划分训练数据集并且几何间隔最大的超平面，几何间隔最大的分离超平面是唯一的。</strong><br>直观解释：对训练集找到几何间隔最大的超平面意味着以充分大的确信度对训练数据进行分类，这样的超平面对未知的新实例有很好的泛化能力。</p>
+<p>最大化间隔分离超平面转化为如下约束最优化问题：<br>$$\begin{equation}<br>    \mathop{\max}_{(w,b)}    \quad\gamma \\<br>   \begin{cases}<br>    &amp; s.t.\quad y_i\left(\frac{w}{||w||}\cdot x_i+\frac{b}{||w||}\right)\geq \gamma,i=1,2,…,N<br>        \end{cases}<br>\end{equation}$$</p>
+<p>即最大化超平面关于训练集的几何间隔$\gamma$，约束条件表示超平面关于每个训练样本的几何间隔至少为$\gamma$。<br>用函数间隔表示为：<br>$$\begin{equation}<br>    \mathop{\max}_{(w,b)}    \quad\frac{\hat{\gamma}}{||w||} \\<br>   \begin{cases}<br>    &amp; s.t.\quad y_i\left(w\cdot x_i+b\right)\geq \hat{\gamma},i=1,2,…,N<br>        \end{cases}<br>\end{equation}$$</p>
+<p>函数间隔$\hat{\gamma}$的取值不影响最优化问题的解，这样就可以取$\hat{\gamma}=1$，代入上式，将$\frac{1}{||w||}$的最大化转化为$\frac{1}{2}||w||^2$最小化，它们是等价的，即线性可分支持向量机学习的最优化问题转化为：<br>$$\begin{equation}<br>    \mathop{\min}_{(w,b)}    \quad\frac{1}{2}||w||^2 \\<br>   \begin{cases}<br>    &amp; s.t.\quad y_i(w\cdot x_i+b)-1\geq 0,i=1,2,…,N<br>        \end{cases}<br>\end{equation}$$<br>此为一个凸二次规划问题求解最优值。</p>
+<p><strong>NOTE：</strong><br>概念：支持向量&amp;间隔边界<br><img src="/images/pasted-9.png" alt="支持向量机"><br>$H1:w\cdot x+b=1，H2:w\cdot x+b=-1$。在H1\H2上的点就是支持向量，H1\H2就是间隔边界，H1\H2之间的距离为$\frac{2}{||w||}$为间隔</p>
+<h5 id="学习对偶算法"><a href="#学习对偶算法" class="headerlink" title="学习对偶算法"></a>学习对偶算法</h5><p>原因：对偶问题比原始问题更好求解，方便引入核函数。<br><img src="/images/pasted-10.png" alt="对偶算法转化过程"><br>具体算法：<br>输入：线性数据集$T=\lbrace(x_1,y_1),(x_2,y_2),…,(x_N,y_N)\rbrace$,<br>输出：分离超平面和决策函数</p>
 <ol>
 <li>构造并求解约束最优化问题</li>
 </ol>
-<p>$$\begin{equation}<br>
-	\mathop{\min}<em>{\alpha} \ \ \ \quad\frac{1}{2} \sum\limits</em>{i=1}<sup>{N}\sum\limits_{j=1}</sup>{N}\alpha_{i}\alpha_{j}y_iy_j(x_i \cdot x_j)-\sum\limits_{i=1}^{N}\alpha_{i} \<br>
-\begin{cases}<br>
-&amp; s.t.\quad \sum\limits_{i=1}^{N}\alpha_{i}y_i=0 \<br>
-&amp;\quad \alpha_i \geq 0,i=1,2,…,N<br>
-\end{cases}<br>
-\end{equation}$$</p>
+<p>$$\begin{equation}<br>    \mathop{\min}_{\alpha}    \quad\frac{1}{2} \sum\limits_{i=1}^{N}\sum\limits_{j=1}^{N}\alpha_{i}\alpha_{j}y_iy_j(x_i \cdot x_j)-\sum\limits_{i=1}^{N}\alpha_{i} \\<br>   \begin{cases}<br>    &amp; s.t.\quad \sum\limits_{i=1}^{N}\alpha_{i}y_i=0 \\<br>    &amp;\quad \alpha_i \geq 0,i=1,2,…,N<br>        \end{cases}<br>\end{equation}$$</p>
 <ol start="2">
-<li>计算<br>
-$$w^{\ast} = \sum\limits_{i=1}<sup>{N}\alpha_{i}</sup>{\ast}y_ix_i$$<br>
-并选择$\alpha<sup>{\ast}$的一个正分量$a_j</sup>{\ast}&gt;0$计算$b^{\ast}$<br>
-$$b^{\ast} = y_j -\sum\limits_{i=1}<sup>{N}\alpha_{i}</sup>{\ast}y_i(x_i\cdot x_j) $$</li>
-<li>求得分离超平面和分类决策函数<br>
-$$w^{\ast}\cdot x+b^{\ast}=0,\quad f(x)=sign(w^{\ast}\cdot x+b^{\ast})$$</li>
+<li>计算<br>$$w^{\ast} = \sum\limits_{i=1}^{N}\alpha_{i}^{\ast}y_ix_i$$<br>并选择$\alpha^{\ast}$的一个正分量$a_j^{\ast}&gt;0$计算$b^{\ast}$<br>$$b^{\ast} = y_j -\sum\limits_{i=1}^{N}\alpha_{i}^{\ast}y_i(x_i\cdot x_j) $$</li>
+<li>求得分离超平面和分类决策函数<br>$$w^{\ast}\cdot x+b^{\ast}=0,\quad f(x)=sign(w^{\ast}\cdot x+b^{\ast})$$</li>
 </ol>
-<h4 id="线性支持向量机与软间隔最大化"><a class="header-anchor" href="#线性支持向量机与软间隔最大化"></a>线性支持向量机与软间隔最大化</h4>
-<p>在现实中，训练集往往是不可分的，线性可分的支持向量机对线性不可分训练数据不适用，因为上述的不等式约束不能都成立，因此需要修改硬间隔最大化为软间隔最大化。<br>
-线性不可分意味着某些样本点不能满足函数间隔大于等于1的约束条件，为了解决这个问题，对每个样本引入了一个松弛变量$\xi_i \geq 0$，使得函数间隔加上松弛变量大于等于1，约束条件变为$y_i(w \cdot x_i+b)+\xi_i\geq 1$，同时对每个松弛变量$\xi_i$支付一个代价$\xi_i$，目标函数由原来的$\frac{1}{2}||w||<sup>2$变成$$\frac{1}{2}||w||</sup>2+C\sum\limits_{i=1}^N\xi_i$$<br>
-上述公式$C&gt;0$为惩罚参数，越大时，对误分类的惩罚增大，最小化上述目标函数：一方面使$\frac{1}{2}||w||^2$尽量小即间隔尽量大，同时是误分类点的个数尽量少。</p>
-<p>线性不可分的支持向量机转为学习如下的凸二次规划最优化问题：<br>
-$$\begin{equation}<br>
-	\mathop{\min}<em>{(w,b)} \ \ \ \quad\frac{1}{2}||w||^2 +C\sum\limits</em>{i=1}^N\xi_i\<br>
-\begin{cases}<br>
-s.t.\quad &amp;y_i(w \cdot x_i+b)\geq 1-\xi_i,i=1,2,…,N \<br>
-\quad &amp;\xi_i \geq 0,i=1,2,…,N<br>
-\end{cases}<br>
-\end{equation}$$</p>
-<p>转化为对偶算法(具体转化方法类似线性可分支持向量机)，即计算如下的凸二次规划：<br>
-$$\begin{equation}<br>
-	\mathop{\min}<em>{\alpha} \ \ \ \quad\frac{1}{2} \sum\limits</em>{i=1}<sup>{N}\sum\limits_{j=1}</sup>{N}\alpha_{i}\alpha_{j}y_iy_j(x_i \cdot x_j)-\sum\limits_{i=1}^{N}\alpha_{i} \<br>
-\begin{cases}<br>
-&amp; s.t.\quad \sum\limits_{i=1}^{N}\alpha_{i}y_i=0 \<br>
-&amp;\quad 0 \leq \alpha_i \leq C,i=1,2,…,N<br>
-\end{cases}<br>
-\end{equation}$$</p>
-<p>线性支持向量机的算法：<br>
-输入：训练数据集<br>
-输出：分离超平面和分类决策函数</p>
+<h4 id="线性支持向量机与软间隔最大化"><a href="#线性支持向量机与软间隔最大化" class="headerlink" title="线性支持向量机与软间隔最大化"></a>线性支持向量机与软间隔最大化</h4><p>在现实中，训练集往往是不可分的，线性可分的支持向量机对线性不可分训练数据不适用，因为上述的不等式约束不能都成立，因此需要修改硬间隔最大化为软间隔最大化。<br>线性不可分意味着某些样本点不能满足函数间隔大于等于1的约束条件，为了解决这个问题，对每个样本引入了一个松弛变量$\xi_i \geq 0$，使得函数间隔加上松弛变量大于等于1，约束条件变为$y_i(w \cdot x_i+b)+\xi_i\geq 1$，同时对每个松弛变量$\xi_i$支付一个代价$\xi_i$，目标函数由原来的$\frac{1}{2}||w||^2$变成$$\frac{1}{2}||w||^2+C\sum\limits_{i=1}^N\xi_i$$<br>上述公式$C&gt;0$为惩罚参数，越大时，对误分类的惩罚增大，最小化上述目标函数：一方面使$\frac{1}{2}||w||^2$尽量小即间隔尽量大，同时是误分类点的个数尽量少。</p>
+<p>线性不可分的支持向量机转为学习如下的凸二次规划最优化问题：<br>$$\begin{equation}<br>    \mathop{\min}_{(w,b)}    \quad\frac{1}{2}||w||^2 +C\sum\limits_{i=1}^N\xi_i\\<br>   \begin{cases}<br>     s.t.\quad &amp;y_i(w \cdot x_i+b)\geq 1-\xi_i,i=1,2,…,N \\<br>     \quad &amp;\xi_i \geq 0,i=1,2,…,N<br>        \end{cases}<br>\end{equation}$$</p>
+<p>转化为对偶算法(具体转化方法类似线性可分支持向量机)，即计算如下的凸二次规划：<br>$$\begin{equation}<br>    \mathop{\min}_{\alpha}    \quad\frac{1}{2} \sum\limits_{i=1}^{N}\sum\limits_{j=1}^{N}\alpha_{i}\alpha_{j}y_iy_j(x_i \cdot x_j)-\sum\limits_{i=1}^{N}\alpha_{i} \\<br>   \begin{cases}<br>    &amp; s.t.\quad \sum\limits_{i=1}^{N}\alpha_{i}y_i=0 \\<br>    &amp;\quad 0 \leq \alpha_i \leq C,i=1,2,…,N<br>        \end{cases}<br>\end{equation}$$</p>
+<p>线性支持向量机的算法：<br>输入：训练数据集<br>输出：分离超平面和分类决策函数</p>
 <ol>
-<li>选择惩罚参数$C$，构造并求解凸二次规划问题,求解最优$\alpha<sup>{\ast}=(\alpha_1</sup>{\ast},\alpha_2<sup>{\ast},…,\alpha_N</sup>{\ast})^T$</li>
+<li>选择惩罚参数$C$，构造并求解凸二次规划问题,求解最优$\alpha^{\ast}=(\alpha_1^{\ast},\alpha_2^{\ast},…,\alpha_N^{\ast})^T$</li>
 </ol>
-<p>$$\begin{equation}<br>
-	\mathop{\min}<em>{\alpha} \ \ \ \quad\frac{1}{2} \sum\limits</em>{i=1}<sup>{N}\sum\limits_{j=1}</sup>{N}\alpha_{i}\alpha_{j}y_iy_j(x_i \cdot x_j)-\sum\limits_{i=1}^{N}\alpha_{i} \<br>
-\begin{cases}<br>
-&amp; s.t.\quad \sum\limits_{i=1}^{N}\alpha_{i}y_i=0 \<br>
-&amp;\quad 0 \leq \alpha_i \leq C,i=1,2,…,N<br>
-\end{cases}<br>
-\end{equation}$$</p>
+<p>$$\begin{equation}<br>    \mathop{\min}_{\alpha}    \quad\frac{1}{2} \sum\limits_{i=1}^{N}\sum\limits_{j=1}^{N}\alpha_{i}\alpha_{j}y_iy_j(x_i \cdot x_j)-\sum\limits_{i=1}^{N}\alpha_{i} \\<br>   \begin{cases}<br>    &amp; s.t.\quad \sum\limits_{i=1}^{N}\alpha_{i}y_i=0 \\<br>    &amp;\quad 0 \leq \alpha_i \leq C,i=1,2,…,N<br>        \end{cases}<br>\end{equation}$$</p>
 <ol start="2">
-<li>计算$$w^{\ast} = \sum\limits_{i=1}<sup>{N}\alpha_{i}</sup>{\ast}y_ix_i$$<br>
-并选择$\alpha^{\ast}$的一个正分量$0\leq a_j^{\ast} \leq C$计算$b^{\ast}$<br>
-$$b^{\ast} = y_j -\sum\limits_{i=1}<sup>{N}\alpha_{i}</sup>{\ast}y_i(x_i\cdot x_j) $$</li>
-<li>求得分离超平面和分类决策函数<br>
-$$w^{\ast}\cdot x+b^{\ast}=0,\quad f(x)=sign(w^{\ast}\cdot x+b^{\ast})$$</li>
+<li>计算$$w^{\ast} = \sum\limits_{i=1}^{N}\alpha_{i}^{\ast}y_ix_i$$<br>并选择$\alpha^{\ast}$的一个正分量$0\leq a_j^{\ast} \leq C$计算$b^{\ast}$<br>$$b^{\ast} = y_j -\sum\limits_{i=1}^{N}\alpha_{i}^{\ast}y_i(x_i\cdot x_j) $$</li>
+<li>求得分离超平面和分类决策函数<br>$$w^{\ast}\cdot x+b^{\ast}=0,\quad f(x)=sign(w^{\ast}\cdot x+b^{\ast})$$</li>
 </ol>
-<h5 id="线性svm的支持向量"><a class="header-anchor" href="#线性svm的支持向量"></a>线性svm的支持向量</h5>
-<p>在线性不可分的情况下，通过对偶问题求解到$\alpha<sup>{\ast}=(\alpha_1</sup>{\ast},\alpha_2<sup>{\ast},…,\alpha_N</sup>{\ast})<sup>T$中对应$\alpha_i</sup>{\ast}&gt;0$的样本点的实例$x_i$为支持向量，其中实例$x_i$到间隔编辑的距离为$\frac{\xi_i}{||w||}$</p>
+<h5 id="线性svm的支持向量"><a href="#线性svm的支持向量" class="headerlink" title="线性svm的支持向量"></a>线性svm的支持向量</h5><p>在线性不可分的情况下，通过对偶问题求解到$\alpha^{\ast}=(\alpha_1^{\ast},\alpha_2^{\ast},…,\alpha_N^{\ast})^T$中对应$\alpha_i^{\ast}&gt;0$的样本点的实例$x_i$为支持向量，其中实例$x_i$到间隔编辑的距离为$\frac{\xi_i}{||w||}$</p>
 <p>软间隔的支持向量：</p>
 <ul>
 <li>在间隔边界上$(若\alpha_i^{\ast}&lt;C，则\xi_i=0)$，</li>
@@ -579,21 +487,8 @@ $$w^{\ast}\cdot x+b^{\ast}=0,\quad f(x)=sign(w^{\ast}\cdot x+b^{\ast})$$</li>
 <li>在分离超平面误分的一侧$(若\alpha_i^{\ast}=C，则\xi_i&gt;1)$</li>
 <li>在分离超平面上$(若\alpha_i^{\ast}=C，则\xi_i=1)$</li>
 </ul>
-<h5 id="合页损失函数-hinge-loss"><a class="header-anchor" href="#合页损失函数-hinge-loss"></a>合页损失函数(hinge loss)</h5>
-<p>损失函数表示为$$L(y，f(x))=max(0,1-yf(x))$$<br>
-而线性支持向量机的原始问题为：<br>
-$$\begin{equation}<br>
-	\mathop{\min}<em>{(w,b)} \ \ \ \quad\frac{1}{2}||w||^2 +C\sum\limits</em>{i=1}^N\xi_i\<br>
-\begin{cases}<br>
-s.t.\quad &amp;y_i(w \cdot x_i+b)\geq 1-\xi_i,i=1,2,…,N \<br>
-\quad &amp;\xi_i \geq 0,i=1,2,…,N<br>
-\end{cases}<br>
-\end{equation}$$<br>
-<strong>应用合页损失函数，线性svm的原始问题等价于最优化问题</strong>：😇😇😇<br>
-$$\mathop{\min}<em>{(w,b)} \ \ \ \quad\sum\limits</em>{i=1}^{N} max(0,1-y_i(w\cdot x_i +b)) + \lambda ||w||^2$$<br>
-而$max(0,1-y_i(w\cdot x_i +b))=\xi_i, \lambda=\frac{1}{2C}$</p>
-<h4 id="总结"><a class="header-anchor" href="#总结"></a>总结</h4>
-<p>线性支持向量机很好理解跟解释，下一章节见非线性支持向量机的原理。</p>
+<h5 id="合页损失函数-hinge-loss"><a href="#合页损失函数-hinge-loss" class="headerlink" title="合页损失函数(hinge loss)"></a>合页损失函数(hinge loss)</h5><p>损失函数表示为$$L(y，f(x))=max(0,1-yf(x))$$<br>而线性支持向量机的原始问题为：<br>$$\begin{equation}<br>    \mathop{\min}_{(w,b)}    \quad\frac{1}{2}||w||^2 +C\sum\limits_{i=1}^N\xi_i\\<br>   \begin{cases}<br>     s.t.\quad &amp;y_i(w \cdot x_i+b)\geq 1-\xi_i,i=1,2,…,N \\<br>     \quad &amp;\xi_i \geq 0,i=1,2,…,N<br>        \end{cases}<br>\end{equation}$$<br><strong>应用合页损失函数，线性svm的原始问题等价于最优化问题</strong>：😇😇😇<br>$$\mathop{\min}_{(w,b)}    \quad\sum\limits_{i=1}^{N} max(0,1-y_i(w\cdot x_i +b)) + \lambda ||w||^2$$<br>而$max(0,1-y_i(w\cdot x_i +b))=\xi_i, \lambda=\frac{1}{2C}$</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>线性支持向量机很好理解跟解释，下一章节见非线性支持向量机的原理。</p>
 
       
     </div>
@@ -805,7 +700,7 @@ $$\mathop{\min}<em>{(w,b)} \ \ \ \quad\sum\limits</em>{i=1}^{N} max(0,1-y_i(w\cd
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">52</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -895,7 +790,7 @@ $$\mathop{\min}<em>{(w,b)} \ \ \ \quad\sum\limits</em>{i=1}^{N} max(0,1-y_i(w\cd
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线性可分svm与硬间隔最大化"><span class="nav-number">2.</span> <span class="nav-text">线性可分SVM与硬间隔最大化</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#线性可分支持向量机"><span class="nav-number">2.1.</span> <span class="nav-text">线性可分支持向量机</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#函数间隔-几何间隔"><span class="nav-number">2.2.</span> <span class="nav-text">函数间隔&amp;几何间隔</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#间隔最大化"><span class="nav-number">2.3.</span> <span class="nav-text">间隔最大化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#学习对偶算法"><span class="nav-number">2.4.</span> <span class="nav-text">学习对偶算法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线性支持向量机与软间隔最大化"><span class="nav-number">3.</span> <span class="nav-text">线性支持向量机与软间隔最大化</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#线性svm的支持向量"><span class="nav-number">3.1.</span> <span class="nav-text">线性svm的支持向量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#合页损失函数-hinge-loss"><span class="nav-number">3.2.</span> <span class="nav-text">合页损失函数(hinge loss)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线性可分SVM与硬间隔最大化"><span class="nav-number">2.</span> <span class="nav-text">线性可分SVM与硬间隔最大化</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#线性可分支持向量机"><span class="nav-number">2.1.</span> <span class="nav-text">线性可分支持向量机</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#函数间隔-amp-几何间隔"><span class="nav-number">2.2.</span> <span class="nav-text">函数间隔&amp;几何间隔</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#间隔最大化"><span class="nav-number">2.3.</span> <span class="nav-text">间隔最大化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#学习对偶算法"><span class="nav-number">2.4.</span> <span class="nav-text">学习对偶算法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线性支持向量机与软间隔最大化"><span class="nav-number">3.</span> <span class="nav-text">线性支持向量机与软间隔最大化</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#线性svm的支持向量"><span class="nav-number">3.1.</span> <span class="nav-text">线性svm的支持向量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#合页损失函数-hinge-loss"><span class="nav-number">3.2.</span> <span class="nav-text">合页损失函数(hinge loss)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
