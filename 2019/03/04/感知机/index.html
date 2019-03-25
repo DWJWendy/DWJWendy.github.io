@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="感知机是什么？感知机是一个二分类的线性分类模型，输入特征向量，输出为实例的类别$\lbrace +1,-1\rbrace$。感知机模型旨在求出将训练数据进行线性划分的超平面，求解过程中使用误分类的损失函数，利用梯度下降法对损失函数进行极小化。特点：简单易实现 概念：什么叫线性可分(linearly separable)？对于给定一数据集$T$，如果存在一超平面可以将数据集中的正负样例完全正确的划分">
+<meta name="description" content="感知机是什么？ 感知机是一个二分类的线性分类模型，输入特征向量，输出为实例的类别$\lbrace +1,-1\rbrace$。 感知机模型旨在求出将训练数据进行线性划分的超平面，求解过程中使用误分类的损失函数，利用梯度下降法对损失函数进行极小化。 特点：简单易实现 概念： 什么叫线性可分(linearly separable)？ 对于给定一数据集$T$，如果存在一超平面可以将数据集中的正负样例完全">
 <meta name="keywords" content="ML,感知机,线性可分,收敛性,对偶形式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="感知机">
 <meta property="og:url" content="http://yoursite.com/2019/03/04/感知机/index.html">
 <meta property="og:site_name" content="毛毛虫_Wendy">
-<meta property="og:description" content="感知机是什么？感知机是一个二分类的线性分类模型，输入特征向量，输出为实例的类别$\lbrace +1,-1\rbrace$。感知机模型旨在求出将训练数据进行线性划分的超平面，求解过程中使用误分类的损失函数，利用梯度下降法对损失函数进行极小化。特点：简单易实现 概念：什么叫线性可分(linearly separable)？对于给定一数据集$T$，如果存在一超平面可以将数据集中的正负样例完全正确的划分">
+<meta property="og:description" content="感知机是什么？ 感知机是一个二分类的线性分类模型，输入特征向量，输出为实例的类别$\lbrace +1,-1\rbrace$。 感知机模型旨在求出将训练数据进行线性划分的超平面，求解过程中使用误分类的损失函数，利用梯度下降法对损失函数进行极小化。 特点：简单易实现 概念： 什么叫线性可分(linearly separable)？ 对于给定一数据集$T$，如果存在一超平面可以将数据集中的正负样例完全">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-03-06T02:45:36.839Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="感知机">
-<meta name="twitter:description" content="感知机是什么？感知机是一个二分类的线性分类模型，输入特征向量，输出为实例的类别$\lbrace +1,-1\rbrace$。感知机模型旨在求出将训练数据进行线性划分的超平面，求解过程中使用误分类的损失函数，利用梯度下降法对损失函数进行极小化。特点：简单易实现 概念：什么叫线性可分(linearly separable)？对于给定一数据集$T$，如果存在一超平面可以将数据集中的正负样例完全正确的划分">
+<meta name="twitter:description" content="感知机是什么？ 感知机是一个二分类的线性分类模型，输入特征向量，输出为实例的类别$\lbrace +1,-1\rbrace$。 感知机模型旨在求出将训练数据进行线性划分的超平面，求解过程中使用误分类的损失函数，利用梯度下降法对损失函数进行极小化。 特点：简单易实现 概念： 什么叫线性可分(linearly separable)？ 对于给定一数据集$T$，如果存在一超平面可以将数据集中的正负样例完全">
 
 
 
@@ -436,27 +436,76 @@
       
 
       
-        <h4 id="感知机是什么？"><a href="#感知机是什么？" class="headerlink" title="感知机是什么？"></a>感知机是什么？</h4><p>感知机是一个<strong>二分类的线性分类模型</strong>，输入特征向量，输出为实例的类别$\lbrace +1,-1\rbrace$。<br>感知机模型旨在求出将训练数据进行线性划分的超平面，求解过程中使用误分类的损失函数，利用梯度下降法对损失函数进行极小化。<br><strong>特点：简单易实现</strong></p>
-<p><strong>概念：</strong><br><strong>什么叫线性可分(linearly separable)？</strong><br>对于给定一数据集$T$，如果存在一超平面可以将数据集中的正负样例完全正确的划分到超平面的两侧，即对所有的$y_i=+1$的实例$i$，有$w\cdot x_i+b&gt;0$，$y_i=-1$的实例$i$，有$w\cdot x_i+b&lt;0$<br>则称数据集$T$是线性可分的，否则就是线性不可分。</p>
+        <h4 id="感知机是什么？"><a class="header-anchor" href="#感知机是什么？"></a>感知机是什么？</h4>
+<p>感知机是一个<strong>二分类的线性分类模型</strong>，输入特征向量，输出为实例的类别$\lbrace +1,-1\rbrace$。<br>
+感知机模型旨在求出将训练数据进行线性划分的超平面，求解过程中使用误分类的损失函数，利用梯度下降法对损失函数进行极小化。<br>
+<strong>特点：简单易实现</strong></p>
+<p><strong>概念：</strong><br>
+<strong>什么叫线性可分(linearly separable)？</strong><br>
+对于给定一数据集$T$，如果存在一超平面可以将数据集中的正负样例完全正确的划分到超平面的两侧，即对所有的$y_i=+1$的实例$i$，有$w\cdot x_i+b&gt;0$，$y_i=-1$的实例$i$，有$w\cdot x_i+b&lt;0$<br>
+则称数据集$T$是线性可分的，否则就是线性不可分。</p>
 <hr>
-<p>具体模型：<br>假设输入向量为$x$,输出$y$表示实例的类别$\lbrace +1,-1\rbrace$，从输入空间到输出空间有如下函数：<br>$$f(x)=sign(w\cdot x+b)$$</p>
-<p>$$sign(x)=<br>\begin{cases}<br>1,  &amp; \text{$x \geq 0$} \\<br>0, &amp; \text{$x &lt; 0$}<br>\end{cases} $$<br>感知机模型的假设空间是定义在特征空间中的所有线性分类模型或者线性分类器，函数集合为$\lbrace f(x)=w\cdot x+b \rbrace$<br>感知机学习就是由训练集$T={(x_1,y_1),(x_2,y_2),…,(x_N,y_N)}$求得参数$w,b$，感知器预测就是利用感知机对新的实例进行预测。</p>
+<p>具体模型：<br>
+假设输入向量为$x$,输出$y$表示实例的类别$\lbrace +1,-1\rbrace$，从输入空间到输出空间有如下函数：<br>
+$$f(x)=sign(w\cdot x+b)$$</p>
+<p>$$sign(x)=<br>
+\begin{cases}<br>
+1,  &amp; \text{$x \geq 0$} \<br>
+0, &amp; \text{$x &lt; 0$}<br>
+\end{cases} $$<br>
+感知机模型的假设空间是定义在特征空间中的所有线性分类模型或者线性分类器，函数集合为$\lbrace f(x)=w\cdot x+b \rbrace$<br>
+感知机学习就是由训练集$T={(x_1,y_1),(x_2,y_2),…,(x_N,y_N)}$求得参数$w,b$，感知器预测就是利用感知机对新的实例进行预测。</p>
 <hr>
-<p><strong>学习过程：</strong><br>为了找出这样的超平面，确定参数$w,b$，需要定义损失函数，并将损失函数最小化。<br>我们容易想到，误分类点的总数作为损失函数，但是这样的损失函数不是参数$w,b$的连续可导，不易优化。为此，<strong>选择误分类点到超平面的总距离</strong>，输入空间任一点$x_0$到超平面$S$的总距离表示为：<br>$$\frac{1}{||w||}|w\cdot x_0+b|$$<br>对于误分类的数据来说，$-y_i(w\cdot x_i+b)&gt;0$，因此假设所有误分类点集合未$M$，那么所有误分类点到超平面的总距离为$$-\frac{1}{||w||}\sum \limits_{x_i \in M}y_i(w\cdot x_i+b)$$<br>所以，最终的损失函数定义为：<br>$$L(w,b)=-\sum \limits_{x_i \in M}y_i(w\cdot x_i+b)$$<br>由于损失函数是$w,b$的连续可导函数，所以用梯度下降法更新参数$w,b$。<br>$$\min \limits_{w,b} L(w,b)=-\sum \limits_{x_i \in M}y_i(w\cdot x_i+b)$$<br>$M$是误分类点的集合<br>梯度为：<br>$$\frac{dL(w,b)}{dw}=-\sum \limits_{x_i \in M}y_ix_i$$<br>$$\frac{dL(w,b)}{db}=-\sum \limits_{x_i \in M}y_i$$<br>首先，任意选取一个超平面$w_0,b_0$，然后用梯度下降法优化极小化目标函数$L(w,b)$，极小化过程中不是一次使$M$中所有的误分类点的梯度下降，而是一次随机选取一个误分类点随其梯度下降。<br>随机去一个误分类点$(x_i,y_i)$进行更新：<br>$$w\leftarrow w+\eta y_ix_i,b \leftarrow b+\eta y_i$$</p>
+<p><strong>学习过程：</strong><br>
+为了找出这样的超平面，确定参数$w,b$，需要定义损失函数，并将损失函数最小化。<br>
+我们容易想到，误分类点的总数作为损失函数，但是这样的损失函数不是参数$w,b$的连续可导，不易优化。为此，<strong>选择误分类点到超平面的总距离</strong>，输入空间任一点$x_0$到超平面$S$的总距离表示为：<br>
+$$\frac{1}{||w||}|w\cdot x_0+b|$$<br>
+对于误分类的数据来说，$-y_i(w\cdot x_i+b)&gt;0$，因此假设所有误分类点集合未$M$，那么所有误分类点到超平面的总距离为$$-\frac{1}{||w||}\sum \limits_{x_i \in M}y_i(w\cdot x_i+b)$$<br>
+所以，最终的损失函数定义为：<br>
+$$L(w,b)=-\sum \limits_{x_i \in M}y_i(w\cdot x_i+b)$$<br>
+由于损失函数是$w,b$的连续可导函数，所以用梯度下降法更新参数$w,b$。<br>
+$$\min \limits_{w,b} L(w,b)=-\sum \limits_{x_i \in M}y_i(w\cdot x_i+b)$$<br>
+$M$是误分类点的集合<br>
+梯度为：<br>
+$$\frac{dL(w,b)}{dw}=-\sum \limits_{x_i \in M}y_ix_i$$<br>
+$$\frac{dL(w,b)}{db}=-\sum \limits_{x_i \in M}y_i$$<br>
+首先，任意选取一个超平面$w_0,b_0$，然后用梯度下降法优化极小化目标函数$L(w,b)$，极小化过程中不是一次使$M$中所有的误分类点的梯度下降，而是一次随机选取一个误分类点随其梯度下降。<br>
+随机去一个误分类点$(x_i,y_i)$进行更新：<br>
+$$w\leftarrow w+\eta y_ix_i,b \leftarrow b+\eta y_i$$</p>
 <hr>
-<p><strong>基本算法：</strong><br>输入：训练集$T$，学习率$\eta(0&lt;\eta\leq 1)$<br>输出：$w,b$以及感知机模型$f(x)=sign(w\cdot x+b)$</p>
+<p><strong>基本算法：</strong><br>
+输入：训练集$T$，学习率$\eta(0&lt;\eta\leq 1)$<br>
+输出：$w,b$以及感知机模型$f(x)=sign(w\cdot x+b)$</p>
 <ol>
 <li>初始值$w_0,b_0$</li>
 <li>训练集中选择$(x_i,y_i)$</li>
 <li>如果$y_i(w \cdot x_i +b) \leq 0$更新$$w\leftarrow w+\eta y_ix_i,b \leftarrow b+\eta y_i$$</li>
 <li>转至2.直至数据集中没有误分类点</li>
 </ol>
-<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><hr>
+<h4 id="代码实现"><a class="header-anchor" href="#代码实现"></a>代码实现</h4>
+<hr>
 <p>整理后加入</p>
 <hr>
-<h4 id="算法收敛性"><a href="#算法收敛性" class="headerlink" title="算法收敛性"></a>算法收敛性</h4><p><strong>收敛</strong>：指迭代若干次之后，目标量收敛曲线趋于平稳，趋于定值。<br>在这里，主要是证明，对于线性可分数据集感知机学习算法原始形式收敛，即经验有限次迭代可以得到一个将训练集完全正确划分的分离超平面及感知机模型。<br>定理：设训练集$T=\lbrace(x_1,y_1),(x_2,y_2),…,(x_N,y_N)\rbrace$是线性可分的，其中$x_i \in X=R^n,y_i \in Y=\lbrace -1,+1\rbrace,i=1,2,…,N$，则<br>(1)存在满足条件的$|| \hat{w}_{opt}||$的超平面$ \hat{w}_{opt} \cdot \hat{x}=w_{opt} \cdot x+b_{opt}=0$将训练数据完全正确分开，且存在$\gamma&gt;0$，对所有$i=1,2,…,N$<br>$$y_i(\hat{w}_{opt} \cdot \hat{x})=y_i(w_{opt} \cdot x+b_{opt}) \geq \gamma$$<br>(2)令$R=\max\limits_{1 \leq i \leq N}||\hat{x_i}||$，则感知机算法在训练数据集上的误分类次数$k$满足不等式$$k \leq \left(\frac{R}{\gamma} \right)^2$$<br>内容推算过程参考《统计学习方法》<br>定理证明，误分类的次数$k$是有上界的，也就是说线性可分时，感知器学习算法原始形式迭代是收敛的。<br>当训练集线性不可分，感知机学习算法不收敛，迭代结果会发生震荡。</p>
-<h4 id="算法的对偶形式"><a href="#算法的对偶形式" class="headerlink" title="算法的对偶形式"></a>算法的对偶形式</h4><p>感知机学习的原始形式与对偶形式与支持向量机学习算法的原始形式和对偶形式相对应。<br>对偶形式的基本想法是，将$w$和$b$表示为实例$x_i$和$y_i$的线性组合的形式，假设初始值$w_0=0,b_0=0$<br>误分类点$(x_i,y_i)$通过$$w\leftarrow w+\eta y_ix_i,b \leftarrow b+\eta y_i$$<br>设修改$n$次，则$w,b$关于$(x_i,y_i)$的增量分别是$\alpha_iy_ix_i$和$\alpha_iy_i$，$\alpha_i=n_i\eta$，最后学习到的$w,b$可以表示为<br>$$w=\sum \limits_{i=1}^{N}a_iy_ix_i,b=\sum \limits_{i=1}^{N}a_iy_i$$<br>这里，$\alpha_i\geq 0,i=1,2,…,N$，当$\eta=1$时，表示第$i$个实例由于误分类而进行更新的次数，实例点更新次数越多，意味着他距离超平面越近，也越难正确分类。</p>
-<p>算法：<br>输入：训练集$T$,学习率$\eta$<br>输出：$\alpha,b$,感知机模型$f(x)=sign \left(\sum \limits_{j=1}^Na_jy_jx_j\cdot x+b \right)$，其中$\alpha=(\alpha_1,\alpha_2,…,\alpha_N)^T$</p>
+<h4 id="算法收敛性"><a class="header-anchor" href="#算法收敛性"></a>算法收敛性</h4>
+<p><strong>收敛</strong>：指迭代若干次之后，目标量收敛曲线趋于平稳，趋于定值。<br>
+在这里，主要是证明，对于线性可分数据集感知机学习算法原始形式收敛，即经验有限次迭代可以得到一个将训练集完全正确划分的分离超平面及感知机模型。<br>
+定理：设训练集$T=\lbrace(x_1,y_1),(x_2,y_2),…,(x_N,y_N)\rbrace$是线性可分的，其中$x_i \in X=R^n,y_i \in Y=\lbrace -1,+1\rbrace,i=1,2,…,N$，则<br>
+(1)存在满足条件的$|| \hat{w}<em>{opt}||$的超平面$ \hat{w}</em>{opt} \cdot \hat{x}=w_{opt} \cdot x+b_{opt}=0$将训练数据完全正确分开，且存在$\gamma&gt;0$，对所有$i=1,2,…,N$<br>
+$$y_i(\hat{w}<em>{opt} \cdot \hat{x})=y_i(w</em>{opt} \cdot x+b_{opt}) \geq \gamma$$<br>
+(2)令$R=\max\limits_{1 \leq i \leq N}||\hat{x_i}||$，则感知机算法在训练数据集上的误分类次数$k$满足不等式$$k \leq \left(\frac{R}{\gamma} \right)^2$$<br>
+内容推算过程参考《统计学习方法》<br>
+定理证明，误分类的次数$k$是有上界的，也就是说线性可分时，感知器学习算法原始形式迭代是收敛的。<br>
+当训练集线性不可分，感知机学习算法不收敛，迭代结果会发生震荡。</p>
+<h4 id="算法的对偶形式"><a class="header-anchor" href="#算法的对偶形式"></a>算法的对偶形式</h4>
+<p>感知机学习的原始形式与对偶形式与支持向量机学习算法的原始形式和对偶形式相对应。<br>
+对偶形式的基本想法是，将$w$和$b$表示为实例$x_i$和$y_i$的线性组合的形式，假设初始值$w_0=0,b_0=0$<br>
+误分类点$(x_i,y_i)$通过$$w\leftarrow w+\eta y_ix_i,b \leftarrow b+\eta y_i$$<br>
+设修改$n$次，则$w,b$关于$(x_i,y_i)$的增量分别是$\alpha_iy_ix_i$和$\alpha_iy_i$，$\alpha_i=n_i\eta$，最后学习到的$w,b$可以表示为<br>
+$$w=\sum \limits_{i=1}^{N}a_iy_ix_i,b=\sum \limits_{i=1}^{N}a_iy_i$$<br>
+这里，$\alpha_i\geq 0,i=1,2,…,N$，当$\eta=1$时，表示第$i$个实例由于误分类而进行更新的次数，实例点更新次数越多，意味着他距离超平面越近，也越难正确分类。</p>
+<p>算法：<br>
+输入：训练集$T$,学习率$\eta$<br>
+输出：$\alpha,b$,感知机模型$f(x)=sign \left(\sum \limits_{j=1}^Na_jy_jx_j\cdot x+b \right)$，其中$\alpha=(\alpha_1,\alpha_2,…,\alpha_N)^T$</p>
 <ol>
 <li>$\alpha \leftarrow 0,b \leftarrow 0$</li>
 <li>在训练集中选取数据$\lbrace x_i,y_i \rbrace$</li>
@@ -464,7 +513,8 @@
 <li>转至第2直到没有误分类</li>
 </ol>
 <hr>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>总体来说感知机相对简单一些，而且针对的是线性可分的数据集，感知机用到的损失函数对应于误分类点到分离超平面的总距离，这样就可以基于随机梯度下降法对损失函数进行最优化。另外，感知机学习算法存在无穷多个解，其解与初始值或者不同的迭代顺序而有可能产生不同。</p>
+<h4 id="总结"><a class="header-anchor" href="#总结"></a>总结</h4>
+<p>总体来说感知机相对简单一些，而且针对的是线性可分的数据集，感知机用到的损失函数对应于误分类点到分离超平面的总距离，这样就可以基于随机梯度下降法对损失函数进行最优化。另外，感知机学习算法存在无穷多个解，其解与初始值或者不同的迭代顺序而有可能产生不同。</p>
 
       
     </div>
@@ -660,7 +710,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -682,7 +732,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
