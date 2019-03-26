@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="简介k近邻(KNN)是一种基本的分类和回归的方法。KNN的输入为实例的特征向量，输出为实例的类别，不需要训练【实际上利用训练集对特征向量空间进行划分】，给定一个训练集，其中的实例类别已定，分类时，对新的实例，根据其k个最近邻的训练实例的类别，通过投票等方式进行预测。 三个基本要素：$k$值的选择、距离度量、分类决策规则 优点：简单、直观 KNN算法给定一个训练集，对新的输入实例，在训练集中找到与该">
+<meta name="description" content="简介 k近邻(KNN)是一种基本的分类和回归的方法。KNN的输入为实例的特征向量，输出为实例的类别，不需要训练【实际上利用训练集对特征向量空间进行划分】，给定一个训练集，其中的实例类别已定，分类时，对新的实例，根据其k个最近邻的训练实例的类别，通过投票等方式进行预测。 三个基本要素：$k$值的选择、距离度量、分类决策规则 优点：简单、直观 KNN算法 给定一个训练集，对新的输入实例，在训练集中找到">
 <meta name="keywords" content="knn,距离度量,欧氏距离,曼哈顿距离,kd树">
 <meta property="og:type" content="article">
 <meta property="og:title" content="k近邻法">
 <meta property="og:url" content="http://yoursite.com/2019/03/05/k近邻法/index.html">
 <meta property="og:site_name" content="毛毛虫_Wendy">
-<meta property="og:description" content="简介k近邻(KNN)是一种基本的分类和回归的方法。KNN的输入为实例的特征向量，输出为实例的类别，不需要训练【实际上利用训练集对特征向量空间进行划分】，给定一个训练集，其中的实例类别已定，分类时，对新的实例，根据其k个最近邻的训练实例的类别，通过投票等方式进行预测。 三个基本要素：$k$值的选择、距离度量、分类决策规则 优点：简单、直观 KNN算法给定一个训练集，对新的输入实例，在训练集中找到与该">
+<meta property="og:description" content="简介 k近邻(KNN)是一种基本的分类和回归的方法。KNN的输入为实例的特征向量，输出为实例的类别，不需要训练【实际上利用训练集对特征向量空间进行划分】，给定一个训练集，其中的实例类别已定，分类时，对新的实例，根据其k个最近邻的训练实例的类别，通过投票等方式进行预测。 三个基本要素：$k$值的选择、距离度量、分类决策规则 优点：简单、直观 KNN算法 给定一个训练集，对新的输入实例，在训练集中找到">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-03-06T02:45:11.398Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="k近邻法">
-<meta name="twitter:description" content="简介k近邻(KNN)是一种基本的分类和回归的方法。KNN的输入为实例的特征向量，输出为实例的类别，不需要训练【实际上利用训练集对特征向量空间进行划分】，给定一个训练集，其中的实例类别已定，分类时，对新的实例，根据其k个最近邻的训练实例的类别，通过投票等方式进行预测。 三个基本要素：$k$值的选择、距离度量、分类决策规则 优点：简单、直观 KNN算法给定一个训练集，对新的输入实例，在训练集中找到与该">
+<meta name="twitter:description" content="简介 k近邻(KNN)是一种基本的分类和回归的方法。KNN的输入为实例的特征向量，输出为实例的类别，不需要训练【实际上利用训练集对特征向量空间进行划分】，给定一个训练集，其中的实例类别已定，分类时，对新的实例，根据其k个最近邻的训练实例的类别，通过投票等方式进行预测。 三个基本要素：$k$值的选择、距离度量、分类决策规则 优点：简单、直观 KNN算法 给定一个训练集，对新的输入实例，在训练集中找到">
 
 
 
@@ -436,11 +436,15 @@
       
 
       
-        <h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>k近邻(KNN)是一种基本的分类和回归的方法。KNN的输入为实例的特征向量，输出为实例的类别，不需要训练【实际上利用训练集对特征向量空间进行划分】，给定一个训练集，其中的实例类别已定，分类时，对新的实例，根据其k个最近邻的训练实例的类别，通过投票等方式进行预测。</p>
+        <h4 id="简介"><a class="header-anchor" href="#简介"></a>简介</h4>
+<p>k近邻(KNN)是一种基本的分类和回归的方法。KNN的输入为实例的特征向量，输出为实例的类别，不需要训练【实际上利用训练集对特征向量空间进行划分】，给定一个训练集，其中的实例类别已定，分类时，对新的实例，根据其k个最近邻的训练实例的类别，通过投票等方式进行预测。</p>
 <p><strong>三个基本要素：</strong>$k$值的选择、距离度量、分类决策规则</p>
 <p><strong>优点</strong>：简单、直观</p>
-<h4 id="KNN算法"><a href="#KNN算法" class="headerlink" title="KNN算法"></a>KNN算法</h4><p>给定一个训练集，对新的输入实例，在训练集中找到与该实例最近邻的k个实例，这k个实例的多数属于某个类，就把该输入实例分为这个类。</p>
-<p>算法如下：<br>输入：训练集$T$<br>输出：新的实例所属的类</p>
+<h4 id="knn算法"><a class="header-anchor" href="#knn算法"></a>KNN算法</h4>
+<p>给定一个训练集，对新的输入实例，在训练集中找到与该实例最近邻的k个实例，这k个实例的多数属于某个类，就把该输入实例分为这个类。</p>
+<p>算法如下：<br>
+输入：训练集$T$<br>
+输出：新的实例所属的类</p>
 <ol>
 <li>根据给定的距离度量，在训练集$T$中找到与实例最接近的k个点，涵盖这k个点的$x$的邻域记作$N_k(x)$</li>
 <li>在邻域$N_k(x)$中根据分类决策规则(eg 多数表决)决定$x$的类别$y$：$$y=arg \max \limits_{c_j} \sum \limits_{x_j \in N_k(x)} I(y_i=c_j),i=1,2,…,N;j=1,2,…,K$$其中I为指示函数，即$y_i=c_j$时I为1，否则为0.</li>
@@ -451,31 +455,49 @@
 <li>knn没有显式学习，当训练集、距离度量、k值以及分类决策规则确定后，对任何一个新输入的实例，它所属的类就唯一地确定。</li>
 </ol>
 <hr>
-<h4 id="距离度量"><a href="#距离度量" class="headerlink" title="距离度量"></a>距离度量</h4><p>设特征空间是$n$维实数向量空间$R^n$，$x_i=(x_i^{(1)},x_i^{(2)},…,x_i^{(n)})^T,x_j=(x_j^{(1)},x_j^{(2)},…,x_j^{(n)})^T$，$x_i,x_j$的距离：</p>
+<h4 id="距离度量"><a class="header-anchor" href="#距离度量"></a>距离度量</h4>
+<p>设特征空间是$n$维实数向量空间$R<sup>n$，$x_i=(x_i</sup>{(1)},x_i<sup>{(2)},…,x_i</sup>{(n)})<sup>T,x_j=(x_j</sup>{(1)},x_j<sup>{(2)},…,x_j</sup>{(n)})^T$，$x_i,x_j$的距离：</p>
 <ol>
-<li><strong>$L_p$距离</strong>：$$L_p(x_i,x_j)=\left(\sum \limits_{l=1}^n |x_i^{(l)}-x_j^{(l)}|^p \right)^{\frac{1}{p}}$$这里的$p\geq 1$</li>
-<li>当$p=2$时，称为欧式距离，即：$$L_2(x_i,x_j)=\left(\sum \limits_{l=1}^n |x_i^{(l)}-x_j^{(l)}|^2 \right)^{\frac{1}{2}}$$</li>
-<li>当$p=1$时，称为曼哈顿距离，即：$$L_1(x_i,x_j)=\sum \limits_{l=1}^n |x_i^{(l)}-x_j^{(l)}|$$</li>
-<li>当$p=+\infty$时,它是各个坐标距离的最大值，即：$$L_{\infty}(x_i,x_j)=\max \limits_{l}|x_i^{(l)}-x_j^{(l)}|$$<br>更多距离公式请查阅博文《机器学习中距离度量完整版》</li>
+<li><strong>$L_p$距离</strong>：$$L_p(x_i,x_j)=\left(\sum \limits_{l=1}^n |x_i<sup>{(l)}-x_j</sup>{(l)}|^p \right)^{\frac{1}{p}}$$这里的$p\geq 1$</li>
+<li>当$p=2$时，称为欧式距离，即：$$L_2(x_i,x_j)=\left(\sum \limits_{l=1}^n |x_i<sup>{(l)}-x_j</sup>{(l)}|^2 \right)^{\frac{1}{2}}$$</li>
+<li>当$p=1$时，称为曼哈顿距离，即：$$L_1(x_i,x_j)=\sum \limits_{l=1}^n |x_i<sup>{(l)}-x_j</sup>{(l)}|$$</li>
+<li>当$p=+\infty$时,它是各个坐标距离的最大值，即：$$L_{\infty}(x_i,x_j)=\max \limits_{l}|x_i<sup>{(l)}-x_j</sup>{(l)}|$$<br>
+更多距离公式请查阅博文《机器学习中距离度量完整版》</li>
 </ol>
-<h4 id="k值的选择"><a href="#k值的选择" class="headerlink" title="k值的选择"></a>k值的选择</h4><p>k值越小学习误差会减小，缺点是，预测误差会增大，预测结果会对近邻的实例点非常敏感，如果恰巧是噪音，预测就会出错，<strong>k值越小整体模型越复杂，容易发生过拟合</strong></p>
+<h4 id="k值的选择"><a class="header-anchor" href="#k值的选择"></a>k值的选择</h4>
+<p>k值越小学习误差会减小，缺点是，预测误差会增大，预测结果会对近邻的实例点非常敏感，如果恰巧是噪音，预测就会出错，<strong>k值越小整体模型越复杂，容易发生过拟合</strong></p>
 <p>k值越大，学习误差会增大，但是预测误差会减小，这是与输入实例较远的训练实例也会对预测起作用，<strong>k值增大就意味着模型越简单</strong></p>
 <p>NOTE:在应用中，k值一般选取较小值，<strong>通常采用交叉验证来选取最优k值</strong></p>
-<h4 id="分类决策规则"><a href="#分类决策规则" class="headerlink" title="分类决策规则"></a>分类决策规则</h4><p>多数表决规则等价于经验风险最小化。<br>对给定的实例$x$，其最近邻的$k$个训练实例点构成集合$N_k(x)$，如果涵盖$N_k(x)$的区域的类别是$c_j$，那么误分类率是$$\frac{1}{k} \sum \limits_{x_i \in N_k(x)} I(y_i \neq c_j)=1-\frac{1}{k} \sum \limits_{x_i \in N_k(x)} I(y_i =c_j)$$<br>要使误分类率最小即经验风险最小，就要使$\sum \limits_{x_i \in N_k(x)} I(y_i =c_j)$最大，所以多数表决规则等价于经验风险最小化。</p>
-<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><hr>
+<h4 id="分类决策规则"><a class="header-anchor" href="#分类决策规则"></a>分类决策规则</h4>
+<p>多数表决规则等价于经验风险最小化。<br>
+对给定的实例$x$，其最近邻的$k$个训练实例点构成集合$N_k(x)$，如果涵盖$N_k(x)$的区域的类别是$c_j$，那么误分类率是$$\frac{1}{k} \sum \limits_{x_i \in N_k(x)} I(y_i \neq c_j)=1-\frac{1}{k} \sum \limits_{x_i \in N_k(x)} I(y_i =c_j)$$<br>
+要使误分类率最小即经验风险最小，就要使$\sum \limits_{x_i \in N_k(x)} I(y_i =c_j)$最大，所以多数表决规则等价于经验风险最小化。</p>
+<h4 id="代码实现"><a class="header-anchor" href="#代码实现"></a>代码实现</h4>
+<hr>
 <p>补充后加入</p>
 <hr>
-<h4 id="kd树🌲"><a href="#kd树🌲" class="headerlink" title="kd树🌲"></a>kd树🌲</h4><p><strong>实现knn时，主要考虑的问题是如何对训练集进行快速j近邻搜索，尤其是特征空间维度大以及训练数据容量大的时候</strong><br>KNN最简单的实现方法是线性扫描，但是当训练集很大时，很费时，为了提高KNN的效率，使用kd树存储数据，减少计算距离的次数。</p>
-<h5 id="kd树生成"><a href="#kd树生成" class="headerlink" title="kd树生成"></a>kd树生成</h5><p>kd树🌲是一种对$k$维空间中的实例点进行存储以便对其进行快速检索的树形结构，kd树是二叉树，表示对k维空间的划分，构造kd树相当于不断地用垂直于坐标轴的超平面将k维空间切分，构成一系列的$k$维超矩形区域，kd树的每个结点对应于一个$k$维超矩形区域。</p>
+<h4 id="kd树🌲"><a class="header-anchor" href="#kd树🌲"></a>kd树🌲</h4>
+<p><strong>实现knn时，主要考虑的问题是如何对训练集进行快速j近邻搜索，尤其是特征空间维度大以及训练数据容量大的时候</strong><br>
+KNN最简单的实现方法是线性扫描，但是当训练集很大时，很费时，为了提高KNN的效率，使用kd树存储数据，减少计算距离的次数。</p>
+<h5 id="kd树生成"><a class="header-anchor" href="#kd树生成"></a>kd树生成</h5>
+<p>kd树🌲是一种对$k$维空间中的实例点进行存储以便对其进行快速检索的树形结构，kd树是二叉树，表示对k维空间的划分，构造kd树相当于不断地用垂直于坐标轴的超平面将k维空间切分，构成一系列的$k$维超矩形区域，kd树的每个结点对应于一个$k$维超矩形区域。</p>
 <p>通常，依次选择坐标轴对空间切分，选择训练实例点在选定坐标轴的中位数为切分点，这样得到的kd树是平衡的，注意，平衡的kd树搜索效率不一定是最优的。</p>
-<p><strong>算法</strong><br>输入: $k$维空间数据集$T=\lbrace x_1,x_2,…,x_N \rbrace$，其中$x_i=(x_i^{(1)},x_i^{(2)},…,x_i^{(k)})^T,i=1,2,…,N;$<br>输出：kd树</p>
+<p><strong>算法</strong><br>
+输入: $k$维空间数据集$T=\lbrace x_1,x_2,…,x_N \rbrace$，其中$x_i=(x_i<sup>{(1)},x_i</sup>{(2)},…,x_i<sup>{(k)})</sup>T,i=1,2,…,N;$<br>
+输出：kd树</p>
 <ol>
-<li>开始：构造根结点，根结点对应于包含$T$的$k$空间的超矩形区域<br>选择$x^{(1)}$为坐标轴，以$T$中所有实例的$x^{(1)}$坐标的中位数为切分点，将根结点对应的矩形超矩形区域切分成两个区域，切分由通过切分点并与坐标轴$x^{(1)}$垂直，左子结点对应坐标$x^{(1)}$小于切分点，右子结点对应坐标$x^{(1)}$大于切分点。</li>
+<li>开始：构造根结点，根结点对应于包含$T$的$k$空间的超矩形区域<br>
+选择$x<sup>{(1)}$为坐标轴，以$T$中所有实例的$x</sup>{(1)}$坐标的中位数为切分点，将根结点对应的矩形超矩形区域切分成两个区域，切分由通过切分点并与坐标轴$x<sup>{(1)}$垂直，左子结点对应坐标$x</sup>{(1)}$小于切分点，右子结点对应坐标$x^{(1)}$大于切分点。</li>
 <li>重复切分子结点</li>
 <li>直至两个子区域没有实例存在时，停止，从而形成kd树的划分</li>
 </ol>
-<h5 id="kd树搜索"><a href="#kd树搜索" class="headerlink" title="kd树搜索"></a>kd树搜索</h5><p>利用kd树可以省去对大部分数据点的搜索，从而减少搜索的计算量。<br>搜索🔍：<br>给定目标点，搜索其最近邻，首先找到包含目标点的叶结点；然后从该叶结点出发，依次回退到父结点；不断查找与目标点最邻近的结点，当确定不可能存在更近的结点时终止。【目标点的最邻近一定在以目标点为中心并通过当前最近点的超球体的内部】。<br>具体搜索过程参考李航《统计学习方法》page43</p>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>KNN简单且不需要训练，而是利用训练集对特征空间进行分类，当KNN三要素【训练集、距离度量、k值以及分类决策规则】确定后，利用KNN模型进行分类，结果就是唯一确定的；k值的大小与模型复杂度相关，k越小模型复杂度越高，k越大模型复杂度越低；KNN实现需要考虑如何快速搜索k个最近邻的点，利用kd树可以减少搜索的计算量。</p>
+<h5 id="kd树搜索"><a class="header-anchor" href="#kd树搜索"></a>kd树搜索</h5>
+<p>利用kd树可以省去对大部分数据点的搜索，从而减少搜索的计算量。<br>
+搜索🔍：<br>
+给定目标点，搜索其最近邻，首先找到包含目标点的叶结点；然后从该叶结点出发，依次回退到父结点；不断查找与目标点最邻近的结点，当确定不可能存在更近的结点时终止。【目标点的最邻近一定在以目标点为中心并通过当前最近点的超球体的内部】。<br>
+具体搜索过程参考李航《统计学习方法》page43</p>
+<h4 id="总结"><a class="header-anchor" href="#总结"></a>总结</h4>
+<p>KNN简单且不需要训练，而是利用训练集对特征空间进行分类，当KNN三要素【训练集、距离度量、k值以及分类决策规则】确定后，利用KNN模型进行分类，结果就是唯一确定的；k值的大小与模型复杂度相关，k越小模型复杂度越高，k越大模型复杂度越低；KNN实现需要考虑如何快速搜索k个最近邻的点，利用kd树可以减少搜索的计算量。</p>
 
       
     </div>
@@ -671,7 +693,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -693,7 +715,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-count">55</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -783,7 +805,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#KNN算法"><span class="nav-number">2.</span> <span class="nav-text">KNN算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#距离度量"><span class="nav-number">3.</span> <span class="nav-text">距离度量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#k值的选择"><span class="nav-number">4.</span> <span class="nav-text">k值的选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分类决策规则"><span class="nav-number">5.</span> <span class="nav-text">分类决策规则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现"><span class="nav-number">6.</span> <span class="nav-text">代码实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#kd树🌲"><span class="nav-number">7.</span> <span class="nav-text">kd树🌲</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#kd树生成"><span class="nav-number">7.1.</span> <span class="nav-text">kd树生成</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#kd树搜索"><span class="nav-number">7.2.</span> <span class="nav-text">kd树搜索</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#knn算法"><span class="nav-number">2.</span> <span class="nav-text">KNN算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#距离度量"><span class="nav-number">3.</span> <span class="nav-text">距离度量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#k值的选择"><span class="nav-number">4.</span> <span class="nav-text">k值的选择</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分类决策规则"><span class="nav-number">5.</span> <span class="nav-text">分类决策规则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码实现"><span class="nav-number">6.</span> <span class="nav-text">代码实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#kd树🌲"><span class="nav-number">7.</span> <span class="nav-text">kd树🌲</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#kd树生成"><span class="nav-number">7.1.</span> <span class="nav-text">kd树生成</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#kd树搜索"><span class="nav-number">7.2.</span> <span class="nav-text">kd树搜索</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>

@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="非线性svm与核函数当分类问题是非线性，可以使用非线性svm，主要的特点是利用核函数。 核技巧非线性分类问题😵对于训练数据集，能用一个超曲面将正负例正确分开，则称该问题为非线性可分问题非线性问题往往不好求解，所以进行非线性变换，将非线性问题变换为线性问题，通过解变换后的线性问题求解原来的非线性问题。💃💃 线性分类法求解非线性分类问题：使用变换，将原空间数据映射到新空间；然后在新空间利用线性分">
+<meta name="description" content="非线性svm与核函数 当分类问题是非线性，可以使用非线性svm，主要的特点是利用核函数。 核技巧 非线性分类问题😵 对于训练数据集，能用一个超曲面将正负例正确分开，则称该问题为非线性可分问题 非线性问题往往不好求解，所以进行非线性变换，将非线性问题变换为线性问题，通过解变换后的线性问题求解原来的非线性问题。💃💃 线性分类法求解非线性分类问题：使用变换，将原空间数据映射到新空间；然后在新空间利">
 <meta name="keywords" content="svm,核函数,smo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="支持向量机(SVM)-2:非线性支持向量机">
 <meta property="og:url" content="http://yoursite.com/2019/03/19/支持向量机-SVM-2-非线性支持向量机/index.html">
 <meta property="og:site_name" content="毛毛虫_Wendy">
-<meta property="og:description" content="非线性svm与核函数当分类问题是非线性，可以使用非线性svm，主要的特点是利用核函数。 核技巧非线性分类问题😵对于训练数据集，能用一个超曲面将正负例正确分开，则称该问题为非线性可分问题非线性问题往往不好求解，所以进行非线性变换，将非线性问题变换为线性问题，通过解变换后的线性问题求解原来的非线性问题。💃💃 线性分类法求解非线性分类问题：使用变换，将原空间数据映射到新空间；然后在新空间利用线性分">
+<meta property="og:description" content="非线性svm与核函数 当分类问题是非线性，可以使用非线性svm，主要的特点是利用核函数。 核技巧 非线性分类问题😵 对于训练数据集，能用一个超曲面将正负例正确分开，则称该问题为非线性可分问题 非线性问题往往不好求解，所以进行非线性变换，将非线性问题变换为线性问题，通过解变换后的线性问题求解原来的非线性问题。💃💃 线性分类法求解非线性分类问题：使用变换，将原空间数据映射到新空间；然后在新空间利">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-03-19T10:03:05.633Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="支持向量机(SVM)-2:非线性支持向量机">
-<meta name="twitter:description" content="非线性svm与核函数当分类问题是非线性，可以使用非线性svm，主要的特点是利用核函数。 核技巧非线性分类问题😵对于训练数据集，能用一个超曲面将正负例正确分开，则称该问题为非线性可分问题非线性问题往往不好求解，所以进行非线性变换，将非线性问题变换为线性问题，通过解变换后的线性问题求解原来的非线性问题。💃💃 线性分类法求解非线性分类问题：使用变换，将原空间数据映射到新空间；然后在新空间利用线性分">
+<meta name="twitter:description" content="非线性svm与核函数 当分类问题是非线性，可以使用非线性svm，主要的特点是利用核函数。 核技巧 非线性分类问题😵 对于训练数据集，能用一个超曲面将正负例正确分开，则称该问题为非线性可分问题 非线性问题往往不好求解，所以进行非线性变换，将非线性问题变换为线性问题，通过解变换后的线性问题求解原来的非线性问题。💃💃 线性分类法求解非线性分类问题：使用变换，将原空间数据映射到新空间；然后在新空间利">
 
 
 
@@ -414,31 +414,74 @@
       
 
       
-        <h4 id="非线性svm与核函数"><a href="#非线性svm与核函数" class="headerlink" title="非线性svm与核函数"></a>非线性svm与核函数</h4><p>当分类问题是非线性，可以使用非线性svm，主要的特点是利用核函数。</p>
-<h5 id="核技巧"><a href="#核技巧" class="headerlink" title="核技巧"></a>核技巧</h5><p>非线性分类问题😵<br>对于训练数据集，能用一个超曲面将正负例正确分开，则称该问题为<strong>非线性可分问题</strong><br>非线性问题往往不好求解，所以进行非线性变换，将非线性问题变换为线性问题，通过解变换后的线性问题求解原来的非线性问题。💃💃</p>
+        <h4 id="非线性svm与核函数"><a class="header-anchor" href="#非线性svm与核函数"></a>非线性svm与核函数</h4>
+<p>当分类问题是非线性，可以使用非线性svm，主要的特点是利用核函数。</p>
+<h5 id="核技巧"><a class="header-anchor" href="#核技巧"></a>核技巧</h5>
+<p>非线性分类问题😵<br>
+对于训练数据集，能用一个超曲面将正负例正确分开，则称该问题为<strong>非线性可分问题</strong><br>
+非线性问题往往不好求解，所以进行非线性变换，将非线性问题变换为线性问题，通过解变换后的线性问题求解原来的非线性问题。💃💃</p>
 <p>线性分类法求解非线性分类问题：使用变换，将原空间数据映射到新空间；然后在新空间利用线性分类学习方法从训练集中学习分类模型。<strong>核技巧就属于这样的方法</strong></p>
-<p>核技巧应用到svm的基本思想：通过非线性变换将输入空间$X$(欧氏空间&amp;离散集合)对应于特征空间$H$(希尔伯特空间)，使得输入空间的超曲面模型对应特征空间的超平面模型，最后分类问题的学习任务是通过在<strong>特征空间</strong>在求解线性支持向量机就可以完成。<br>如果存在一个从$X$到$H$的映射，映射关系表示如下：$$\phi(x):X\rightarrow H$$<br>使得对所有的$x,z\in X$，函数$K(x,z)$满足条件$$K(x,z)=\phi(x)\cdot\phi(z)$$<br>则称$K(x,z)$为核函数，$\phi(x)$为映射函数，$\phi(x)\cdot\phi(z)$为$\phi(x)和\phi(z)$内积</p>
-<p><strong>核技巧思想</strong><br>在学习与预测中只定义核函数$K(x,z)$，而不显式地定义映射函数$\phi(x)$，通常计算核函数比计算内积更容易。对于给定的核函数$K(x,z)$，$\phi(x)$的取法不唯一，可以取不同的特征空间，即使是同一特征空间也可以取不同的映射。</p>
-<p>在svm中的应用：线性svm的对偶问题中，无论是目标函数还是决策函数都涉及到实例之间的内积，在对偶问题的目标函数$x_i\cdot x_j$，可以使用核函数$K(x_i,x_j)=\phi(x_i)\cdot\phi(x_j)$来代替。<br>所以对偶问题的目标函数表示为：<br>$$W(\alpha)=\frac{1}{2}\sum\limits_{i=1}^{N}\sum\limits_{j=1}^{N}a_ia_jy_iy_jK(x_i,x_j)-\sum\limits_{i=1}^{N}\alpha_i$$<br>分类决策函数表示为：<br>$$f(x)=sign(\sum\limits_{i=1}^{N_s}\alpha_i^{\ast}y_iK(x_i,x)+b^{\ast})$$<br>即，在核函数给定的条件下，可以利用解线性分类问题的方法求解非线性分类问题的svm。学习过程是隐式地在特征空间进行的，不需要定义特征空间和映射函数，这样的技巧称为核技巧。</p>
-<h5 id="正定核"><a href="#正定核" class="headerlink" title="正定核"></a>正定核</h5><p><strong>核函数$K(x,z)$需为正定核函数</strong></p>
-<p>正定核的充要条件：设$K:X\times X\rightarrow R$是对称函数，则$K(x,z)$为正定核函数的充要条件是对任意$x_i\in X,i=1,2,…,m,K(x,m)$对应的Gram矩阵：$$K=[K(x_i,x_j)]_{m\times m}$$<br>是半正定的</p>
-<h5 id="常用的核函数"><a href="#常用的核函数" class="headerlink" title="常用的核函数"></a>常用的核函数</h5><ol>
-<li>线性核函数<br>$$K(x,z)=(x\cdot z)$$<br>适用于线性svm，其实就是在原始的输出空间进行学习</li>
-<li>多项式核函数<br>$$K(x,z)=(x\cdot z+1)^p$$<br>对应的svm是一个$p$次多项式分类器，分类决策函数为：<br>$$f(x)=sign\left(\sum\limits_{i=1}^{N_s}\alpha_i^{\ast}y_i(x_i\cdot x+1)^p+b^{\ast}\right)$$</li>
-<li>高斯核函数<br>$$K(x,z)=exp\left(-\frac{||x-z||^2}{2\sigma}\right)$$<br>对应的svm是高斯径向基函数分类器，分类决策函数表示为:<br>$$f(x)=sign\left(\sum\limits_{i=1}^{N_s}\alpha_i^{\ast}y_iexp(-\frac{||x-z||^2}{2\sigma})+b^{\ast}\right)$$</li>
-<li>字符串核函数<br>核函数不仅可以定义在欧氏距离还可以定义在离散数据的集合上，eg字符串核函数是定义在字符串集合上的核函数，字符串核函数在文本分类、信息检索等方法有应用。</li>
-<li>sigmod核函数<br>采用sigmoid核函数，支持向量机实现的就是一种多层神经网络<br>更多核函数参考博文 <a href="https://blog.csdn.net/wsj998689aa/article/details/47027365" target="_blank" rel="noopener">总结一下遇到的各种核函数</a><h5 id="非线性svm学习算法"><a href="#非线性svm学习算法" class="headerlink" title="非线性svm学习算法"></a>非线性svm学习算法</h5>输入：训练数据集<br>输出：分离超平面和分类决策函数</li>
-<li>选择适当的核函数$K(x,z)$和惩罚参数$C$，构造并求解凸二次规划问题,求解最优$\alpha^{\ast}=(\alpha_1^{\ast},\alpha_2^{\ast},…,\alpha_N^{\ast})^T$</li>
+<p>核技巧应用到svm的基本思想：通过非线性变换将输入空间$X$(欧氏空间&amp;离散集合)对应于特征空间$H$(希尔伯特空间)，使得输入空间的超曲面模型对应特征空间的超平面模型，最后分类问题的学习任务是通过在<strong>特征空间</strong>在求解线性支持向量机就可以完成。<br>
+如果存在一个从$X$到$H$的映射，映射关系表示如下：$$\phi(x):X\rightarrow H$$<br>
+使得对所有的$x,z\in X$，函数$K(x,z)$满足条件$$K(x,z)=\phi(x)\cdot\phi(z)$$<br>
+则称$K(x,z)$为核函数，$\phi(x)$为映射函数，$\phi(x)\cdot\phi(z)$为$\phi(x)和\phi(z)$内积</p>
+<p><strong>核技巧思想</strong><br>
+在学习与预测中只定义核函数$K(x,z)$，而不显式地定义映射函数$\phi(x)$，通常计算核函数比计算内积更容易。对于给定的核函数$K(x,z)$，$\phi(x)$的取法不唯一，可以取不同的特征空间，即使是同一特征空间也可以取不同的映射。</p>
+<p>在svm中的应用：线性svm的对偶问题中，无论是目标函数还是决策函数都涉及到实例之间的内积，在对偶问题的目标函数$x_i\cdot x_j$，可以使用核函数$K(x_i,x_j)=\phi(x_i)\cdot\phi(x_j)$来代替。<br>
+所以对偶问题的目标函数表示为：<br>
+$$W(\alpha)=\frac{1}{2}\sum\limits_{i=1}<sup>{N}\sum\limits_{j=1}</sup>{N}a_ia_jy_iy_jK(x_i,x_j)-\sum\limits_{i=1}^{N}\alpha_i$$<br>
+分类决策函数表示为：<br>
+$$f(x)=sign(\sum\limits_{i=1}<sup>{N_s}\alpha_i</sup>{\ast}y_iK(x_i,x)+b^{\ast})$$<br>
+即，在核函数给定的条件下，可以利用解线性分类问题的方法求解非线性分类问题的svm。学习过程是隐式地在特征空间进行的，不需要定义特征空间和映射函数，这样的技巧称为核技巧。</p>
+<h5 id="正定核"><a class="header-anchor" href="#正定核"></a>正定核</h5>
+<p><strong>核函数$K(x,z)$需为正定核函数</strong></p>
+<p>正定核的充要条件：设$K:X\times X\rightarrow R$是对称函数，则$K(x,z)$为正定核函数的充要条件是对任意$x_i\in X,i=1,2,…,m,K(x,m)$对应的Gram矩阵：$$K=[K(x_i,x_j)]_{m\times m}$$<br>
+是半正定的</p>
+<h5 id="常用的核函数"><a class="header-anchor" href="#常用的核函数"></a>常用的核函数</h5>
+<ol>
+<li>线性核函数<br>
+$$K(x,z)=(x\cdot z)$$<br>
+适用于线性svm，其实就是在原始的输出空间进行学习</li>
+<li>多项式核函数<br>
+$$K(x,z)=(x\cdot z+1)^p$$<br>
+对应的svm是一个$p$次多项式分类器，分类决策函数为：<br>
+$$f(x)=sign\left(\sum\limits_{i=1}<sup>{N_s}\alpha_i</sup>{\ast}y_i(x_i\cdot x+1)<sup>p+b</sup>{\ast}\right)$$</li>
+<li>高斯核函数<br>
+$$K(x,z)=exp\left(-\frac{||x-z||^2}{2\sigma}\right)$$<br>
+对应的svm是高斯径向基函数分类器，分类决策函数表示为:<br>
+$$f(x)=sign\left(\sum\limits_{i=1}<sup>{N_s}\alpha_i</sup>{\ast}y_iexp(-\frac{||x-z||<sup>2}{2\sigma})+b</sup>{\ast}\right)$$</li>
+<li>字符串核函数<br>
+核函数不仅可以定义在欧氏距离还可以定义在离散数据的集合上，eg字符串核函数是定义在字符串集合上的核函数，字符串核函数在文本分类、信息检索等方法有应用。</li>
+<li>sigmod核函数<br>
+采用sigmoid核函数，支持向量机实现的就是一种多层神经网络<br>
+更多核函数参考博文 <a href="https://blog.csdn.net/wsj998689aa/article/details/47027365" target="_blank" rel="noopener">总结一下遇到的各种核函数</a></li>
 </ol>
-<p>$$\begin{equation}<br>    \mathop{\min}_{\alpha}    \quad\frac{1}{2} \sum\limits_{i=1}^{N}\sum\limits_{j=1}^{N}\alpha_{i}\alpha_{j}y_iy_jK(x_i,x_j)-\sum\limits_{i=1}^{N}\alpha_{i} \\<br>   \begin{cases}<br>    &amp; s.t.\quad \sum\limits_{i=1}^{N}\alpha_{i}y_i=0 \\<br>    &amp;\quad 0 \leq \alpha_i \leq C,i=1,2,…,N<br>        \end{cases}<br>\end{equation}$$</p>
+<h5 id="非线性svm学习算法"><a class="header-anchor" href="#非线性svm学习算法"></a>非线性svm学习算法</h5>
+<p>输入：训练数据集<br>
+输出：分离超平面和分类决策函数</p>
+<ol>
+<li>选择适当的核函数$K(x,z)$和惩罚参数$C$，构造并求解凸二次规划问题,求解最优$\alpha<sup>{\ast}=(\alpha_1</sup>{\ast},\alpha_2<sup>{\ast},…,\alpha_N</sup>{\ast})^T$</li>
+</ol>
+<p>$$\begin{equation}<br>
+	\mathop{\min}<em>{\alpha} \ \ \ \quad\frac{1}{2} \sum\limits</em>{i=1}<sup>{N}\sum\limits_{j=1}</sup>{N}\alpha_{i}\alpha_{j}y_iy_jK(x_i,x_j)-\sum\limits_{i=1}^{N}\alpha_{i} \<br>
+\begin{cases}<br>
+&amp; s.t.\quad \sum\limits_{i=1}^{N}\alpha_{i}y_i=0 \<br>
+&amp;\quad 0 \leq \alpha_i \leq C,i=1,2,…,N<br>
+\end{cases}<br>
+\end{equation}$$</p>
 <ol start="2">
-<li>选择$\alpha^{\ast}$的一个正分量$0\leq a_j^{\ast} \leq C$计算$b^{\ast}$<br>$$b^{\ast} = y_j -\sum\limits_{i=1}^{N}\alpha_{i}^{\ast}y_iK(x_i,x_j) $$</li>
-<li>求得分类决策函数<br>$$f(x)=sign\left(\sum\limits_{i=1}^{N}\alpha_i^{\ast}y_iK(x_i,x)+b^{\ast}\right)$$</li>
+<li>选择$\alpha^{\ast}$的一个正分量$0\leq a_j^{\ast} \leq C$计算$b^{\ast}$<br>
+$$b^{\ast} = y_j -\sum\limits_{i=1}<sup>{N}\alpha_{i}</sup>{\ast}y_iK(x_i,x_j) $$</li>
+<li>求得分类决策函数<br>
+$$f(x)=sign\left(\sum\limits_{i=1}<sup>{N}\alpha_i</sup>{\ast}y_iK(x_i,x)+b^{\ast}\right)$$</li>
 </ol>
-<h4 id="序列最小最优化算法"><a href="#序列最小最优化算法" class="headerlink" title="序列最小最优化算法"></a>序列最小最优化算法</h4><p>svm的学习最后形式化求解凸二次规划，这样的规划具有全局最优解，但是当训练样本容量很大时，这些算法变得非常低效，这里解析一个快速实现算法：序列最小最优化算法(SMO)。<br>SMO是一种启发式算法：思路是：如果所有变量的解都满足此KKT条件，那么这个最优化问题的解就找到了。【KKT条件是该最优化问题的充分必要条件】</p>
+<h4 id="序列最小最优化算法"><a class="header-anchor" href="#序列最小最优化算法"></a>序列最小最优化算法</h4>
+<p>svm的学习最后形式化求解凸二次规划，这样的规划具有全局最优解，但是当训练样本容量很大时，这些算法变得非常低效，这里解析一个快速实现算法：序列最小最优化算法(SMO)。<br>
+SMO是一种启发式算法：思路是：如果所有变量的解都满足此KKT条件，那么这个最优化问题的解就找到了。【KKT条件是该最优化问题的充分必要条件】</p>
 <p>SMO包括两个部分：求解两个变量二次规划的解析方法(P125)和选择变量的启发式方法(P128)。【NOTE✋:两个变量的确定：一个是违反KKT条件最严重的那个，另外一个由约束条件自动确定。】</p>
 <p>特点：不断地将原二次规划问题分解为只有两个变量的二次规划子问题，并对子问题进行解析求解，知道所有的变量满足KKT条件，通过启发式的方法得到原谅二次规划的最优解，子问题有解析解且计算快，虽然计算次数更多，但总体还是很高效。</p>
-<h4 id="总结👻"><a href="#总结👻" class="headerlink" title="总结👻"></a>总结👻</h4><p>非线性支持向量机最重要是应用的核函数，将输入空间的数据映射到特征空间，在特征空间里利用线性支持向量机求解。而SMO是svm快速学习的一种算法，具体见《统计学习方法》P125</p>
+<h4 id="总结👻"><a class="header-anchor" href="#总结👻"></a>总结👻</h4>
+<p>非线性支持向量机最重要是应用的核函数，将输入空间的数据映射到特征空间，在特征空间里利用线性支持向量机求解。而SMO是svm快速学习的一种算法，具体见《统计学习方法》P125</p>
 
       
     </div>
@@ -630,7 +673,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -652,7 +695,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-count">55</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

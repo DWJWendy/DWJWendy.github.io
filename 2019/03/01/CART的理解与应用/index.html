@@ -88,19 +88,19 @@
 
 
 
-<meta name="description" content="本博客接上一篇博客《决策树的理解与运用》。 背景分类与回归树(Classification AND Regression tree,CART)同样是由特征选择、树的生成和剪枝三部分组成，它的特点是既可以用于分类又可以用于回归。 CART是在给定输入随机变量为$X$条件下输出随机变量Y的条件概率分布的学习方法，假设决策树为二叉树，内部结点取值为“是”or“否”【左是右否】。决策树等价于递归地二分每个">
+<meta name="description" content="本博客接上一篇博客《决策树的理解与运用》。 背景 分类与回归树(Classification AND Regression tree,CART)同样是由特征选择、树的生成和剪枝三部分组成，它的特点是既可以用于分类又可以用于回归。 CART是在给定输入随机变量为$X$条件下输出随机变量Y的条件概率分布的学习方法，假设决策树为二叉树，内部结点取值为“是”or“否”【左是右否】。决策树等价于递归地二分每">
 <meta name="keywords" content="决策树,ML,CART,基尼指数,平方和误差">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CART的理解与应用">
 <meta property="og:url" content="http://yoursite.com/2019/03/01/CART的理解与应用/index.html">
 <meta property="og:site_name" content="毛毛虫_Wendy">
-<meta property="og:description" content="本博客接上一篇博客《决策树的理解与运用》。 背景分类与回归树(Classification AND Regression tree,CART)同样是由特征选择、树的生成和剪枝三部分组成，它的特点是既可以用于分类又可以用于回归。 CART是在给定输入随机变量为$X$条件下输出随机变量Y的条件概率分布的学习方法，假设决策树为二叉树，内部结点取值为“是”or“否”【左是右否】。决策树等价于递归地二分每个">
+<meta property="og:description" content="本博客接上一篇博客《决策树的理解与运用》。 背景 分类与回归树(Classification AND Regression tree,CART)同样是由特征选择、树的生成和剪枝三部分组成，它的特点是既可以用于分类又可以用于回归。 CART是在给定输入随机变量为$X$条件下输出随机变量Y的条件概率分布的学习方法，假设决策树为二叉树，内部结点取值为“是”or“否”【左是右否】。决策树等价于递归地二分每">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/pasted-8.png">
 <meta property="og:updated_time" content="2019-03-06T02:45:49.848Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CART的理解与应用">
-<meta name="twitter:description" content="本博客接上一篇博客《决策树的理解与运用》。 背景分类与回归树(Classification AND Regression tree,CART)同样是由特征选择、树的生成和剪枝三部分组成，它的特点是既可以用于分类又可以用于回归。 CART是在给定输入随机变量为$X$条件下输出随机变量Y的条件概率分布的学习方法，假设决策树为二叉树，内部结点取值为“是”or“否”【左是右否】。决策树等价于递归地二分每个">
+<meta name="twitter:description" content="本博客接上一篇博客《决策树的理解与运用》。 背景 分类与回归树(Classification AND Regression tree,CART)同样是由特征选择、树的生成和剪枝三部分组成，它的特点是既可以用于分类又可以用于回归。 CART是在给定输入随机变量为$X$条件下输出随机变量Y的条件概率分布的学习方法，假设决策树为二叉树，内部结点取值为“是”or“否”【左是右否】。决策树等价于递归地二分每">
 <meta name="twitter:image" content="http://yoursite.com/images/pasted-8.png">
 
 
@@ -439,25 +439,67 @@
 
       
         <p>本博客接上一篇博客《决策树的理解与运用》。</p>
-<h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><p>分类与回归树(Classification AND Regression tree,CART)同样是由特征选择、树的生成和剪枝三部分组成，<strong>它的特点是既可以用于分类又可以用于回归。</strong></p>
-<p>CART是在给定输入随机变量为$X$条件下输出随机变量Y的条件概率分布的学习方法，假设决策树为二叉树，内部结点取值为“是”or“否”【左是右否】。决策树等价于递归地二分每个特征，将输入空间划分为有限个单元，并在这些单元上预测概率分布，也就是给定条件下输出的条件概率分布。<br>类似表示如下<br><img src="/images/pasted-8.png" alt="决策树"><br>CART算法组成：<br>1.决策树生成🌲：基于训练集生成决策树，生产的决策树尽力大【生成过程等价于递归地构建二叉树的过程】<br>2.决策树剪枝✂️：用验证数据集对已生成的树进行剪枝，选择最优子树，用损失函数最下作为剪枝的标准。</p>
+<h4 id="背景"><a class="header-anchor" href="#背景"></a>背景</h4>
+<p>分类与回归树(Classification AND Regression tree,CART)同样是由特征选择、树的生成和剪枝三部分组成，<strong>它的特点是既可以用于分类又可以用于回归。</strong></p>
+<p>CART是在给定输入随机变量为$X$条件下输出随机变量Y的条件概率分布的学习方法，假设决策树为二叉树，内部结点取值为“是”or“否”【左是右否】。决策树等价于递归地二分每个特征，将输入空间划分为有限个单元，并在这些单元上预测概率分布，也就是给定条件下输出的条件概率分布。<br>
+类似表示如下<br>
+<img src="/images/pasted-8.png" alt="决策树"><br>
+CART算法组成：<br>
+1.决策树生成🌲：基于训练集生成决策树，生产的决策树尽力大【生成过程等价于递归地构建二叉树的过程】<br>
+2.决策树剪枝✂️：用验证数据集对已生成的树进行剪枝，选择最优子树，用损失函数最下作为剪枝的标准。</p>
 <hr>
-<h4 id="CART生成"><a href="#CART生成" class="headerlink" title="CART生成"></a>CART生成</h4><h5 id="回归树"><a href="#回归树" class="headerlink" title="回归树"></a>回归树</h5><p><strong>回归树的生成用平方误差最小化准则</strong><br>假设$X$和$Y$分别是输入和输出，并且Y是连续变量，训练集表示为$D=(x_1,y_1),(x_2,y_2),…,(x_N,y_N)$<br>假设回归树将输入空间(特征空间)划分为$M$个单元$R_1,R_2,…,R_M$并且每一个单元有一个固定的输出值$c_m$,于是回归树表示成:<br>$$f(x)=\sum_{m=1}^Mc_mI(x \in R_m)$$</p>
-<p>当输入空间的划分确定时，可以用平方误差$\sum_{x_i \in R_m}{(y_i-f(x_i))}^2$表示回归树的训练集的预测误差，平方误差最小的准则求解每个单元上的最优输出值，易知，单元$R_m$的最优输出值是$R_m$上的所有输入实例$x_i$对应的输出$y_i$的均值，即：<br>$$\hat{c_m}=ave(y_i|x_i\in R_m)$$</p>
-<p><strong>问题是如何划分？？</strong><br>【采用启发式的方法】<br>选择第$j$个变量$x^{(j)}$和它的取值$s$，作为切分变量和切分点定义两个区域：<br>$$R_1(j,s)=\lbrace x|x^{(j)}\leq s\rbrace和R_2(j,s)=\lbrace x|x^{(j)}&gt; s\rbrace$$<br>然后求最优切分变量j和最优切分点s，求解：</p>
+<h4 id="cart生成"><a class="header-anchor" href="#cart生成"></a>CART生成</h4>
+<h5 id="回归树"><a class="header-anchor" href="#回归树"></a>回归树</h5>
+<p><strong>回归树的生成用平方误差最小化准则</strong><br>
+假设$X$和$Y$分别是输入和输出，并且Y是连续变量，训练集表示为$D=(x_1,y_1),(x_2,y_2),…,(x_N,y_N)$<br>
+假设回归树将输入空间(特征空间)划分为$M$个单元$R_1,R_2,…,R_M$并且每一个单元有一个固定的输出值$c_m$,于是回归树表示成:<br>
+$$f(x)=\sum_{m=1}^Mc_mI(x \in R_m)$$</p>
+<p>当输入空间的划分确定时，可以用平方误差$\sum_{x_i \in R_m}{(y_i-f(x_i))}^2$表示回归树的训练集的预测误差，平方误差最小的准则求解每个单元上的最优输出值，易知，单元$R_m$的最优输出值是$R_m$上的所有输入实例$x_i$对应的输出$y_i$的均值，即：<br>
+$$\hat{c_m}=ave(y_i|x_i\in R_m)$$</p>
+<p><strong>问题是如何划分？？</strong><br>
+【采用启发式的方法】<br>
+选择第$j$个变量$x^{(j)}$和它的取值$s$，作为切分变量和切分点定义两个区域：<br>
+$$R_1(j,s)=\lbrace x|x^{(j)}\leq s\rbrace和R_2(j,s)=\lbrace x|x^{(j)}&gt; s\rbrace$$<br>
+然后求最优切分变量j和最优切分点s，求解：</p>
 <p>$$\min \limits_{(j,s)} \left(\min \limits_{c_1} \sum \limits_{x_i \in R_1(j,s)}(y_i−c_1)^2+\min \limits_{c_2} \sum \limits_{x_i \in R_2(j,s)}(y_i−c_2)^2 \right)$$</p>
-<p>给定输入变量j可以找到最优切分点s.<br>$$\hat{c_1}=ave(y_i|x_i\in R_1(j,s)) ,\hat{c_2}=ave(y_i|x_i \in R_2(j,s))$$<br>遍历所有输入变量，找到最优的切分变量$j$，构成一个对$(j,s)$,这样将空间划分为2个区域，然后每个区域重复上面的划分过程，这样就生成了一颗回归树，<strong>称为最小二乘回归树</strong></p>
+<p>给定输入变量j可以找到最优切分点s.<br>
+$$\hat{c_1}=ave(y_i|x_i\in R_1(j,s)) ,\hat{c_2}=ave(y_i|x_i \in R_2(j,s))$$<br>
+遍历所有输入变量，找到最优的切分变量$j$，构成一个对$(j,s)$,这样将空间划分为2个区域，然后每个区域重复上面的划分过程，这样就生成了一颗回归树，<strong>称为最小二乘回归树</strong></p>
 <hr>
-<p><strong>最小二乘回归树生成算法</strong><br>输入训练集$D$<br>输出：回归树$f(x)$<br>在训练集所在的特征空间，递归地将每个区域划分为两个子区域并决定每个子区域的输出值，构建二叉树：</p>
+<p><strong>最小二乘回归树生成算法</strong><br>
+输入训练集$D$<br>
+输出：回归树$f(x)$<br>
+在训练集所在的特征空间，递归地将每个区域划分为两个子区域并决定每个子区域的输出值，构建二叉树：</p>
 <ol>
-<li>选择最优切分变量j和最优切分点s，求解：<br>$$\min \limits_{(j,s)} \left(\min \limits_{c_1} \sum \limits_{x_i \in R_1(j,s)}(y_i−c_1)^2+\min \limits_{c_2} \sum \limits_{x_i \in R_2(j,s)}(y_i−c_2)^2 \right)$$</li>
+<li>选择最优切分变量j和最优切分点s，求解：<br>
+$$\min \limits_{(j,s)} \left(\min \limits_{c_1} \sum \limits_{x_i \in R_1(j,s)}(y_i−c_1)^2+\min \limits_{c_2} \sum \limits_{x_i \in R_2(j,s)}(y_i−c_2)^2 \right)$$</li>
 <li>遍历变量$j$，对固定的切分变量$j$扫描切分点$s$，使得上公式达到最小值的对$(j,s)$</li>
-<li>用选定的对(j,s)划分区域并决定相应的输出值：<br>$$R_1(j,s)=\lbrace x|x^{(j)}\leq s\rbrace和R_2(j,s)=\lbrace x|x^{(j)}&gt; s\rbrace$$<br>$$\hat{c_m}=\frac{1}{N_m}\sum \limits_{x_i \in {R_m(j,s)}}y_i,x \in R_m,m=1,2$$</li>
-<li>继续对两个子域调用步骤1，2，直到满足停止条件<br>将输入空间(特征空间)划分为$M$个单元$R_1,R_2,…,R_M$并且每一个单元有一个固定的输出值c_m,于是回归树表示成<br>$$f(x)=\sum_{m=1}^Mc_mI(x \in R_m)$$</li>
+<li>用选定的对(j,s)划分区域并决定相应的输出值：<br>
+$$R_1(j,s)=\lbrace x|x^{(j)}\leq s\rbrace和R_2(j,s)=\lbrace x|x^{(j)}&gt; s\rbrace$$<br>
+$$\hat{c_m}=\frac{1}{N_m}\sum \limits_{x_i \in {R_m(j,s)}}y_i,x \in R_m,m=1,2$$</li>
+<li>继续对两个子域调用步骤1，2，直到满足停止条件<br>
+将输入空间(特征空间)划分为$M$个单元$R_1,R_2,…,R_M$并且每一个单元有一个固定的输出值c_m,于是回归树表示成<br>
+$$f(x)=\sum_{m=1}^Mc_mI(x \in R_m)$$</li>
 </ol>
 <hr>
-<h5 id="分类树的生成"><a href="#分类树的生成" class="headerlink" title="分类树的生成"></a>分类树的生成</h5><p>分类树用<strong>基尼指数</strong>来选择最优特征，同时决定该特征的最优二值切分。</p>
-<p>定义：分类问题中，假设有$K$个类，样本中属于第$k$类的概率为$p_k$,则概率分布的基尼指数定义为：<br>$$Gini(p)=\sum_{k=1}^{K}p_k(1-p_k)=1-\sum_{k=1}^{K}{p_k}^2$$<br>二分类中样本点属于第一类概率为$p$，概率分布的基尼系数为：<br>$$Gini(p)=2p(1-p)$$<br>对于样本集合$D$,其基尼系数为：<br>$$Gini(D)=1-\sum_{k=1}^{K}{\lbrace\frac{|C_k|}{|D|}}\rbrace^2$$<br>其中，$C_k$是$D$中属于第$k$类的样本子集，$K$是类的个数<br>基尼指数$Gini(D)$表示集合$D$的不确定性，基尼指数越大，不确定性也就越大，这与熵相似。<br><strong>分割：</strong><br>如果样本集合$D$根据特征$A$是否取某一值$\alpha$被分割为$D_1$和$D_2$，表示为：<br>$$D_1=\lbrace (x,y) \in D|A(x)=\alpha\rbrace,D_2=D-D_1$$<br>在特征$A$的条件下,$Gini(D,A)$表示经过$A=\alpha$分割后集合$D$的不确定性，基尼指数表示为：<br>$$Gini(D,A)=\frac{|D_1|}{|D|}Gini(D_1)+\frac{|D_2|}{|D|}Gini(D_2)$$<br><strong>算法生成</strong><br><strong>输入</strong>：训练集$D$，停止条件【eg 结点中的样本个数小于阈值，基尼指数小于阈值，或者没有更多的特征等】 <strong>输出</strong>：CART树<br>根据训练集，从根结点开始，递归地对每个结点进行以下操作，构建二叉树决策树。</p>
+<h5 id="分类树的生成"><a class="header-anchor" href="#分类树的生成"></a>分类树的生成</h5>
+<p>分类树用<strong>基尼指数</strong>来选择最优特征，同时决定该特征的最优二值切分。</p>
+<p>定义：分类问题中，假设有$K$个类，样本中属于第$k$类的概率为$p_k$,则概率分布的基尼指数定义为：<br>
+$$Gini§=\sum_{k=1}<sup>{K}p_k(1-p_k)=1-\sum_{k=1}</sup>{K}{p_k}^2$$<br>
+二分类中样本点属于第一类概率为$p$，概率分布的基尼系数为：<br>
+$$Gini§=2p(1-p)$$<br>
+对于样本集合$D$,其基尼系数为：<br>
+$$Gini(D)=1-\sum_{k=1}<sup>{K}{\lbrace\frac{|C_k|}{|D|}}\rbrace</sup>2$$<br>
+其中，$C_k$是$D$中属于第$k$类的样本子集，$K$是类的个数<br>
+基尼指数$Gini(D)$表示集合$D$的不确定性，基尼指数越大，不确定性也就越大，这与熵相似。<br>
+<strong>分割：</strong><br>
+如果样本集合$D$根据特征$A$是否取某一值$\alpha$被分割为$D_1$和$D_2$，表示为：<br>
+$$D_1=\lbrace (x,y) \in D|A(x)=\alpha\rbrace,D_2=D-D_1$$<br>
+在特征$A$的条件下,$Gini(D,A)$表示经过$A=\alpha$分割后集合$D$的不确定性，基尼指数表示为：<br>
+$$Gini(D,A)=\frac{|D_1|}{|D|}Gini(D_1)+\frac{|D_2|}{|D|}Gini(D_2)$$<br>
+<strong>算法生成</strong><br>
+<strong>输入</strong>：训练集$D$，停止条件【eg 结点中的样本个数小于阈值，基尼指数小于阈值，或者没有更多的特征等】 <strong>输出</strong>：CART树<br>
+根据训练集，从根结点开始，递归地对每个结点进行以下操作，构建二叉树决策树。</p>
 <ol>
 <li>设结点的数据集为$D$，计算现有特征对该数据集的基尼指数，对每个特征，每个其可能取的每个值$\alpha$,计算基尼指数。</li>
 <li>选择最优特征以及其对应的最优切分点，从而生成两个子结点</li>
@@ -466,12 +508,33 @@
 </ol>
 <p>CART生成方式与ID3完成一致</p>
 <hr>
-<h4 id="CART剪枝✂️"><a href="#CART剪枝✂️" class="headerlink" title="CART剪枝✂️"></a>CART剪枝✂️</h4><p>CART是一个“完全二叉树”<br>剪枝算法如下：<br>从生成算法产生的决策树$T_0$底部开始剪枝，直到$T_0$的根结点，形成子树序列为$\lbrace T_0,T_1,T_2,…,T_n \rbrace$，然后再用交叉验证法在独立的验证集熵对序列进行测试，从中选择最优子树。</p>
+<h4 id="cart剪枝✂"><a class="header-anchor" href="#cart剪枝✂"></a>CART剪枝✂️</h4>
+<p>CART是一个“完全二叉树”<br>
+剪枝算法如下：<br>
+从生成算法产生的决策树$T_0$底部开始剪枝，直到$T_0$的根结点，形成子树序列为$\lbrace T_0,T_1,T_2,…,T_n \rbrace$，然后再用交叉验证法在独立的验证集熵对序列进行测试，从中选择最优子树。</p>
 <ol>
-<li><strong>剪枝，形成子树序列</strong><br>子树的损失函数表示如下：<br>$$C_a(T)=C(T)+\alpha|T|$$<br>其中，$T$是任意子树，$C(T)$是训练集的预测误差（eg基尼指数），$|T|$是子树的叶子结点，$\alpha$是正则化参数，权衡训练集拟合程度与模型复杂度。<br>利用递归地方法进行剪枝✂️：<br>$\alpha$从小到大产生一系列区间$\alpha_0&lt;\alpha_1&lt;\cdots&lt;\alpha_n&lt;$，产生一系列的区间$[\alpha_i,\alpha_{i+1}],i=0,1,\cdots,n$；剪枝对应的子树序列对应着区间$\alpha \in[\alpha_i,\alpha_{i+1}],i=0,1,\cdots,n$的最优子树序列$\lbrace T_0,T_1,T_2,…,T_n \rbrace$，序列中的子树是嵌套的。<br>具体：<br>从整体树$T_0$开始剪枝，对$T_0$的任意内部结点$t$，以单结点树的损失函数是：$$C_a(t)=C(t)+\alpha$$<br>以$t$为根结点的子树$T_t$的损失函数是：$$C_a(T_t)=C(T_t)+\alpha|T_t|$$<br>当$\alpha=0$以及充分小时，有不等式$C_a(T_t)\leq C_a(t)$<br>当$\alpha$增大时，在某一$\alpha$有：$C_a(T_t)=C_a(t)$<br>当$\alpha$再增大时，不等式反向，只要$\alpha=\frac{C(t)-C(T_t)}{|T_t|-1}$，$T_t$与$t$有相同的损失值，而$t$的结点少，因此$t$比$T_t$更可取，因此对$t$进行修剪。<br>为此，对$T_0$中每一内部结点$t$，计算<br>$$g(t)=\frac{C(t)-C(T_t)}{|T_t|-1}$$<br>它表示剪枝后整体损失函数减少的程度，在$T_0$中剪去$g(t)$最小的$T_t$，得到的子树作为$T_1$，同时将最小的$g(t)$设置为$\alpha_1$,$T_1$为$[\alpha_1,\alpha_{2}]$的最优子树<br>如此剪枝，直到跟根结点，这一过程，不断增大$\alpha$,产生新的区间。</li>
-<li>在剪枝得到的子树序列$\lbrace T_0,T_1,T_2,…,T_n \rbrace$中通过交叉验证选取最优子树$T_a$<br>利用独立的验证集测试子树序列中各个子树的平方误差或者基尼指数。</li>
+<li><strong>剪枝，形成子树序列</strong><br>
+子树的损失函数表示如下：<br>
+$$C_a(T)=C(T)+\alpha|T|$$<br>
+其中，$T$是任意子树，$C(T)$是训练集的预测误差（eg基尼指数），$|T|$是子树的叶子结点，$\alpha$是正则化参数，权衡训练集拟合程度与模型复杂度。<br>
+利用递归地方法进行剪枝✂️：<br>
+$\alpha$从小到大产生一系列区间$\alpha_0&lt;\alpha_1&lt;\cdots&lt;\alpha_n&lt;$，产生一系列的区间$[\alpha_i,\alpha_{i+1}],i=0,1,\cdots,n$；剪枝对应的子树序列对应着区间$\alpha \in[\alpha_i,\alpha_{i+1}],i=0,1,\cdots,n$的最优子树序列$\lbrace T_0,T_1,T_2,…,T_n \rbrace$，序列中的子树是嵌套的。<br>
+具体：<br>
+从整体树$T_0$开始剪枝，对$T_0$的任意内部结点$t$，以单结点树的损失函数是：$$C_a(t)=C(t)+\alpha$$<br>
+以$t$为根结点的子树$T_t$的损失函数是：$$C_a(T_t)=C(T_t)+\alpha|T_t|$$<br>
+当$\alpha=0$以及充分小时，有不等式$C_a(T_t)\leq C_a(t)$<br>
+当$\alpha$增大时，在某一$\alpha$有：$C_a(T_t)=C_a(t)$<br>
+当$\alpha$再增大时，不等式反向，只要$\alpha=\frac{C(t)-C(T_t)}{|T_t|-1}$，$T_t$与$t$有相同的损失值，而$t$的结点少，因此$t$比$T_t$更可取，因此对$t$进行修剪。<br>
+为此，对$T_0$中每一内部结点$t$，计算<br>
+$$g(t)=\frac{C(t)-C(T_t)}{|T_t|-1}$$<br>
+它表示剪枝后整体损失函数减少的程度，在$T_0$中剪去$g(t)$最小的$T_t$，得到的子树作为$T_1$，同时将最小的$g(t)$设置为$\alpha_1$,$T_1$为$[\alpha_1,\alpha_{2}]$的最优子树<br>
+如此剪枝，直到跟根结点，这一过程，不断增大$\alpha$,产生新的区间。</li>
+<li>在剪枝得到的子树序列$\lbrace T_0,T_1,T_2,…,T_n \rbrace$中通过交叉验证选取最优子树$T_a$<br>
+利用独立的验证集测试子树序列中各个子树的平方误差或者基尼指数。</li>
 </ol>
-<p>算法：<br>输入：CART算法生成的决策树$T_0$<br>输出：最优决策树$T_\alpha$</p>
+<p>算法：<br>
+输入：CART算法生成的决策树$T_0$<br>
+输出：最优决策树$T_\alpha$</p>
 <ol>
 <li>设$k=0,T=T_0,\alpha=+\infty$</li>
 <li>自底而上地对内部结点$t$计算$C(T_t),|T_t|$以及$g(t)=\frac{C(t)-C(T_t)}{|T_t|-1},\alpha=min(\alpha,g(t))$</li>
@@ -480,10 +543,12 @@
 <li>如果$T_k$不是由根结点及两个叶子结点构成的树，则回到步骤2.否则另$T_k=T_n$</li>
 <li>采用交叉验证法在子树序列$\lbrace T_0,T_1,T_2,…,T_n \rbrace$中选取最优子树$T_\alpha$</li>
 </ol>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><hr>
+<h4 id="代码"><a class="header-anchor" href="#代码"></a>代码</h4>
+<hr>
 <p>整理后加入</p>
 <hr>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>CART大部分内容与决策树的一致，主要不同点是分类树和决策树的生成过程使用的标准以及剪枝过程，在简单决策树的基础上理解CART会更容易，所以推荐先阅读《决策树的理解与应用》</p>
+<h4 id="总结"><a class="header-anchor" href="#总结"></a>总结</h4>
+<p>CART大部分内容与决策树的一致，主要不同点是分类树和决策树的生成过程使用的标准以及剪枝过程，在简单决策树的基础上理解CART会更容易，所以推荐先阅读《决策树的理解与应用》</p>
 
       
     </div>
@@ -679,7 +744,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -701,7 +766,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-count">55</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -791,7 +856,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CART生成"><span class="nav-number">2.</span> <span class="nav-text">CART生成</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#回归树"><span class="nav-number">2.1.</span> <span class="nav-text">回归树</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分类树的生成"><span class="nav-number">2.2.</span> <span class="nav-text">分类树的生成</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CART剪枝✂️"><span class="nav-number">3.</span> <span class="nav-text">CART剪枝✂️</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码"><span class="nav-number">4.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cart生成"><span class="nav-number">2.</span> <span class="nav-text">CART生成</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#回归树"><span class="nav-number">2.1.</span> <span class="nav-text">回归树</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分类树的生成"><span class="nav-number">2.2.</span> <span class="nav-text">分类树的生成</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cart剪枝✂"><span class="nav-number">3.</span> <span class="nav-text">CART剪枝✂️</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码"><span class="nav-number">4.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>

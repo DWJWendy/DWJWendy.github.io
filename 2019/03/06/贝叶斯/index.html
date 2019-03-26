@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="前言贝叶斯分类是一类分类算法的总称，这类算法均以贝叶斯定理为基础，故统称为贝叶斯分类。 而朴素贝叶斯分类是基于贝叶斯定理与特征条件独立假设的分类方法，是贝叶斯分类中最简单，也是常见的一种分类方法。对于给定的训练集，首先基于特征独立假设学习输入\输出的联合概率分布，然后基于此模型，对给定的输入$x$，利用贝叶斯定理求出后验概率最大的输出$y$,朴素贝叶斯实际上是学习到生成数据的机制，属于生成模型 特">
+<meta name="description" content="前言 贝叶斯分类是一类分类算法的总称，这类算法均以贝叶斯定理为基础，故统称为贝叶斯分类。 而朴素贝叶斯分类是基于贝叶斯定理与特征条件独立假设的分类方法，是贝叶斯分类中最简单，也是常见的一种分类方法。对于给定的训练集，首先基于特征独立假设学习输入\输出的联合概率分布，然后基于此模型，对给定的输入$x$，利用贝叶斯定理求出后验概率最大的输出$y$,朴素贝叶斯实际上是学习到生成数据的机制，属于生成模型">
 <meta name="keywords" content="python,贝叶斯,参数估计,极大似然估计">
 <meta property="og:type" content="article">
 <meta property="og:title" content="贝叶斯分类: 朴素贝叶斯法">
 <meta property="og:url" content="http://yoursite.com/2019/03/06/贝叶斯/index.html">
 <meta property="og:site_name" content="毛毛虫_Wendy">
-<meta property="og:description" content="前言贝叶斯分类是一类分类算法的总称，这类算法均以贝叶斯定理为基础，故统称为贝叶斯分类。 而朴素贝叶斯分类是基于贝叶斯定理与特征条件独立假设的分类方法，是贝叶斯分类中最简单，也是常见的一种分类方法。对于给定的训练集，首先基于特征独立假设学习输入\输出的联合概率分布，然后基于此模型，对给定的输入$x$，利用贝叶斯定理求出后验概率最大的输出$y$,朴素贝叶斯实际上是学习到生成数据的机制，属于生成模型 特">
+<meta property="og:description" content="前言 贝叶斯分类是一类分类算法的总称，这类算法均以贝叶斯定理为基础，故统称为贝叶斯分类。 而朴素贝叶斯分类是基于贝叶斯定理与特征条件独立假设的分类方法，是贝叶斯分类中最简单，也是常见的一种分类方法。对于给定的训练集，首先基于特征独立假设学习输入\输出的联合概率分布，然后基于此模型，对给定的输入$x$，利用贝叶斯定理求出后验概率最大的输出$y$,朴素贝叶斯实际上是学习到生成数据的机制，属于生成模型">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-03-06T08:04:40.664Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="贝叶斯分类: 朴素贝叶斯法">
-<meta name="twitter:description" content="前言贝叶斯分类是一类分类算法的总称，这类算法均以贝叶斯定理为基础，故统称为贝叶斯分类。 而朴素贝叶斯分类是基于贝叶斯定理与特征条件独立假设的分类方法，是贝叶斯分类中最简单，也是常见的一种分类方法。对于给定的训练集，首先基于特征独立假设学习输入\输出的联合概率分布，然后基于此模型，对给定的输入$x$，利用贝叶斯定理求出后验概率最大的输出$y$,朴素贝叶斯实际上是学习到生成数据的机制，属于生成模型 特">
+<meta name="twitter:description" content="前言 贝叶斯分类是一类分类算法的总称，这类算法均以贝叶斯定理为基础，故统称为贝叶斯分类。 而朴素贝叶斯分类是基于贝叶斯定理与特征条件独立假设的分类方法，是贝叶斯分类中最简单，也是常见的一种分类方法。对于给定的训练集，首先基于特征独立假设学习输入\输出的联合概率分布，然后基于此模型，对给定的输入$x$，利用贝叶斯定理求出后验概率最大的输出$y$,朴素贝叶斯实际上是学习到生成数据的机制，属于生成模型">
 
 
 
@@ -436,22 +436,79 @@
       
 
       
-        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>贝叶斯分类是一类分类算法的总称，这类算法均以贝叶斯定理为基础，故统称为贝叶斯分类。</p>
+        <h4 id="前言"><a class="header-anchor" href="#前言"></a>前言</h4>
+<p>贝叶斯分类是一类分类算法的总称，这类算法均以贝叶斯定理为基础，故统称为贝叶斯分类。</p>
 <p>而朴素贝叶斯分类是<strong>基于贝叶斯定理与特征条件独立假设</strong>的分类方法，是贝叶斯分类中最简单，也是常见的一种分类方法。对于给定的训练集，首先基于特征独立假设学习输入\输出的联合概率分布，然后基于此模型，对给定的输入$x$，利用贝叶斯定理求出后验概率最大的输出$y$,朴素贝叶斯实际上是学习到生成数据的机制，属于生成模型</p>
 <p>特点：实现简单、学习与预测效率都很高</p>
-<h4 id="朴素贝叶斯"><a href="#朴素贝叶斯" class="headerlink" title="朴素贝叶斯"></a>朴素贝叶斯</h4><h5 id="模型生成"><a href="#模型生成" class="headerlink" title="模型生成"></a>模型生成</h5><p>给定训练集$T=\lbrace(x_1,y_1),(x_2,y_2),…,(x_N,y_N)$，输入空间是$n$维向量的集合，输出空间$\lbrace c_1,c_2,…,c_K\rbrace$，训练集是由$P(X,Y)$独立同分布产生。<br>那么先验分布表示为：$$P(Y=c_k),k=1,2,…,K$$<br>条件概率分布表示为：$$P(X=x|Y=c_k)=P(X^{(1)}=x^{(1)},…,X^{(n)}=x^{(n)}|Y=c_k),k=1,2,…,K$$<br>由于朴素贝叶斯假定特征是独立的，所以，条件概率分布表示为：$$P(X=x|Y=c_k)=\prod \limits_{j=1}^{n} P(X^{(j)}=x^{(j)}|Y=c_k),k=1,2,…,K$$</p>
-<h5 id="模型预测"><a href="#模型预测" class="headerlink" title="模型预测"></a>模型预测</h5><p>朴素贝叶斯分类时，对给定的输入x，通过学习模型计算后验概率$P(Y=c_k|X=x)$,将后验概率最大的类作为$x$的输出。<br>后验概率表示为：<br>$$P(Y=c_k|X=x)=\frac{P(X=x|Y=c_k)P(Y=c_k)}{\sum_k P(X=x|Y=c_k)P(Y=c_k)}$$<br>代入特征条件独立后的公式，后验概率表示为：<br>$$P(Y=c_k|X=x)=\frac{P(Y=c_k)\prod \limits_{j=1}^{n} P(X^{(j)}=x^{(j)}|Y=c_k)}{\sum_k P(Y=c_k)\prod \limits_{j=1}^{n} P(X^{(j)}=x^{(j)}|Y=c_k)}$$<br>于是朴素贝叶斯分离器的公式可以表示为：<br>$$y=f(x)=arg \max \limits_{c_k}\frac{P(Y=c_k)\prod \limits_{j=1}^{n} P(X^{(j)}=x^{(j)}|Y=c_k)}{\sum_k P(Y=c_k)\prod \limits_{j=1}^{n} P(X^{(j)}=x^{(j)}|Y=c_k)}$$<br>而分母中对所有的$c_k$都是相同的，所以简化为：<br>$$y=f(x)=arg \max \limits_{c_k}P(Y=c_k)\prod \limits_{j=1}^{n} P(X^{(j)}=x^{(j)}|Y=c_k)$$</p>
-<h4 id="后验最大化-期望风险最小化"><a href="#后验最大化-期望风险最小化" class="headerlink" title="后验最大化=期望风险最小化"></a>后验最大化=期望风险最小化</h4><p>朴素贝叶斯后验概率最大化等价于期望风险最小化。<br>首先选择0-1损失函数：$$<br>L(Y,f(X)) =<br>\begin{cases}<br>1,  &amp; \text{$Y \neq f(X)$} \\<br>0, &amp; \text{$Y = f(X)$}<br>\end{cases} $$<br>$f(X)$是决策函数，所以期望函数表示为：<br>$$R_{exp}(f)=E[L(Y,f(X))]=E_X \sum \limits_{k=1}^K[L(c_k,f(X))]P(c_k|X)$$<br>为了使期望风险最小化，需对$X=x$逐个极小化，由此得到<br>$$<br>\begin {align}<br>f(x)<br>&amp;=arg \min \limits_{y \in \gamma} \sum \limits_{k=1}^{K}L(c_k,y)P(c_k|X=x) \\<br>&amp;=arg \min \limits_{y \in \gamma} \sum \limits_{k=1}^{K}P(y \neq c_k|X=x) \\<br>&amp;=arg \min (1-P(y=c_k|X=x)) \\<br>&amp;=arg \max P(y=c_k|X=x)<br>\end {align}<br>$$<br>这样期望风险最小化准则就得到了后验概率最大化准则<br>$$f(x)=arg \max \limits_{c_k} P(c_k|X=x)$$</p>
-<h4 id="参数估计"><a href="#参数估计" class="headerlink" title="参数估计"></a>参数估计</h4><p>在朴素贝叶斯法中，学习意味着估计$P(Y=c_k)$和$P(X^{(j)}=x^{(j)}|Y=c_k)$，所以可以利用极大似然估计法去估计相应的概率。<br>先验概率$P(Y=c_k)$的极大似然估计是：$$P(Y=c_k)=\frac{\sum \limits_{i=1}^NI(y_i=c_k)}{N},k=1,2,…,K$$<br>设第$j$个特征$x^(j)$可能的取值集合为$\lbrace a_{j1},a_{j2},…,a_{jS_j}\rbrace$,条件概率$P(X^{(j)}=a_{jl}|Y=c_k)$的极大似然估计是<br>$$P(X^{(j)}=a_{jl}|Y=c_k)=\frac{\sum \limits_{i=1}^{N}I(X^{(j)}=a_{jl},y_i=c_k)}{\sum \limits_{i=1}^{N}I(y_i=c_k)} \\<br>j=1,2,…,n;l=1,2,…,S_j;k=1,2,…,K$$<br>上式，$x_i^{(j)}$是第$i$个样本的第$j$个特征，$a_{jl}$是第$j$个特征可能取的第$l$个值，$I$是指数函数。</p>
-<h4 id="朴素贝叶斯算法"><a href="#朴素贝叶斯算法" class="headerlink" title="朴素贝叶斯算法"></a>朴素贝叶斯算法</h4><p>输入：训练数据$T=\lbrace(x_1,y_1),(x_2,y_2),…,(x_N,y_N)$，其中$x_i=(x_i^{(1)},x_i^{(2)},…,x_i^{(n)})^T$,$x_i^{(j)}$是第$i$个样本的第$j$个特征;$x_i^(j) \in \lbrace a_{j1},a_{j2},…,a_{jS_j}\rbrace$;$a_{jl}$是第$j$个特征可能取的第$l$个值,$j=1,2,…,n;l=1,2,…,S_j;k=1,2,…,K$;实例$x$<br>输出：实例$x$的分类</p>
+<h4 id="朴素贝叶斯"><a class="header-anchor" href="#朴素贝叶斯"></a>朴素贝叶斯</h4>
+<h5 id="模型生成"><a class="header-anchor" href="#模型生成"></a>模型生成</h5>
+<p>给定训练集$T=\lbrace(x_1,y_1),(x_2,y_2),…,(x_N,y_N)$，输入空间是$n$维向量的集合，输出空间$\lbrace c_1,c_2,…,c_K\rbrace$，训练集是由$P(X,Y)$独立同分布产生。<br>
+那么先验分布表示为：$$P(Y=c_k),k=1,2,…,K$$<br>
+条件概率分布表示为：$$P(X=x|Y=c_k)=P(X<sup>{(1)}=x</sup>{(1)},…,X<sup>{(n)}=x</sup>{(n)}|Y=c_k),k=1,2,…,K$$<br>
+由于朴素贝叶斯假定特征是独立的，所以，条件概率分布表示为：$$P(X=x|Y=c_k)=\prod \limits_{j=1}^{n} P(X<sup>{(j)}=x</sup>{(j)}|Y=c_k),k=1,2,…,K$$</p>
+<h5 id="模型预测"><a class="header-anchor" href="#模型预测"></a>模型预测</h5>
+<p>朴素贝叶斯分类时，对给定的输入x，通过学习模型计算后验概率$P(Y=c_k|X=x)$,将后验概率最大的类作为$x$的输出。<br>
+后验概率表示为：<br>
+$$P(Y=c_k|X=x)=\frac{P(X=x|Y=c_k)P(Y=c_k)}{\sum_k P(X=x|Y=c_k)P(Y=c_k)}$$<br>
+代入特征条件独立后的公式，后验概率表示为：<br>
+$$P(Y=c_k|X=x)=\frac{P(Y=c_k)\prod \limits_{j=1}^{n} P(X<sup>{(j)}=x</sup>{(j)}|Y=c_k)}{\sum_k P(Y=c_k)\prod \limits_{j=1}^{n} P(X<sup>{(j)}=x</sup>{(j)}|Y=c_k)}$$<br>
+于是朴素贝叶斯分离器的公式可以表示为：<br>
+$$y=f(x)=arg \max \limits_{c_k}\frac{P(Y=c_k)\prod \limits_{j=1}^{n} P(X<sup>{(j)}=x</sup>{(j)}|Y=c_k)}{\sum_k P(Y=c_k)\prod \limits_{j=1}^{n} P(X<sup>{(j)}=x</sup>{(j)}|Y=c_k)}$$<br>
+而分母中对所有的$c_k$都是相同的，所以简化为：<br>
+$$y=f(x)=arg \max \limits_{c_k}P(Y=c_k)\prod \limits_{j=1}^{n} P(X<sup>{(j)}=x</sup>{(j)}|Y=c_k)$$</p>
+<h4 id="后验最大化-期望风险最小化"><a class="header-anchor" href="#后验最大化-期望风险最小化"></a>后验最大化=期望风险最小化</h4>
+<p>朴素贝叶斯后验概率最大化等价于期望风险最小化。<br>
+首先选择0-1损失函数：$$<br>
+L(Y,f(X)) =<br>
+\begin{cases}<br>
+1,  &amp; \text{$Y \neq f(X)$} \<br>
+0, &amp; \text{$Y = f(X)$}<br>
+\end{cases} $$<br>
+$f(X)$是决策函数，所以期望函数表示为：<br>
+$$R_{exp}(f)=E[L(Y,f(X))]=E_X \sum \limits_{k=1}^K[L(c_k,f(X))]P(c_k|X)$$<br>
+为了使期望风险最小化，需对$X=x$逐个极小化，由此得到<br>
+$$<br>
+\begin {align}<br>
+f(x)<br>
+&amp;=arg \min \limits_{y \in \gamma} \sum \limits_{k=1}^{K}L(c_k,y)P(c_k|X=x) \<br>
+&amp;=arg \min \limits_{y \in \gamma} \sum \limits_{k=1}^{K}P(y \neq c_k|X=x) \<br>
+&amp;=arg \min (1-P(y=c_k|X=x)) \<br>
+&amp;=arg \max P(y=c_k|X=x)<br>
+\end {align}<br>
+$$<br>
+这样期望风险最小化准则就得到了后验概率最大化准则<br>
+$$f(x)=arg \max \limits_{c_k} P(c_k|X=x)$$</p>
+<h4 id="参数估计"><a class="header-anchor" href="#参数估计"></a>参数估计</h4>
+<p>在朴素贝叶斯法中，学习意味着估计$P(Y=c_k)$和$P(X<sup>{(j)}=x</sup>{(j)}|Y=c_k)$，所以可以利用极大似然估计法去估计相应的概率。<br>
+先验概率$P(Y=c_k)$的极大似然估计是：$$P(Y=c_k)=\frac{\sum \limits_{i=1}^NI(y_i=c_k)}{N},k=1,2,…,K$$<br>
+设第$j$个特征$x^(j)$可能的取值集合为$\lbrace a_{j1},a_{j2},…,a_{jS_j}\rbrace$,条件概率$P(X^{(j)}=a_{jl}|Y=c_k)$的极大似然估计是<br>
+$$P(X^{(j)}=a_{jl}|Y=c_k)=\frac{\sum \limits_{i=1}<sup>{N}I(X</sup>{(j)}=a_{jl},y_i=c_k)}{\sum \limits_{i=1}^{N}I(y_i=c_k)} \<br>
+j=1,2,…,n;l=1,2,…,S_j;k=1,2,…,K$$<br>
+上式，$x_i^{(j)}$是第$i$个样本的第$j$个特征，$a_{jl}$是第$j$个特征可能取的第$l$个值，$I$是指数函数。</p>
+<h4 id="朴素贝叶斯算法"><a class="header-anchor" href="#朴素贝叶斯算法"></a>朴素贝叶斯算法</h4>
+<p>输入：训练数据$T=\lbrace(x_1,y_1),(x_2,y_2),…,(x_N,y_N)$，其中$x_i=(x_i<sup>{(1)},x_i</sup>{(2)},…,x_i<sup>{(n)})</sup>T$,$x_i<sup>{(j)}$是第$i$个样本的第$j$个特征;$x_i</sup>(j) \in \lbrace a_{j1},a_{j2},…,a_{jS_j}\rbrace$;$a_{jl}$是第$j$个特征可能取的第$l$个值,$j=1,2,…,n;l=1,2,…,S_j;k=1,2,…,K$;实例$x$<br>
+输出：实例$x$的分类</p>
 <ol>
-<li>计算先验概率和条件概率<br>$$P(Y=c_k)=\frac{\sum \limits_{i=1}^NI(y_i=c_k)}{N},k=1,2,…,K$$<br>$$P(X^{(j)}=a_{jl}|Y=c_k)=\frac{\sum \limits_{i=1}^{N}I(X^{(j)}=a_{jl},y_i=c_k)}{\sum \limits_{i=1}^{N}I(y_i=c_k)} \\<br>j=1,2,…,n;l=1,2,…,S_j;k=1,2,…,K$$</li>
-<li>对给定的实例$x=(x^{(1)},x^{(2)},…,x^{(n)})^T$，计算<br>$$P(Y=c_k)\prod \limits_{j=1}^{n}P(X^{(j)}=x^{(j)}|Y=c_k),k=1,2,…,K$$</li>
-<li>确定实例$x$的类<br>$$y=f(x)=arg \max \limits_{c_k}P(Y=c_k)\prod \limits_{j=1}^{n} P(X^{(j)}=x^{(j)}|Y=c_k)$$</li>
+<li>计算先验概率和条件概率<br>
+$$P(Y=c_k)=\frac{\sum \limits_{i=1}^NI(y_i=c_k)}{N},k=1,2,…,K$$<br>
+$$P(X^{(j)}=a_{jl}|Y=c_k)=\frac{\sum \limits_{i=1}<sup>{N}I(X</sup>{(j)}=a_{jl},y_i=c_k)}{\sum \limits_{i=1}^{N}I(y_i=c_k)} \<br>
+j=1,2,…,n;l=1,2,…,S_j;k=1,2,…,K$$</li>
+<li>对给定的实例$x=(x<sup>{(1)},x</sup>{(2)},…,x<sup>{(n)})</sup>T$，计算<br>
+$$P(Y=c_k)\prod \limits_{j=1}<sup>{n}P(X</sup>{(j)}=x^{(j)}|Y=c_k),k=1,2,…,K$$</li>
+<li>确定实例$x$的类<br>
+$$y=f(x)=arg \max \limits_{c_k}P(Y=c_k)\prod \limits_{j=1}^{n} P(X<sup>{(j)}=x</sup>{(j)}|Y=c_k)$$</li>
 </ol>
-<h4 id="贝叶斯估计"><a href="#贝叶斯估计" class="headerlink" title="贝叶斯估计"></a>贝叶斯估计</h4><p><strong>由于用极大似然估计可能会出现所估计概率为0，这会影响到后验概率的计算，使分类产生偏差</strong>，解决这一问题使用贝叶斯估计。<br>条件概率的贝叶斯估计是：<br>$$P_{\lambda}(X^{(j)}=a_{jl}|Y=c_k)=\frac{\sum \limits_{i=1}^{N}I(X^{(j)}=a_{jl},y_i=c_k)+\lambda}{\sum \limits_{i=1}^{N}I(y_i=c_k)+S_j\lambda} $$<br>上式中，$\lambda \geq 0$，当$\lambda=0$就是极大似然估计，$\lambda=1$称为拉普拉斯平滑<br>同样的，先验概率的贝叶斯估计为：<br>$$P_{\lambda}(Y=c_k)=\frac{\sum \limits_{i=1}^NI(y_i=c_k)+\lambda}{N+K\lambda},k=1,2,…,K$$</p>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
-<li>朴素贝叶斯是典型的生成学习方法，生成方法由训练数据学习联合分布$P(X,Y)$，然后求得后验概率分布$P(Y|X)$。<br>具体来说，利用训练集学习$P(X|Y),P(Y)$的估计，然后得到联合概率分布$P(X,Y)=P(Y)P(X|Y)$，然后利用学习到的联合概率模型和贝叶斯定理进行分类预测$$P(Y|X)=\frac{P(X,Y)}{P(X)}=\frac{P(Y)P(X|Y)}{\sum \limits_Y P(Y)P(X|Y)}$$</li>
+<h4 id="贝叶斯估计"><a class="header-anchor" href="#贝叶斯估计"></a>贝叶斯估计</h4>
+<p><strong>由于用极大似然估计可能会出现所估计概率为0，这会影响到后验概率的计算，使分类产生偏差</strong>，解决这一问题使用贝叶斯估计。<br>
+条件概率的贝叶斯估计是：<br>
+$$P_{\lambda}(X^{(j)}=a_{jl}|Y=c_k)=\frac{\sum \limits_{i=1}<sup>{N}I(X</sup>{(j)}=a_{jl},y_i=c_k)+\lambda}{\sum \limits_{i=1}^{N}I(y_i=c_k)+S_j\lambda} $$<br>
+上式中，$\lambda \geq 0$，当$\lambda=0$就是极大似然估计，$\lambda=1$称为拉普拉斯平滑<br>
+同样的，先验概率的贝叶斯估计为：<br>
+$$P_{\lambda}(Y=c_k)=\frac{\sum \limits_{i=1}^NI(y_i=c_k)+\lambda}{N+K\lambda},k=1,2,…,K$$</p>
+<h4 id="总结"><a class="header-anchor" href="#总结"></a>总结</h4>
+<ul>
+<li>朴素贝叶斯是典型的生成学习方法，生成方法由训练数据学习联合分布$P(X,Y)$，然后求得后验概率分布$P(Y|X)$。<br>
+具体来说，利用训练集学习$P(X|Y),P(Y)$的估计，然后得到联合概率分布$P(X,Y)=P(Y)P(X|Y)$，然后利用学习到的联合概率模型和贝叶斯定理进行分类预测$$P(Y|X)=\frac{P(X,Y)}{P(X)}=\frac{P(Y)P(X|Y)}{\sum \limits_Y P(Y)P(X|Y)}$$</li>
 <li>概率估计方法可以使用极大似然估计或者贝叶斯估计</li>
 <li>分类预测输出的类为后验概率最大的类，后验概率最大等价于0-1损失函数的期望风险最小化</li>
 </ul>
@@ -648,7 +705,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -670,7 +727,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-count">55</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
