@@ -88,20 +88,20 @@
 
 
 
-<meta name="description" content="Class Content     layout post   title 详解机器学习中的损失函数   categories Blog   description 机器学习中常见的损失函数以及它们的特点和适用场景   keywords 机器学习 损失函数 风险函数     1. 前言 我们知道机器学习的三要素是:方法= 模型+策略+算法, 如何从假设空间中选择最优模型,这涉及到我们需要用">
+<meta name="description" content="Class Content     layout post   title 详解机器学习中的损失函数   categories Blog   description 机器学习中常见的损失函数以及它们的特点和适用场景   keywords 机器学习 损失函数 风险函数     1. 前言我们知道机器学习的三要素是:方法= 模型+策略+算法, 如何从假设空间中选择最优模型,这涉及到我们需要用什">
 <meta name="keywords" content="ML,loss function,cost function">
 <meta property="og:type" content="article">
 <meta property="og:title" content="详述机器学习中的损失函数">
 <meta property="og:url" content="http://yoursite.com/2019/02/25/详述机器学习中的损失函数/index.html">
 <meta property="og:site_name" content="毛毛虫_Wendy">
-<meta property="og:description" content="Class Content     layout post   title 详解机器学习中的损失函数   categories Blog   description 机器学习中常见的损失函数以及它们的特点和适用场景   keywords 机器学习 损失函数 风险函数     1. 前言 我们知道机器学习的三要素是:方法= 模型+策略+算法, 如何从假设空间中选择最优模型,这涉及到我们需要用">
+<meta property="og:description" content="Class Content     layout post   title 详解机器学习中的损失函数   categories Blog   description 机器学习中常见的损失函数以及它们的特点和适用场景   keywords 机器学习 损失函数 风险函数     1. 前言我们知道机器学习的三要素是:方法= 模型+策略+算法, 如何从假设空间中选择最优模型,这涉及到我们需要用什">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5274272-1cf03d36a2499644.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/5274272-cd3776e65ca5cbc4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-03-19T03:05:54.258Z">
+<meta property="og:updated_time" content="2019-03-19T03:05:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="详述机器学习中的损失函数">
-<meta name="twitter:description" content="Class Content     layout post   title 详解机器学习中的损失函数   categories Blog   description 机器学习中常见的损失函数以及它们的特点和适用场景   keywords 机器学习 损失函数 风险函数     1. 前言 我们知道机器学习的三要素是:方法= 模型+策略+算法, 如何从假设空间中选择最优模型,这涉及到我们需要用">
+<meta name="twitter:description" content="Class Content     layout post   title 详解机器学习中的损失函数   categories Blog   description 机器学习中常见的损失函数以及它们的特点和适用场景   keywords 机器学习 损失函数 风险函数     1. 前言我们知道机器学习的三要素是:方法= 模型+策略+算法, 如何从假设空间中选择最优模型,这涉及到我们需要用什">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/5274272-1cf03d36a2499644.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -402,7 +402,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2.7k 字
+                  2.8k 字
                 </span>
               
 
@@ -471,26 +471,17 @@
 </tbody>
 </table>
 <hr>
-<h4 id="1-前言"><a class="header-anchor" href="#1-前言"></a>1. 前言</h4>
-<p>我们知道机器学习的三要素是:方法= 模型+策略+算法, 如何从假设空间中选择最优模型,这涉及到我们需要用什么样的准则进行学习,这就是三要素中的&quot;策略&quot;问题。</p>
-<p>在假设空间中选择模型$y(x_n,w)$作为决策函数,给定输入$x_n$,由模型得到输出$y(x_n,w)$,而预测的$y(x_n,w)$与真实值$t_n$之间可能不一致,如图1-1 可以看出预测值$y(x_n,w)$与真实值$t_n$存在不一致情况,他们之间的差的绝对值为$|y(x_n,w)-t_n|$为绿色线部分, 而损失函数是定义在单个样本上的，算的是一个样本的误差。因此选用损失函数来度量预测误差。<br>
-<img src="https://upload-images.jianshu.io/upload_images/5274272-1cf03d36a2499644.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1-1 预测值与真实值的误差"></p>
+<h4 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h4><p>我们知道机器学习的三要素是:方法= 模型+策略+算法, 如何从假设空间中选择最优模型,这涉及到我们需要用什么样的准则进行学习,这就是三要素中的”策略”问题。</p>
+<p>在假设空间中选择模型$y(x_n,w)$作为决策函数,给定输入$x_n$,由模型得到输出$y(x_n,w)$,而预测的$y(x_n,w)$与真实值$t_n$之间可能不一致,如图1-1 可以看出预测值$y(x_n,w)$与真实值$t_n$存在不一致情况,他们之间的差的绝对值为$|y(x_n,w)-t_n|$为绿色线部分, 而损失函数是定义在单个样本上的，算的是一个样本的误差。因此选用损失函数来度量预测误差。<br><img src="https://upload-images.jianshu.io/upload_images/5274272-1cf03d36a2499644.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1-1 预测值与真实值的误差"></p>
 <p>损失函数（loss function）是用来度量模型的预测值与真实值的不一致程度，是一个非负实值函数,损失函数越小，预测正确程度越高，表示为：$$L(y_i,f(x_i))$$</p>
 <ul>
-<li>
-<p>损失函数是<strong>经验风险函数</strong>的核心部分，也是<strong>结构风险函数</strong>重要组成部分。模型的<strong>结构风险函数包括了经验风险项和正则项</strong>，可以表示为：$$R_{srm}(f)= \frac{1}{N}\sum_{i=1}^NL(y_i,f(x_i))+\lambda J (f)$$<br>
-这个公式为结构风险函数,其中,包括前一部分的经验风险项以及后一部分的正则化项,正则化项用于控制模型复杂度,$\lambda$则是用于权衡经验风险和模型复杂度之间的关系.<br>
-所以,通过最小化结构风险的策略找到最优模型,求解最优模型就是求解如下最优化问题：$$min_{f\in\digamma}\frac{1}{N}\sum_{i=1}^NL(y_i,f(x_i))+\lambda J(f)$$</p>
+<li><p>损失函数是<strong>经验风险函数</strong>的核心部分，也是<strong>结构风险函数</strong>重要组成部分。模型的<strong>结构风险函数包括了经验风险项和正则项</strong>，可以表示为：$$R_{srm}(f)= \frac{1}{N}\sum_{i=1}^NL(y_i,f(x_i))+\lambda J (f)$$<br>这个公式为结构风险函数,其中,包括前一部分的经验风险项以及后一部分的正则化项,正则化项用于控制模型复杂度,$\lambda$则是用于权衡经验风险和模型复杂度之间的关系.<br>所以,通过最小化结构风险的策略找到最优模型,求解最优模型就是求解如下最优化问题：$$min_{f\in\digamma}\frac{1}{N}\sum_{i=1}^NL(y_i,f(x_i))+\lambda J(f)$$</p>
 </li>
-<li>
-<p>当然,除了让结构风险最小化寻找最优模型外,还可以直接最小化经验风险,即<br>
-$$min_{f\in\digamma}\frac{1}{N}\sum_{i=1}^NL(y_i,f(x_i))$$<br>
-在样本足够的情况下,经验风险最小化可以达到很好的学习效果,但是样本容量有限时,容易产生过拟合现象,所以在才有上面结构风险最小化求最优模型的策略.</p>
+<li><p>当然,除了让结构风险最小化寻找最优模型外,还可以直接最小化经验风险,即<br>$$min_{f\in\digamma}\frac{1}{N}\sum_{i=1}^NL(y_i,f(x_i))$$<br>在样本足够的情况下,经验风险最小化可以达到很好的学习效果,但是样本容量有限时,容易产生过拟合现象,所以在才有上面结构风险最小化求最优模型的策略.</p>
 </li>
 </ul>
 <hr>
-<h4 id="2-区别损失函数-风险函数-代价函数-目标函数"><a class="header-anchor" href="#2-区别损失函数-风险函数-代价函数-目标函数"></a>2. 区别损失函数\ 风险函数\ 代价函数\ 目标函数</h4>
-<ul>
+<h4 id="2-区别损失函数-风险函数-代价函数-目标函数"><a href="#2-区别损失函数-风险函数-代价函数-目标函数" class="headerlink" title="2. 区别损失函数 风险函数 代价函数 目标函数"></a>2. 区别损失函数 风险函数 代价函数 目标函数</h4><ul>
 <li><strong>损失函数</strong>：衡量单个样本预测值与真实值的误差【不赘述】.</li>
 <li><strong>代价函数</strong>：定义在训练集上，是模型关于训练集的平均损失，它也叫经验风险，表示为：$$\frac{1}{N}\sum_{i=1}^NL(y_i,f(x_i))$$</li>
 <li><strong>风险函数</strong>：是指损失函数的期望,又叫期望损失，由于输入$X$和输出$Y$是随机变量，那么可求得联合分布$P(X,Y)$，所以可以表示为：$$R_{exp}(f)=E_p[L(Y,f(X))] = \int_{X,Y}L(y,f(x))p(x,y)dxdy$$</li>
@@ -502,99 +493,29 @@ $$min_{f\in\digamma}\frac{1}{N}\sum_{i=1}^NL(y_i,f(x_i))$$<br>
 <li>b.由于$P(Y,X)$未知，所以风险函数无法计算，经验风险$R_{emp}(f)$是模型关于训练集的平均损失，<strong>根据大数定律，当样本容量$N$趋于无穷时，经验风险$R_{emp}(f)$趋于风险函数$R_{exp}(f)$</strong>，这也说明了训练集容量越大，选择的最优模型越逼近真实模型。</li>
 </ul>
 <hr>
-<h4 id="3-常见的损失函数"><a class="header-anchor" href="#3-常见的损失函数"></a>3. 常见的损失函数</h4>
-<ul>
-<li>
-<p><strong>(1) 0-1损失函数(Zero-one Loss)</strong><br>
-$$<br>
-L(y_i,f(x_i)) =<br>
-\begin{cases}<br>
-1,  &amp; \text{$y_i \neq f(x_i)$} \<br>
-0, &amp; \text{$y_i = f(x_i)$}<br>
-\end{cases} $$</p>
+<h4 id="3-常见的损失函数"><a href="#3-常见的损失函数" class="headerlink" title="3. 常见的损失函数"></a>3. 常见的损失函数</h4><ul>
+<li><p><strong>(1) 0-1损失函数(Zero-one Loss)</strong><br>$$<br>L(y_i,f(x_i)) =<br>\begin{cases}<br>1,  &amp; \text{$y_i \neq f(x_i)$} \\<br>0, &amp; \text{$y_i = f(x_i)$}<br>\end{cases} $$</p>
 </li>
-<li>
-<p>0-1 损失函数简单易理解，<strong>用于分类</strong>，如果预测的标签和数据标注的标签一致，那么就为0，否则就为1，当然, 如果认为相等的要求太严苛，可以放宽要求，<strong>用于回归</strong>中，如果他们的绝对值小于某个阈值，即为0，否则为1，表示为<br>
-$$<br>
-L(y_i,f(x_i)) =<br>
-\begin{cases}<br>
-1,  &amp; \text{$|y_i-f(x_i)| \geq t$} \<br>
-0, &amp; \text{$|y_i-f(x_i)| &lt; t$}<br>
-\end{cases} $$</p>
+<li><p>0-1 损失函数简单易理解，<strong>用于分类</strong>，如果预测的标签和数据标注的标签一致，那么就为0，否则就为1，当然, 如果认为相等的要求太严苛，可以放宽要求，<strong>用于回归</strong>中，如果他们的绝对值小于某个阈值，即为0，否则为1，表示为<br>$$<br>L(y_i,f(x_i)) =<br>\begin{cases}<br>1,  &amp; \text{$|y_i-f(x_i)| \geq t$} \\<br>0, &amp; \text{$|y_i-f(x_i)| &lt; t$}<br>\end{cases} $$</p>
 </li>
-<li>
-<p><strong>(2) 平方损失函数(Square Loss)</strong><br>
-$$L(y_i,f(x_i))=(y_i-f(x_i))^2$$<br>
-由于其计算的优越性，所以常常<strong>用于回归</strong>中, 权重由可以直接初始化，再通过梯度下降不断更新。</p>
+<li><p><strong>(2) 平方损失函数(Square Loss)</strong><br>$$L(y_i,f(x_i))=(y_i-f(x_i))^2$$<br>由于其计算的优越性，所以常常<strong>用于回归</strong>中, 权重由可以直接初始化，再通过梯度下降不断更新。</p>
 </li>
-<li>
-<p><strong>举例说明</strong>，一个线性回归，假设输入有$n$个特征，为了方便表示用$n+1$表示输入向量为$x=[0,x_1,x_2,…,x_n]<sup>T$，模型参数为$w=[w_0,w_1,…,w_n]</sup>T$，那么线性回归的模型表示为$$f(x)=w_0+w_1x_1+,…,w_nx_n=w^Tx$$<br>
-那么它的代价函数可以表示为$$L(w,x)=\frac{1}{2N}\sum_{i=1}<sup>N(y</sup>{(i)}-w<sup>Tx</sup>{(i)})+\frac{\lambda}{2}||w||^2$$<br>
-注意：在这里都使用$\frac{1}{2}$的目的是方便在后续求导中计算，$\lambda$是正则项前面的参数。<br>
-对$w_i$求导：<br>
-$$\frac{dL(w,x)}{dw_i} = \frac{1}{N}\sum_{i=1}<sup>N(y_i-w</sup>Tx)x_i+\lambda<br>
-w_i$$<br>
-由于这是目标函数是一个有最小值的凸函数，所以是沿着梯度的反方向进行更新，表示为$$w_i = w_i -\eta\frac{dL(w,x)}{dw_i}$$<br>
-注：权重矩阵$w$最开始可以随机初始，再不断更新.</p>
+<li><p><strong>举例说明</strong>，一个线性回归，假设输入有$n$个特征，为了方便表示用$n+1$表示输入向量为$x=[0,x_1,x_2,…,x_n]^T$，模型参数为$w=[w_0,w_1,…,w_n]^T$，那么线性回归的模型表示为$$f(x)=w_0+w_1x_1+,…,w_nx_n=w^Tx$$<br>那么它的代价函数可以表示为$$L(w,x)=\frac{1}{2N}\sum_{i=1}^N(y^{(i)}-w^Tx^{(i)})+\frac{\lambda}{2}||w||^2$$<br>注意：在这里都使用$\frac{1}{2}$的目的是方便在后续求导中计算，$\lambda$是正则项前面的参数。<br>对$w_i$求导：<br>$$\frac{dL(w,x)}{dw_i} = \frac{1}{N}\sum_{i=1}^N(y_i-w^Tx)x_i+\lambda<br>w_i$$<br>由于这是目标函数是一个有最小值的凸函数，所以是沿着梯度的反方向进行更新，表示为$$w_i = w_i -\eta\frac{dL(w,x)}{dw_i}$$<br>注：权重矩阵$w$最开始可以随机初始，再不断更新.</p>
 </li>
-<li>
-<p><strong>(3) 绝对损失函数(Absolute loss)</strong><br>
-$$L(y_i,f(x_i))=|(y_i-f(x_i))|$$<br>
-绝对值损失函数也经常<strong>用于回归中</strong>,而用于分类就等价于0-1损失函数，在sklearn中有Huber损失函数，它是平方损失函数和绝对值损失函数的结合，详细介绍请参考 <a href="http://sklearn.apachecn.org/cn/stable/modules/ensemble.html#f2001" target="_blank" rel="noopener">[F2001]</a>，比较简单【不再赘述】。</p>
+<li><p><strong>(3) 绝对损失函数(Absolute loss)</strong><br>$$L(y_i,f(x_i))=|(y_i-f(x_i))|$$<br>绝对值损失函数也经常<strong>用于回归中</strong>,而用于分类就等价于0-1损失函数，在sklearn中有Huber损失函数，它是平方损失函数和绝对值损失函数的结合，详细介绍请参考 <a href="http://sklearn.apachecn.org/cn/stable/modules/ensemble.html#f2001" target="_blank" rel="noopener">[F2001]</a>，比较简单【不再赘述】。</p>
 </li>
-<li>
-<p><strong>(4) 对数损失函数(Log Loss or Cross-entropy Loss)</strong><br>
-$$L(y_i,f(x_i))=-logP(y_i|x_i)$$<br>
-对数损失函数适<strong>用于逻辑回归</strong>,那什么是逻辑回归呢？<br>
-**举例说明：**其实就是在线性回归的基础上增加了逻辑函数$h(x)= \frac{1}{1+e<sup>{-x}}$，那么对于在线性回归基础上加上逻辑函数，则逻辑回归模型可以表示为$$p(1|w,x</sup>{(i)})=h(f(x<sup>{(i)}))=\frac{1}{1+e</sup>{-f(x<sup>{(i)})}}=\frac{1}{1+e</sup>{-w<sup>Tx</sup>{(i)}}}$$<br>
-即上式表示，给定输入，该实例为类别1的概率，由于逻辑回归是二分类，所以为类别0的概率为$p(0|w,x<sup>{(i)})=1-p(1|w,x</sup>{(i)})$<br>
-而在逻辑回归中，由于提供了模型的概率估计，所以使用的损失函数为对数损失函数，表示如下：<br>
-$$<br>
-L(y<sup>{(i)},f(x</sup>{(i)})) =<br>
-\begin{cases}<br>
--logp(1|w,x^{(i)}),  &amp; \text{$y^{(i)}=1$} \<br>
--log(1-p(w|x^{(i)})), &amp; \text{$y^{(i)}=0$}<br>
-\end{cases} $$</p>
+<li><p><strong>(4) 对数损失函数(Log Loss or Cross-entropy Loss)</strong><br>$$L(y_i,f(x_i))=-logP(y_i|x_i)$$<br>对数损失函数适<strong>用于逻辑回归</strong>,那什么是逻辑回归呢？<br><strong>举例说明：</strong>其实就是在线性回归的基础上增加了逻辑函数$h(x)= \frac{1}{1+e^{-x}}$，那么对于在线性回归基础上加上逻辑函数，则逻辑回归模型可以表示为$$p(1|w,x^{(i)})=h(f(x^{(i)}))=\frac{1}{1+e^{-f(x^{(i)})}}=\frac{1}{1+e^{-w^Tx^{(i)}}}$$<br>即上式表示，给定输入，该实例为类别1的概率，由于逻辑回归是二分类，所以为类别0的概率为$p(0|w,x^{(i)})=1-p(1|w,x^{(i)})$<br>而在逻辑回归中，由于提供了模型的概率估计，所以使用的损失函数为对数损失函数，表示如下：<br>$$<br>L(y^{(i)},f(x^{(i)})) =<br>\begin{cases}<br>-logp(1|w,x^{(i)}),  &amp; \text{$y^{(i)}=1$} \\<br>-log(1-p(w|x^{(i)})), &amp; \text{$y^{(i)}=0$}<br>\end{cases} $$</p>
 </li>
 </ul>
-<p>那么最终的代价函数可以表示为<br>
-$$L(w,x)=-\frac{1}{N}\sum_{i=1}^N \lbrace y<sup>{(i)}logp(y</sup>{(i)}=1|w,x<sup>{(i)})+(1-y</sup>{(i)})logp(y<sup>{(i)}=0|w,x</sup>{(i)})\rbrace<br>
-$$<br>
-接下来就从另外一个角度说明，已知逻辑回归模型表示为：$$p(1|w,x<sup>{(i)})=h(f(x</sup>{(i)}))=\frac{1}{1+e<sup>{-f(x</sup>{(i)})}}=\frac{1}{1+e<sup>{-w</sup>Tx^{(i)}}}$$<br>
-在模型的数学形式确定后，剩下的就是如何去求解模型中的参数$w$，而在已知模型和一定样本的情况下，估计模型的参数，在统计学中常用的是极大似然估计方法。即找到一组参数$w$，使得在这组参数下，样本数据的似然度（概率）最大.<br>
-对于逻辑回归模型，假定概率分布服从伯努利分布【0-1分布】，其概率质量函数PMF为:$f(x)=p<sup>x(1-p)</sup>{(1-x)}$，其中$x$只能取0或者1，那么似然函数可以表示:为$$L(w)=\prod_{i=1}<sup>Np(y</sup>{(i)}=1|w,x<sup>{(i)})</sup>{y<sup>{(i)}}p(y</sup>{(i)}=0|w,x<sup>{(i)})</sup>{1-y^{(i)}}$$<br>
-那么对上式取对数，得到对数似然函数为:<br>
-$$logL(w)=\sum_{i=1}<sup>Ny</sup>{(i)}logp(y<sup>{(i)}=1|w,x</sup>{(i)})+（1-y<sup>{(i)})logp(y</sup>{(i)}=0|w,x^{(i)})$$<br>
-则全体样本的代价函数为:<br>
-$$logL(w)=-\sum_{i=1}^N\lbrace y<sup>{(i)}logp(y</sup>{(i)}=1|w,x<sup>{(i)})+（1-y</sup>{(i)})logp(y<sup>{(i)}=0|w,x</sup>{(i)})\rbrace$$<br>
-由此可以看出<strong>对数损失函数与极大似然估计的对数似然函数本质上是等价的</strong>.</p>
+<p>那么最终的代价函数可以表示为<br>$$L(w,x)=-\frac{1}{N}\sum_{i=1}^N \lbrace y^{(i)}logp(y^{(i)}=1|w,x^{(i)})+(1-y^{(i)})logp(y^{(i)}=0|w,x^{(i)})\rbrace<br>$$<br>接下来就从另外一个角度说明，已知逻辑回归模型表示为：$$p(1|w,x^{(i)})=h(f(x^{(i)}))=\frac{1}{1+e^{-f(x^{(i)})}}=\frac{1}{1+e^{-w^Tx^{(i)}}}$$<br>在模型的数学形式确定后，剩下的就是如何去求解模型中的参数$w$，而在已知模型和一定样本的情况下，估计模型的参数，在统计学中常用的是极大似然估计方法。即找到一组参数$w$，使得在这组参数下，样本数据的似然度（概率）最大.<br>对于逻辑回归模型，假定概率分布服从伯努利分布【0-1分布】，其概率质量函数PMF为:$f(x)=p^x(1-p)^{(1-x)}$，其中$x$只能取0或者1，那么似然函数可以表示:为$$L(w)=\prod_{i=1}^Np(y^{(i)}=1|w,x^{(i)})^{y^{(i)}}p(y^{(i)}=0|w,x^{(i)})^{1-y^{(i)}}$$<br>那么对上式取对数，得到对数似然函数为:<br>$$logL(w)=\sum_{i=1}^Ny^{(i)}logp(y^{(i)}=1|w,x^{(i)})+（1-y^{(i)})logp(y^{(i)}=0|w,x^{(i)})$$<br>则全体样本的代价函数为:<br>$$logL(w)=-\sum_{i=1}^N\lbrace y^{(i)}logp(y^{(i)}=1|w,x^{(i)})+（1-y^{(i)})logp(y^{(i)}=0|w,x^{(i)})\rbrace$$<br>由此可以看出<strong>对数损失函数与极大似然估计的对数似然函数本质上是等价的</strong>.</p>
 <ul>
-<li><strong>(5) 合页损失函数(Hinge Loss)</strong><br>
-$$L(m_i)=max(0,1-m_i(w))$$<br>
-铰链损失函数<strong>常用于支持向量机(SVM)中</strong>,它名字来源于它的损失函数图像为一个折线图像，如果模型分类正确，损失为0，否则损失为$1-m_i(w)$，在SVM损失函数表示为：$$L(y<sup>{(i)},x</sup>{(i)})=max(0,1-y<sup>{(i)}f(x</sup>{(i)}))$$,<br>
-**举例说明：**在SVM中，最终的支持向量机的分类模型是能最大化分类间隔，又减少错误分类的样本数目，意味着一个好的支持向量机的模型，需要满足以上两个条件：<strong>1、最大化分类间隔，2、错误分类的样本数目</strong>。如图说明，$f(x<sup>{(i)})$是预测值，且预测值在-1到1之间，$y</sup>{(i)}$为目标值取值为-1或者1，如果分类正确，$L(y<sup>{(i)},x</sup>{(i)})=0$，如果分类错误，$L(y<sup>{(i)},x</sup>{(i)})=1-y<sup>{(i)}f(x</sup>{(i)})$，$\xi$是引入的松弛变量，错误分类的样本数目，就回到了损失函数的范畴。<br>
-<img src="https://upload-images.jianshu.io/upload_images/5274272-cd3776e65ca5cbc4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="SVM分类">综上所述推导SVM的代价函数，最初的SVM优化函数如下：</li>
+<li><strong>(5) 合页损失函数(Hinge Loss)</strong><br>$$L(m_i)=max(0,1-m_i(w))$$<br>铰链损失函数<strong>常用于支持向量机(SVM)中</strong>,它名字来源于它的损失函数图像为一个折线图像，如果模型分类正确，损失为0，否则损失为$1-m_i(w)$，在SVM损失函数表示为：$$L(y^{(i)},x^{(i)})=max(0,1-y^{(i)}f(x^{(i)}))$$,<br><strong>举例说明：</strong>在SVM中，最终的支持向量机的分类模型是能最大化分类间隔，又减少错误分类的样本数目，意味着一个好的支持向量机的模型，需要满足以上两个条件：<strong>1、最大化分类间隔，2、错误分类的样本数目</strong>。如图说明，$f(x^{(i)})$是预测值，且预测值在-1到1之间，$y^{(i)}$为目标值取值为-1或者1，如果分类正确，$L(y^{(i)},x^{(i)})=0$，如果分类错误，$L(y^{(i)},x^{(i)})=1-y^{(i)}f(x^{(i)})$，$\xi$是引入的松弛变量，错误分类的样本数目，就回到了损失函数的范畴。<br><img src="https://upload-images.jianshu.io/upload_images/5274272-cd3776e65ca5cbc4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="SVM分类">综上所述推导SVM的代价函数，最初的SVM优化函数如下： </li>
 </ul>
-<p>$$\begin{equation}<br>
-	\mathop{\arg\min}_{(w,\xi_i)} \ \ | \frac{1}{2} \Vert w \Vert^2+C\sum_i\xi_i \<br>
-\begin{cases}<br>
-&amp; s.t.\quad \forall y<sup>{(i)}f(x</sup>{(i)}) \geq 0 \<br>
-&amp; \quad\quad\quad \xi_i \geq 0<br>
-\end{cases}<br>
-\end{equation}$$</p>
-<p>将约束条件变形为$$\xi_i&gt;1-y<sup>{(i)}f(x</sup>{(i)})$$<br>
-最终SVM的代价函数可以表示为：$$L(w,x^{(i)})=C  \sum_{i=0}<sup>{N}max(0,1-y</sup>{(i)}f(x^{(i)}))+\frac{1}{2} \Vert w \Vert^2$$</p>
+<p>$$\begin{equation}<br>    \mathop{\arg\min}_{(w,\xi_i)}   | \frac{1}{2} \Vert w \Vert^2+C\sum_i\xi_i \\<br>   \begin{cases}<br>    &amp; s.t.\quad \forall y^{(i)}f(x^{(i)}) \geq 0 \\<br>                &amp; \quad\quad\quad \xi_i \geq 0<br>        \end{cases}<br>\end{equation}$$</p>
+<p>将约束条件变形为$$\xi_i&gt;1-y^{(i)}f(x^{(i)})$$<br>最终SVM的代价函数可以表示为：$$L(w,x^{(i)})=C  \sum_{i=0}^{N}max(0,1-y^{(i)}f(x^{(i)}))+\frac{1}{2} \Vert w \Vert^2$$</p>
 <ul>
-<li><strong>(6) 指数损失函数(Exponential loss)</strong><br>
-$$L(y_i,f(x_i)) = exp(-y_if(x_i))$$指数损失函数，<strong>主要应用于 Boosting 算法中</strong><br>
-在Adaboost 算法中，经过$m$次迭代后，可以得到 $f_m(x<sup>{(i)})$，表示为：$$f_m(x</sup>{(i)})=f_{m−1}(x<sup>{(i)})+α_mG_m(x</sup>{(i)})$$<br>
-Adaboost 每次迭代时的目的都是找到最小化下列式子的参数$α$和$G$：<br>
-$$argmin_{(α,G)}  \quad \sum_{i=1}<sup>{N}exp(-y</sup>i(f_{m−1}(x<sup>{(i)})+αG(x</sup>{(i)})))$$<br>
-易知，Adaboost应用了指数损失函数$L(y<sup>i,f(x</sup>i))=exp(-y<sup>if(x</sup>i))$</li>
+<li><strong>(6) 指数损失函数(Exponential loss)</strong><br>$$L(y_i,f(x_i)) = exp(-y_if(x_i))$$指数损失函数，<strong>主要应用于 Boosting 算法中</strong><br>在Adaboost 算法中，经过$m$次迭代后，可以得到 $f_m(x^{(i)})$，表示为：$$f_m(x^{(i)})=f_{m−1}(x^{(i)})+α_mG_m(x^{(i)})$$<br>Adaboost 每次迭代时的目的都是找到最小化下列式子的参数$α$和$G$：<br>$$argmin_{(α,G)}  \quad \sum_{i=1}^{N}exp(-y^i(f_{m−1}(x^{(i)})+αG(x^{(i)})))$$<br>易知，Adaboost应用了指数损失函数$L(y^i,f(x^i))=exp(-y^if(x^i))$<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4>看了很多资料和网页，结合自己的理解写出了这一篇博客，以前只知道有这些损失函数，并没有探讨过损失函数的适用性以及该如何去推导这些公式。继续加油O(∩_∩)O~~<br>如有问题联系<a href="mailto:dengwenjun818@gmail.com" target="_blank" rel="noopener">dengwenjun818@gmail.com</a></li>
 </ul>
-<h4 id="总结"><a class="header-anchor" href="#总结"></a>总结</h4>
-<p>看了很多资料和网页，结合自己的理解写出了这一篇博客，以前只知道有这些损失函数，并没有探讨过损失函数的适用性以及该如何去推导这些公式。继续加油O(∩_∩)O~~<br>
-如有问题联系dengwenjun818@gmail.com</p>
 
       
     </div>
@@ -898,7 +819,7 @@ $$argmin_{(α,G)}  \quad \sum_{i=1}<sup>{N}exp(-y</sup>i(f_{m−1}(x<sup>{(i)})+
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-前言"><span class="nav-number">1.</span> <span class="nav-text">1. 前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-区别损失函数-风险函数-代价函数-目标函数"><span class="nav-number">2.</span> <span class="nav-text">2. 区别损失函数\ 风险函数\ 代价函数\ 目标函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-常见的损失函数"><span class="nav-number">3.</span> <span class="nav-text">3. 常见的损失函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-前言"><span class="nav-number">1.</span> <span class="nav-text">1. 前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-区别损失函数-风险函数-代价函数-目标函数"><span class="nav-number">2.</span> <span class="nav-text">2. 区别损失函数 风险函数 代价函数 目标函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-常见的损失函数"><span class="nav-number">3.</span> <span class="nav-text">3. 常见的损失函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>

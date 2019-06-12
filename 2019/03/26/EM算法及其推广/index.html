@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="背景 EM算法是一种迭代算法，它的每次迭代由两步组成：E步，求期望；M步，求极大，所以称为期望极大算法(Expectation Maximization)，简称EM算法。 在概率模型有时既含有观测变量，又含有隐变量或者潜在变量，如果概率模型的变量都是观测变量，那么给定数据，可以直接使用极大似然估计或者贝叶斯估计模型参数，但是当模型含有隐变量，就不能简单使用上述方法。EM算法就是含有隐变量的概率模型">
+<meta name="description" content="背景EM算法是一种迭代算法，它的每次迭代由两步组成：E步，求期望；M步，求极大，所以称为期望极大算法(Expectation Maximization)，简称EM算法。 在概率模型有时既含有观测变量，又含有隐变量或者潜在变量，如果概率模型的变量都是观测变量，那么给定数据，可以直接使用极大似然估计或者贝叶斯估计模型参数，但是当模型含有隐变量，就不能简单使用上述方法。EM算法就是含有隐变量的概率模型参">
 <meta name="keywords" content="EM,高斯混合模型,GEM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="EM算法及其推广">
 <meta property="og:url" content="http://yoursite.com/2019/03/26/EM算法及其推广/index.html">
 <meta property="og:site_name" content="毛毛虫_Wendy">
-<meta property="og:description" content="背景 EM算法是一种迭代算法，它的每次迭代由两步组成：E步，求期望；M步，求极大，所以称为期望极大算法(Expectation Maximization)，简称EM算法。 在概率模型有时既含有观测变量，又含有隐变量或者潜在变量，如果概率模型的变量都是观测变量，那么给定数据，可以直接使用极大似然估计或者贝叶斯估计模型参数，但是当模型含有隐变量，就不能简单使用上述方法。EM算法就是含有隐变量的概率模型">
+<meta property="og:description" content="背景EM算法是一种迭代算法，它的每次迭代由两步组成：E步，求期望；M步，求极大，所以称为期望极大算法(Expectation Maximization)，简称EM算法。 在概率模型有时既含有观测变量，又含有隐变量或者潜在变量，如果概率模型的变量都是观测变量，那么给定数据，可以直接使用极大似然估计或者贝叶斯估计模型参数，但是当模型含有隐变量，就不能简单使用上述方法。EM算法就是含有隐变量的概率模型参">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-26T08:35:30.725Z">
+<meta property="og:updated_time" content="2019-03-26T08:35:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EM算法及其推广">
-<meta name="twitter:description" content="背景 EM算法是一种迭代算法，它的每次迭代由两步组成：E步，求期望；M步，求极大，所以称为期望极大算法(Expectation Maximization)，简称EM算法。 在概率模型有时既含有观测变量，又含有隐变量或者潜在变量，如果概率模型的变量都是观测变量，那么给定数据，可以直接使用极大似然估计或者贝叶斯估计模型参数，但是当模型含有隐变量，就不能简单使用上述方法。EM算法就是含有隐变量的概率模型">
+<meta name="twitter:description" content="背景EM算法是一种迭代算法，它的每次迭代由两步组成：E步，求期望；M步，求极大，所以称为期望极大算法(Expectation Maximization)，简称EM算法。 在概率模型有时既含有观测变量，又含有隐变量或者潜在变量，如果概率模型的变量都是观测变量，那么给定数据，可以直接使用极大似然估计或者贝叶斯估计模型参数，但是当模型含有隐变量，就不能简单使用上述方法。EM算法就是含有隐变量的概率模型参">
 
 
 
@@ -436,80 +436,39 @@
       
 
       
-        <h4 id="背景"><a class="header-anchor" href="#背景"></a>背景</h4>
-<p>EM算法是一种迭代算法，它的每次迭代由两步组成：E步，求期望；M步，求极大，所以称为期望极大算法(Expectation Maximization)，简称EM算法。</p>
+        <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><p>EM算法是一种迭代算法，它的每次迭代由两步组成：E步，求期望；M步，求极大，所以称为期望极大算法(Expectation Maximization)，简称EM算法。</p>
 <p>在概率模型有时既含有观测变量，又含有隐变量或者潜在变量，如果概率模型的变量都是观测变量，那么给定数据，可以直接使用极大似然估计或者贝叶斯估计模型参数，但是当模型含有隐变量，就不能简单使用上述方法。<strong>EM算法就是含有隐变量的概率模型参数的极大似然估计法，或极大后验概率估计法</strong>。</p>
-<h4 id="em算法"><a class="header-anchor" href="#em算法"></a>EM算法</h4>
-<h5 id="例子：🌰"><a class="header-anchor" href="#例子：🌰"></a>例子：🌰</h5>
-<p>（三个硬币模型）假设有3个硬币，ABC，硬币正面出现的概率分别是$w,p,q$，先抛A，根据其结果选择B或者C抛，正面抛B，反面抛C，然后抛选择出的硬币，正面记1，反面记0，独立重复$n$次，只能观测到抛掷硬币的最终结果，问如何估计三硬币正面出现的概率，即三硬币模型参数。</p>
-<p>将观测数据表示为$Y=(Y_1,Y_2,…,Y_n)<sup>T$，未观测数据表示为$Z=(Z_1,Z_2,…,Z_n)</sup>T$，观测数据的似然函数为$$P(Y|\theta)=\sum\limits_{Z}P(Z|\theta)P(Y|Z,\theta)$$<br>
-即<br>
-$$P(Y|\theta)=\prod\limits_{j=1}<sup>{n}[wp</sup>{y_j}(1-p)<sup>{1-y_j}+(1-w)q</sup>{y_j}(1-q)^{1-y_j}]$$</p>
-<p>求模型参数$\theta=(w,p,q)$的极大似然估计，即<br>
-$$\hat{\theta}=arg\max\limits_{\theta}logP(Y|\theta)$$<br>
-<strong>这个问题没有解析解，只能通过迭代求解，EM就是可以用于求解这个问题的一种迭代算法</strong><br>
-例题的迭代过程见《统计学习方法》P156<br>
-NOTE:EM算法与初值的选择有关，选择不同的初值可能取得不同的参数估计值。</p>
-<h5 id="具体算法"><a class="header-anchor" href="#具体算法"></a>具体算法</h5>
-<p>「概念」完全数据vs不完全数据：$Y,Z$连在一起成为完全数据，$Y$成为不完全数据。</p>
-<p><strong>具体EM算法如下：</strong><br>
-输入：观测变量$Y$，隐变量数据$Z$，联合分布$P(Y,Z|\theta)$，条件概率分布P(Z|Y,\theta)<br>
-输出：模型参数$\theta$</p>
+<h4 id="EM算法"><a href="#EM算法" class="headerlink" title="EM算法"></a>EM算法</h4><h5 id="例子：🌰"><a href="#例子：🌰" class="headerlink" title="例子：🌰"></a>例子：🌰</h5><p>（三个硬币模型）假设有3个硬币，ABC，硬币正面出现的概率分别是$w,p,q$，先抛A，根据其结果选择B或者C抛，正面抛B，反面抛C，然后抛选择出的硬币，正面记1，反面记0，独立重复$n$次，只能观测到抛掷硬币的最终结果，问如何估计三硬币正面出现的概率，即三硬币模型参数。</p>
+<p>将观测数据表示为$Y=(Y_1,Y_2,…,Y_n)^T$，未观测数据表示为$Z=(Z_1,Z_2,…,Z_n)^T$，观测数据的似然函数为$$P(Y|\theta)=\sum\limits_{Z}P(Z|\theta)P(Y|Z,\theta)$$<br>即<br>$$P(Y|\theta)=\prod\limits_{j=1}^{n}[wp^{y_j}(1-p)^{1-y_j}+(1-w)q^{y_j}(1-q)^{1-y_j}]$$</p>
+<p>求模型参数$\theta=(w,p,q)$的极大似然估计，即<br>$$\hat{\theta}=arg\max\limits_{\theta}logP(Y|\theta)$$<br><strong>这个问题没有解析解，只能通过迭代求解，EM就是可以用于求解这个问题的一种迭代算法</strong><br>例题的迭代过程见《统计学习方法》P156<br>NOTE:EM算法与初值的选择有关，选择不同的初值可能取得不同的参数估计值。</p>
+<h5 id="具体算法"><a href="#具体算法" class="headerlink" title="具体算法"></a>具体算法</h5><p>「概念」完全数据vs不完全数据：$Y,Z$连在一起成为完全数据，$Y$成为不完全数据。</p>
+<p><strong>具体EM算法如下：</strong><br>输入：观测变量$Y$，隐变量数据$Z$，联合分布$P(Y,Z|\theta)$，条件概率分布P(Z|Y,\theta)<br>输出：模型参数$\theta$</p>
 <ol>
 <li>选择初始值$\theta^{(0)}$，开始迭代</li>
-<li>E步：记$\theta^{(i)}$为第$i$次迭代参数$\theta$的估计值，在第$i+1$次迭代的E步，计算<br>
-$$\begin {align}<br>
-Q(\theta,\theta^{(i)})&amp;= E_Z[logP(Y,Z|\theta)|Y,\theta^{(i)}]\<br>
-&amp;=\sum\limits_{Z}logP(Y,Z|\theta)P(Z|Y,\theta^{(i)})<br>
-\end{align}$$<br>
-这里，$P(Z|Y,\theta<sup>{(i)})$是在给定观测数据$Y$和当前的参数估计$\theta</sup>{(i)}$下隐变量数据Z的条件概率分布。</li>
-<li>M步：求使得$Q(\theta,\theta<sup>{(i)})$极大化的$\theta$，确定第$i+1$次迭代的参数估计值$\theta</sup>{(i+1)}$<br>
-$$\theta<sup>{(i+1)}=arg\max_{\theta}Q(\theta,\theta</sup>{(i)})$$</li>
-<li>重复第2.3步，直至收敛。<br>
-其中$Q(\theta,\theta^{(i)})$是算法法核心，称为Q函数<br>
-Q函数是指完全数据的对数似然函数$logP(Y,Z|\theta)$关于在给定观测数据$Y$和当前参数$\theta<sup>{(i)}$下对未观测数据$Z$的条件概率分布$P(Z|Y,\theta</sup>{(i)})$的期望称为Q函数。</li>
+<li>E步：记$\theta^{(i)}$为第$i$次迭代参数$\theta$的估计值，在第$i+1$次迭代的E步，计算<br>$$\begin {align}<br>Q(\theta,\theta^{(i)})&amp;= E_Z[logP(Y,Z|\theta)|Y,\theta^{(i)}]\\<br>&amp;=\sum\limits_{Z}logP(Y,Z|\theta)P(Z|Y,\theta^{(i)})<br>\end{align}$$<br>这里，$P(Z|Y,\theta^{(i)})$是在给定观测数据$Y$和当前的参数估计$\theta^{(i)}$下隐变量数据Z的条件概率分布。</li>
+<li>M步：求使得$Q(\theta,\theta^{(i)})$极大化的$\theta$，确定第$i+1$次迭代的参数估计值$\theta^{(i+1)}$<br>$$\theta^{(i+1)}=arg\max_{\theta}Q(\theta,\theta^{(i)})$$</li>
+<li>重复第2.3步，直至收敛。<br>其中$Q(\theta,\theta^{(i)})$是算法法核心，称为Q函数<br>Q函数是指完全数据的对数似然函数$logP(Y,Z|\theta)$关于在给定观测数据$Y$和当前参数$\theta^{(i)}$下对未观测数据$Z$的条件概率分布$P(Z|Y,\theta^{(i)})$的期望称为Q函数。</li>
 </ol>
-<p><strong>NOTE:</strong><br>
-EM算法说明</p>
+<p><strong>NOTE:</strong><br>EM算法说明</p>
 <ul>
 <li>参数的初始值可以任意选择，但注意EM算法对初始值敏感</li>
 <li>E步：$Q(\theta,\theta^{(i)})$中，第一个变元表示要极大化的参数，第二个变元是表示参数的当前估计值，每次迭代实际上在求Q函数的极大值</li>
-<li>M步：求$Q(\theta,\theta<sup>{(i)})$极大化，完成$\theta</sup>{(i)} \rightarrow \theta^{(i+1)}$，每次迭代使似然函数增大或达到局部极值,但EM算法不能保证找到全军最优值</li>
-<li>迭代停止：满足$||\theta<sup>{(i+1)}-\theta</sup>{(i)} ||&lt;\xi$</li>
+<li>M步：求$Q(\theta,\theta^{(i)})$极大化，完成$\theta^{(i)} \rightarrow \theta^{(i+1)}$，每次迭代使似然函数增大或达到局部极值,但EM算法不能保证找到全军最优值</li>
+<li>迭代停止：满足$||\theta^{(i+1)}-\theta^{(i)} ||&lt;\xi$</li>
 <li>EM算法应用于生成模型的非监督学习。</li>
 </ul>
-<p><strong>EM算法的推导以及收敛性验证详见《统计学习方法P158》</strong><br>
-收敛性结果：<br>
-EM算法的收敛性包含关于对数似然函数序列$L(\theta<sup>{(i)})$的收敛性和关于参数估计序列$\theta</sup>{(i)}$的收敛性，此外，定理只能保证参数估计序列收敛到对数似然函数序列的稳定点，不能保证收敛到极大值点。应用中，初值选取非常重要，通常选择几个不同的初始值进行迭代，然后对比选择最优的结果。</p>
-<h4 id="em在高斯混合模型中的应用"><a class="header-anchor" href="#em在高斯混合模型中的应用"></a>EM在高斯混合模型中的应用</h4>
-<p>EM算法的重要应用是高斯混合模型的参数估计，在许多情况下，EM是学习高斯混合模型的有效方法。</p>
-<h5 id="高斯混合模型"><a class="header-anchor" href="#高斯混合模型"></a>高斯混合模型</h5>
-<p>「高斯混合模型」具有如下概率分布模型：<br>
-$$P(y|\theta)=\sum\limits_{k=1}^{K}\alpha_k\phi(y|\theta_{k})$$<br>
-其中，$\alpha_k$是系数，$\alpha_k\geq0,\sum\limits_{k=1}<sup>{K}\alpha_k=1;\phi(y|\theta_{k})$是高斯分布密度，$\theta_{k}=(\mu_k,\sigma_k</sup>2)$<br>
-$$\phi(y|\theta_{k})=\frac{1}{\sqrt{2\pi}\sigma_k}exp\left(-\frac{(y-\mu_k)<sup>2}{2\sigma_k</sup>2}\right)$$<br>
-称第k个分模型</p>
-<h5 id="高斯混合模型的em算法"><a class="header-anchor" href="#高斯混合模型的em算法"></a>高斯混合模型的EM算法</h5>
-<p>假设观测数据$y_1,y_2,…,y_N$由高斯混合模型生成，<br>
-$$P(y|\theta)=\sum\limits_{k=1}^{K}\alpha_k\phi(y|\theta_{k})$$<br>
-其中，$\theta=(\alpha_1,\alpha_2,…,\alpha_K;\theta_1,\theta_2,…,\theta_K)$,用EM算法估计高斯混合模型的参数$\theta$<br>
-设想观测数据$y_j,j=1,2,…,N$是这样产生的：首先是依概率$a_k$选择第$k$个高斯分布分模型$\phi(y|\theta_{k})$；然后依第$k$个分模型的概率分布$\phi(y|\theta_{k})$生成观测数据$y_j$，观测数据$y_j$是已知的，反映观测数据$y_j$来自第$k$个分模型的数据是未知的，$k=1,2,…,K$，用隐变量$y_{jk}$，它是一个0-1随机变量。</p>
-<p>高斯混合模型参数估计的EM算法(具体计算过程见《统计学习方法》P163)：<br>
-输入：观测数据$y1,y2,…,y_N$，高斯混合模型<br>
-输出：高斯混合模型参数</p>
+<p><strong>EM算法的推导以及收敛性验证详见《统计学习方法P158》</strong><br>收敛性结果：<br>EM算法的收敛性包含关于对数似然函数序列$L(\theta^{(i)})$的收敛性和关于参数估计序列$\theta^{(i)}$的收敛性，此外，定理只能保证参数估计序列收敛到对数似然函数序列的稳定点，不能保证收敛到极大值点。应用中，初值选取非常重要，通常选择几个不同的初始值进行迭代，然后对比选择最优的结果。</p>
+<h4 id="EM在高斯混合模型中的应用"><a href="#EM在高斯混合模型中的应用" class="headerlink" title="EM在高斯混合模型中的应用"></a>EM在高斯混合模型中的应用</h4><p>EM算法的重要应用是高斯混合模型的参数估计，在许多情况下，EM是学习高斯混合模型的有效方法。</p>
+<h5 id="高斯混合模型"><a href="#高斯混合模型" class="headerlink" title="高斯混合模型"></a>高斯混合模型</h5><p>「高斯混合模型」具有如下概率分布模型：<br>$$P(y|\theta)=\sum\limits_{k=1}^{K}\alpha_k\phi(y|\theta_{k})$$<br>其中，$\alpha_k$是系数，$\alpha_k\geq0,\sum\limits_{k=1}^{K}\alpha_k=1;\phi(y|\theta_{k})$是高斯分布密度，$\theta_{k}=(\mu_k,\sigma_k^2)$<br>$$\phi(y|\theta_{k})=\frac{1}{\sqrt{2\pi}\sigma_k}exp\left(-\frac{(y-\mu_k)^2}{2\sigma_k^2}\right)$$<br>称第k个分模型</p>
+<h5 id="高斯混合模型的EM算法"><a href="#高斯混合模型的EM算法" class="headerlink" title="高斯混合模型的EM算法"></a>高斯混合模型的EM算法</h5><p>假设观测数据$y_1,y_2,…,y_N$由高斯混合模型生成，<br>$$P(y|\theta)=\sum\limits_{k=1}^{K}\alpha_k\phi(y|\theta_{k})$$<br>其中，$\theta=(\alpha_1,\alpha_2,…,\alpha_K;\theta_1,\theta_2,…,\theta_K)$,用EM算法估计高斯混合模型的参数$\theta$<br>设想观测数据$y_j,j=1,2,…,N$是这样产生的：首先是依概率$a_k$选择第$k$个高斯分布分模型$\phi(y|\theta_{k})$；然后依第$k$个分模型的概率分布$\phi(y|\theta_{k})$生成观测数据$y_j$，观测数据$y_j$是已知的，反映观测数据$y_j$来自第$k$个分模型的数据是未知的，$k=1,2,…,K$，用隐变量$y_{jk}$，它是一个0-1随机变量。</p>
+<p>高斯混合模型参数估计的EM算法(具体计算过程见《统计学习方法》P163)：<br>输入：观测数据$y1,y2,…,y_N$，高斯混合模型<br>输出：高斯混合模型参数</p>
 <ol>
 <li>取参数的初始值开始迭代</li>
-<li>E步：依据当前模型参数，计算分模型$k$对观测数据$y_j$的响应度<br>
-$$\hat{y}<em>{jk}=\frac{\alpha_k\phi(y|\theta</em>{k})}{\sum\limits_{k=1}^{K}\alpha_k\phi(y|\theta_{k})}$$</li>
-<li>M步：计算新一轮迭代的模型参数<br>
-$$\hat{\mu}<em>k=\frac{\sum\limits</em>{j=1}<sup>{N}\hat{y}_{jk}y_j}{\sum\limits_{j=1}</sup>{N}\hat{y}<em>{jk}},k=1,2,…,K$$<br>
-$$\hat{\sigma}<em>k<sup>2=\frac{\sum\limits_{j=1}</sup>{N}\hat{y}</em>{jk}(y_j-\mu_k)<sup>2}{\sum\limits_{j=1}</sup>{N}\hat{y}</em>{jk}},k=1,2,…,K$$<br>
-$$\hat{\alpha}<em>k=\frac{\sum\limits</em>{j=1}^{N}\hat{y}_{jk}}{N},k=1,2,…,K$$</li>
+<li>E步：依据当前模型参数，计算分模型$k$对观测数据$y_j$的响应度<br>$$\hat{y}_{jk}=\frac{\alpha_k\phi(y|\theta_{k})}{\sum\limits_{k=1}^{K}\alpha_k\phi(y|\theta_{k})}$$</li>
+<li>M步：计算新一轮迭代的模型参数<br>$$\hat{\mu}_k=\frac{\sum\limits_{j=1}^{N}\hat{y}_{jk}y_j}{\sum\limits_{j=1}^{N}\hat{y}_{jk}},k=1,2,…,K$$<br>$$\hat{\sigma}_k^2=\frac{\sum\limits_{j=1}^{N}\hat{y}_{jk}(y_j-\mu_k)^2}{\sum\limits_{j=1}^{N}\hat{y}_{jk}},k=1,2,…,K$$<br>$$\hat{\alpha}_k=\frac{\sum\limits_{j=1}^{N}\hat{y}_{jk}}{N},k=1,2,…,K$$</li>
 <li>重复2.3步直至收敛</li>
 </ol>
-<h4 id="广义期望极大算法-gem"><a class="header-anchor" href="#广义期望极大算法-gem"></a>广义期望极大算法（GEM）</h4>
-<p>EM算法还可以解释为F函数的极大-极大算法，基于这个解释有若干变形与推广，eg广义期望极大算法（Generalized Expectation Maximization）<br>
-更多内容详见《统计学习方法》P166</p>
+<h4 id="广义期望极大算法（GEM）"><a href="#广义期望极大算法（GEM）" class="headerlink" title="广义期望极大算法（GEM）"></a>广义期望极大算法（GEM）</h4><p>EM算法还可以解释为F函数的极大-极大算法，基于这个解释有若干变形与推广，eg广义期望极大算法（Generalized Expectation Maximization）<br>更多内容详见《统计学习方法》P166</p>
 
       
     </div>
@@ -809,7 +768,7 @@ $$\hat{\alpha}<em>k=\frac{\sum\limits</em>{j=1}^{N}\hat{y}_{jk}}{N},k=1,2,…,K$
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#em算法"><span class="nav-number">2.</span> <span class="nav-text">EM算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#例子：🌰"><span class="nav-number">2.1.</span> <span class="nav-text">例子：🌰</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#具体算法"><span class="nav-number">2.2.</span> <span class="nav-text">具体算法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#em在高斯混合模型中的应用"><span class="nav-number">3.</span> <span class="nav-text">EM在高斯混合模型中的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#高斯混合模型"><span class="nav-number">3.1.</span> <span class="nav-text">高斯混合模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#高斯混合模型的em算法"><span class="nav-number">3.2.</span> <span class="nav-text">高斯混合模型的EM算法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#广义期望极大算法-gem"><span class="nav-number">4.</span> <span class="nav-text">广义期望极大算法（GEM）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#EM算法"><span class="nav-number">2.</span> <span class="nav-text">EM算法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#例子：🌰"><span class="nav-number">2.1.</span> <span class="nav-text">例子：🌰</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#具体算法"><span class="nav-number">2.2.</span> <span class="nav-text">具体算法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#EM在高斯混合模型中的应用"><span class="nav-number">3.</span> <span class="nav-text">EM在高斯混合模型中的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#高斯混合模型"><span class="nav-number">3.1.</span> <span class="nav-text">高斯混合模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#高斯混合模型的EM算法"><span class="nav-number">3.2.</span> <span class="nav-text">高斯混合模型的EM算法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#广义期望极大算法（GEM）"><span class="nav-number">4.</span> <span class="nav-text">广义期望极大算法（GEM）</span></a></li></ol></div>
             
 
           </div>
